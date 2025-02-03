@@ -1,0 +1,141 @@
+{
+    "results": [
+        {
+            "__metadata": {
+                "id": null,
+                "uri": null,
+                "type": null,
+                "etag": null
+            },
+            "SalesOrder": null,
+            "SalesOrderType": null,
+            "SalesOrderTypeInternalCode": null,
+            "SalesOrganization": null,
+            "DistributionChannel": null,
+            "OrganizationDivision": null,
+            "SalesGroup": null,
+            "SalesOffice": null,
+            "SalesDistrict": null,
+            "SoldToParty": null,
+            "CreationDate": null,
+            "CreatedByUser": null,
+            "LastChangeDate": null,
+            "SenderBusinessSystemName": null,
+            "ExternalDocumentID": null,
+            "LastChangeDateTime": null,
+            "ExternalDocLastChangeDateTime": null,
+            "PurchaseOrderByCustomer": null,
+            "PurchaseOrderByShipToParty": null,
+            "CustomerPurchaseOrderType": null,
+            "CustomerPurchaseOrderDate": null,
+            "SalesOrderDate": null,
+            "TotalNetAmount": null,
+            "OverallDeliveryStatus": null,
+            "TotalBlockStatus": null,
+            "OverallOrdReltdBillgStatus": null,
+            "OverallSDDocReferenceStatus": null,
+            "TransactionCurrency": null,
+            "SDDocumentReason": null,
+            "PricingDate": null,
+            "PriceDetnExchangeRate": null,
+            "BillingPlan": null,
+            "RequestedDeliveryDate": null,
+            "ShippingCondition": null,
+            "CompleteDeliveryIsDefined": null,
+            "ShippingType": null,
+            "HeaderBillingBlockReason": null,
+            "DeliveryBlockReason": null,
+            "DeliveryDateTypeRule": null,
+            "IncotermsClassification": null,
+            "IncotermsTransferLocation": null,
+            "IncotermsLocation1": null,
+            "IncotermsLocation2": null,
+            "IncotermsVersion": null,
+            "CustomerPriceGroup": null,
+            "PriceListType": null,
+            "CustomerPaymentTerms": null,
+            "PaymentMethod": null,
+            "FixedValueDate": null,
+            "AssignmentReference": null,
+            "ReferenceSDDocument": null,
+            "ReferenceSDDocumentCategory": null,
+            "AccountingDocExternalReference": null,
+            "CustomerAccountAssignmentGroup": null,
+            "AccountingExchangeRate": null,
+            "CustomerGroup": null,
+            "AdditionalCustomerGroup1": null,
+            "AdditionalCustomerGroup2": null,
+            "AdditionalCustomerGroup3": null,
+            "AdditionalCustomerGroup4": null,
+            "AdditionalCustomerGroup5": null,
+            "SlsDocIsRlvtForProofOfDeliv": null,
+            "CustomerTaxClassification1": null,
+            "CustomerTaxClassification2": null,
+            "CustomerTaxClassification3": null,
+            "CustomerTaxClassification4": null,
+            "CustomerTaxClassification5": null,
+            "CustomerTaxClassification6": null,
+            "CustomerTaxClassification7": null,
+            "CustomerTaxClassification8": null,
+            "CustomerTaxClassification9": null,
+            "TaxDepartureCountry": null,
+            "VATRegistrationCountry": null,
+            "SalesOrderApprovalReason": null,
+            "SalesDocApprovalStatus": null,
+            "OverallSDProcessStatus": null,
+            "TotalCreditCheckStatus": null,
+            "OverallTotalDeliveryStatus": null,
+            "OverallSDDocumentRejectionSts": null,
+            "BillingDocumentDate": null,
+            "ContractAccount": null,
+            "AdditionalValueDays": null,
+            "CustomerPurchaseOrderSuplmnt": null,
+            "ServicesRenderedDate": null,
+            "to_BillingPlan": {
+                "__deferred": {
+                    "uri": null
+                }
+            },
+            "to_Item": {
+                "__deferred": {
+                    "uri": null
+                }
+            },
+            "to_Partner": {
+                "__deferred": {
+                    "uri": null
+                }
+            },
+            "to_PaymentPlanItemDetails": {
+                "__deferred": {
+                    "uri": null
+                }
+            },
+            "to_PrecedingProcFlowDoc": {
+                "__deferred": {
+                    "uri": null
+                }
+            },
+            "to_PricingElement": {
+                "__deferred": {
+                    "uri": null
+                }
+            },
+            "to_RelatedObject": {
+                "__deferred": {
+                    "uri": null
+                }
+            },
+            "to_SubsequentProcFlowDoc": {
+                "__deferred": {
+                    "uri": null
+                }
+            },
+            "to_Text": {
+                "__deferred": {
+                    "uri": null
+                }
+            }
+        }
+    ]
+}

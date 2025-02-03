@@ -1,0 +1,243 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+
+
+
+
+
+    <f:SimpleForm
+        id="copefHeaderContainer"
+        editable="true"
+        layout="ColumnLayout"
+        columnsM="3"
+        columnsL="4"
+        columnsXL="5"
+    >
+        <f:content>
+            <Label
+                text="Costing Category"
+                labelFor="copefCostingCategory"
+            />
+            <Select
+                id="copefCostingCategory"
+                selectedKey="{EntryFormDataSourceModel>/CostingCategory}"
+                items="{COPEntryFormStaticDropdownModel>/ReqTypArray}"
+                required="true"
+                change="onChangeCostingCategory"
+            >
+                <items>
+                    <core:Item
+                        key="{COPEntryFormStaticDropdownModel>id}"
+                        text="{COPEntryFormStaticDropdownModel>name}"
+                    />
+                </items>
+            </Select>
+
+            <Label
+                text="{i18n>costingTypeLbl}"
+                labelFor="copefHeaderCostingType"
+            />
+            <Select
+                id="copefHeaderCostingType"
+                selectedKey="{EntryFormDataSourceModel>/CostingTypeCode}"
+                items="{COPEntryFormStaticDropdownModel>/CostingType}"
+                required="true"
+            >
+                <items>
+                    <core:Item
+                        key="{COPEntryFormStaticDropdownModel>id}"
+                        text="{COPEntryFormStaticDropdownModel>name}"
+                    />
+                </items>
+            </Select>
+
+            <Label
+                text="{i18n>cadNoLbl}"
+                labelFor="copefHeaderCadNo"
+            />
+            <Input
+                id="copefHeaderCadNo"
+                value="{EntryFormDataSourceModel>/CADNo}"
+                showValueHelp="true"
+                valueHelpRequest="cflForHeaderCadNo"
+                required="true"
+            />
+            <Label
+                text="Buyer Name"
+                labelFor="copefHeaderBuyerName"
+            />
+            <Input
+                id="copefHeaderBuyerName"
+                value="{EntryFormDataSourceModel>/BuyerName}"
+                showValueHelp="true"
+                valueHelpRequest="cflForHeaderBuyerName"
+            />
+            <Label
+                text="Render/PD No."
+                labelFor="copefHeaderRendePDNo"
+            />
+            <Input
+                id="copefHeaderRendePDNo"
+                value="{EntryFormDataSourceModel>/RenderPd}"
+                showValueHelp="true"
+                valueHelpRequest="cflForHeaderRendePDNo"
+            />
+            <Label
+                text="Product Category"
+                labelFor="copefHeaderProductCategory"
+            />
+            <Input
+                id="copefHeaderProductCategory"
+                value="{EntryFormDataSourceModel>/ProductCategory}"
+                showValueHelp="true"
+                valueHelpRequest="cflForHeaderProductCategory"
+            />
+            <Label
+                text="Product Sub Category"
+                labelFor="copefHeaderProductSubCategory"
+            />
+            <Input
+                id="copefHeaderProductSubCategory"
+                value="{EntryFormDataSourceModel>/ProductSubCategory}"
+                showValueHelp="true"
+                valueHelpRequest="cflForHeaderProductSubCategory"
+            />
+            <Label
+                text="Item Code"
+                labelFor="copefHeaderItemCode"
+                required="true"
+            />
+            <Input
+                id="copefHeaderItemCode"
+                value="{EntryFormDataSourceModel>/ItemCode}"
+                showValueHelp="true"
+                valueHelpRequest="cflForHeaderItemCode"
+                required="true"
+            />
+            <Label
+                text="{i18n>itemDescriptionLbl}"
+                labelFor="copefHeaderItemDescription"
+                required="true"
+            />
+            <Input
+                id="copefHeaderItemDescription"
+                value="{EntryFormDataSourceModel>/ItemDesc}"
+                showValueHelp="true"
+                valueHelpRequest="cflForHeaderItemDescription"
+                required="true"
+            />
+            <Label
+                text="{i18n>sciplCodeLbl}"
+                labelFor="copefHeaderSciplCode"
+                required="true"
+            />
+            <Input
+                id="copefHeaderSciplCode"
+                value="{EntryFormDataSourceModel>/SciplCode}"
+                required="true"
+            />
+            <Label
+                text="Costing Executive"
+                labelFor="copefHeaderCostingExecutive"
+                required="true"
+            />
+            <Input
+                id="copefHeaderCostingExecutive"
+                value="{EntryFormDataSourceModel>/CostingExecutive}"
+                required="true"
+                enabled="false"
+            />
+
+            <Label
+                text="Costing ATL"
+                labelFor="copefCostingATL"
+                required="true"
+            />
+
+            <Input
+                id="copefCostingATL"
+                value="{EntryFormDataSourceModel>/CostingATL}"
+                required="true"
+                showValueHelp="true"
+                valueHelpRequest="cflForCostingATL"
+            />
+
+            <Label
+                text="Costing Head"
+                labelFor="copefCostingHead"
+                required="true"
+            />
+
+            <Input
+                id="copefCostingHead"
+                value="{EntryFormDataSourceModel>/CostingHead}"
+                required="true"
+                showValueHelp="true"
+                valueHelpRequest="cflForCostingHead"
+            />
+
+            <Label
+                text="{i18n>costingVLbl}"
+                labelFor="copefHeaderCostingVersion"
+            />
+            <Input
+                id="copefHeaderCostingVersion"
+                value="{EntryFormDataSourceModel>/CostingVersion}"
+            />
+
+            <Label
+                text="{i18n>soNoLbl}"
+                labelFor="copefHeaderSONumber"
+                required="true"
+            />
+            <Input
+                id="copefHeaderSONumber"
+                value="{EntryFormDataSourceModel>/SONumber}"
+                showValueHelp="true"
+                valueHelpRequest="cflForHeaderSONumber"
+                required="true"
+            />
+            <Label
+                text="Season/Program"
+                labelFor="copefHeaderSeasonProgram"
+            />
+            <Input
+                id="copefHeaderSeasonProgram"
+                value="{EntryFormDataSourceModel>/SeasonProgram}"
+                valueHelpRequest="cflForHeaderSeasonProgram"
+                type="Number"
+            />
+
+            <Label
+                text="MOQ (Min Order Qty)"
+                labelFor="copefHeaderMOQ"
+            />
+            <Input
+                id="copefHeaderMOQ"
+                value="{EntryFormDataSourceModel>/MOQ}"
+            />
+
+            <Label
+                text="Stage Code"
+                labelFor="copefHeaderStageCode"
+            />
+            <Input
+                id="copefHeaderStageCode"
+                enabled="false"
+                value="{EntryFormDataSourceModel>/CostingStageCode_StageCode_StageConstant}"
+            />
+            <Label
+                text="Stage Name"
+                labelFor="copefHeaderStageName"
+            />
+            <Input
+                id="copefHeaderStageName"
+                enabled="false"
+                value="{EntryFormDataSourceModel>/CostingStageName}"
+            />
+        </f:content>
+    </f:SimpleForm>
+</core:FragmentDefinition>

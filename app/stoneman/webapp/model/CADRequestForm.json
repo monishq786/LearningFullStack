@@ -1,0 +1,28 @@
+{
+      "RETURNDATA": [
+                {
+                    "CRFREQUUID":null,
+                    "OLDCRFREQNOUUID": null,
+                    "OLDCRFREQNO": null,
+                    "CRFREQNO": null,
+                    "PROFLOW": null,
+                    "INPUTTYPE": null,
+                    "MERREQDATE": null,
+                    "BUYERCODE": null,
+                    "BUYERNAME": null,
+                    "CATEGORY": null,
+                    "ITEMCODE":null,
+                    "ITEMDESC": null,
+                    "ITEMGROUP": null,
+                    "ITEMGROUPNAME": null,
+                    "CRFDELDATE": null,
+                    "CARNO": null,
+                    "CRFREQDATE": null,
+                    "PDDATE": null,
+                    "PDNO": null,
+                    "USERNAME": null,
+                    "CRFSTATUS": null
+                }
+                
+            ]
+        }

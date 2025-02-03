@@ -1,0 +1,187 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons">
+    <VBox>
+        <FlexBox width="100%" justifyContent="End">
+            <Button id="caddetail_addChildBtn" icon="sap-icon://add" text="{i18n>addChildRow}" press="addChildRow" />
+        </FlexBox>
+        <ScrollContainer id="caddetail_scrollcontainerChild" width="100%" height="auto" horizontal="true" vertical="true" focusable="true">
+            <Table items="{
+			path: 'EntryFormDataSourceModel>/ChildAssembly',
+			sorter: {
+				path: 'Name'
+			}
+		}" id="caddetail_childAssemblyTable" class="sapUiSizeCompact" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true">
+                <columns>
+                    <Column width="4rem">
+                        <Label text="SNo." />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Assembly Cad No." labelFor="caddetail_childAssemblyCadNo" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Assembly Cad Name" labelFor="caddetail_childAssemblydCadname" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Child Assembly Name" labelFor="caddetail_childAssemblydName" />
+                    </Column>
+                    <Column width="10rem">
+                        <Text text="{i18n>filesname}" />
+                    </Column>
+                    <Column width="7rem" />
+                    <Column width="15rem">
+                        <Label text="Assembly Cad Attachment" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Product No" labelFor="caddetail_childProductNo" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Product Name" labelFor="caddetail_childProductName" />
+                    </Column>
+                    <Column width="12rem">
+                        <Label text="Manufacturing Process" labelFor="caddetail_childMfgprocess" />
+                    </Column>
+                    <Column width="15rem">
+                        <Label text="Operation Name With Symbols" labelFor="caddetail_childOpesymbol" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Density" labelFor="caddetail_childDensity" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="UOM" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Surface Area" labelFor="caddetail_childSurfaceArea" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Micron" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="DFT" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Finish" labelFor="caddetail_childFinish" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Remark" />
+                    </Column>
+                    <Column width="15rem">
+                        <Label text="Process Time (in Minutes)" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Wastage %" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Process Jobwork Rate" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>length}" labelFor="caddetail_childDiaLength" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>dLTolerance}" labelFor="caddetail_childDiaLengthTol" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>width}" labelFor="caddetail_childDiaWidth" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>dWTolerance}" labelFor="caddetail_childDiaWidthTol" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>height}" labelFor="caddetail_childDiaHeight" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>dHTolerance}" labelFor="caddetail_childDiaHeightTol" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>diameteruom}" labelFor="caddetail_childDiaUoM" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>dUTolerance}" labelFor="caddetail_childDiaUoMTol" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>weight}" labelFor="caddetail_childWeight" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>netweightuom}" labelFor="caddetail_childWeightUOM" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>grossweight}" labelFor="caddetail_childGrossWeight" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>grossqty}" labelFor="caddetail_childGrossQty" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="{i18n>grossqtyuom}" labelFor="caddetail_childGrossQtyUOM" />
+                    </Column>
+                    <Column width="15rem">
+                        <Label text="{i18n>specification}" labelFor="caddetail_childSpecification" />
+                    </Column>
+
+                    <Column width="10rem">
+                        <Label text="{i18n>dWigTolerance}" labelFor="caddetail_childWeightTol" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Finish Dimension" labelFor="caddetail_" />
+                    </Column>
+                    <Column width="5rem" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text id="caddetail_childSNo" text="{EntryFormDataSourceModel>RowNumber}" />
+                            <Input id="caddetail_childAssemblyCadNo" tooltip="{EntryFormDataSourceModel>AssemblyCadNo}" required="true" width="130px" value="{EntryFormDataSourceModel>AssemblyCadNo}" editable="false" />
+                            <Input id="caddetail_childAssemblydCadname" tooltip="{EntryFormDataSourceModel>AssemblyCadName}" required="true" width="130px" valueHelpRequest="" value="{EntryFormDataSourceModel>AssemblyCadName}" editable="false" />
+                            <Input id="caddetail_childAssemblydName" required="true" width="130px" valueHelpRequest="" value="{EntryFormDataSourceModel>ChildAssemblyName}" editable="true" />
+                            <Text text="{EntryFormDataSourceModel>AssemblyCadAttachment/DisplayName}" wrapping="true" />
+                            <HBox visible="{EntryFormDataSourceModel>isDownloadVisibleChild}">
+                                <Button id="caddetail_childAttachBtn" icon="sap-icon://show" press="onViewFile" />
+                                <Button id="caddetail_childDownloadBtn" icon="sap-icon://download" press="onDownloadFile" class="sapUiSmallMarginBegin"/>
+                            </HBox>
+                            <HBox>
+                                <u:FileUploader id="caddetail_childAssmFile" visible="{EntryFormDataSourceModel>isNewRow}" multiple="false" name="myFileUpload" change=".onFileChangeChildAssembly" uploadComplete="" buttonText="Choose File" placeholder="Choose a file to upload" />
+                            </HBox>
+                            <Input id="caddetail_childProductNo" required="true" width="130px" showValueHelp="true" valueHelpRequest="cflForProductNoChildAssembly" value="{EntryFormDataSourceModel>ProductNo}" editable="true" />
+                            <Input id="caddetail_childProductName" required="true" width="130px" value="{EntryFormDataSourceModel>ProductName}" tooltip="{EntryFormDataSourceModel>ProductName}" editable="false" />
+                            <Input id="caddetail_childMfgprocess" required="true" width="150px" value="{EntryFormDataSourceModel>ManufacturingName}" showValueHelp="true" valueHelpRequest="cflForManufacturingProcessChildAssembly" editable="true" />
+                            <Input id="caddetail_childOpesymbol" required="true" valueHelpRequest="cflForOperationChildAssembly" showValueHelp="true" width="180px" value="{EntryFormDataSourceModel>OperationProcessName}" editable="true" />
+                            <Input id="caddetail_childDensity" required="true" type="Number" width="130px" value="{EntryFormDataSourceModel>Density}" editable="true" />
+                            <Input id="caddetail_childUOM" width="130px" value="{EntryFormDataSourceModel>UOMCode}" editable="true" showValueHelp="true" valueHelpRequest="cflForUOMChildAssembly" />
+                            <Input id="caddetail_childSurfaceArea" width="130px" value="{EntryFormDataSourceModel>SurfaceArea}" editable="true" type="Number" required="true" />
+                            <Input id="caddetail_childMicron" type="Number" width="130px" value="{EntryFormDataSourceModel>Micron}" editable="true" />
+                            <Input id="caddetail_childDFT" width="130px" value="{EntryFormDataSourceModel>DFT}" editable="true" type="Number" />
+                            <Input id="caddetail_childFinish" width="130px" value="{EntryFormDataSourceModel>Finish}" editable="true" required="true" />
+                            <Input id="caddetail_childRemarks" width="130px" value="{EntryFormDataSourceModel>Remarks}" editable="true" />
+                            <Input id="caddetail_childProcessTime" width="130px" type="Number" value="{path: 'EntryFormDataSourceModel>ProcessTime', type: 'sap.ui.model.type.Integer'}" editable="true" />
+                            <Input id="caddetail_childWastage" width="130px" value="{EntryFormDataSourceModel>WastagePer}" editable="true" />
+                            <ComboBox id="caddetail_childprocessjobworkrate" width="150px" maxWidth="100%" valueState="None" visible="true" editable="true" enabled="true" selectedKey="{EntryFormDataSourceModel>ProcessJobworkRate}" selectionChange="" items="{ReqTypeModel>/processJobWorkRate}">
+                                <items>
+                                    <core:Item key="{ReqTypeModel>id}" text="{ReqTypeModel>name}" />
+                                </items>
+                            </ComboBox>
+
+                            <Input id="caddetail_childDiaLength" required="true" width="130px" value="{EntryFormDataSourceModel>LengthUOM}" editable="true" />
+                            <Input id="caddetail_childDiaLengthTol" required="true" width="130px" value="{EntryFormDataSourceModel>TolLengthUom}" editable="true" />
+                            <Input id="caddetail_childDiaWidth" required="true" width="130px" value="{EntryFormDataSourceModel>WidthUOM}" editable="true" />
+                            <Input id="caddetail_childDiaWidthTol" required="true" type="Number" width="130px" value="{EntryFormDataSourceModel>TolWidthUom}" editable="true" />
+                            <Input id="caddetail_childDiaHeight" required="true" type="Number" width="130px" value="{EntryFormDataSourceModel>HeightUOM}" editable="true" />
+                            <Input id="caddetail_childDiaHeightTol" required="true" type="Number" width="130px" value="{EntryFormDataSourceModel>TolHeightUom}" editable="true" />
+                            <Input id="caddetail_childDiaUoM" required="true" width="130px" value="{EntryFormDataSourceModel>DiameterUOM}" editable="true" />
+                            <Input id="caddetail_childDiaUoMTol" required="true" width="130px" value="{EntryFormDataSourceModel>TolDiameterUom}" editable="true" />
+                            <Input id="caddetail_childWeight" required="true" type="Number" width="130px" value="{EntryFormDataSourceModel>NetWeight}" editable="true" />
+                            <Input id="caddetail_childWeightUOM" required="true" width="130px" value="{EntryFormDataSourceModel>NetWeightUOM}" editable="true" showValueHelp="true" valueHelpRequest="cflForUOMChildAssemblyNetWeight" />
+                            <Input id="caddetail_childGrossWeight" required="true" type="Number" width="130px" value="{EntryFormDataSourceModel>GrossWeight}" editable="true" />
+                            <Input id="caddetail_childGrossQty" required="true" type="Number" width="130px" value="{EntryFormDataSourceModel>GrossQty}" editable="true" />
+                            <Input id="caddetail_childGrossQtyUOM" required="true" width="130px" value="{EntryFormDataSourceModel>GrossQtyUOM}" editable="true" showValueHelp="true" valueHelpRequest="cflForUOMChildAssemblyGrossQty" />
+                            <Input id="caddetail_childSpecification" required="true" type="Number" width="180px" value="{EntryFormDataSourceModel>SpecificationDRGSize}" editable="true" />
+                            <Input id="caddetail_childWeightTol" required="true" width="130px" value="{EntryFormDataSourceModel>TolWeightUom}" editable="true" />
+                            <Input id="caddetail_childFinish2" required="true" type="Number" width="130px" value="{EntryFormDataSourceModel>FinishDimen}" editable="true" />
+                            <Button id="caddetail_childDelBtn" icon="sap-icon://delete" width="35px" visible="true" press="onDeleteChild" type="Reject" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+    </VBox>
+</core:FragmentDefinition>

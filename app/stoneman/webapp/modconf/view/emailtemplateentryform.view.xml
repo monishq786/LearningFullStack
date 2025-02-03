@@ -1,0 +1,56 @@
+<mvc:XMLView controllerName="modconfcontroller.emailtemplateentryform"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core" class="d-flex justify-content-center">
+    <Page id="emailtemplateef" title="E-Mail Template Form" showNavButton="true" navButtonPress="onPressOfEntryFormCancelButton">
+        <VBox>
+            <f:SimpleForm editable="true" layout="ResponsiveGridLayout" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0">
+                <f:content>
+                    <Label id="templateCodeLbl" text="{i18n>templateCode}" />
+                    <Input id="templateCode" editable="{EnableCheck>/EnableTempCode}" required="true" value="{EntryFormDataSourceModel>/NotifyTemplateCode}" showValueHelp="true" valueHelpRequest="cflForTempCode" liveChange="onLiveChange" description="" fieldWidth="100%" maxLength="100" />
+
+                    <Label id="templateNameLbl" text="{i18n>description}" />
+                    <Input id="templateName" editable="true" required="true" value="{EntryFormDataSourceModel>/Description}" description="" fieldWidth="100%" maxLength="200" />
+
+                    <Label text="{i18n>fieldType}" />
+
+                    <Input id="TypeLbl" editable="true" required="true" visible="false" value="{EntryFormDataSourceModel>/Type}" description="" liveChange="onLiveChange" fieldWidth="100%" maxLength="100" />
+
+
+                    <Label id="MenuEF" text="{i18n>MENUNAME}" />
+                    <Input id="MenuName" editable="true" required="true" value="{EntryFormDataSourceModel>/MenuCode}" showValueHelp="true" valueHelpRequest="cflForMenuCode" liveChange="onLiveChange" description="" fieldWidth="100%" maxLength="100" />
+
+
+
+                    <Label id="subjectLbl" text="{i18n>subject}" />
+                    <Input id="subject" editable="true" required="true" value="{EntryFormDataSourceModel>/NotifyTemplateSubject}" description="" fieldWidth="100%" maxLength="200"/>
+
+                    <Label id="notification" text="{i18n>Notification}" />
+                    <TextArea id="Notification" editable="true" required="true" value="{EntryFormDataSourceModel>/NotificationBody}" rows="2" width ="100%" maxLength="200"/>
+
+
+                    <Label id="bodyContentLbl" text="{i18n>EmailContent}" />
+                    <TextArea id="bodyContent" editable="true" required="true" value="{EntryFormDataSourceModel>/NotifyTemplateBody}" rows="5" width="100%" maxLength="1000" />
+
+                    <Label text="Is Active: " />
+                    <CheckBox select="onSelect" selected="{= ${EntryFormDataSourceModel>/IsActive} === 'Y' }" id="qisActiveCheckBox" required="true" enabled="true" class="ml-10" />
+
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        <footer>
+            <Toolbar class="d-flex justify-content-center btn-sav">
+                <ToolbarSpacer />
+                <Button type="Emphasized" id="Savebtn" text="{i18n>submit}" press="onSave" class="justify-content-end" />
+                <Button type="Reject" id="btnCancel" text="{i18n>cancel}" press="onCancel" class="justify-content-end ml-10" />
+            </Toolbar>
+        </footer>
+
+        <!-- <Toolbar>
+            <ToolbarSpacer />
+            <Button text="{i18n>save}" press=".onSave" />
+            <Button text="{i18n>cancel}" press=".onCancel" />
+        </Toolbar> -->
+    </Page>
+</mvc:XMLView>

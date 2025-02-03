@@ -1,0 +1,178 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <HBox
+        width="100%"
+        justifyContent="Start"
+        class="header-padd"
+    >
+        <VBox width="220px">
+            <Label
+                id="cop_TotalCostLbl"
+                labelFor="TotalCostLbl"
+                text="{i18n>TotalCostLbl}"
+                class="labelHeight"
+            />
+            <Label
+                id="cop_exchangeRateLbl"
+                labelFor="exchangeRateLbl"
+                text="{i18n>exchangeRateLbl}"
+                class="labelHeight"
+            />
+            <Label
+                id="cop_priceInUSLbl"
+                labelFor="priceInUSLbl"
+                text="{i18n>priceInUSLbl}"
+                class="labelHeight"
+            />
+        </VBox>
+        <VBox width="220px">
+            <Input
+                id="cop_totalCost"
+                enabled="true"
+                value="{copRequestModel_New>/totalCost}"
+                description=""
+                width="150px"
+                fieldWidth="100%"
+            />
+            <Input
+                id="cop_exchangeRate"
+                enabled="true"
+                value="{copRequestModel_New>/exchangeRate}"
+                description=""
+                width="150px"
+                fieldWidth="100%"
+            />
+            <Input
+                id="cop_priceinUS"
+                enabled="true"
+                value="{copRequestModel_New>/priceinUS}"
+                description=""
+                width="150px"
+                fieldWidth="100%"
+            />
+        </VBox>
+        <VBox width="220px">
+            <Label
+                id="cop_shippingCostLbl"
+                labelFor="shippingCostLbl"
+                text="{i18n>shippingCostLbl}"
+                class="labelHeight ml-15"
+            />
+            <Label
+                id="cop_testingChargeLbl"
+                labelFor="testingChargeLbl"
+                text="{i18n>testingChargeLbl}"
+                class="labelHeight ml-15"
+            />
+            <Label
+                id="cop_labelingChargeLbl"
+                labelFor="labelingChargeLbl"
+                text="{i18n>labelingChargeLbl}"
+                class="labelHeight ml-15"
+            />
+        </VBox>
+        <VBox width="220px">
+            <Input
+                id="cop_shippingCost"
+                enabled="true"
+                value="{copRequestModel_New>/shippingCost}"
+                description=""
+                width="150px"
+                fieldWidth="100%"
+            />
+            <Input
+                id="cop_testingCharge"
+                enabled="true"
+                value="{copRequestModel_New>/testingCharge}"
+                description=""
+                width="150px"
+                fieldWidth="100%"
+            />
+
+            <Input
+                id="cop_labelingCharge"
+                enabled="true"
+                value="{copRequestModel_New>/labelingCharge}"
+                description=""
+                width="150px"
+                fieldWidth="100%"
+            />
+        </VBox>
+        <VBox width="220px">
+            <Label
+                id="cop_trimmingCostLbl"
+                labelFor="trimmingCostLbl"
+                text="{i18n>trimmingCostLbl}"
+                class="labelHeight ml-15"
+            />
+            <Label
+                id="cop_priceIncludingAllChargesLbl"
+                labelFor="priceIncludingAllChargesLbl"
+                text="{i18n>priceIncludingAllChargesLbl}"
+                class="labelHeight ml-15"
+            />
+            <Label
+                id="cop_profitLbl"
+                labelFor="profitLbl"
+                text="{i18n>profitLbl}"
+                class="labelHeight ml-15"
+            />
+        </VBox>
+        <VBox width="220px">
+            <Input
+                id="cop_trimmingCost"
+                value="{copRequestModel_New>/trimmingCost}"
+                description=""
+                width="150px"
+                fieldWidth="100%"
+            />
+
+            <Input
+                id="cop_priceIncludingAllCharges"
+                value="{copRequestModel_New>/priceIncludingAllCharges}"
+                description=""
+                width="150px"
+                fieldWidth="100%"
+            />
+            <Input
+                id="cop_profit"
+                value="{copRequestModel_New>/profit}"
+                description=""
+                width="150px"
+                fieldWidth="100%"
+            />
+        </VBox>
+        <VBox width="150px">
+            <Label
+                id="cop_weightExtraChargesLbl"
+                labelFor="weightExtraChargesLbl"
+                text="{i18n>weightExtraChargesLbl}"
+                class="labelHeight ml-15"
+            />
+            <Label
+                id="cop_remarksExtraChargesLbl"
+                labelFor="remarksExtraChargesLbl"
+                text="{i18n>remarksExtraChargesLbl}"
+                class="labelHeight ml-15"
+            />
+        </VBox>
+        <VBox width="150px">
+            <Input
+                id="cop_weightExtraCharges"
+                value="{copRequestModel_New>/weightExtraCharges}"
+                description=""
+                width="150px"
+                fieldWidth="100%"
+            />
+            <Input
+                id="cop_remarksExtraCharges"
+                value="{copRequestModel_New>/remarksExtraCharges}"
+                description=""
+                width="150px"
+                fieldWidth="100%"
+            />
+        </VBox>
+    </HBox>
+</core:FragmentDefinition>

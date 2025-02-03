@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mvc:XMLView controllerName="modconfcontroller.menuroleentryform"
+     xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core" class="d-flex justify-content-center">
+    <Page id="menuroleef" title="{i18n>stageroletitle }" showNavButton="true" navButtonPress="onPressOfEntryFormCancelButton">
+     <VBox>
+            <f:SimpleForm editable="true" layout="ResponsiveGridLayout" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0">
+                <f:content>
+                     <Label text="{i18n>RoleCode}" />
+                                <Input
+                                    id="stage_RoleCode_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/RoleCode_RoleCode_RoleConstant}"
+                                    placeholder="Role Code..."
+                                    editable="true"
+                                    required="true"
+                                    showValueHelp="true"
+                                    valueHelpRequest="cflForRoleCode"
+
+                                />
+                                <Label text="{i18n>StageCode}" />
+                                 <Input
+                                    id="stage_StageCode_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/StageCode_StageCode_StageConstant}"
+                                    showValueHelp="true"
+                                    valueHelpRequest="cflForStageRole"
+                                    placeholder="Stage Code ..."
+                                    required="true"
+                                    liveChange="cflForStageRole"
+                                />
+                                 <Label text="{i18n>ValidationCode}" />
+                                 <Input
+                                    id="stage_Validation_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/ValidationCode}"
+                                    showValueHelp="false"
+                                    placeholder="Validation Code..."
+                                    required="true"
+                                    liveChange="crfForUserName"
+                                    width="100%"
+                                />
+                                <Label text="{i18n>ValidationCode11}" />
+                                <CheckBox 
+                                selected="{EntryFormDataSourceModel>/IsActive}" 
+                                text="Active" 
+                                id="isactiveCheckBox" 
+                                required="false" 
+                                enabled="true" 
+                                select="onCheckBoxSelect" 
+                                class="ml-10"
+                                />
+
+
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        <footer >
+        <Toolbar class="d-flex justify-content-center btn-sav">
+                        <content>
+                            <Button id="MenuRole_Button"
+                                text="{i18n>SAVE111}"
+                                press="onSave"
+                            />
+                        </content>
+                    </Toolbar>
+        </footer>
+           </Page>
+</mvc:XMLView>

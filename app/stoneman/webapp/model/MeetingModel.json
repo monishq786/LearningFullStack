@@ -1,0 +1,22 @@
+{
+    "meeting": [
+        {
+            "id": "Y",
+            "name": "Yes"
+        },
+        {
+            "id": "N",
+            "name": "No"
+        }
+    ],
+    "callMeeting": [
+        {
+            "id": "Y",
+            "name": "Yes"
+        },
+        {
+            "id": "N",
+            "name": "No"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "value": [
+        {
+            "Username": null,
+            "Usercode": null,
+            "FirstName": null,
+            "LastName": null,
+            "DepartmentCode": null,
+            "DepartmentName": null,
+            "UserRoleCode_RoleCode_RoleConstant": null,
+            "Password": null,
+            "IsActive": null,
+            "EmailId": null,
+            "EmployeeCode": null,
+            "Buyer":[
+                {
+                    "BuyerCode" : null,
+                    "BuyerName" : null
+                }
+            ]
+        }
+    ]
+}

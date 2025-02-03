@@ -1,0 +1,152 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"  displayBlock="true"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:grid="sap.ui.layout.Grid"
+    xmlns:layout="sap.ui.layout"
+    controllerName="modconfcontroller.productcategoryentryform">
+    <m:Page
+        id="productcategoryref"
+        title="{i18n>ProductCategoryEntryForm}"
+        showNavButton="true"
+        navButtonPress="onPressOfEntryFormCancelButton"
+        >
+        <ObjectPageLayout upperCaseAnchorBar="false">
+            <sections>
+                <ObjectPageSection titleUppercase="false" title="Product Category">
+                    <ObjectPageSubSection title="User" titleUppercase="false">
+                        <m:VBox id="productCategory" class="section">
+                            <core:Fragment fragmentName="modconfigfragment.productcategoryfragment.Product" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+                
+
+                <ObjectPageSection titleUppercase="false" title="CAD Level">
+                    <ObjectPageSubSection title="CAD Level" titleUppercase="false">
+                        <m:VBox id="buyerSection1" class="section">
+                            <core:Fragment fragmentName="modconfigfragment.productcategoryfragment.Cadlevel" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                
+
+                
+            </sections>
+        </ObjectPageLayout>
+
+        <m:footer >
+            <m:Toolbar >
+                <m:ToolbarSpacer />
+                
+                <m:Button type="Emphasized" id="ProductCategory_Button" text="{i18n>save}" press="onSave" />
+                <m:Button type="Reject" text="{i18n>cancel}" press=".onCancel" class="can-btn" />
+            </m:Toolbar>
+        </m:footer>
+    </m:Page>
+</mvc:View>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <mvc:XMLView
+    xmlns:form="sap.ui.layout.form"
+    controllerName="modconfcontroller.productcategoryentryform"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons"
+    class="d-flex justify-content-center"
+>
+    <Page
+        id="productcategoryref"
+        title="{i18n>BuyerBrandEntryForm}"
+        showNavButton="true"
+        navButtonPress="onPressOfEntryFormCancelButton"
+    >
+        <form:SimpleForm>
+            <form:content>
+                <VBox
+                    height="100%"
+                    fitContainer="true"
+                >
+                    <VBox
+                        height="100%"
+                        fitContainer="true"
+                    >
+                        <form:SimpleForm
+                            columnsM="3"
+                            columnsL="4"
+                            columnsXL="5"
+                            editable="true"
+                            layout="ColumnLayout"
+                        >
+                            <form:content>
+                               
+                            </form:content>
+                        </form:SimpleForm>
+                    </VBox>
+                   
+                    <form:SimpleForm>
+                        <form:content>
+                            <Label text="Product Category Code" required="true"/>
+                                <Input
+                                    id="prodoct_category_code_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/ProductCategoryCode}"
+                                    placeholder=""
+                                    width="30%"
+                                />
+                            <Label text="Product Category Name" required="true"/>
+                                <Input
+                                    id="prodoct_category_name_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/ProductCategoryName}"
+                                    placeholder=""
+                                    width="30%"
+                                />
+                                <Label text="" class="sapUiSmallMarginTop" />
+                                <Label text="Number" />
+                                
+                        </form:content>
+                    </form:SimpleForm>
+                </VBox>
+            </form:content>
+        </form:SimpleForm>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <FlexBox justifyContent="End">
+                    <Button
+                        type="Emphasized"
+                        text="{i18n>Submit}"
+                        press="onSave"
+                    />
+                </FlexBox>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:XMLView> -->

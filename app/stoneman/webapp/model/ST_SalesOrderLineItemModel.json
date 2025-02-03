@@ -1,0 +1,27 @@
+{
+    "__metadata": {
+        "id": null,
+        "uri": null,
+        "type": null,
+        "etag": null
+    },
+    "SalesOrder": null,
+    "SoldToParty": null,
+    "to_Item": {
+        "results": [
+            {
+                "__metadata": {
+                    "id": null,
+                    "uri": null,
+                    "type": null
+                },
+                "SalesOrder": null,
+                "SalesOrderItem": null,
+                "SalesOrderItemText": null,
+                "Material": null,
+                "RequestedQuantity": null,
+                "RequestedQuantityUnit": null
+            }
+        ]
+    }
+}

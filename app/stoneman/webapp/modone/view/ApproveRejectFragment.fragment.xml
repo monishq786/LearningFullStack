@@ -1,0 +1,19 @@
+<core:FragmentDefinition controllerName="modonecontroller.ApproveRejectFragment"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:f="sap.ui.layout.form">
+  <!-- dialog for seek advice -->
+  <Dialog id="approvalDialog" title="" class="sapMText.message">
+    <content>
+      <HBox>
+        <VBox class="sapUiResponsiveContentPadding">
+          <TextArea id="commentInput" value="{dialogData>/Comments}" editable="true" placeholder="Enter comments" width="300px" rows="4"/>
+        </VBox>
+      </HBox>
+    </content>
+    <buttons>
+     <Button text="Send" press=".onSendDialog"/>
+     <Button text="Cancel" press="onCloseDialog"/>
+    </buttons>
+  </Dialog>
+</core:FragmentDefinition>

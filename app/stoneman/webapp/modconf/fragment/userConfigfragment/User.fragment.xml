@@ -1,0 +1,56 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <f:SimpleForm id="user" editable="true" layout="ColumnLayout" columnsM="3" columnsL="4" columnsXL="5">
+        <f:content>
+            <Label id="userCLbl" text="{i18n>userCode}" />
+            <Input id="userC" editable="false" value="{EntryFormDataSourceModel>/UserGuid}" description="" fieldWidth="100%" />
+            
+            <Label  labelFor="userN" required="true" text="{i18n>userName}" />
+            <Input id="userN" editable="true" type="Text" value="{EntryFormDataSourceModel>/UserName}" description="" fieldWidth="100%" liveChange="onLiveChange" showValueHelp="true" valueHelpRequest="cflForUser" />
+
+            <Label id="mobileNoLbl" text="{i18n>mobileno}"/>
+            <Input id="mobileNo" editable="true" type="Tel" liveChange=".onValidateMobileNumber" tooltip="{EntryFormDataSourceModel>/MobileNo}" value="{EntryFormDataSourceModel>/MobileNo}" description="" fieldWidth="100%" />
+            
+            <Label id="userIDLbl" text="{i18n>userId}"/>
+            <Input id="userID" editable="false" tooltip="{EntryFormDataSourceModel>/UserGuid}" value="{EntryFormDataSourceModel>/UserGuid}" description="" fieldWidth="100%" />
+
+            <Label id="emailIdLbl" labelFor="emailId" required="true" text="{i18n>emaid}" />
+            <Input id="emailId" editable="true" valueState="None" value="{path: 'EntryFormDataSourceModel>/EmailId', type: 'sap.ui.model.type.String', formatOptions: {pattern: '^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$'}}" description="" fieldWidth="100%" />
+            
+            <Label id="pswdLbl" labelFor="pswd" required="true" text="{i18n>password}"/>
+            <Input id="pswd" editable="true" type="Text" enabled="true" value="{EntryFormDataSourceModel>/Password}" description="" fieldWidth="100%" />
+
+            <Label id="designationLbl" text="{i18n>designation}"/>
+            <Input id="designation" editable="true" tooltip="{EntryFormDataSourceModel>/Designation}" value="{EntryFormDataSourceModel>/Designation}" description="" fieldWidth="100%" />
+            
+            <Label id="userRCodeLbl" labelFor="userRCode" required="true" text="{i18n>userRCode}" />
+            <Input id="userRCode" fieldWidth="100%" value="{EntryFormDataSourceModel>/RoleName}" showValueHelp="true" liveChange="onLiveChange" valueHelpRequest="cflForUserRoleCode" />
+            
+            <Label id="firstNameLbl" text="{i18n>firstName}" />
+            <Input id="firstName" editable="false" value="{EntryFormDataSourceModel>/FirstName}" placeholder="Click to select value" />
+
+            <Label id="lastNameLbl" text="{i18n>lastName}" />
+            <Input id="lastName" editable="false" value="{EntryFormDataSourceModel>/LastName}" description="" fieldWidth="100%"/>
+
+            <Label id="subDeptCodeLbl" text="{i18n>subdepartmentcode}"/>
+            <Input id="subDeptCode" editable="false" tooltip="{EntryFormDataSourceModel>/SubDepartmentCode}" value="{EntryFormDataSourceModel>/SubDepartmentCode}" description="" fieldWidth="100%" />
+            
+            <Label id="reportingManagerLbl" text="{i18n>reportingmanager}"/>
+            <Input id="reportingManager" fieldWidth="100%"  tooltip="{EntryFormDataSourceModel>/ManagerName}" value="{EntryFormDataSourceModel>/ManagerName}" liveChange="onLiveChange" showValueHelp="true" valueHelpRequest="cflForReportingManager" />
+            
+            <Label id="deptCodeLbl" text="{i18n>deptCode}" />
+            <Input id="deptCode" placeholder="Select Department" showValueHelp="true" liveChange="onLiveChange" valueHelpRequest="onValueHelpDepartment" value="{EntryFormDataSourceModel>/DepartmentCode}" editable="false" />
+
+            <Label id="deptNameLbl" text="{i18n>deptName}" />
+            <Input id="deptName" editable="false" value="{EntryFormDataSourceModel>/DepartmentName}" />
+
+            <Label id="subDeptNameLbl" text="{i18n>subdepartmentname}"/>
+            <Input id="subDeptName" editable="false" tooltip="{EntryFormDataSourceModel>/SubDepartmentName}" value="{EntryFormDataSourceModel>/SubDepartmentName}" description="" fieldWidth="100%" />
+            
+            <Label id="margin" text="" class="sapUiSmallMarginBottom"/>
+            <CheckBox id="noActive"  text="{i18n>isActive}" select="onSelect" selected="{= ${EntryFormDataSourceModel>/IsActive} === 'Y' }" />
+         
+        </f:content>
+    </f:SimpleForm>
+</core:FragmentDefinition>

@@ -1,0 +1,80 @@
+<mvc:XMLView
+    controllerName="modconfcontroller.roleconstantentryform"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    class="d-flex justify-content-center"
+    height="94%"
+>
+    <Page
+        id="roleconstantef"
+        title="{i18n>RoleConstantEnteryFormTitle}"
+        showNavButton="true"
+        navButtonPress="onPressOfEntryFormCancelButton"
+    >
+        <VBox>
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+            >
+                <f:content>
+                    <Label
+                        id="RoleConstantl"
+                        text="{i18n>RoleConstant}"
+                        required="true"
+                        class="m-mast-lev"
+                    />
+                    <Input
+                        id="RoleConstanti"
+                        value="{EntryFormDataSourceModel>/RoleConstant}"
+                        required="true"
+                        enabled="{EnableCheck>/EnableRoleConstant}"
+                        class="m-mast-input"
+                    />
+
+                    
+
+                    <Label
+                        text="Active"
+                        class="m-mast-lev"
+                    />
+                    <CheckBox
+                        id="IsACheckroleconstent"
+                        selected="{EntryFormDataSourceModel>/IsActive}"
+                        enabled="true"
+                    />
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        <footer>
+            <Toolbar class="d-flex justify-content-center btn-sav">
+                <ToolbarSpacer />
+                <Button
+                    type="Emphasized"
+                    text="{i18n>save}"
+                    press=".onSave"
+                />
+                <Button
+                    type="Reject"
+                    text="{i18n>cancel}"
+                    press=".onCancel"
+                    class="can-btn"
+                />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:XMLView>

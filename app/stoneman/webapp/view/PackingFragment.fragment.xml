@@ -1,0 +1,62 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <HBox width="100%" justifyContent="Start" class="header-padd">
+        <VBox width="220px">
+            <Label id="cop_PackingCostLbl" labelFor="PackingCostLbl" text="{i18n>PackingCostLbl}" class="labelHeight" />
+            <Label id="cop_BrandPackingCostLbl" labelFor="BrandPackingCostLbl" text="{i18n>BrandPackingCostLbl}" class="labelHeight" />
+            <Label id="cop_InnerBoxLLbl" labelFor="InnerBoxLLbl" text="{i18n>InnerBoxLLbl}" class="labelHeight" />
+            <Label id="cop_InnerBoxWLbl" labelFor="InnerBoxWLbl" text="{i18n>InnerBoxWLbl}" class="labelHeight" />
+        </VBox>
+        <VBox width="220px">
+            <Input id="cop_packingCost" enabled="true" value="{copRequestModel_New>/packingCost}" description="" width="150px" fieldWidth="100%" />
+            <Input id="cop_brandpackingCost" enabled="true" value="{copRequestModel_New>/brandpackingCost}" description="" width="150px" fieldWidth="100%" />
+            <Input id="cop_innerBoxL" enabled="true" value="{copRequestModel_New>/innerBoxL}" description="" width="150px" fieldWidth="100%" />
+            <Input id="cop_innerBoxW" enabled="true" value="{copRequestModel_New>/innerBoxW}" description="" width="150px" fieldWidth="100%" />
+        </VBox>
+        <VBox width="220px">
+            <Label id="cop_InnerBoxHLbl" labelFor="InnerBoxHLbl" text="{i18n>InnerBoxHLbl}" class="labelHeight ml-15" />
+            <Label id="cop_uomPackingLbl" labelFor="uomPackingLbl" text="{i18n>uomPackingLbl}" class="labelHeight ml-15" />
+            <Label id="cop_masterCartoonLLbl" labelFor="masterCartoonLLbl" text="{i18n>masterCartoonLLbl}" class="labelHeight ml-15" />
+            <Label id="cop_masterCartoonWLbl" labelFor="masterCartoonWLbl" text="{i18n>masterCartoonWLbl}" class="labelHeight ml-15" />
+        </VBox>
+        <VBox width="220px">
+            <Input id="cop_innerBoxH" enabled="true" value="{copRequestModel_New>/innerBoxH}" description="" width="150px" fieldWidth="100%" />
+
+            <ComboBox id="cop_uomInnerBox" width="150px" maxWidth="100%" valueState="None" selectedKey="{copRequestModel_New>/uomInnerBox}" selectionChange="" items="{dropDownModel>/uom}">
+                <items>
+                    <core:Item key="{dropDownModel>id}" text="{dropDownModel>name}" />
+                </items>
+            </ComboBox>
+            <Input id="cop_masterCartoonL" enabled="true" value="{copRequestModel_New>/masterCartoonL}" description="" width="150px" fieldWidth="100%" />
+            <Input id="cop_masterCartoonW" enabled="true" value="{copRequestModel_New>/masterCartoonW}" description="" width="150px" fieldWidth="100%" />
+        </VBox>
+        <VBox width="220px">
+            <Label id="cop_masterCartoonHLbl" labelFor="masterCartoonHLbl" text="{i18n>masterCartoonHLbl}" class="labelHeight ml-15" />
+            <Label id="cop_uomMasterCartoonLbl" labelFor="uomMasterCartoonLbl" text="{i18n>uomMasterCartoonLbl}" class="labelHeight ml-15" />
+            <Label id="cop_casePackLbl" labelFor="casePackLbl" text="{i18n>casePackLbl}" class="labelHeight ml-15" />
+            <Label id="cop_cbmLbl" labelFor="cbmLbl" text="{i18n>cbmLbl}" class="labelHeight ml-15" />
+        </VBox>
+        <VBox width="220px">
+            <Input id="cop_masterCartoonH" value="{copRequestModel_New>/masterCartoonH}" description="" width="150px" fieldWidth="100%" />
+            <ComboBox id="cop_uomMasterCartoon" width="150px" maxWidth="100%" valueState="None" selectedKey="{copRequestModel_New>/uomMasterCartoon}" selectionChange="" items="{dropDownModel>/uom}">
+                <items>
+                    <core:Item key="{dropDownModel>id}" text="{dropDownModel>name}" />
+                </items>
+            </ComboBox>
+
+            <Input id="cop_casePack" value="{copRequestModel_New>/casePack}" description="" width="150px" fieldWidth="100%" />
+            <Input id="cop_cbm" value="{copRequestModel_New>/cbm}" description="" width="150px" fieldWidth="100%" />
+        </VBox>
+        <VBox width="150px">
+            <Label id="cop_costpercbmLbl" labelFor="costpercbmLbl" text="{i18n>costpercbmLbl}" class="labelHeight ml-15" />
+            <Label id="cop_overheadLbl" labelFor="overheadLbl" text="{i18n>overheadLbl}" class="labelHeight ml-15" />
+        </VBox>
+        <VBox width="150px">
+            <Input id="cop_costperCBM" value="{copRequestModel_New>/costperCBM}" description="" width="150px" fieldWidth="100%" />
+            <Input id="cop_overhead" value="{copRequestModel_New>/overhead}" description="" width="150px" fieldWidth="100%" />
+
+        </VBox>
+    </HBox>
+
+</core:FragmentDefinition>

@@ -1,0 +1,21 @@
+{
+    "inputTypeArray": [
+    {
+        "id": "INPUT1",
+        "name": "Internal"
+    },
+    {
+        "id": "INPUT2",
+        "name": "External"
+    }
+],
+"lblType": [
+    {
+        "id": "decor",
+        "name": "Decor"
+    },
+    {
+        "id": "furnishing",
+        "name": "Furniture"
+    }
+]}

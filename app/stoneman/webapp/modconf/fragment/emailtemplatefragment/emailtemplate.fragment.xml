@@ -1,0 +1,11 @@
+ <core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <f:SimpleForm
+                 
+    >
+        <f:content>
+            
+        </f:content>
+    </f:SimpleForm>
+</core:FragmentDefinition> 

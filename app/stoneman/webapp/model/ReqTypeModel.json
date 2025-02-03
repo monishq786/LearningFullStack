@@ -1,0 +1,42 @@
+{
+    "ReqTypArray": [
+        {
+            "id": "N",
+            "name": "New"
+        },
+        {
+            "id": "R",
+            "name": "Repeat"
+        }
+    ],
+    "CRFCATArray": [
+        {
+            "id": "CAD",
+            "name": "CAD"
+        },
+        {
+            "id": "Rendering",
+            "name": "Rendering"
+        }
+    ],
+    "lblType": [
+        {
+            "id": "decor",
+            "name": "Decor"
+        },
+        {
+            "id": "furnishing",
+            "name": "Furniture"
+        }
+    ],
+    "inputTypeArray": [
+        {
+            "id": "INPUT1",
+            "name": "Internal"
+        },
+        {
+            "id": "INPUT2",
+            "name": "External"
+        }
+    ]
+}

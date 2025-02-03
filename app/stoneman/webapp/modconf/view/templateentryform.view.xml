@@ -1,0 +1,84 @@
+<mvc:XMLView xmlns:mvc="sap.ui.core.mvc"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified" controllerName="modconfcontroller.templateentryform" displayBlock="true"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:grid="sap.ui.layout.Grid"
+    xmlns:layout="sap.ui.layout">
+    <m:Page id="templatef" title="{i18n>templatetitle}" showNavButton="true" navButtonPress="onPressOfEntryFormCancelButton">
+        <ObjectPageLayout upperCaseAnchorBar="false" id="HeadeObject">
+            <sections>
+
+
+             <ObjectPageSection titleUppercase="false" title="Header" id="HeaderSelect1">
+
+                    <ObjectPageSubSection title="Header" titleUppercase="false">
+
+                        <m:VBox id="headerSection1" class="section">
+                            <core:Fragment fragmentName="modconfigfragment.templateFragment.tempheader" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+
+
+                    </ObjectPageSubSection>
+                    
+                </ObjectPageSection>
+                 <ObjectPageSection titleUppercase="false" title="Menu" id="MenuSelect">
+
+                    <ObjectPageSubSection title="Menu" titleUppercase="false">
+
+                        <m:VBox id="menuSection" class="section">
+                            <core:Fragment fragmentName="modconfigfragment.templateFragment.templatemenu" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+
+
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+
+                <ObjectPageSection titleUppercase="false" title="Stage" id="StageSelect">
+
+                    <ObjectPageSubSection title="Stage" titleUppercase="false">
+
+                        <m:VBox id="stageSection" class="section">
+                            <core:Fragment fragmentName="modconfigfragment.templateFragment.templatestage" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+
+
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                   
+  
+                
+            </sections>
+        </ObjectPageLayout>
+
+        <m:footer>
+            <m:Toolbar>
+                <m:ToolbarSpacer />
+                <!-- <m:FlexBox alignItems="Center" class="sapUiSmallMargin">
+                    <m:Button type="Accept" id="btnApprove" text="{i18n>approve}" press="openDialogApprove"/>
+                    <m:Text width="10px" />
+                    <m:Button id="btnReject" type="Reject" text="{i18n>reject}" press="openDialogReject"/>
+                    <m:Text width="10px" />
+                    <m:Button id="btnHold" type="Emphasized" text="Hold" press="" icon="sap-icon://pending"/>
+                    <m:Text width="10px" />
+                    <m:Button type="Emphasized" id="btnSave" text="{i18n>save}" press="onUploadPress"/>
+                    <m:Text width="10px" />
+                    <m:Button type="Emphasized" id="btnSubmit" text="{i18n>submit}" press="onUploadPress"/>
+                    <m:Text width="10px" />
+                    <m:Button id="btnPrint" type="Emphasized" text="{i18n>printForm}" press="onRouterClicknewprint" icon="sap-icon://print"/>
+                </m:FlexBox> -->
+                    <m:Button type="Emphasized" id="savebtn" text="{i18n>submit}" press="onSave"/>
+                      <m:Button type="Reject" text="{i18n>cancel}" press=".onCancel" class="can-btn" />
+
+                
+            </m:Toolbar>
+        </m:footer>
+    </m:Page>
+</mvc:XMLView>

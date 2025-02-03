@@ -1,0 +1,11 @@
+{
+    "buyer":null,
+    "merchant":null,
+    "cadNo":null,
+    "cadRequuid":null,
+    "date":null,
+    "CrfReqUUID":null,
+    "UserRoleCode_RoleCode_RoleConstant":null,
+    "TechnoUserId_UserID":null
+    
+}

@@ -1,0 +1,28 @@
+{
+	"NotificationGroups": [
+	  {
+		"title": "Group 1",
+		"showCloseButton": true,
+		"showEmptyGroup": false,
+		"groupItems": [
+		  {
+			"title": "Item 1",
+			"description": "Description 1",
+			"creationDate": "2024-08-11",
+			"unread": true,
+			"priority": "High",
+			"authorPicture": "path_to_picture",
+			"authorInitials": "AI",
+			"authorAvatarColor": "Blue",
+			"itemButtons": [
+			  { "text": "Action 1" }
+			]
+		  }
+		],
+		"groupButtons": [
+		  { "text": "Group Action 1" }
+		]
+	  }
+	]
+  }
+  

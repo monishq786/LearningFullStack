@@ -1,0 +1,140 @@
+ PROCEDURE "CRF_Search" ( 
+    IN loginUserId NVARCHAR(50),
+    IN BuyerName NVARCHAR(50),
+    IN CrfReqNo INTEGER,
+    IN CrfStatus NVARCHAR(100),
+    IN CrfReqDate NVARCHAR(15),
+    IN TechnoUserId NVARCHAR(200),
+    OUT ReturnData TABLE
+    ( CRFREQUUID       NVARCHAR(255),
+    OLDCRFREQNOUUID  NVARCHAR(255),
+    OldCrfReqNo      NVARCHAR(255), 
+    CrfReqNo         INTEGER,
+    Proflow          NVARCHAR(255),
+    InputType        NVARCHAR(255),
+    MerReqDate       DATE, 
+    BuyerCode        NVARCHAR(255),
+    BuyerName        NVARCHAR(255),
+    Category         NVARCHAR(255),
+    ItemCode         NVARCHAR(255),
+    ITEMDESC         NVARCHAR(255),
+    ItemGroup        NVARCHAR(255),
+    ItemGroupName    NVARCHAR(255),
+    CrfDelDate       DATE,
+    CarNo            NVARCHAR(255),
+    CrfReqDate       DATE,
+    PDDate           DATE,
+    PDNo             NVARCHAR(255),
+    UserName         NVARCHAR(255),
+    CrfStatus        NVARCHAR(255),
+    TechnoUserId     VARCHAR(200))
+)
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+READS SQL DATA
+AS
+BEGIN
+    DECLARE ActualBuyerName NVARCHAR(200);
+    DECLARE ActualCRFSTATUS NVARCHAR(200);
+    DECLARE ActualCRFREQDATE NVARCHAR(200);
+    DECLARE ActualTechno_Id NVARCHAR(200);
+    DECLARE CountSeekAdvice NVARCHAR(15);
+    -----handle null value for BuyerName-------
+    IF BuyerName = 'null' THEN
+        ActualBuyerName := NULL;
+    ELSE
+        ActualBuyerName := BuyerName;
+    END IF;
+    -----handle null value for CrfStatus-------
+    IF CrfStatus = 'null' THEN
+        ActualCRFSTATUS := NULL;
+    ELSE
+        ActualCRFSTATUS := CrfStatus;
+    END IF;
+  -----handle null value for CrfReqDate-------
+  IF CrfReqDate = 'null' THEN
+    ActualCRFREQDATE :=null; 
+  ELSE
+    ActualCRFREQDATE := CrfReqDate;
+  END IF;
+    -----handle null value for TechnoUserId-------
+    IF TechnoUserId = 'null' THEN
+      ActualTechno_Id := NULL; 
+    ELSE
+      ActualTechno_Id := TechnoUserId;
+    END IF;
+    A1 =(
+    SELECT DISTINCT 
+    LOWER(A."CRFREQUUID")     AS "CrfReqUUID",     
+    A."OLDCRFREQNOUUID"       AS "OldCrfReqNoUUID",
+    A."OLDCRFREQNO"           AS "OldCrfReqNo",
+    A."CRFREQNO"              AS "CrfReqNo",
+    A."PROFLOW"               As "Proflow",
+    A."INPUTTYPE"             AS "InputType",
+    A."MERREQDATE"            AS "MerReqDate",
+    A."BUYERCODE"             AS "BuyerCode", 
+    A."BUYERNAME"             AS "BuyerName",
+    A."CATEGORY"              AS "Category" ,
+    A."ITEMCODE"              AS "ItemCode",
+    A."ITEMDESC"              AS "ItemDesc",
+    A."ITEMGROUP"             AS "ItemGroup",
+    A."ITEMGROUPNAME"         AS "ItemGroupName",
+    A."CRFDELDATE"            AS "CrfDelDate" , 
+    A."CARNO"                 AS "CarNo",	
+    CASE WHEN "CRFREQDATE" IS NULL THEN CURRENT_DATE  ELSE "CRFREQDATE"  END  AS "CrfReqDate", 
+    A."PDDATE"                AS "PDDate",
+    A."PDNO"                  AS "PDNo",
+    C."USERNAME"              AS "UserName",
+    A."CRFSTATUS"             AS "CrfStatus",
+    A."TECHNOUSERID_USERID"   AS "TechnoUserId" 
+    FROM "SAP_CAPIRE_STONEMAN_TCRFHEADER" AS A
+    left JOIN "SAP_CAPIRE_STONEMAN_TCRFSEEKADVICE" AS B  ON A."CRFREQUUID" = B."CRFREQID_CRFREQUUID"
+    left JOIN "SAP_CAPIRE_STONEMAN_MUSER" AS C  ON A."CREATEDBYUSERID_USERID" = C."USERID"
+    left JOIN "SAP_CAPIRE_STONEMAN_TCRFINSPDRAWDETAIL" AS D ON A."CRFREQUUID" = D."CRFREQID_CRFREQUUID"
+    WHERE (A."MERTEAMHEAD_USERID" = :loginUserId
+    OR A."MERTL_USERID" = :loginUserId
+    OR A."MERATL_USERID" = :loginUserId
+    OR A."PDCUSERID_USERID" = :loginUserId
+    OR A."TECHNOUSERID_USERID" = :loginUserId
+    OR A."QUALITYTLUSERID_USERID" = :loginUserId
+    OR A."QUALITYATLUSERID_USERID" = :loginUserId
+    OR D."DRAFTUSERID_USERID"= :loginUserId
+    OR B."USERID_USERID"=:loginUserId)
+    ORDER BY A."CRFREQNO" DESC);
+   
+    Returndata = Select DISTINCT
+    LOWER(A."CrfReqUUID")   as "CRFREQUUID",
+    A."OldCrfReqNoUUID"     as "OLDCRFREQNOUUID",
+    A."OldCrfReqNo"         as "OLDCRFREQNO",
+    A."CrfReqNo"            AS "CRFREQNO",
+    A."Proflow"             AS "PROFLOW",
+    A."InputType"           AS "INPUTTYPE",
+    A."MerReqDate"          as "MERREQDATE",
+    A."BuyerCode"           as "BUYERCODE",
+    A."BuyerName"           as "BUYERNAME",
+    A."Category"            as "CATEGORY",
+    A."ItemCode"            as "ITEMCODE",
+    A."ItemDesc"            as "ITEMDESC",
+    A."ItemGroup"           as "ITEMGROUP",
+    A."ItemGroupName"       as "ITEMGROUPNAME",
+    A."CrfDelDate"          as "CRFDELDATE",
+    A."CarNo"               as "CARNO",
+    A."CrfReqDate"          as "CRFREQDATE",
+    A."PDDate"              as "PDDATE",
+    A."PDNo"                as "PDNO",
+    A."UserName"            as "USERNAME",
+    A."CrfStatus"           as "CRFSTATUS",
+    A."TechnoUserId"        AS "TECHNOUSERID"
+    from :A1 AS A
+     where 
+     --(A."BUYERCODE" = :ActualBuyerCode OR (IFNULL(:ActualBuyerCode, '') = ''))
+        (A."BuyerName" = :ActualBuyerName OR (IFNULL(:ActualBuyerName, '') = ''))
+     AND   (A."CrfReqNo" = :CrfReqNo OR (IFNULL(:CrfReqNo, 0) = 0))
+     AND   (A."CrfStatus" = :ActualCRFSTATUS OR (IFNULL(:ActualCRFSTATUS, '') = '')) 
+     AND   (A."TechnoUserId" = :ActualTechno_Id OR (IFNULL(:ActualTechno_Id, '') = '')) 
+     AND   ((:ActualCRFREQDATE IS NULL AND A."CrfReqDate" <= CURRENT_DATE)
+      OR   (:ActualCRFREQDATE IS NULL AND A."CrfReqDate" <= CURRENT_DATE)
+      OR   (A."CrfReqDate" = :ActualCRFREQDATE))  
+
+    ORDER BY A."CrfReqNo" DESC;
+END;

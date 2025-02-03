@@ -1,0 +1,81 @@
+{
+    "tah_id": null,
+    "tah_sono": null,
+    "tah_lineno": null,
+    "tah_itemcode": null,
+    "tah_itemdesc": null,
+    "tah_prjtemplno": null,
+    "tah_prjtemplnme":null,
+    "tah_prjtempdesc":null,
+    "tah_startdate": null,
+    "tah_prjstatuscode": null,
+    "tah_prjstatusname":null,
+    "tah_isactive":null,
+    "tah_isdeleted":null,
+    "tah_addbyUserCode":null,
+    "tah_addbyUsername":null,
+    "tah_sodate":null,
+    "tah_sodeldate":null,
+    "tah_soitemcategory":null,
+    "sodatediff":null,
+    "isEnableSoLineNo":false,
+    "isEnableProjTemp":false,
+    "isEnableStartDate":false,
+    "tactiondetail": [
+        {
+            "isEnabled":null,
+            "srno":null,
+            "tahd_id": null,
+            "tah_id": null,
+            "tahd_depcode":null,
+            "tahd_depname":null,
+            "tahd_prjtaskid":null,
+            "tahd_prjtaskname": null,
+            "tahd_noofdays":null,
+            "tahd_days":null,
+            "tahd_plnstdate": null,
+            "tahd_plneddate": null,
+            "tahd_actstdate": null,
+            "tahd_acteddate": null,
+            "tahd_dldays": null,
+            "tahd_addbyUserCode":null,
+            "tahd_addbyUsername": null,
+            "tahd_tskstatuscode": null,
+            "tahd_tskstatusdesc":null,
+            "tahd_comments": null,
+            "tahd_rescostcentercode":null,
+            "tahd_rescostcentername":null,
+            "tactionheader_tah_id": null,
+            "emp_id_UserID":null,
+            "emp_code":null,
+            "emp_name":null,
+
+            "isEnableActStartDate":false,
+            "isEnableActEndDate":false,
+            "isEnableEmpRes":false,
+            "isEnableTaskStatus":false,
+            "isEnableUserRemark":false,
+            "isEnableAdminRemark":false,
+            "tempEmpAssign":[
+                {
+                    "emp_id": null,
+                    "tah_id": null,
+                    "tahdtl_id": null,
+                    "emp_code": null,
+                    "emp_name": null,
+                    "tactiondetail_tahd_id": null
+                }
+            ],
+            "tactiondetailEmpAssign": [
+                {
+                    "emp_id": null,
+                    "tah_id": null,
+                    "tahdtl_id": null,
+                    "emp_code": null,
+                    "emp_name": null,
+                    "tactiondetail_tahd_id": null
+                }
+            ]
+        }
+    ]
+}

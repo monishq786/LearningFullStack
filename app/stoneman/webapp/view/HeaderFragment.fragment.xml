@@ -1,0 +1,115 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <IconTabBar id="idIconTabBarNoIconsHeader" class="sapUiResponsiveContentPadding headerboldTxt header-bold" selectedKey="HeaderNested" select="selectIconTabBarNoIconsHeader">
+        <items>
+         <!-- icon="sap-icon://header" -->
+            <IconTabFilter  text="Header" key="HeaderNested"  
+             class="headerboldTxt1 header-bold"
+             id="cop_HeaderNested">
+                <HBox width="100%" justifyContent="Start" class="header-padd">
+                    <VBox width="220px">
+                        <!-- <Label id="ItemCodeLbl" labelFor="ItemCode" text="{i18n>itemCodeLbl}" class="labelHeight" /> -->
+                         <Label id="cop_cadNoLb" labelFor="cadNo" text="{i18n>cadNoLbl}" class="labelHeight" />
+                        <!-- <Label id="ItemDescriptionLbl" labelFor="ItemDescription" text="{i18n>itemDescriptionLbl}" class="labelHeight" /> -->
+                        <Label id="cop_cadNameLbl" labelFor="dUnit" text="{i18n>cadNameLbl}" class="labelHeight" />
+                    </VBox>
+                    <VBox width="230px" class="mr-5">
+                     <Input id="cop_cadNo1" type="Text" value="" placeholder="Select CAD No" showValueHelp="true" valueHelpRequest="onValueHelpCADNo"   width="150px" fieldWidth="100%"/>
+
+                        <!-- <Input id="itemCode" enabled="true" value="{copRequestModel_New>/itemCode}" description="" width="150px" fieldWidth="100%" /> -->
+                        <!-- <Input id="itemDescription" enabled="true" value="{copRequestModel_New>/itemDescription}" description="" width="150px" fieldWidth="100%" /> -->
+                        <VBox width="150px">
+                        <Input id="cop_cadName" value="{copRequestModel_New>/cadName}" description="" width="150px" fieldWidth="100%" enabled="false" />
+                         <!-- <ComboBox id="soNo1" width="150px" maxWidth="100%" valueState="None" selectedKey="{copRequestModel_New>/soNo}" selectionChange="" items="{dropDownModel>/soNo}">
+                            <items>
+                                <core:Item key="{dropDownModel>id}" text="{dropDownModel>name}" />
+                            </items>
+                        </ComboBox>  -->
+                    </VBox>
+                    </VBox>
+                    <VBox width="220px">
+                        <!-- <Label id="sciplCodeLbl" labelFor="sciplCodeLbl" text="{i18n>sciplCodeLbl}" class="labelHeight" /> -->
+                         <Label id="cop_ItemCodeLbl" labelFor="ItemCode" text="{i18n>itemCodeLbl}" class="labelHeight" />
+                         <Label id="cop_ItemDescriptionLbl" labelFor="ItemDescription" text="{i18n>itemDescriptionLbl}" class="labelHeight" />
+                        <!-- <Label id="costingTypeLbl" labelFor="costingTypeLbl" text="{i18n>costingTypeLbl}" class="labelHeight" /> -->
+                    </VBox>
+                    <VBox width="230px"  class="mr-5">
+                        <!-- <Input id="sciplCode" enabled="true" value="{copRequestModel_New>/sciplCode}" description="" width="150px" fieldWidth="100%" /> -->
+                         <Input id="cop_itemCod" enabled="false" value="{copRequestModel_New>/itemCode}" description="" width="150px" fieldWidth="100%" />
+                         <Input id="cop_itemDescription" enabled="false" value="{copRequestModel_New>/itemDescription}" description="" width="150px" fieldWidth="100%" /> 
+                        <!-- <ComboBox id="costingType" width="150px" maxWidth="100%" valueState="None" selectedKey="{copRequestModel_New>/costingType}" selectionChange="" items="{dropDownModel>/costingType}">
+                            <items>
+                                <core:Item key="{dropDownModel>id}" text="{dropDownModel>name}" />
+                            </items>
+                        </ComboBox> -->
+                    </VBox>
+                    <VBox width="220px">
+                           <Label id="cop_costingTypeLbl" labelFor="costingTypeLbl" text="{i18n>costingTypeLbl}" class="labelHeight" />   
+                        <Label id="cop_costingVLbl" labelFor="costingVLbl" text="{i18n>costingVLbl}" class="labelHeight" />
+                        <!-- <Label id="cadNoLbl" labelFor="cadNoLbl" text="{i18n>cadNoLbl}" class="labelHeight" /> -->
+                    </VBox>
+                    <VBox width="230px" class="mr-5">
+                     <ComboBox id="cop_costingType" width="150px" maxWidth="100%" valueState="None" selectedKey="{copRequestModel_New>/costingType}" selectionChange="" items="{copRequestModel_New>/costingType}">
+                            <items>
+                                <core:Item key="{copRequestModel_New>id}" text="{copRequestModel_New>name}" />
+                            </items>
+                        </ComboBox> 
+                        <ComboBox id="cop_costingVersion" width="150px" maxWidth="100%" valueState="None" selectedKey="{copRequestModel_New>/costingVersion}" selectionChange="" items="{copRequestModel_New>/costingVersion}">
+                            <items>
+                                <core:Item key="{copRequestModel_New>id}" text="{copRequestModel_New>name}" />
+                            </items>
+                        </ComboBox>
+
+                        <!-- <Input id="cadNo" value="{copRequestModel_New>/cadNo}" description="" width="150px" fieldWidth="100%" /> -->
+                    </VBox>
+                    <VBox width="210px">
+                      <Label id="cop_sciplCodeLbl" labelFor="sciplCodeLbl" text="{i18n>sciplCodeLbl}" class="labelHeight" /> 
+                        <!-- <Label id="cadNameLbl" labelFor="dUnit" text="{i18n>cadNameLbl}" class="labelHeight" /> -->
+                        <Label id="cop_soNoLbl" labelFor="dUnit" text="{i18n>soNoLbl}" class="labelHeight" />
+                    </VBox>
+                     <VBox width="230px"  class="mr-5">
+                     <Input id="cop_sciplCode" enabled="true" value="{copRequestModel_New>/sciplCode}" description="" width="150px" fieldWidth="100%" /> 
+                        <!-- <Input id="cadName" value="{copRequestModel_New>/cadName}" description="" width="150px" fieldWidth="100%" /> -->
+                        <ComboBox id="cop_soNo" width="150px" maxWidth="100%" valueState="None" selectedKey="{copRequestModel_New>/soNo}" selectionChange="" items="{copRequestModel_New>/soNo}">
+                            <items>
+                                <core:Item key="{copRequestModel_New>id}" text="{copRequestModel_New>name}" />
+                            </items>
+                        </ComboBox>
+                    </VBox> 
+                </HBox>
+            </IconTabFilter>
+            <!-- icon="sap-icon://project-definition-triangle" -->
+            <IconTabFilter text="Dimensions" key="DimensionsNested"  id="DimensionsNested">
+                <HBox width="100%" justifyContent="Start" class="header-padd">
+                    <VBox width="100px" class="vboxSpacing">
+                        <Label id="cop_DiameterLbl" labelFor="DiameterLbl" text="{i18n>DiameterLbl}" class="labelHeight" />
+                        <Label id="cop_LengthLbl" labelFor="LengthLbl" text="{i18n>LengthLbl}" class="labelHeight" />
+                    </VBox>
+                    <VBox width="180px">
+                        <Input id="cop_diameter" enabled="true" value="{copRequestModel_New>/diameter}" description="" width="150px" fieldWidth="100%" />
+                        <Input id="cop_length" enabled="true" value="{copRequestModel_New>/length}" description="" width="150px" fieldWidth="100%" />
+                    </VBox>
+                    <VBox width="100px">
+                        <Label id="cop_widhLbl" labelFor="widthLbl" text="{i18n>widthLbl}" class="labelHeight" />
+                        <Label id="cop_heightLbl" labelFor="heightLbl" text="{i18n>heightLbl}" class="labelHeight" />
+                    </VBox>
+                    <VBox width="180px">
+                        <Input id="cop_width" enabled="true" value="{copRequestModel_New>/width}" description="" width="150px" fieldWidth="100%" />
+
+                        <Input id="cop_height" enabled="true" value="{copRequestModel_New>/height}" description="" width="150px" fieldWidth="100%" />
+                    </VBox>
+                    <VBox width="100px">
+                        <Label id="cop_unitLbel" labelFor="unitLbl" text="{i18n>unitLbl}" class="labelHeight" />
+                        <Label id="cop_weightLbl" labelFor="weightLbl" text="{i18n>weightLbl}" class="labelHeight" />
+                    </VBox>
+                    <VBox width="180px">
+                        <Input id="cop_unit" value="{copRequestModel_New>/unit}" description="" width="150px" fieldWidth="100%" />
+
+                        <Input id="cop_weight" value="{copRequestModel_New>/weight}" description="" width="150px" fieldWidth="100%" />
+                    </VBox>
+
+                </HBox>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</core:FragmentDefinition>

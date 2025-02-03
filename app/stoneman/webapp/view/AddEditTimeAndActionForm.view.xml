@@ -1,0 +1,229 @@
+<mvc:View controllerName="stoneman.controller.AddEditTimeAndActionForm"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:semantic="sap.m.semantic" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:smartTable="sap.ui.comp.smarttable">
+
+
+    <Page id="pageAddEdit" class="sapUiStdPage marginBoxContent sapUiContentPadding" showNavButton="true" navButtonPress=".navBack" enableScrolling="true">
+        <headerContent>
+            <Label text="{view>/myName}" class="lblText boldTxt"/>
+            <Button icon="sap-icon://log" press=".onPressLogout" />
+        </headerContent>
+        <content>
+            <HBox width="100%" class="lPadding">
+                <VBox width="15%" class="sapUiTinyMargin">
+                    <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                        <Text text="{i18n>TANO}" width="100%" class="sapUiSmallMarginEnd myCustomText" />
+                    </HBox>
+                    <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                        <Label text="{i18n>PROJECTTEMPLATE}" labelFor="sapUiPROJECT_TEMPLATE" class="sapUiSmallMarginEnd myCustomText lblText"/>
+                        <!-- <Text text="{i18n>PROJECTTEMPLATE}" class="sapUiSmallMarginEnd myCustomText" /> -->
+                    </HBox>
+                    <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                        <Text text="{i18n>SOSTARTDATE}" class="sapUiSmallMarginEnd myCustomText" />
+                    </HBox>
+                </VBox>
+
+                <VBox width="20%" class="sapUiTinyMargin">
+                    <HBox width="100%">
+                        <Input id="sapUiTA_NO" type="Text" value="" placeholder="Select T&amp;A No ..." showValueHelp="true" valueHelpRequest=".handleTA_NO" width="12rem" class="customDisbaleColour sapUiSmallMarginBottom" enabled="false" tooltip="Action Name" liveChange="onLiveChange"/>
+                    </HBox>
+                    <HBox width="100%">
+                        <Input id="sapUiPROJECT_TEMPLATE" type="Text" value="" placeholder="Select Project Template ..." showValueHelp="true" valueHelpRequest=".handlePROJECT_TEMPLATE" width="12rem" class="customDisbaleColour sapUiSmallMarginBottom" required="true" liveChange="onLiveChange"/>
+                    </HBox>
+                    <HBox>
+                        <Input id="sapUiSO_Order_Date" type="Text" value="" placeholder="SO Order Date..." width="12rem" class="customDisbaleColour sapUiSmallMarginBottom forInput" enabled="false" liveChange="onLiveChange"/>
+                    </HBox>
+                </VBox>
+
+                <VBox width="10%" class="sapUiTinyMargin">
+                    <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                        <Label text="{i18n>THSONO}" labelFor="sapUiSO_NO" class="sapUiSmallMarginEnd myCustomText lblText"/>
+                        <!-- <Text text="{i18n>THSONO}*" class="sapUiTinyMarginEnd myCustomText" /> -->
+                    </HBox>
+                    <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                        <Label text="{i18n>STARTDATE}" labelFor="sapUiSTART_DATE" class="sapUiSmallMarginEnd myCustomText lblText"/>
+                        <!-- <Text text="{i18n>STARTDATE}*" class="myCustomText" /> -->
+                    </HBox>
+                    <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                        <Text text="{i18n>SODELIVERYDATE}" class="myCustomText" />
+                    </HBox>
+                </VBox>
+
+                <VBox width="20%" class="sapUiTinyMargin">
+                    <HBox width="100%">
+                        <Input id="sapUiSO_NO" type="Text" value="" placeholder="Select SO NO ..." showValueHelp="true" valueHelpRequest=".handleSO_NO" width="12rem" class="customDisbaleColour sapUiSmallMarginBottom" required="true" liveChange="onLiveChange"/>
+                    </HBox>
+                    <HBox width="100%">
+                        <DatePicker id="sapUiSTART_DATE" value="" placeholder="Start Date" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" change="handleStartDateChange" class="customDisbaleColour sapUiSmallMarginBottom" required="true" width="12rem" liveChange="onLiveChange"/>
+                    </HBox>
+                    <HBox width="100%">
+                        <Input id="sapUiSO_DELIVERY_DATE" type="Text" value="" placeholder="SO DELIVERY DATE ..." width="12rem" class="customDisbaleColour sapUiSmallMarginBottom forInput" enabled="false" liveChange="onLiveChange"/>
+                    </HBox>
+                </VBox>
+
+                <VBox width="11%" class="sapUiTinyMargin">
+                    <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                        <Label text="{i18n>SOLINEITEMNO}" labelFor="sapUiSO_LINEITEM_NO" class="sapUiSmallMarginEnd myCustomText lblText"/>
+                        <!-- <Text text="{i18n>SOLINEITEMNO}*" class="sapUiTinyMarginEnd myCustomText" /> -->
+                    </HBox>
+                    <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                        <Label text="{i18n>PROJECTSTATUS}" labelFor="sapUiPROJECT_STATUS" class="sapUiSmallMarginEnd myCustomText lblText"/>
+                        <!-- <Text text="{i18n>PROJECTSTATUS}*" class="myCustomText" /> -->
+                    </HBox>
+                    <HBox width="100%" height="26px" class="sapUiTinyMarginTop">
+                        <Text text="{i18n>DATEDIFF}" class="myCustomText" wrapping="true"/>
+                    </HBox>
+                </VBox>
+                <VBox width="20%" class="sapUiTinyMargin">
+                    <HBox width="100%">
+                        <Input id="sapUiSO_LINEITEM_NO" type="Text" value="" placeholder="Select SO Line Item No ..." showValueHelp="true" valueHelpRequest=".handleSO_LINE_ITEM_NO" width="12rem" class="customDisbaleColour sapUiSmallMarginBottom" required="true" liveChange="onLiveChange"/>
+                    </HBox>
+                    <HBox width="100%">
+                        <Select id="sapUiPROJECT_STATUS" width="12rem" maxWidth="100%" enabled="true" editable="true" forceSelection="false" change=".handlePROJECTSTATUSComboBox" items="{
+							path: 'projectStatusModel>/value'
+						}" class="sapUiSmallMarginBottom customDisbaleColour" required="true">
+                            <core:Item key="{projectStatusModel>prjstatus_code}" text="{projectStatusModel>prjstatus_name}" />
+                        </Select>
+                    </HBox>
+                    <HBox width="100%">
+                        <Input id="sapUiSO_DATE_DIFF" type="Text" value="" placeholder="SO DATE DIFFERENCE" width="12rem" class="customDisbaleColour forInput" enabled="false" />
+                    </HBox>
+                </VBox>
+            </HBox>
+            <m:HBox width="100%" height="35px" />
+
+            <m:VBox>
+                <ScrollContainer width="100%" horizontal="true" vertical="true" focusable="true" class="scroll-container-height-TA">
+                    <!-- To have fixed with and enable vertical scrolling of data table -->
+                    <!-- sapUiResponsiveMargin -->
+                    <Table
+                        id="TATable"
+                        width="auto"
+                        class="sapUiSizeCompact myCustomListClass"
+                        items="{ path:'HeaderListModel>/value/0/tactiondetail',
+                            sorter: {
+                            path: 'tahd_days'
+                        }
+                    }" mode="None" visible="true" sticky="ColumnHeaders,HeaderToolbar" itemPress=".onTblItemClick" selectionChange=".handleRowClick" swipeDirection="Both" inset="false" fixedLayout="true">
+                        <columns>
+                            <Column width="3rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>SRNO}" class="tableColumn" />
+                            </Column>
+                            <Column width="6rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>DEPTNAME}" class="tableColumn" />
+                            </Column>
+                            <Column width="6rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>COSTCENTER}" class="tableColumn" />
+                            </Column>
+                            <Column width="12rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>PROJTASKNAME}" class="tableColumn" />
+                            </Column>
+                            <Column width="3rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>NOOFDAYS}" class="tableColumn" />
+                            </Column>
+                            <Column width="4rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>DAYS}" class="tableColumn" />
+                            </Column>
+                            <Column width="9rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>PLANNEDSTARTDATE}" class="tableColumn" />
+                            </Column>
+                            <Column width="9rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>PLANNEDENDDATE}" class="tableColumn" />
+                            </Column>
+                            <Column width="9rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>ACTUALSTARTDATE}" class="tableColumn" />
+                            </Column>
+                            <Column width="9rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>ACTUALENDDATE}" class="tableColumn" />
+                            </Column>
+                            <Column width="4rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>DELAYDAYS}" class="tableColumn" />
+                            </Column>
+                            <Column width="11rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Label text="{i18n>EMPLOYEERESPONSIBLE}" labelFor="sapUiEmprResp" class="tableColumn"/>
+
+                                <!-- <Text text="{i18n>EMPLOYEERESPONSIBLE}*" class="tableColumn" /> -->
+                            </Column>
+                            <Column width="9rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>TASKSTATUS}" class="tableColumn" />
+                            </Column>
+                            <Column width="10rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>USERREMAKRS}" class="tableColumn" />
+                            </Column>
+                            <Column width="10rem" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>ADMINREMARKS}" class="tableColumn" />
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem vAlign="Middle" type="Active" visible="{${screen}=='edit'}">
+                                <cells>
+                                    <!-- <Text text="{HeaderChildListModel>tahd_depcode}"/> -->
+                                    <Text text="{HeaderListModel>sono}" />
+                                    <Text text="{HeaderListModel>tahd_depname}" wrapping="true" />
+                                    <Text text="{HeaderListModel>tahd_rescostcentername}" wrapping="true" />
+                                    <Text text="{HeaderListModel>tahd_prjtaskname}" wrapping="true" />
+                                    <Text text="{HeaderListModel>tahd_noofdays}" textAlign="Right" />
+                                    <Text text="{HeaderListModel>tahd_days}" />
+                                    <!-- <Text text="{HeaderListModel>tahd_plnstdate}" /> -->
+                                    <DatePicker id="sapUiPLN_ST_DATE" value="{HeaderListModel>tahd_plnstdate}" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" class="customDisbaleColour"/>
+                                    <!-- <Text text="{HeaderListModel>tahd_plneddate}" /> -->
+                                    <DatePicker id="sapUiPLN_END_DATE" value="{HeaderListModel>tahd_plneddate}" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" class="customDisbaleColour"/>
+
+                                    <!-- <Text text="{tblDataModel>ActualStartDate}" />
+                     <Text text="{tblDataModel>ActualEndDate}" />
+                     <Text text="{tblDataModel>DelayDays}" />
+                     <Text text="{tblDataModel>PROJSTATUS}" /> -->
+
+                                    <DatePicker id="sapUiACT_START_DATE" value="{HeaderListModel>tahd_actstdate}" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" class="customDisbaleColour" change="handleActualStartDateChange" />
+                                    <DatePicker id="sapUiACT_END_DATE" value="{HeaderListModel>tahd_acteddate}" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" class="customDisbaleColour" change="handleActualEndDateChange" />
+                                    <Text text="{HeaderListModel>tahd_dldays}" />
+
+                                    <!-- <MultiComboBox id="sapUiEmprResp" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" width="100%" items="{
+                                        path: 'EmployeeListModel>/results',templateShareable:false,
+                                        sorter: { path: 'emp_code' }
+                                    }">
+                                    <core:Item key="{EmployeeListModel>emp_code}" text="{EmployeeListModel>emp_name}" />
+                                </MultiComboBox> -->
+
+                                    <ComboBox id="sapUiEmprResp" width="auto" maxWidth="100%" class="customDisbaleColour" valueState="None" editable="true" enabled="true" visible="true" selectionChange=".handleEmployeeSelectionChange" items="{path: 'HeaderListModel>tempEmpAssign',templateShareable:false}" required="true">
+                                        <items>
+                                            <core:Item key="{HeaderListModel>emp_code}" text="{HeaderListModel>emp_name}" />
+                                        </items>
+                                    </ComboBox>
+
+                                    <ComboBox id="cTaskStatus" width="auto" maxWidth="100%" class="customDisbaleColour" valueState="None" selectedKey="{HeaderListModel>tahd_tskstatuscode}" editable="true" enabled="true" visible="true" selectionChange=".onTaskStatusChangefunction" items="{path: 'TaskStatusListModel>/value',templateShareable:false}">
+                                        <items>
+                                            <core:Item key="{TaskStatusListModel>tskstatus_code}" text="{TaskStatusListModel>tskstatus_name}" />
+                                        </items>
+                                    </ComboBox>
+                                    <Input id="sapUiUserComment" value="{HeaderListModel>tahd_comments}" placeholder="User Remark" class="customDisbaleColour" ariaDescribedBy="descriptionNodeId" description="" width="140px" fieldWidth="30%" tooltip="{HeaderListModel>tahd_comments}" />
+                                    <Input id="sapUiAdminComment" value="{HeaderListModel>tahd_admincomments}" placeholder="Admin Remark" class="customDisbaleColour" ariaDescribedBy="descriptionNodeId" description="" width="140px" fieldWidth="30%" tooltip="{HeaderListModel>tahd_admincomments}" />
+                                    
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+            </m:VBox>
+
+
+            <!-- </Panel> -->
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button id="btnSaveUpdate" type="Emphasized" press=".onAddUpdateData" />
+            </Toolbar>
+        </footer>
+    </Page>
+   
+
+</mvc:View>

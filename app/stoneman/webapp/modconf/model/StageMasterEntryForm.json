@@ -1,0 +1,28 @@
+{
+      "modifiedAt": null,
+      "modifiedBy": null,
+      "StageCode": null,
+      "StageName": null,
+      "Description": null,
+      "OrderBy": null,
+      "IsActive": null,
+      "IsWorkFlow": null,
+      "IsApproval": "N",
+      "NoOfApprovals": null,
+      "NoOfRejections": null,
+      "FormType": null,
+      "SendEmail": null,
+      "SendAppNotification": null,
+      "Role": [
+            {
+                  "RoleCode": null,
+                  "isDelete": true,
+                  "RowNumber": 1,
+                  "Description": null,
+                  "Role_RoleGuid": null,
+                  "DelMark": 0,
+                  "RoleType":null
+            }
+      ],
+      "EmailNotification": null
+}

@@ -1,0 +1,109 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <VBox>
+        <FlexBox
+            justifyContent="End"
+          
+        >
+            <Button
+                id="copefAttachmentAddNew"
+                icon="sap-icon://add"
+                text="{i18n>addNew}"
+            />
+        </FlexBox>
+        <Table
+            id="copefAttachmentTables"
+            items="{
+			path: 'copRequestModel_New>/InspDraw',
+			sorter: {
+				path: 'SrNo'
+			}
+		}"
+        >
+            <columns>
+                <Column width="10%">
+                    <Text text="{i18n>srNo}" />
+                </Column>
+                <Column width="15%">
+                    <Text text="{i18n>attachmentname}" />
+                </Column>
+               
+                <Column width="14%" />
+                <Column width="10%">
+                    <Text text="{i18>cadDrawings}" />
+                </Column>
+                <Column width="14%" />
+                <Column width="12%">
+                    <Text text="{i18>designtl/draftsman}" />
+                </Column>
+                <Column width="10%">
+                    <Text text="{i18>cadno}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem vAlign="Middle">
+                    <Text
+                        id="copefAttachmentSrNo"
+                        text="{copRequestModel_New>srNo}"
+                    />
+                    <Text
+                        id="copefAttachmentAttachmentNme"
+                        text="{copRequestModel_New>AttachmentName}"
+                    />
+                    <Text
+                        id="copefAttachmentInsprRefNo"
+                        text="{copRequestModel_New>InspRefNo}"
+                    />
+                    <Text
+                        id="copefAttachmentInsprRefDoc"
+                        text="{copRequestModel_New>InspRefDocAbsId/DisplayName}"
+                        wrapping="true"
+                    />
+                    <HBox >
+                        <Button
+                            id="copefAttachmentViewButton"
+                            icon="sap-icon://show"
+                            press="onViewFile"
+                        />
+                        <Button
+                            id="copefAttachmentDownloadButton"
+                            icon="sap-icon://download"
+                            press="onDownloadFile"
+                        />
+                    </HBox>
+                    <Text
+                        id="copefAttachmentCaddRawings"
+                        text="{copRequestModel_New>DraftAttachmentAbsId/DisplayName}"
+                        wrapping="true"
+                    />
+                    <HBox >
+                        <Button
+                            id="copefAttachmentViewButton1"
+                            icon="sap-icon://show"
+                            
+                            press="onViewFile"
+                        />
+                        <Button
+                            id="copefAttachmentDownloadButton1"
+                            icon="sap-icon://download"
+                       
+                            press="onDownloadFile"
+                        />
+                    </HBox>
+                    <Text
+                        id="copefAttachmentDesign"
+                        text="{copRequestModel_New>DraftUserID/Username}"
+                        wrapping="true"
+                    />
+                    <Text
+                        id="copefAttachmentCadNo"
+                        text="{copRequestModel_New>cadNo}"
+                        wrapping="true"
+                    />
+                </ColumnListItem>
+            </items>
+        </Table>
+    </VBox>
+</core:FragmentDefinition>

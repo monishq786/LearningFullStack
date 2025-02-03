@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    controllerName="modconfcontroller.stageconstantlistview"
+    displayBlock="true"
+     height="95%"
+>
+    <Page
+        id="stgconlv"
+        title="{i18n&gt;title}"
+        showNavButton="true"
+        navButtonPress="onPressOfListViewBackButton"
+    >
+        <content />
+    </Page>
+</mvc:View>

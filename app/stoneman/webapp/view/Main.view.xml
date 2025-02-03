@@ -1,0 +1,109 @@
+<mvc:View controllerName="capwithhanaui.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+
+
+            <HBox>
+                <VBox class="sapUiSmallMargin">
+                    <Label text="Start Time:" />
+                    <TimePicker id="startTimePicker" valueFormat="HH:mm" displayFormat="HH:mm" />
+                </VBox>
+                <VBox class="sapUiSmallMargin">
+                    <Label text="End Time:" />
+                    <TimePicker id="endTimePicker" valueFormat="HH:mm" displayFormat="HH:mm" />
+                </VBox>
+                <VBox class="sapUiSmallMargin">
+                    <Label text="Interval (in minutes):" />
+                    <Input id="intervalInput" type="Number" />
+                </VBox>
+                <VBox class="sapUiSmallMargin">
+                    <Button text="Generate Time Slots" press=".onSubmit" />
+                </VBox>
+
+                <VBox class="sapUiSmallMargin">
+                    <Button id="comboButton1" text="Select Time Slot" press="onOpenDialog1" />
+                    <Dialog id="itemDialog1" title="Select Time Slot">
+                        <content>
+                            <HBox>
+                                <List id="list1" items="{listjson>/list1}" class="listWithMargin">
+                                    <items>
+                                        <StandardListItem title="{listjson>value}" class="buttonListItem" type="Active" press="onTimeSlotSelect" />
+                                    </items>
+                                </List>
+
+                                <List id="list2" items="{listjson>/list2}" class="listWithMargin">
+                                    <items>
+                                        <StandardListItem title="{listjson>value}" class="buttonListItem" type="Active" press="onTimeSlotSelect" />
+                                    </items>
+                                </List>
+
+                                <List id="list3" items="{listjson>/list3}" class="listWithMargin">
+                                    <items>
+                                        <StandardListItem title="{listjson>value}" class="buttonListItem" type="Active" press="onTimeSlotSelect" />
+                                    </items>
+                                </List>
+
+                                <List id="list4" items="{listjson>/list4}" class="listWithMargin">
+                                    <items>
+                                        <StandardListItem title="{listjson>value}" class="buttonListItem" type="Active" press="onTimeSlotSelect" />
+                                    </items>
+                                </List>
+
+                                <List id="list5" items="{listjson>/list5}" class="listWithMargin">
+                                    <items>
+                                        <StandardListItem title="{listjson>value}" class="buttonListItem" type="Active" press="onTimeSlotSelect" />
+                                    </items>
+                                </List>
+                            </HBox>
+                        </content>
+                        <beginButton>
+                            <Button text="OK" press="onOkButtonPress" />
+                        </beginButton>
+                        <endButton>
+                            <Button text="Close" press="onCloseDialog1" />
+                        </endButton>
+                    </Dialog>
+                </VBox>
+                <!-- <Button id="collectDataButton" text="Collect Data" press="onCollectData" /> -->
+            </HBox>
+
+            <VBox>
+                <Table id="employeeTable" mode="MultiSelect" items="{EmployeeModel>/Employee}" selectionChange="onSelectionChange">
+                    <columns>
+                        <Column>
+                            <Text text="ID" />
+                        </Column>
+                        <Column>
+                            <Text text="Name" />
+                        </Column>
+                        <Column>
+                            <Text text="Start Time" />
+                        </Column>
+                        <Column>
+                            <Text text="End Time" />
+                        </Column>
+                        <!-- <Column id="extraColumn" visible="">
+                            <Text text="Availability" />
+                        </Column> -->
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{EmployeeModel>ID}" />
+                                <Text text="{EmployeeModel>name}" />
+                                <Text text="{EmployeeModel>startTime}" />
+                                <Text text="{EmployeeModel>endTime}" />
+                                <!-- <Text text="{EmployeeModel>availability}" /> -->
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+
+
+        </content>
+    </Page>
+</mvc:View>

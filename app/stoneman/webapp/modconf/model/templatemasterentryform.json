@@ -1,0 +1,24 @@
+{
+    "ActiveEndDate": null,
+    "ActiveStartDate": null,
+    "DelMark": 0,
+    "Description": null,
+    "IsActive": null,
+    "Remarks": null,
+    "TemplateGuid": null,
+    "TemplateName": null,
+    "TemplateMenus": [
+        {
+            "RowNumber": 1,
+            "MenuCode": null,
+            "MenuSubType": null
+        }
+    ],
+    "TemplateStages": [
+        {
+            "RowNumber": 1,
+            "StageCode": null,
+            "StageSeqId": 1
+        }
+    ]
+}

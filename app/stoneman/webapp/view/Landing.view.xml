@@ -1,0 +1,177 @@
+<!-- <mvc:View controllerName="stoneman.controller.Landing" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns="sap.m">
+    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Time And Action" subheader="" press=".onPressTileTimeAndAction">
+        <TileContent unit="" footer="T &amp; A">
+            <ImageContent src="sap-icon://time-account" />
+        </TileContent>
+    </GenericTile>
+    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="CAD Request Form" subheader="" press=".onPressCADRequestFormAction">
+        <TileContent unit="CRF" footer="">
+            <ImageContent src="sap-icon://form" />
+        </TileContent>
+    </GenericTile> -->
+<!-- <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Time And Action" subheader="" press=".onPressTileTimeAndAction">
+        <TileContent>
+            <ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
+            <Label id="idTileTimeAndAction" wrapping="true" />
+        </TileContent>
+    </GenericTile>
+    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="CAD Request Form" subheader="" press=".onPressCADRequestFormAction">
+        <TileContent>
+            <ImageContent src="sap-icon://form" />
+            <Label id="idTileCADRequest" wrapping="true" />
+        </TileContent>
+    </GenericTile> -->
+<!-- <Page id="landing" title="{i18n>LANDINGTITLE}" enableScrolling="true">
+    <headerContent>
+    </headerContent>
+    <content>
+       
+    </content>
+    </Page> -->
+<!-- <ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+            <HBox width="100%" height="5rem"/> <l:Grid defaultSpan="XL2 L3 M6 S6">
+			<l:content> -->
+<!-- <VBox alignItems="Center"> <Avatar initials="IS" displaySize="XL" backgroundColor="TileIcon" press="onPress"/> <Text text="TileIcon background" class="sapUiSmallMarginTop"/>
+				</VBox> -->
+<!-- <VBox alignItems="Center"> <Avatar src="sap-icon://time-account" displaySize="XL" displayShape="Square" showBorder="true" backgroundColor="TileIcon" press="onPress"/> <Text text="Time And Action" class="sapUiSmallMarginTop sapMText "/>
+				</VBox>
+                <VBox alignItems="Center"> <Avatar src="sap-icon://form" displaySize="XL" displayShape="Square" showBorder="true" press="onPress"/> <Text text="CAD Request Form" class="sapUiSmallMarginTop"/>
+				</VBox> -->
+<!-- <VBox alignItems="Center"> <Avatar src="{/Woman01}" displaySize="XL" showBorder="true" press="onPress"/> <Text text="Avatar of a person with border" class="sapUiSmallMarginTop"/>
+				</VBox>
+				 -->
+<!-- </l:content>
+		</l:Grid>
+
+
+
+	</ScrollContainer>
+</mvc:View> -->
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m" controllerName="stoneman.controller.Landing">
+    <Page showHeader="true" class="sapUiContentPadding">
+        <headerContent>
+            <Image src="../images/stonemenLogo.png" class="logo" />
+            <Label text="{view>/myName}" class="lblText boldTxt" />
+            <!-- <Button icon="sap-icon://bell" press=".handlePopoverPress" ariaHasPopup="Dialog" /> -->
+            <!-- <VBox>
+                <Button icon="sap-icon://bell" press="handlePopoverPress" class="customBadgeIcon" ariaHasPopup="Dialog">
+                    <customData>
+                        <core:CustomData key="badge" value="3" />
+                    </customData>
+                </Button>
+            </VBox> -->
+
+            <!-- <Button id="BadgedButton" class="sapUiTinyMarginBeginEnd" icon="sap-icon://bell" type="Default" text="" press="handlePopoverPress">
+                <customData>
+                    <BadgeCustomData key="badge" value="321"/>
+                </customData>
+            </Button> -->
+            <!-- <m:Icon src="sap-icon://bell" press="onPress" tooltip="Notifications">
+                <customData>
+                    <BadgeCustomData key="badge" value="321"/>
+                </customData>
+            </Button>
+            < <m:Icon src="sap-icon://bell" press="onPress" tooltip="Notifications">
+                <customData>
+                    <m:BadgeCustomData key="badge" value="5" show="true" />
+                </customData>
+            </m:Icon> -->
+
+            <Button icon="sap-icon://log" press=".onPressLogout" />
+        </headerContent>
+
+        <content>
+            <HBox class="scroll-align tiles_wrapping">
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Time And Action" subheader="" press=".onPressTileTimeAndAction">
+                    <TileContent unit="" footer="T &amp; A">
+                        <ImageContent src="sap-icon://time-account" />
+                    </TileContent>
+                </GenericTile>
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="CAD Request Form" subheader="" press=".onPressCADRequestFormAction">
+                    <TileContent unit="CRF" footer="">
+                        <ImageContent src="sap-icon://form" />
+                    </TileContent>
+                </GenericTile>
+                
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="CAD Request Form Generic" subheader="" press=".onPressCADRequestFormActionNew">
+                    <TileContent unit="CRF New" footer="">
+                        <ImageContent src="sap-icon://form" />
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="CAD Detail Form" subheader="" press=".onPressCADDetailFormAction">
+                    <TileContent unit="CDF" footer="">
+                        <ImageContent src="sap-icon://border" />
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Costing One Pager" subheader="" press=".onPressCOPPagerFormAction">
+                    <TileContent unit="COP" footer="">
+                        <ImageContent src="sap-icon://border" />
+                    </TileContent>
+                </GenericTile>
+                <GenericTile
+                    class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Costing One Pager New"
+                    subheader=""
+                    press=".onPressCOPPagerFormActionNew"
+                >
+                    <TileContent
+                        unit="COP New"
+                        footer=""
+                    >
+                        <ImageContent src="sap-icon://border" />
+                    </TileContent>
+                </GenericTile>
+                <GenericTile
+                    class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+                    header="Configuration"
+                    subheader=""
+                    press=".onPressConfig"
+                >
+                    <TileContent
+                        unit="Configuration"
+                        footer=""
+                    >
+                        <ImageContent src="sap-icon://customize" />
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Configuration" subheader="" press=".onPressConfig">
+                    <TileContent unit="User Configuration" footer="">
+                        <ImageContent src="sap-icon://user-settings" />
+                    </TileContent>
+                </GenericTile>
+
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Time And Action Generic" subheader="" press=".onPressNewTimeAndActionListView">
+                    <TileContent unit="" footer="T &amp; A">
+                        <ImageContent src="sap-icon://time-account" />
+                    </TileContent>
+                </GenericTile>
+
+                 <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="CAD Detail Form New" subheader="" press=".onPressCADDetailListView">
+                    <TileContent unit="CDF_New" footer="">
+                        <ImageContent src="sap-icon://border" />
+
+                    </TileContent>
+                </GenericTile>
+                <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="User Configuration Generic" subheader="" press=".onPressUserListView">
+                    <TileContent unit="User Configuration" footer="">
+                        <ImageContent src="sap-icon://user-settings" />
+
+                    </TileContent>
+                </GenericTile>
+                <ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+                    <HBox width="100%" height="5rem"/>
+                    <l:Grid defaultSpan="XL2 L3 M6 S6">
+                        <l:content />
+                    </l:Grid>
+                </ScrollContainer>
+            </HBox>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,42 @@
+{
+    "costingType": [
+        {
+            "id": "Type1",
+            "name": "Type 1"
+        },
+        {
+            "id": "Type2",
+            "name": "Type 2"
+        }
+    ],
+    "costingVersion": [
+        {
+            "id": "Version1",
+            "name": "Version 1"
+        },
+        {
+            "id": "Version2",
+            "name": "Version 2"
+        }
+    ],
+    "soNo": [
+        {
+            "id": "1",
+            "name": "1"
+        },
+        {
+            "id": "2",
+            "name": "2"
+        }
+    ],
+    "uom": [
+        {
+            "id": "cm",
+            "name": "cm"
+        },
+        {
+            "id": "dm",
+            "name": "dm"
+        }
+    ]
+}

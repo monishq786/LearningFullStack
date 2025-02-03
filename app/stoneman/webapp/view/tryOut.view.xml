@@ -1,0 +1,44 @@
+<mvc:View controllerName="stoneman.controller.tryOut"
+	xmlns:l="sap.ui.layout"
+	xmlns:u="sap.ui.unified"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" class="viewPadding">
+	<HBox width="100%" justifyContent="End" class="add-btn-padd">
+		<VBox >
+			<Button id="addBtn1" icon="sap-icon://add" text="{i18n>addDrawing}" press="addRow"></Button>
+		</VBox>
+		<VBox >
+			<Button id="deleteRow" icon="sap-icon://delete" press="onDeleteRow"></Button>
+		</VBox>
+	</HBox>
+	<Table headerText="Products" items="{
+			path:'ProductModel>/ProductCollection',
+			sorter: {
+				path: 'SupplierName',
+				descending: false
+			}
+		}">
+		<columns>
+			<Column>
+				<header>
+					<Text text="Product" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+				<header>
+					<Text text="Dimensions" />
+				</header>
+			</Column>
+			<Column mergeDuplicates="true">
+				<header>
+					<Text text="Supplier" />
+				</header>
+			</Column>
+		</columns>
+		<ColumnListItem vAlign="Middle">
+			<ObjectIdentifier title="{ProductModel>Name}" text="{ProductModel>ProductId}" />
+			<Text text="{ProductModel>Width} x {ProductModel>Depth} x {ProductModel>Height} {ProductModel>DimUnit}" />
+			<Text text="{ProductModel>SupplierName}" /> 
+		</ColumnListItem>
+	</Table>
+</mvc:View>

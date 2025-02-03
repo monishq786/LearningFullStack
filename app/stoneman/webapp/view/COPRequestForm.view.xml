@@ -1,0 +1,113 @@
+<mvc:XMLView controllerName="stoneman.controller.COPRequestForm"
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:l="sap.ui.layout" displayBlock="true"
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:u="sap.ui.unified"
+   xmlns:commons="sap.suite.ui.commons" class="d-flex justify-content-center">
+   <Page id="page" title="{i18n>COPForm}" showNavButton="true" navButtonPress=".onNavBack">
+ <VBox id="cop_fragmentContainer">
+      <IconTabBar id="cop_idIconTabBarNoIcons" class="sapUiResponsiveContentPadding w-brk" >
+         <items>
+           <IconTabFilter
+                    text="{i18n>HeaderLbl}"
+                    key="Header"
+                    icon="sap-icon://header"
+                    id="cop_Header"
+                >
+                    
+                </IconTabFilter>
+                 <IconTabFilter
+                    text="{i18n>AttachmentLbl}"
+                    key="Header"
+                    icon="sap-icon://attachment"
+                    id="cop_Attachment"
+                >
+                    
+                </IconTabFilter>
+           
+               <IconTabFilter
+                    text="{i18n>Cadcostlbl}"
+                    key="CADCost"
+                    icon="sap-icon://currency"
+                    id="cop_CADCost"
+                >
+                    
+                </IconTabFilter>
+                <IconTabFilter 
+                    text="{i18n>Accessorylbl}"
+                    key="Accessory"
+                    icon="sap-icon://chain-link"
+                    id="cop_Accessory"
+                    class="iconTabFilterText text-break"
+                    tooltip="Accessory/MDF/Glass/Other"
+                >
+                    
+                </IconTabFilter>
+               
+               <IconTabFilter
+                    text="{i18n>PackingLbl}"
+                    key="Packing"
+                    icon="sap-icon://cargo-train"
+                    id="cop_Packing"
+                >
+                    
+                </IconTabFilter>
+
+                <IconTabFilter
+                    text="{i18n>extrachargesLbl}"
+                    key="ExtraCharges"
+                    icon="sap-icon://money-bills"
+                    id="cop_ExtraCharges"
+                >
+                    
+                </IconTabFilter>
+
+                <IconTabFilter
+                    text="{i18n>processhistoryLbl}"
+                    key="ProcessHistory"
+                  icon="sap-icon://process"
+                    id="cop_ProcessHistory"
+                >
+                    
+                </IconTabFilter>
+
+                <IconTabFilter
+                    text="{i18n>SeekadviceLbl}"
+                    key="SeekAdvice"
+                    icon="sap-icon://goalseek"
+                    id="cop_SeekAdvice"
+                >
+                 </IconTabFilter>
+
+                 <IconTabFilter
+                    text="{i18n>approvalHistoryLbl}"
+                    key="ApprovalHistory"
+                    icon="sap-icon://work-history"
+                    id="cop_ApprovalHistory"
+                >
+                 </IconTabFilter>
+         </items>
+      </IconTabBar>
+      </VBox>
+      <!-- <HBox width="100%" justifyContent="Start" class="add-btn-padd">
+         <VBox width="100%" class="ml-20">
+            <TextArea width="100%" value="{cadRequestModel_New>/ApprComments}" height="120px" id="TextArea" placeholder="Comments" class="text_area"/>
+         </VBox>
+      </HBox> -->
+      <footer>
+         <Toolbar>
+
+            <ToolbarSpacer />
+            <!-- <Button type="Accept" id="btnApprove" text="{i18n>approve}" press="" class="justify-content-start bthAccept"></Button>
+            <Button id="btnReject" type="Reject" text="{i18n>reject}" class=" ml-10 bthReject"></Button> -->
+            <FlexBox justifyContent="End">
+               <Button type="Emphasized" id="cop_btnSubmit" text="{i18n>submit}" press="onSubmit" class="justify-content-end"></Button>
+               <Button id="cop_btnPrint" type="Emphasized" text="{i18n>printForm}" class="ml-10"></Button>
+               <Button id="cop_btnSend" type="Emphasized" text="{i18n>sendForm}" class="ml-10"></Button>
+            </FlexBox>
+
+         </Toolbar>
+      </footer>
+   </Page>
+</mvc:XMLView>

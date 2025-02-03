@@ -1,0 +1,773 @@
+namespace Stonemen;
+
+using {managed} from '@sap/cds/common';
+
+entity MStage : managed {
+    key StageGuid           : UUID;
+        StageCode           : String;
+        Description         : String;
+        IsApproval          : Enum_YesNo default 'N';
+        SendEmail           : Enum_YesNo default 'Y';
+        SendAppNotification : Enum_YesNo default 'Y';
+        NoOfApprovals       : Int16 default-1;
+        NoOfRejections      : Int16 default-1;
+        DelMark             : Enum_DelMark default 0;
+        Remarks             : String NULL;
+        Role                : Composition of  many CStageRole
+                                  on Role.Stage = $self;
+}
+
+entity CStageRole : managed {
+    Key StageRoleGuid : UUID;
+    Stage         : Association to MStage;
+    StageCode     :String = Stage.StageCode; // Add on 21122024
+    RoleCode      :String = Role.RoleCode;  // Add on 21122024
+    Role          : Association to MRole;
+    DelMark       : Enum_DelMark default 0;
+    Remarks       : String;
+}
+
+entity MEnum : managed {
+    key EnumGuid        : UUID;
+        EnumCode        : String;
+        EnumDescription : String;
+        EnumType        : String;
+}
+
+entity DAttachment : managed {
+    key AttachmentGuId   : UUID;
+        AttachmentName   : String not null;
+        OrgFileName      : String NOT null;
+        OrgFileExtension : String NOT null;
+        SysFileName      : String NOT null;
+        SysFileExtension : String NOT null;
+        ReferenceType    : Integer NOT null;
+        ReferenceId      : Integer ;
+	ReferenceGuid    : UUID NOT NULL;
+        SysFilePath      : String NOT null;
+        UploadedOnCloud  : Enum_YesNo default 'N';
+        DelMark          : Enum_DelMark default 0;
+        Remarks          : String NULL;
+}
+
+entity MManufacturing : managed {
+    key ManufacturingGuid : UUID;
+        ManufacturingCode : String;
+        ManufacturingName : String;
+        Operation         : Composition of many CManufacturingOpDetail
+                                on Operation.Parent = $self;
+        DelMark           : Enum_DelMark default 0;
+        Remarks           : String;
+}
+
+entity CManufacturingOpDetail : managed {
+    key ManufacturingOpDetailGuid : UUID;
+        OperationProcessCode      : String;
+        OperationProcessName      : String;
+        Parent                    : Association to MManufacturing;
+        DelMark                   : Enum_DelMark default 0;
+        Remarks                   : String;
+}
+
+
+//18122024 using the earlier
+entity MeetingConfig : managed {
+    key MeetingConfigGuid : UUID;
+        TimeSlotMinutes   : Integer;
+        StartTime         : Timestamp;
+        EndTime           : Timestamp;
+        DelMark           : Enum_DelMark default 0;
+        Remarks           : String;
+}
+
+
+entity MMenu : managed {
+    key MenuGuid       : UUID;
+        MenuCode       : String;
+        Description    : String;
+        ParentMenuCode : String default-1;
+        ParentMenuGuid : Association to MMenu; //new
+        MenuIcon       : String;
+        MenuPath       : String;
+        OrderBy        : Decimal(19, 2); //Added now
+        DelMark        : Enum_DelMark default 0;
+        Remarks        : String;
+        Role           : Composition of  many CMenuRoleAccessDetail
+                             on Role.Menu = $self;
+        MenuSeq        :Integer;
+
+}
+
+entity MRole : managed {
+    key RoleGuid    : UUID;
+        RoleCode    : String not null;
+        Description : String NULL;
+        DelMark     : Enum_DelMark default 0;
+        Remarks     : String;
+        Menu        : Composition of  many MMenuRoleAccess
+                           on Menu.Role = $self;
+        
+        Stage       : Association to many CStageRole
+                          on Stage.Role = $self;
+}
+
+entity MMenuRoleAccess : managed {
+    key MenuRoleAccessGuid : UUID;
+        Role               : Association to MRole;
+        RoleCode           : String = Role.RoleCode; // Add on 21122024
+        DelMark            : Enum_DelMark default 0;
+        Remarks            : String;
+
+      Detail             : Composition of many CMenuRoleAccessDetail
+                                 on Detail.Parent = $self;
+
+}
+
+entity CMenuRoleAccessDetail : managed {
+    key MenuRoleAccessDetailGuid : UUID;
+        Parent                   : Association to MMenuRoleAccess;
+        Menu                     : Association to MMenu;
+        MenuCode                 : String = Menu.MenuCode; // Add on 21122024
+        Add                      : Boolean;
+        Update                   : Boolean;
+        View                     : Boolean;
+        DelMark                  : Enum_DelMark default 0;
+        Remarks                  : String;
+}
+
+
+entity MUser : managed {
+    key UserGuid          : UUID;
+        UserName          : String;
+        UserCode          : String;
+        Password          : String @mandatory;
+        FirstName         : String;
+        LastName          : String;
+        EmailId           : String @mandatory;
+        MobileNo          : String;
+        DepartmentCode    : String;
+        DepartmentName    : String;
+        SubDepartmentCode : String;
+        SubDepartmentName : String;
+        Buyer          : Composition of many CUserBuyer
+                             on Buyer.User = $self;
+        Role              : Association to MRole not null;
+        UserRoleCode      : String = Role.RoleCode;  // add on 21122024
+        Designation       : String;
+        Manager           : Association to MUser;  
+        // ManagerRoleCode : String = Manager.Role.RoleCode;  // Add on 21122024   Need to check
+        ManagerName       : String = Manager.UserName; //new  // Update on 21122024
+        DelMark           : Enum_DelMark default 0;
+        Remarks           : String;
+
+        MaterialCategory  : Composition of many CUserMaterialCategory
+                                on MaterialCategory.Parent = $self;
+        ProductCategory  : Composition of many CUserProductCategory
+                                on ProductCategory.Parent = $self;
+        IsActive        : Enum_YesNo default 'Y';
+
+
+}
+
+entity CUserMaterialCategory : managed {
+    key UserMaterialCategoryGuid : UUID;
+        Parent                   : Association to MUser;
+        MaterialCategoryCode     : String; //new (rename)
+        MaterialCategoryName     : String; //new (rename)
+        DelMark                  : Enum_DelMark default 0;
+        Remarks                  : String;
+}
+
+//new table
+entity CUserProductCategory : managed {
+    key UserProductCategoryGuid : UUID;
+        Parent                  : Association to MUser;
+        ProductCategoryCode     : String;
+        ProductCategoryName     : String;
+        DelMark                 : Enum_DelMark default 0;
+        Remarks                 : String;
+        ProductCategoryGuid : Association to MProductCategory;
+}
+
+//new - rename table & add fields
+entity CUserBuyer : managed {
+    key BuyerGuid : UUID;
+        BuyerCode : String;
+        BuyerName : String;
+	User      : Association to MUser;
+        MCatCode  : String;
+        MCatName  : String;
+        DelMark   : Enum_DelMark default 0;
+        Remarks   : String;
+}
+
+//new Table
+entity MBuyer : managed {
+    key BuyerGuid : UUID;
+        BuyerCode : String;
+        BuyerName : String;
+        Brand     : Composition of many CBuyerBrand
+                        on Brand.Parent = $self;
+        DelMark   : Enum_DelMark default 0;
+        Remarks   : String;
+}
+
+//new Table
+entity CBuyerBrand : managed {
+    key BuyerBrandGuid : UUID;
+        Parent         : Association to MBuyer;
+        BrandCode      : String;
+        BrandName      : String;
+        DelMark        : Enum_DelMark default 0;
+        Remarks        : String;
+}
+
+
+entity DTemplate : managed {
+    key TemplateGuid    : UUID;
+        TemplateName    : String NOT null;
+        Description     : String NULL;
+        ActiveStartDate : DateTime NOT null;
+        ActiveEndDate   : DateTime NOT null;
+        IsActive        : Enum_YesNo default 'Y ';
+        DelMark         : Enum_DelMark default 0;
+        Remarks         : String NULL;
+        TemplateStages  : Composition of many CTemplateStage
+                              on TemplateStages.Parent = $self;
+        TemplateMenus   : Composition of many CTemplateMenu
+                              on TemplateMenus.Parent = $self;
+}
+
+entity CTemplateStage : managed {
+    key TemplateStageGuid : UUID;
+        Parent            : Association to DTemplate;
+        Stage             : Association to MStage;
+        StageCode          :String = Stage.StageCode; // Add on 21122024
+        StageSeqId        : Integer; // for multiple stages
+        DelMark           : Enum_DelMark default 0;
+        Remarks           : String NULL;
+}
+
+entity CTemplateMenu : managed {
+    key TemplateMenuGuid : UUID;
+        Parent           : Association to DTemplate;
+        Menu             : Association to MMenu;
+        MenuCode        : String = Menu.MenuCode; // Add on 21122024 
+        MenuSubType      : String; //CAD , Rendering, Handwritten
+        DelMark          : Enum_DelMark default 0;
+        Remarks          : String NULL;
+}
+
+//1812024 newly added
+entity MCrfControls : managed {
+    key ControlsID : UUID;
+        RoleCode   : Association to MRole;
+        RoleCodeName: String = RoleCode.RoleCode; // Add on 21122024
+        Detail     : Composition of many MCrfControlDetail
+                         on Detail.Parent = $self;
+        StageCode  : Association to MStage;
+        StageCodeName : String = StageCode.StageCode; // Add on 21122024
+        //28112024
+        //FormType   : FORMTYPE;
+        FormType   : String;
+        //IsActive   : Boolean default true;
+        IsActive   : Enum_YesNo default 'Y';    //18122024 changed to enum
+
+	//18122024 newly added
+        Menu            : Association to MMenu; 
+}
+
+entity MCrfControlDetail : managed {
+    key ControlsDetailID : UUID;
+        Parent           : Association to MCrfControls;
+        ControlName      : String;
+        Enabled          : Boolean default True;
+        TableName        : String;
+        ControlId        : String;
+        //28112024
+        //sActive          : Boolean default true;
+        IsActive         : Enum_YesNo default 'Y';  //18122024 changed to enum
+        Visible          : Boolean default True
+}
+
+
+//
+entity MFormControl : managed {
+    key FormControlGuid : UUID;
+        Detail          : Composition of many CFormControlDetail
+                              on Detail.Parent = $self;
+        Menu            : Association to MMenu; //////////////
+        Scenario        : String;
+        Stage           : Association to MStage; /////////////
+        Role            : Association to MRole;
+        DelMark         : Enum_DelMark default 0;
+        Remarks         : String;
+        SubMenu1        : Composition of many CFormControlSubMenu1Detail
+                              on SubMenu1.Parent = $self;
+
+        SubMenu2        : Composition of many CFormControlSubMenu2Detail
+                              on SubMenu2.Parent = $self;
+
+}
+
+//CRF - CAD/Rendering/Handwritten
+entity CFormControlSubMenu1Detail : managed {
+    key FormControlSubMenu1DetailGuid : UUID;
+        Parent                        : Association to MFormControl;
+        SubMenu                       : String; //CAD/Rendering/Handwritten
+        DelMark                       : Enum_DelMark default 0;
+        Remarks                       : String;
+}
+
+//CRF - CAD/Rendering/Handwritten - New/Repeat
+entity CFormControlSubMenu2Detail : managed {
+    key FormControlSubMenu2DetailGuid : UUID;
+        Parent                        : Association to MFormControl;
+        SubMenu                       : String; //New, Repeat
+        DelMark                       : Enum_DelMark default 0;
+        Remarks                       : String;
+}
+
+entity CFormControlDetail : managed {
+    key FormControlDetailGuid : UUID;
+        Parent                : Association to MFormControl;
+        ControlId             : String;
+        ControlName           : String;
+        Enabled               : Boolean default True;
+        Visible               : Boolean default True;
+        TableName             : String; ////////////////////
+        DelMark               : Enum_DelMark default 0;
+        Remarks               : String;
+}
+
+entity DData : managed {
+    key DataGuid        : UUID;
+        Template        : Association to DTemplate;
+        ActiveStartDate : DateTime; // = $now; // update on 21122024
+        ActiveEndDate   : DateTime;
+        ObjectGuid       : UUID not null;
+        Menu            : Association to MMenu;
+        MenuCode        : String = Menu.MenuCode; // Add on 21122024
+        SubMenu         : String; //CAD, Rendering, Handwritten
+        DelMark         : Enum_DelMark default 0;
+        Remarks         : String NULL;
+        Stage             : Association to MStage;
+        StageCode          : String = Stage.StageCode; // Add on 21122024
+        NoOfApprovalReq   : Int32 = Stage.NoOfApprovals;  // Update on 21122024
+        NoOfRejectionReq  : Int32 = Stage.NoOfRejections;  // Update on 21122024
+        TotalApproved     : Int32 not null default 0;  // Update on 21122024
+        TotalRejected     : Int32 not null default 0;  // Update on 21122024
+        ApprovalStatus    : Enum_ApprovalStatus default 'NA';
+        RowStatus          : Enum_RowStatus default 'OPEN'; //Add on 21122024
+        DataFlow        : Composition of many CDataFlow
+                              on DataFlow.Parent = $self;
+        // Crf       : Association to DCrfHeader;// need to des.... added by afshan  //TCM
+
+	IsCurrentStage : Enum_YesNo default 'N';
+
+}
+
+entity CDataFlow : managed {
+    key DataFlowGuid      : UUID;
+        Parent            : Association to DData;
+        User              : Association to MUser;
+        UserName          : String = User.UserName; // Add on 21122024
+        RowStatus         : Enum_RowStatus default 'Open';
+	        ApprovalStatus    : Enum_ApprovalStatus default 'NA'; //TCM
+        IsEMailSent       : Enum_YesNo default 'N';
+        InAppNotification : Enum_YesNo default 'N';
+        RowNumber         : Int64;
+        ProcessDate       : Timestamp;
+        StartDate         : Timestamp;
+        EndDate           : Timestamp;
+        Type              : String;
+        DelMark           : Enum_DelMark default 0;
+        Remarks           : String NULL;
+  	    UserType         :  Enum_UserType Default 1; //TCM
+        UserEmail         : String = User.EmailId; //TCM Add on 23122024
+}
+
+entity MNotifyTemplate : managed {
+    key NotifyTemplateGuid    : UUID;
+        NotifyTemplateCode    : String not null;
+        NotifyTemplateSubject : String;
+        Description           : String null;
+        NotifyTemplateBody    : LargeString not null;
+        Type                  : String; //EMAIL, INAPP;
+        DelMark               : Enum_DelMark default 0;
+        Remarks               : String NULL;
+        IsActive              : Enum_YesNo default 'Y '; // New
+}
+
+entity DCrfHeader : managed {
+    key CrfReqGuid         : UUID;
+        CrfReqNo           : Integer64;
+        SaveOrSubmit       : Enum_SaveOrSubmit NOT null;
+        ReqTyp             : Enum_RequestType NOT null;
+        // OldCrfReqNoGuid    : Association to DCrfHeader; 
+        OldCrfReqNoGuid : Association to DCrfHeader;
+        OldCrfReqNo        : Integer64 ; // Update on 21122024 //TCM
+        InputType          : Enum_InputType not null;
+        MerReqDate         : Date;
+        BuyerCode          : String;
+        BuyerName          : String;
+        Category           : String;
+        ItemCode           : String;
+        ItemDesc           : String;
+        ItemGroup          : String;
+        ItemGroupName      : String;
+        CrfDelDate         : Date;
+        Reamrks            : String;
+        ECNNo              : String;
+        CarNo              : String;
+        CRFNo              : String;
+        ProductCatCode     : String; //new
+        ProductCatName     : String; //new
+        SubCatCode         : String; //new
+        SubCatName         : String; //new
+        Length             : Decimal(19, 2);
+        TolLength          : Decimal(19, 2);
+        Width              : Decimal(19, 2);
+        TolWidth           : Decimal(19, 2);
+        Height             : Decimal(19, 2);
+        TolHeight          : Decimal(19, 2);
+        UnitCode           : String;
+        UnitName           : String;
+        DiaTop             : Decimal(19, 2);
+        TolDiaTop          : Decimal(19, 2);
+        DiaLeft            : Decimal(19, 2);
+        TolDiaLeft         : Decimal(19, 2);
+        DiaRight           : Decimal(19, 2);
+        TolDiaRight        : Decimal(19, 2);
+        DiaBottom          : Decimal(19, 2);
+        TolDiaBottom       : Decimal(19, 2);
+        CrfStatus          : Enum_CrfStatus not null;
+        CrfReqDate         : Date;
+        PDDate             : Date;
+        PDNo               : String;
+        ApprovalStatus     : Enum_ApprovalStatus not null;
+        ApprovalComments   : LargeString;
+        newApprovalStatus  : Enum_ApprovalStatus not null;
+        newApprovalComment : LargeString;
+        CreatedByUserID    : Association to MUser;
+        CreatedByUserName : String = CreatedByUserID.UserName; // Add on 21122024
+        Template           : Association to DTemplate;
+        Stage              : Association to MStage; // for current Stage
+        CrfStageCode       : String = Stage.StageCode; // Add on 21122024
+        CrfStageName       : String = Stage.Description; // Add on 21122024
+        appliDiamter       : Enum_YesNo default 'N';
+        appliDimension     : Enum_YesNo default 'N';
+        InspDraw           : Composition of many CCrfAttachment
+                                 on InspDraw.Parent = $self;
+        UserAssign         : Composition of many CCrfMeetingDetail
+                                 on UserAssign.Parent = $self;
+        SeekAdvice         : Composition of many CCrfSeekAdvice
+                                 on SeekAdvice.Parent = $self;
+        Material           : Composition of many CCrfMaterial
+                                 on Material.Parent = $self;
+        MaterialComments   : String;
+        loginUserID        : Association to MUser;
+        TotalApproved      : Integer default 0;  //TCM
+        TotalRejected      : Integer default 0; //TCM
+        MMenu              : Association to MMenu;
+        MenuCode           : String = MMenu.MenuCode; // Add on 21122024
+        CrfCategory        : Enum_CrfCategory not null;
+        PDDateDate         : Date;
+        OldCADUUID         : UUID;
+        OldCADNo           : Integer64;
+        MCatCode           : String; // for buyer+McatCode filteration //16/09/2024
+        MCatName           : String;
+        UOMCode            : String;
+        UOMName            : String;
+        TimeSlotMinutes    : Int64;
+        StartTime          : Time;
+        EndTime            : Time;
+        EstCostInDocCur    : Decimal(19, 2);
+        DocumentCur        : String;
+        ExchRate           : Decimal(19, 2);
+        BuyerCur           : String;
+        EstCostInINR       : Decimal(19, 2);
+        Brand              : Composition of many CCrfBrand
+                                 on Brand.Parent = $self;
+        Team               : Composition of many CCrfTeam
+                                 on Team.Parent = $self;
+        Accessibility      : String; //enum table
+
+	//18122024  
+//        Data               : Composition of DData;
+	ApprovalTransaction  : Composition of many DData
+                                   on ApprovalTransaction.ObjectGuid = $self.CrfReqGuid; //TCM
+        CategoryCode     : String;
+        CategoryUniqueNum :String;
+        CADLevel:Enum_CADLevel;
+	DelMark             : Enum_DelMark default 0;
+     ProductCatGuid : Association to MProductCategory; //new field
+}
+
+entity CCrfAttachment : managed {
+    key CrfAttachmentsGuid : UUID;
+        Parent             : Association to DCrfHeader;
+        AttachmentRemarks  : String;
+        User               : Association to MUser;
+        Attachment         : Composition of many DAttachment
+                                 on Attachment.ReferenceGuid = CrfAttachmentsGuid; //TCM
+        Stage              : Association to MStage; // Add on 21122024
+        StageCode           : String = Stage.StageCode; // add on 21122024
+        ApprovalStatus     : Enum_ApprovalStatus default 'NA';
+        DelMark            : Enum_DelMark default 0;
+        Remarks            : String NULL;
+        RowStatus         : Enum_RowStatus default 'Open';//TCM
+}
+
+entity CCrfMeetingDetail : managed {
+    key CrfUserAssgGuid   : UUID;
+        RowNumber         : Int64;
+        DepartmentCode    : String;
+        DepartmentName    : String;
+        UserID            : Association to MUser;
+        UserCode          : String = UserID.UserCode; // Update on 21122024
+        UserName          : String = UserID.UserName; // Update on 21122024
+        UserEmailId       : String = UserID.EmailId; //Update on 21122024
+        CallMeeting       : Enum_YesNo default 'Y';
+        MeetingRemarks    : String;
+        Attachment        : Association to DAttachment; ///////
+        IsMeetingAttended : Enum_YesNo null; //
+        Parent            : Association to DCrfHeader;
+        UserAvailable     : String;
+        MeetingStartDate  : Timestamp;
+        MeetingEndDate    : Timestamp;
+        DelMark           : Enum_DelMark default 0;
+        Remarks           : String NULL;
+}
+
+entity CCrfSeekAdvice : managed {
+    key CrfSeekAdviceGuid : UUID; //*
+        RowNumber         : Int64;
+        DepartmentCode    : String;
+        DepartmentName    : String;
+        QuestionToUser    : Association to MUser;      // Prev UserID
+        QuestionToUserName: String = QuestionToUser.UserName; // Add on 21122024
+        Role              : Association to MRole;      // Prev RoleCode
+        Question          : String;
+        Answer            : String;
+        Attachment        : Association to DAttachment;
+        Parent            : Association to DCrfHeader; //Prev CrfReqID
+        QuestionFromUser  : Association to MUser;      // Prev QuestionFrom
+        QuestionFromUserName: String = QuestionFromUser.UserName; // Add on 21122024
+        NewAlert          : String;
+        DelMark           : Enum_DelMark default 0;
+}
+
+entity CCrfMaterial : managed {
+    key CrfMaterialGuid     : UUID;
+        RowNumber           : Int64;
+        MaterialAutoCode    : String;
+        MaterialCatHanaText : String;
+        MaterialCatFreeText : String;
+        Parent              : Association to DCrfHeader;
+        UserComments        : LargeString;
+        TestProtocol        : String;
+        DelMark             : Enum_DelMark default 0;
+}
+
+entity CCrfTeam : managed {
+    key CrfTeamGuid : UUID;
+        Parent      : Association to DCrfHeader;
+        User        : Association to MUser;
+        DelMark     : Enum_DelMark default 0;
+
+	RoleGuid :Association to MRole; // Update on 21122024
+	RoleCode  :String = RoleGuid.RoleCode; //Update on 21122024
+	RoleName :String = RoleGuid.Description; //Update on 21122024
+	UserName : String = User.UserName; // Update on 21122024
+    UserMaterialCategoryCode : String;
+    UserMaterialCategoryName : String;
+}
+
+
+entity CCrfBrand : managed {
+    key CrfBrandGuid : UUID;
+        Parent       : Association to DCrfHeader;
+        BrandCode    : String;
+        BrandName    : String;
+        DelMark      : Enum_DelMark default 0;
+}
+
+entity PrjStatusMaster {
+    key prj_id         : UUID;
+        prjstatus_code : String(100);
+        prjstatus_name : String(100);
+}
+
+entity TaskStatusMaster {
+    key tsk_id         : UUID;
+        tskstatus_code : String(100);
+        tskstatus_name : String(100);
+}
+
+entity Tactionheader {
+    key tah_id              : UUID;
+        tah_sono            : String(100);
+        tah_no              : Int64;
+        tah_lineno          : String(100);
+        tah_itemcode        : String(100);
+        tah_itemdesc        : String(500);
+        tah_prjtemplno      : String(100);
+        tah_prjtemplnme     : String(100);
+        tah_prjtempdesc     : String(500);
+        tah_startdate       : Date;
+        tah_prjstatuscode   : String(50);
+        tah_prjstatusname   : String(100);
+        tah_isactive        : String(100);
+        tah_isdeleted       : String(100);
+        tah_addbyEmpid      : UUID;
+        tah_addbyEmpCode    : String(100);
+        tah_addbyUsername   : String(100);
+        tactiondetail       : Composition of many Tactiondetail
+                                  on tactiondetail.tactionheader = $self;
+        tah_sodate          : Date null;
+        tah_sodeldate       : Date null;
+        tah_soitemcategory  : String(100);
+        tah_prjtempcategory : String(100);
+        tah_prjtempnoofdays : String(100);
+        tah_customercode    : String(100);
+        tah_customername    : String(100);
+}
+
+entity Tactiondetail {
+    key tahd_id                : UUID;
+        tahd_depcode           : String(100);
+        tahd_depname           : String(100);
+        tahd_prjtaskid         : String(100);
+        tahd_prjtaskname       : String(100);
+        tahd_noofdays          : String(100);
+        tahd_days              : String(100);
+        tahd_plnstdate         : Date;
+        tahd_plneddate         : Date;
+        tahd_actstdate         : Date;
+        tahd_acteddate         : Date;
+        tahd_dldays            : String(100);
+        tahd_tskstatuscode     : String(100);
+        tahd_tskstatusdesc     : String(100);
+        tahd_comments          : String(100);
+        tahd_admincomments     : String(100);
+        tactionheader          : Association to one Tactionheader;
+        emp_id                 : Association to MUser;
+        emp_code               : String(100);
+        emp_name               : String(100);
+        // tactiondetailEmpAssign : Composition of many TactiondetailEmpAssign
+        //                              on tactiondetailEmpAssign.tactiondetail = $self;
+        tahd_rescostcentercode : String(100);
+        tahd_rescostcentername : String(100);
+        TaskType               : String(200);
+        DocumentType           : String(200);
+        APICode                : String(200);
+}
+
+entity TNotification : managed {
+    key NotificationID : UUID;
+        Menu           : Association to MMenu;
+        DocumentGUID   : UUID;
+        DocumentNo     : Integer;
+        Role           : Association to MRole;
+        UserGuid       : Association to MUser;
+        UserName       : String;
+        Status         : String;
+        Task           : String;
+        DateTime       : DateTime;
+        Read           : Boolean;
+        Clear          : Boolean default false;
+        //IsActive       : Boolean default true;
+        IsActive       : Enum_YesNo default 'Y'; // modified
+}
+
+//Add new table //TCM PC 24122024
+entity MProductCategory : managed {
+    key ProductCategoryGuid : UUID;
+        ProductCategoryCode     : String;
+        ProductCategoryName     : String;
+        DelMark                 : Enum_DelMark default 0;
+        Remarks                 : String;
+        FirstNum		:Integer64;
+	    IncrementBy		:Integer64;
+        LastNum		:Integer64;
+	    Prefix 		:String;
+	    Suffix 		:String;
+        IsActive       : Enum_YesNo default 'Y';
+}
+
+type Enum_DelMark           : Int16 enum {
+    Yes        = 1;
+    No         = 0
+};
+
+type Enum_YesNo             : String enum {
+    Yes        = 'Y';
+    No         = 'N'
+};
+
+type Enum_StageFlowScenario : String enum {
+    NA;
+    APPROVED;
+    REJECTED
+};
+
+type Enum_SaveOrSubmit      : String enum {
+    SAVE       = 'SAVE';
+    SUBMIT     = 'SUBMIT'
+}
+
+
+type Enum_RequestType       : String enum {
+    New        = 'N';
+    Revision   = 'R';
+    ToSelect   = '-1'
+};
+
+type Enum_InputType         : String enum {
+    Internal   = 'I';
+    External   = 'E';
+    ToSelect   = '-1'
+};
+
+
+type Enum_CrfStatus         : String enum {
+    New        = 'N';
+    InProgress = 'WIP';
+    Closed     = 'CLS';
+    Cancelled  = 'C'
+}
+
+type Enum_CrfCategory       : String enum {
+    CAD;
+    Rendering;
+    Handwritten;  // Add on 21122024
+};
+
+
+type Enum_ApprovalStatus    : String enum {
+    NA;
+    APPROVED;
+    REJECTED;
+    PENDING;
+};
+
+
+type Enum_RowStatus         : String enum {
+    OPEN;
+    CLOSED;
+    NA; // Add By Rishiraj
+};
+
+type Enum_CADLevel : String enum{
+     Easy;
+     Critical;
+     Medium;
+};
+
+type Enum_UserType : Integer enum {
+     Approval_non_Mandatory_User = 2;     
+     Approval_Mandatory_User = 3;
+     Workflow_User = 1
+}
+

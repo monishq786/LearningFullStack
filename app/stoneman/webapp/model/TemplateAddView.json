@@ -1,0 +1,30 @@
+{
+    "TemplateGuid": null,
+    "TemplateName": "",
+    "Description": null,
+    "ActiveStartDate": null,
+    "ActiveEndDate": null,
+    "IsActive": null,
+    "TemplateStages": [
+        {
+            "RowNumber": 1,
+            "Parent_TemplateGuid": null,
+            "StageCode": null,
+            "StageSeqId": 1,
+            "Stage_StageGuid": null,
+            "TemplateStageGuid": null
+        }
+    ],
+    "TemplateMenus": [
+        {
+            "RowNumber": 1,
+            "DelMark": 0,
+            "MenuCode": null,
+            "MenuSubType": null,
+            "Menu_MenuGuid": null,
+            "Parent_TemplateGuid": null,
+            "Remarks": null,
+            "TemplateMenuGuid": null
+        }
+    ]
+}

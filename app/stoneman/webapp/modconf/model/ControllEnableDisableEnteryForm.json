@@ -1,0 +1,15 @@
+{
+     "RoleCode_RoleCode_RoleConstant": null,
+     "StageCode_StageCode_StageConstant": null,
+     "FormType": null,
+     "IsActive": true,
+     "Detail": [
+         {
+             "ControlName": null,
+             "Enabled": true,
+             "TableName": null,
+             "ControlId": null,
+             "sActive": true
+         }
+     ]
+}

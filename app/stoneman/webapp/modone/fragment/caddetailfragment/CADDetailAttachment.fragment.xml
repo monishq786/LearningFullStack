@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons">
+    <ScrollContainer id="scrollCADAttach" width="100%" height="auto" horizontal="true" vertical="true" focusable="true">
+        <Table id="caddetail_cadTable" items="{
+			path: 'EntryFormDataSourceModel>/InspDraw',
+			sorter: {
+				path: 'SrNo'
+			}
+		}" class="sapUiSizeCompact" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true">
+            <columns>
+                <Column width="5rem">
+                    <Text text="{i18n>srNo}" />
+                </Column>
+                <Column width="10rem">
+                    <Text text="{i18n>inspRefName}" />
+                </Column>
+                <Column width="10rem">
+                    <Text text="{i18n>inspRefNo}" />
+                </Column>
+                <Column width="15rem">
+                    <Text text="{i18n>inspRefDoc}" />
+                </Column>
+                <Column width="10rem" />
+                <Column width="10rem">
+                    <Text text="{i18n>cadDrawings}" />
+                </Column>
+                <Column width="10rem"/>
+                <Column width="10rem">
+                    <Text text="{i18n>designtl/draftsman}" />
+                </Column>
+                <Column width="10rem">
+                    <Text text="{i18n>cadno}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem vAlign="Middle">
+                    <Text id="caddetail_srNum" text="{EntryFormDataSourceModel>RowNumber}" />
+                    <Text id="caddetail_insprRefName" text="{EntryFormDataSourceModel>InspRefName}" />
+                    <Text id="caddetail_insprRefNo" text="{EntryFormDataSourceModel>InspRefNo}"/>
+                    <Text id="caddetail_insprRefDoc" text="{EntryFormDataSourceModel>InspRefDocAbsId/DisplayName}" wrapping="true" />
+                    <HBox >
+                        <Button id="caddetail_viewBtn" icon="sap-icon://show" press="onViewFile" />
+                        <Button id="caddetail_downloadBtn" icon="sap-icon://download" press="onDownloadFile" class="sapUiSmallMarginBegin"/>
+                    </HBox>
+                    <Text id="caddetail_caddrawings" text="{EntryFormDataSourceModel>DraftAttachmentAbsId/DisplayName}" wrapping="true" />
+                    <HBox>
+                        <Button id="caddetail_viewBtn1" icon="sap-icon://show" press="onViewFile" />
+                        <Button id="caddetail_downloadBtn1" icon="sap-icon://download" press="onDownloadFile" class="sapUiSmallMarginBegin"/>
+                    </HBox>
+                    <Text id="caddetail_design" text="{EntryFormDataSourceModel>DraftUserID/Username}" wrapping="true" />
+                    <Text id="caddetail_cadno" text="{EntryFormDataSourceModel>cadNo}" wrapping="true" />
+                </ColumnListItem>
+            </items>
+        </Table>
+    </ScrollContainer>
+</core:FragmentDefinition>

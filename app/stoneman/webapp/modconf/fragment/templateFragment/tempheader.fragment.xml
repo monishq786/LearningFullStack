@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <f:SimpleForm id="headerForm" editable="true" layout="ColumnLayout" columnsM="3" columnsL="4" columnsXL="5">
+        <f:content>
+          <Label id="templatenameLbl" text="{i18n>templateName}" />
+            <Input id="templatename"  value="{EntryFormDataSourceModel>/TemplateName}" description="" placeholder="Template Name ..." fieldWidth="100%" maxLength="100" />
+          <Label id="templatedescLbl" text="{i18n>templatedesc}" />
+            <Input id="templatedesc"  value="{EntryFormDataSourceModel>/Description}" description="" placeholder="Template Description ... " fieldWidth="100%" maxLength="100" />
+
+            <!-- <Label  id="activestartlbl" text="{i18n>activestartdate}" />
+           
+             <DatePicker  id= "activestartdate" value=""  placeholder = "StartDate"valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" required="true"   /> 
+            -->
+             <!-- <Label  id="activendlbl" text="{i18n>activeenddate}" />
+              
+
+            <Input  id= "activeenddate" value="{EntryFormDataSourceModel>}" description="" fieldWidth="100%" maxLength="100"  />  -->
+
+
+            <Label id="startDateLbl" labelFor="startDate" text="{i18n>activestartdate}" />
+            <DatePicker id="startDate" displayFormat="dd-MM-yyyy" value="{EntryFormDataSourceModel>/ActiveStartDate}" required="true"  change="getDateValue"  />
+
+            <Label id="endDateLbl" text="{i18n>activeenddate}" labelFor="endDate"/>
+            <DatePicker id="endDate" displayFormat="dd-MM-yyyy" required="true" value="{EntryFormDataSourceModel>/ActiveEndDate}"  />
+          
+
+
+                                
+
+             
+            
+               
+            
+         
+        </f:content>
+    </f:SimpleForm>
+</core:FragmentDefinition>

@@ -1,0 +1,60 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified">
+    <VBox>
+        <HBox width="100%" justifyContent="End">
+            <VBox>
+                <Button icon="sap-icon://add" id="copefSeekAdviceRaiseQuery" text="{i18n>raiseQuery}" press="onRaiseQueryPress" />
+            </VBox>
+        </HBox>
+        <ScrollContainer width="100%" height="100%" horizontal="true" vertical="true">
+            <Table items="{    path: 'EntryFormDataSourceModel>/CostingSeekAdvice',    sorter: {     path: 'Name'    }   }" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="copefSeekAdviceTable">
+                <columns>
+                    <Column width="150px">
+                        <Text text="Department" />
+                    </Column>
+                    <Column width="150px">
+                        <Text text="User" />
+                    </Column>
+                    <Column width="150px">
+                        <Text text="Role" />
+                    </Column>
+                    <Column width="140px">
+                        <Text text="Query" />
+                    </Column>
+                    <Column width="140px" visible="{EntryFormDataSourceModel>/showName}">
+                        <Text text="Files Name" />
+                    </Column>
+                    <Column width="140px" visible="{EntryFormDataSourceModel>/showName}" />
+                    <Column width="140px" visible="{EntryFormDataSourceModel>/showFile}">
+                        <Text text="Attachment" />
+                    </Column>
+                    <Column width="120px">
+                        <Text text="Action" />
+                    </Column>
+                    <Column width="120px" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Input id="copefSeekAdviceDepartment" width="150px" placeholder="Click to select value" showValueHelp="true" value="{EntryFormDataSourceModel>departmentName}" valueHelpRequest="onValueHelpDepartmentSeek" />
+                            <Input id="copefSeekAdviceUser" width="150px" placeholder="Click to select value" showValueHelp="true" valueHelpRequest="onValueHelpUserSeek" value="{EntryFormDataSourceModel>userName}" />
+                            <Input id="copefSeekAdviceRoleInput" width="150px" placeholder="Enter your role" />
+                            <Input id="copefSeekAdviceComment" value="{EntryFormDataSourceModel>Question}" width="140px" />
+                            <Text visible="{EntryFormDataSourceModel>showName}" text="{EntryFormDataSourceModel>SeekAdviceDocAbsId/DisplayName}" wrapping="true" width="140px" />
+                            <HBox visible="{EntryFormDataSourceModel>showName}" width="140px">
+                                <Button id="copefSeekAdviceAttachButton" icon="sap-icon://show" press="onViewFile" />
+                                <Button id="copefSeekAdviceDownloadButton" icon="sap-icon://download" press="onDownloadFile" />
+                            </HBox>
+                            <HBox visible="{EntryFormDataSourceModel>showFile}">
+                                <u:FileUploader id="copefSeekAdviceFileUploader" multiple="false" name="myFileUpload" change=".onFileChangeSeekAdvice" uploadComplete=".onUploadComplete" buttonText="Choose File" placeholder="Choose a file to upload" />
+                            </HBox>
+                            <Button id="copefSeekAdviceAction" icon="sap-icon://action" type="Emphasized" press="openDialog" />
+                            <Button icon="sap-icon://delete" press="onDeleteSeekAdvice" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+    </VBox>
+</core:FragmentDefinition>

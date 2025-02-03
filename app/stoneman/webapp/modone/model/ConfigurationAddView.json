@@ -1,0 +1,35 @@
+{
+  "DelMark": 0,
+  "DepartmentCode": null,
+  "DepartmentName":null,
+  "Designation": null,
+  "EmailId": null,
+  "FirstName": null,
+  "LastName": null,
+  "ManagerName": null,
+  "Manager_UserGuid": null,
+  "MobileNo": null,
+  "Password": null,
+  "Remarks": null,
+  "Role_RoleGuid": null,
+  "RoleName":null,
+  "SubDepartmentCode": null,
+  "SubDepartmentName": null,
+  "UserGuid":null,
+  "UserCode": null,
+  "UserName": null,
+  "IsActive": null,
+  "Buyer": [],
+  "MaterialCategory": [],
+  "ProductCategory": []
+}
+
+
+
+
+
+
+
+
+
+

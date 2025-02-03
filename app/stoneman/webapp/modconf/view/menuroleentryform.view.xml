@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mvc:XMLView
+    xmlns:form="sap.ui.layout.form"
+    controllerName="modconfcontroller.menuroleentryform"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons"
+    class="d-flex justify-content-center"
+>
+    <Page
+        id="menuroleef"
+        title="{i18n>TITLEMENUROLE}"
+        showNavButton="true"
+        navButtonPress="onPressOfEntryFormCancelButton"
+    >
+        <VBox>
+            <form:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+            >
+                <form:content>
+                    <!-- <Label text="{i18n>MENUNAME}"/>
+                        <Input
+                            id="MenuCode_Id"
+                            type="Text"
+                            value="{EntryFormDataSourceModel>/MenuName}"
+                            placeholder="Select Menu ..."
+                            showValueHelp="true"
+                            valueHelpRequest="cflForRoleCode"
+                            required="true"
+                            liveChange="onLiveChange"
+                        /> -->
+                    
+                    <Label text="{i18n>ROLECODE}" />
+                    <Input
+                        id="RoleCode_Id"
+                        type="Text"
+                        value="{EntryFormDataSourceModel>/RoleCode}"
+                        placeholder="Select Role ..."
+                        showValueHelp="true"
+                        editable="{EnableDisable>/RoleCodef}"
+                        valueHelpRequest="cflForStageCode"
+                        required="true"
+                        liveChange="onLiveChange"
+                    />
+                    <Label text="{i18n>Description}" />
+                    <Input
+                        id="RoleCode_Description"
+                        type="Text"
+                        value="{EntryFormDataSourceModel>/Description}"
+                        placeholder="Description ..."
+                        required="true"
+                    />
+                    <!-- <CheckBox
+                        selected="{EntryFormDataSourceModel>/Add}"
+                        text="Add"
+                        id="AddCheckBox_Id"
+                        required="false"
+                        enabled="true"
+                        class="ml-10"
+                    />
+                    <CheckBox
+                        selected="{EntryFormDataSourceModel>/Update}"
+                        text="Update"
+                        id="UpdateCheckBox_Id"
+                        required="false"
+                        enabled="true"
+                        class="ml-10"
+                    />
+                    <CheckBox
+                        selected="{EntryFormDataSourceModel>/View}"
+                        text="View"
+                        id="ViewCheckBox_Id"
+                        required="false"
+                        enabled="true"
+                        class="ml-10"
+                    /> -->
+                </form:content>
+            </form:SimpleForm>
+        </VBox>
+        <VBox>
+            <HBox
+                class="sapUiSmallMarginEnd"
+                justifyContent="End"
+            >
+                <VBox>
+                    <Button
+                        icon="sap-icon://add"
+                        text="{i18n>addNew}"
+                        press="addRow"
+                    />
+                </VBox>
+            </HBox>
+            <ScrollContainer
+                horizontal="true"
+                vertical="true"
+            >
+                <Table
+                    items="{
+                        path: 'EntryFormDataSourceModel>/Detail'
+                 }"
+                    class="sapUiSizeCompact"
+                    inset="true"
+                    sticky="ColumnHeaders,HeaderToolbar"
+                    showSeparators="All"
+                    showNoData="true"
+                >
+                    <columns>
+                        <Column width="5rem">
+                            <Label text="Sr No" />
+                        </Column>
+                        <Column width="10rem">
+                            <Label
+                                text="Menu"
+                                labelFor="Menu"
+                                required="true"
+                            />
+                        </Column>
+                        <Column width="4rem"/>
+                        <Column width="4rem">
+                            <Label
+                                text="Authorization "
+                                labelFor="Authorization"
+                                required="true"
+                            />
+                        </Column>
+                        <Column width="4rem"/>
+                        <Column width="5rem"/>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <Text
+                                    text="{EntryFormDataSourceModel>RowNumber}"
+                                />
+                                <ComboBox
+                                    required="true"
+                                    valueState="None"
+                                    visible="true"
+                                    width="75%"
+                                    editable="true"
+                                    selectedKey="{EntryFormDataSourceModel>Menu_MenuGuid}"
+                                    items="{EntryFormDataSourceModel>/RoleType}"
+                                    change="onMenuRoleChange"
+                                >
+                                    <core:Item
+                                        key="{EntryFormDataSourceModel>MenuGuid}"
+                                        text="{EntryFormDataSourceModel>Description}"
+                                    />
+                                </ComboBox>
+
+                                <CheckBox
+                                    selected="{EntryFormDataSourceModel>Add}"
+                                    text="Add"
+                                    id="AddCheckBox_Id"
+                                    required="false"
+                                    enabled="true"
+                                />
+                                <CheckBox
+                                    selected="{EntryFormDataSourceModel>Update}"
+                                    text="Update"
+                                    id="UpdateCheckBox_Id"
+                                    required="false"
+                                    enabled="true"
+                                    select="onUpdateCheckBoxChange"
+                                />
+                                <CheckBox
+                                    selected="{EntryFormDataSourceModel>View}"
+                                    text="View"
+                                    id="ViewCheckBox_Id"
+                                    required="false"
+                                    enabled="true"
+                                    select="onViewCheckBoxChange"
+                                />
+                                <Button
+                                    icon="sap-icon://delete"
+                                    press="onDeleteMenuRole"
+                                    type="Reject"
+                                    visible="true"
+                                    width="35px"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </ScrollContainer>
+        </VBox>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button
+                    type="Emphasized"
+                    id="menuRoleSubmitButton"
+                    text="{i18n>submit}"
+                    press="onSave"
+                />
+                 <Button 
+                    type="Reject"
+                    text="{i18n>cancel}"
+                    press=".onCancel"
+                />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:XMLView>

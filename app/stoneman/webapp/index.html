@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stoneman</title>
+    <style>
+        html,
+        body,
+        body>div,
+        #container,
+        #container-uiarea {
+            height: 100%;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_fiori_3" data-sap-ui-resourceroots='{
+            "stoneman": "./",
+            "core": "./core",
+            "corebase": "./core/base",
+            "coregeneric": "./core/generic",
+            "login": "./login",
+            "loginview": "./login/view",
+            "logincontroller": "./login/controller",
+            "landing": "./landing",
+            "landingcontroller": "./landing/controller",
+            "landingview": "./landing/view",
+            "modone": "./modone",
+            "modonecontroller": "./modone/controller",
+            "modoneview": "./modone/view",
+            "modconfview": "./modconf/view",
+            "modconfigfragment": "./modconf/fragment",
+            "modconfcontroller": "./modconf/controller"
+
+            
+        }' data-sap-ui-oninit="module:sap/ui/core/ComponentSupport" data-sap-ui-compatVersion="edge"
+        data-sap-ui-async="true" data-sap-ui-frameOptions="allow"></script>
+</head>
+
+<body class="sapUiBody sapUiSizeCompact" id="content">
+    <div data-sap-ui-component data-name="stoneman" data-id="container" data-settings='{"id" : "stoneman"}'
+        data-handle-validation="true"></div>
+</body>
+
+</html>

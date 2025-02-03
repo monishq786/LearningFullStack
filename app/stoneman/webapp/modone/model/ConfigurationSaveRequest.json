@@ -1,0 +1,50 @@
+{
+    "DelMark": 0,
+    "DepartmentCode": null,
+    "DepartmentName":null,
+    "Designation": null,
+    "EmailId": null,
+    "FirstName": null,
+    "LastName": null,
+    "ManagerName": null,
+    "Manager_UserGuid": null,
+    "MobileNo": null,
+    "Password": null,
+    "Remarks": null,
+    "Role_RoleGuid": null,
+    "SubDepartmentCode": null,
+    "SubDepartmentName": null,
+    "UserGuid":null,
+    "UserCode": null,
+    "UserName": null,
+    "IsActive":null,
+    "Buyer": [
+        {
+            "BuyerCode": null,
+            "BuyerName": null, 
+            "DelMark": 0, 
+            "Remarks": null,
+            "MCatCode":null,
+            "MCatName":null
+        }
+    ],
+    "MaterialCategory": [
+        {
+            "Parent_UserGuid": null,
+            "MaterialCategoryCode": null,
+            "MaterialCategoryName": null,
+            "DelMark": 0,
+            "Remarks": null
+        }
+    ],
+    "ProductCategory": [
+        {
+            "Parent_UserGuid": null, 
+            "ProductCategoryCode":null,
+            "ProductCategoryName": null,
+            "ProductCategoryGuid_ProductCategoryGuid":null,
+            "DelMark": 0,
+            "Remarks": null
+        }
+    ]
+}

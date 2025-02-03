@@ -1,0 +1,179 @@
+<mvc:XMLView
+    controllerName="modconfcontroller.menumasterentryform"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    class="d-flex justify-content-center">
+    <Page
+        id="menumasterf"
+        title="{i18n>mastermenutitle}"
+        showNavButton="true"
+        navButtonPress="onPressOfEntryFormCancelButton"
+    >
+        <VBox>
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+            >
+                <f:content>
+                    <Label
+                        id="menucodelbl"
+                        text="{i18n>menucode}"
+                        required="true"
+                    />
+                     <Input
+                            id="menucod"
+                            type="Text"
+                            value="{EntryFormDataSourceModel>/MenuCode}"
+                            placeholder="Select Menu ..."
+                            showValueHelp="true"
+                            valueHelpRequest="cflForMenuCode"
+                            required="true"
+                            enabled="{EnableCheck>/EnableMenuCode}" 
+                        />
+
+                    <Label
+                        id="menunamelbl"
+                        text="{i18n>menuname}"
+                        required="true"
+                    />
+                    <Input
+                        id="menuname"
+                        value="{EntryFormDataSourceModel>/Description}"
+                        required="true"
+                        enabled="true"
+                    />
+                    <!-- <Label
+                        id="parentmenucodelbl"
+                        text="{i18n>parentmenucode}"
+                        required="true"
+                    />
+                    <Label text="{i18n>parentmenucode}" />
+                        <Select
+                            id="fieldTypeLbl"
+                            forceSelection="false"
+                            selectedKey="{EntryFormDataSourceModel>/ParentMenuCode}"
+                            items="{
+                                path: 'ParentMenucodetemp>value'
+                            }"
+                            required="true"
+                            >
+                            <core:Item
+                                key="{ParentMenucodetemp>MenuCode}"
+                                text="{ParentMenucodetemp>MenuCode}"
+                            />
+                        </Select> -->
+
+                <Label
+                        id="parentmenucodelb"
+                        text="{i18n>parentmenucode}"
+                        required="true"
+                    />
+                     <Input
+                            id="parentmenucode"
+                            type="Text"
+                            value="{EntryFormDataSourceModel>/ParentMenuCode}"
+                            placeholder="Select Menu ..."
+                            showValueHelp="true"
+                            valueHelpRequest="cflForParentMenuCode"
+                            required="true"
+                            enabled="{= ${EntryFormDataSourceModel>/MenuCode} !== '-1' }" 
+                            
+                        />
+
+                    <Label
+                        id="menuiconlbl"
+                        text="{i18n>menuicon}"
+                        
+                    />
+
+
+                    <Input
+                        id="menuicon"
+                        value="{EntryFormDataSourceModel>/MenuIcon}"
+                        
+                        enabled="true"
+                    />
+
+                    <Label
+                        id="menupathlbl"
+                        text="{i18n>menupath}"
+                        required="true"
+                    />
+                    <Input
+                        id="menupath"
+                        value="{EntryFormDataSourceModel>/MenuPath}"
+                        required="true"
+                        enabled="true"
+                    />
+
+
+                       <Label
+                        id="orderlbl"
+                        text="{i18n>orderby}"
+                        required="true"
+                    />
+                    <Input
+                        id="orderby"
+                        value="{EntryFormDataSourceModel>/OrderBy}"
+                        required="true"
+                        enabled="true"
+                    /> 
+
+                    <Label
+                        text="Active"
+                        required="true"
+                    />
+                    <CheckBox
+                    select="onSelect" selected="{= ${EntryFormDataSourceModel>/IsActive} === 'Y' }"
+                        
+                        required="true"
+                        enabled="true"
+                    />
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        <footer>
+            <Toolbar class="d-flex justify-content-center btn-sav">
+                <ToolbarSpacer />
+                <Button id="MenuMaster_Button"
+                    type="Emphasized"
+                    text="{i18n>Submit}"
+                    press=".onSave"
+                />
+                <Button 
+                    type="Reject"
+                    text="{i18n>cancel}"
+                    press=".onCancel"
+                    class="can-btn"
+                />
+            </Toolbar>
+        </footer>
+
+        <!-- <Toolbar>
+            <ToolbarSpacer />
+            <Button
+                text="{i18n>save}"
+                press=".onSave"
+            />
+            <Button
+                text="{i18n>cancel}"
+                press=".onCancel"
+            />
+        </Toolbar> -->
+    </Page>
+</mvc:XMLView>

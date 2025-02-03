@@ -1,0 +1,137 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" controllerName="stoneman.controller.SearchTimeAndActionForm" displayBlock="true">
+   <App>
+         <Page id="pageSearch" title="{i18n>SEARCHTIMEANDACTION}" class="sapUiStdPage marginBoxContent sapUiContentPadding" showNavButton="true" navButtonPress=".navBack" enableScrolling="true">
+            <headerContent>
+               <Label text="{view>/myName}" class="lblText boldTxt" />
+               <Button icon="sap-icon://log" press=".onPressLogout" />
+            </headerContent>
+            <content>
+               <FlexBox id="myFlexBox_Search" alignItems="Center" justifyContent="SpaceBetween" direction="Column">
+                  <HBox width="100%" class="lPadding">
+                     <VBox width="15%" class="sapUiTinyMargin">
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text text="{i18n>TANO}" width="100%" class="sapUiSmallMarginEnd myCustomText" />
+                        </HBox>
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text text="{i18n>PROJECTTEMPLATE}" class="sapUiSmallMarginEnd myCustomText" />
+                        </HBox>
+                     </VBox>
+                     <VBox width="20%" class="sapUiTinyMargin">
+                        <HBox width="100%">
+                           <Input id="sapUiTA_NO_Search" type="Text" value="" placeholder="Select T&amp;A No ..." showValueHelp="true" valueHelpRequest=".handleTA_NO" width="12rem" class="sapUiSmallMarginBottom" liveChange="onLiveChange"/>
+                        </HBox>
+                        <HBox width="100%">
+                           <Input id="sapUiPROJECT_TEMPLATE_Search" type="Text" value="" placeholder="Select Project Template ..." showValueHelp="true" valueHelpRequest=".handlePROJECT_TEMPLATE" width="12rem" class="sapUiSmallMarginBottom" liveChange="onLiveChange"/>
+                        </HBox>
+                     </VBox>
+                     <VBox width="10%" class="sapUiTinyMargin">
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text text="{i18n>THSONO}" class="sapUiTinyMarginEnd myCustomText" />
+                        </HBox>
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text text="{i18n>STARTDATE}" class="myCustomText" />
+                        </HBox>
+                     </VBox>
+                     <VBox width="20%" class="sapUiTinyMargin">
+                        <HBox width="100%">
+                           <Input id="sapUiSO_NO_Search" type="Text" value="" placeholder="Select SO NO ..." showValueHelp="true" valueHelpRequest=".handleSO_NO" width="12rem" class="sapUiSmallMarginBottom" liveChange="onLiveChange"/>
+                        </HBox>
+                        <HBox width="100%">
+                           <DatePicker id="sapUiSTART_DATE_Search" value="{startDateHeader}" displayFormat="dd-MM-yyyy" change="handleStartDateChange" width="12rem" />
+                        </HBox>
+                     </VBox>
+                     <VBox width="10%" class="sapUiTinyMargin">
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text text="{i18n>PROJECTSTATUS}" class="sapUiSmallMarginEnd myCustomText" />
+                        </HBox>
+                     </VBox>
+                     <VBox width="20%" class="sapUiTinyMargin">
+                        <HBox width="100%">
+                           <Select id="sapUiPROJECT_STATUS_Search" width="12rem" maxWidth="100%" enabled="true" editable="true" forceSelection="false" change=".handlePROJECTSTATUSComboBox" items="{        path: 'projectStatusModel>/value'       }">
+                              <core:Item key="{projectStatusModel>prjstatus_code}" text="{projectStatusModel>prjstatus_name}" />
+                           </Select>
+                        </HBox>
+                     </VBox>
+                  </HBox>
+                  <HBox width="100%" height="10px" />
+                  <HBox width="100%" class="lPadding rPadding">
+                     <HBox width="50%">
+                        <VBox width="22%" alignContent="Center">
+                           <Button text="{i18n>BUTTONCLEARSEARCH}" type="Emphasized" class="sapUiTinyMarginBegin sapUiTinyMarginEnd" press=".onClearSearchButtonAction" />
+                        </VBox>
+                        <VBox width="15%" alignContent="Center">
+                           <Button text="{i18n>BUTTONSEARCH}" type="Emphasized" class="sapUiTinyMarginBegin" press=".onSearchButtonAction" />
+                        </VBox>
+                     </HBox>
+                     <HBox width="50%">
+                        <HBox width="60%" />
+                        <HBox width="30%">
+                           <VBox width="100%">
+                              <Button id="sapUiBtnAddNew" text="{i18n>BUTTONADD}" type="Emphasized" class="sapUiTinyMarginBegin" press=".onAddButtonAction" enabled="{tempModel>hide}" />
+                           </VBox>
+                        </HBox>
+                        
+                         <HBox width="5%">
+                           <VBox width="100%">
+                              <Button id="sapUiBtnExportExcel" icon="sap-icon://excel-attachment" class="sapUiTinyMarginBegin" press="onExportToExcel"/> 
+                               <!-- <Button id="sapUiBtnExportExcel" text="{i18n>EXPORTTOEXCEL}" type="Emphasized" class="sapUiTinyMarginBegin" press=".onExportToExcel"/> -->
+                           </VBox>
+                        </HBox>
+                     </HBox>
+                  </HBox>
+                 
+                  <HBox width="100%" height="20px" />
+               </FlexBox>
+               <VBox>
+                  <ScrollContainer width="100%" horizontal="false" vertical="true" focusable="true" class="scroll-container-height">
+                     <Table id="TASearchTable" width="auto" class="sapUiSizeCompact myCustomListClass textAlignCenter" 
+                      items="{ path:'HeaderListModel>/value',
+                        sorter: { path: 'tah_no', descending: true } 
+                    }" mode="None" visible="true" inset="true" sticky="ColumnHeaders,HeaderToolbar" itemPress=".onRowTableClick" selectionChange=".handleRowClick" showSeparators="All" growing="true" showNoData="true">
+                        <columns>
+                           <Column width="30%" minScreenWidth="Tablet" demandPopin="true">
+                              <Text text="{i18n>TANO}" class="tableColumn" />
+                           </Column>
+                           <Column width="40%" minScreenWidth="Tablet" demandPopin="true">
+                              <Text text="{i18n>THSONO}" class="tableColumn" />
+                           </Column>
+                           <Column width="30%" minScreenWidth="Tablet" demandPopin="true">
+                              <Text text="{i18n>SOITEMCODE}" class="tableColumn" />
+                           </Column>
+                           <Column width="60%" minScreenWidth="Tablet" demandPopin="true">
+                              <Text text="{i18n>SOITEMDESC}" class="tableColumn" />
+                           </Column>
+                           <Column width="50%" minScreenWidth="Tablet" demandPopin="true">
+                              <Text text="{i18n>PROJECTTEMPLATENAME}" class="tableColumn" />
+                           </Column>
+                            <Column width="40%" minScreenWidth="Tablet" demandPopin="true">
+                              <Text text="{i18n>CUSTOMERCODE}" class="tableColumn" />
+                           </Column>
+                            <Column width="30%" minScreenWidth="Tablet" demandPopin="true">
+                              <Text text="{i18n>DELIVERYDATE}" class="tableColumn" />
+                           </Column>
+                           <Column width="15%" minScreenWidth="Tablet" demandPopin="true" />
+                        </columns>
+                        <items>
+                           <ColumnListItem vAlign="Middle" type="Active" visible="true">
+                              <cells>
+                                 <Text text="{HeaderListModel>tah_no}" />
+                                 <Text text="{HeaderListModel>tah_sono}" />
+                                 <Text text="{HeaderListModel>tah_itemcode}" />
+                                 <Text text="{HeaderListModel>tah_itemdesc}" />
+                                 <Text text="{HeaderListModel>tah_prjtemplnme}" />
+                                 <Text text="{HeaderListModel>tah_prjtemplnme}" />
+                                 <Text text="{HeaderListModel>tah_sodeldate}"/>
+
+                                 <core:Icon src="sap-icon://slim-arrow-right" size="1.5rem" press=".onEditRowClicked" class="textAlignCenter" width="30px" />
+                              </cells>
+                           </ColumnListItem>
+                        </items>
+                     </Table>
+                  </ScrollContainer>
+               </VBox>
+            </content>
+            <footer />
+         </Page>
+   </App>
+</mvc:View>

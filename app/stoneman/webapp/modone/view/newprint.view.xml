@@ -1,0 +1,14 @@
+<mvc:XMLView 
+   controllerName="modonecontroller.newprint"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+>
+ <!-- <VBox>
+ <html:a href="./modone/view/NewPrint.html" target="_self"> 
+ <html:Button id="btnPrintNew" type="Emphasized" text="Print" press="onRouterClicknewprint" >Print</html:Button> </html:a> 
+    </VBox> -->
+
+
+</mvc:XMLView>

@@ -1,0 +1,23 @@
+{
+    "TemplateGuid": null,
+    "TemplateName": "",
+    "Description": null,
+    "ActiveStartDate": null,
+    "ActiveEndDate": null,
+    "IsActive": null,
+    "TemplateStages": [
+        {
+            "TemplateStageGuid": null,
+            "StageCode": null,
+            "Stage_StageGuid":null,
+            "StageSeqId": 1
+        }
+    ],
+    "TemplateMenus": [
+        {
+            "TemplateMenuGuid": null,
+            "Menu_MenuGuid": null,
+            "MenuSubType": null
+        }
+    ]
+}

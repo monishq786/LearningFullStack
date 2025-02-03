@@ -1,0 +1,774 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <IconTabBar id="cop_idIconTabBarNoIconsCADCost" class="sapUiResponsiveContentPadding  headerboldTxt header-bold" selectedKey="Stone" select="onIconTabBarSelect">
+        <items>
+        <!-- icon="sap-icon://rhombus-milestone" -->
+            <IconTabFilter text="Stone" key="Stone" class="headerboldTxt1 header-bold"   id="cop_Stone" >
+                <!-- icon="sap-icon://money-bills" -->
+                <IconTabBar id="cop_idIconTabBarNoIconsCADCostNested" class="sapUiResponsiveContentPadding" selectedKey="ActualCosting" select="onIconTabBarSelectCADCostNested">
+                    <items>
+                        <IconTabFilter text="Actual Costing" key="ActualCosting" class="headerboldTxt1 header-bold" id="cop_ActualCosting">
+
+                            <HBox width="100%" class="tab-padding" justifyContent="End">
+
+                                <VBox >
+                                    <Button id="cop_addActualCostingBtn" icon="sap-icon://add" text="{i18n>addNew}" press="addActualCostingRow" />
+                                </VBox>
+                            </HBox>
+                            <ScrollContainer width="100%" height="100%" horizontal="true" vertical="true" class="scroll-container-height">
+                                <Table items="{    path: 'copRequestModel_New>/ActualCosting',    sorter: {     path: ''    }   }" class="sapUiSizeCompact myCustomListClass textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="cop_stone">
+                                    <columns>
+                                        <Column width="140px">
+                                            <Text text="Item Code/Name" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Dimension" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Finish" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Stone %" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Qty" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="UOM" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Purchase Price" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Actual Stone Unit Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Sum of Unit Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Actual Wastage Percentage" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Actual Wastage Amount" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Total Actual Cost of Stone" />
+                                        </Column>
+                                        <Column width="60px" />
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem vAlign="Middle">
+                                            <cells>
+                                                <Text id="cop_name" text="{copRequestModel_New>name}" wrapping="false" />
+                                                <ComboBox id="cop_dimensionCADCostFragment" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>MeetingModel}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <ComboBox id="cop_finish" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>MeetingModel}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <ComboBox id="cop_stonePercentage1" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>MeetingModel}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <Input id="cop_qty1" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <Input id="cop_uom1" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+
+                                                <Input id="cop_purchasePrice1" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_actualStoneUnitCost1" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_sumOfUnitCost1" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_actualWastagePercentage1" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_actualWastageAmount1" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_totalActualCostOfStone1" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Button icon="sap-icon://delete" press="onDeleteStone" visible="{copRequestModel_New>isDelete}" />
+
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </ScrollContainer>
+
+
+                        </IconTabFilter>
+                        <!-- icon="sap-icon://chalkboard" -->
+                        <IconTabFilter text="Base Stone Cost for OH" key="BaseStoneCostforOH"  id="BaseStoneCostforOH">
+                            <HBox width="100%" class="tab-padding" justifyContent="End">
+
+                                <VBox >
+                                    <Button id="addBaseStoneCostBtn" icon="sap-icon://add" text="{i18n>addNew}" press="addBaseStoneCostRow" />
+                                </VBox>
+                            </HBox>
+
+                            <ScrollContainer width="100%" height="100%" horizontal="true" vertical="true" class="scroll-container-height">
+
+                                <Table items="{    path: 'copRequestModel_New>/BaseStoneCost',    sorter: {     path: ''    }   }" class="sapUiSizeCompact myCustomListClass textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="cop_basestone">
+                                    <columns>
+                                        <Column width="140px">
+                                            <Text text="Item Code/Name" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Stone Price" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Stone Unit Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Sum Of Stone OH Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Wastage Percentage" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Wastage Amount" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Sum Of OH Wastage Amount" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Total Cost Of Base Stone" />
+                                        </Column>
+                                        <Column width="60px" />
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem vAlign="Middle">
+                                            <cells>
+                                                <Text id="cop_baseStonecostName" text="{copRequestModel_New>name}" wrapping="false" />
+                                                <Input id="cop_OHStonePrice" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <Input id="cop_OHStoneUnitCost" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+
+                                                <Input id="cop_sumOfStoneOHCost" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <ComboBox id="cop_OHWastagePercentage" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>percentages}" selectionChange=".onColorComboChange" items="{path:'numericalModel>/percentages',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{numericalModel>id}" text="{numericalModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <Input id="cop_OHWastageAmount" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+
+
+                                                <Input id="cop_SumOfOHWastageAmount" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <Input id="cop_TotalCostOfBaseStone" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+                                                <Button icon="sap-icon://delete" press="onDeleteStoneCost"  visible="{copRequestModel_New>isDelete}"/>
+
+
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </ScrollContainer>
+                        </IconTabFilter>
+                        <!-- icon="sap-icon://chain-link" -->
+                        <IconTabFilter text="Local Handling Charges" key="LocalHandlingCharges"  id="cop_LocalHandlingCharges">
+                            <HBox width="100%" justifyContent="Start" class="header-padd">
+                                <VBox width="180px" class="vboxSpacing">
+                                    <Label id="cop_localHandlingPercentageLbl" labelFor="localHandlingPercentageLbl" text="{i18n>localHandlingPercentageLbl}" class="labelHeight" />
+                                    <Label id="cop_localHandlingAmountLbl" labelFor="localHandlingAmountLbl" text="{i18n>localHandlingAmountLbl}" class="labelHeight" />
+                                </VBox>
+                                <VBox width="180px">
+                                    <ComboBox id="cop_localHandlingPercentage" width="180px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>localHandlingPercentage}" selectionChange=".onColorComboChange" items="{path:'numericalModel>/percentages',templateShareable:false}" class="labelHeight">
+                                        <items>
+                                            <core:Item key="{numericalModel>id}" text="{numericalModel>name}" />
+                                        </items>
+                                    </ComboBox>
+                                    <Input id="cop_localHandlingAmount" enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                </VBox>
+                            </HBox>
+
+
+
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </IconTabFilter>
+            <!-- icon="sap-icon://process" -->
+            <IconTabFilter text="Stone Process" key="StoneProcess" >
+
+                <HBox width="100%" class="tab-padding" justifyContent="End">
+
+                    <VBox >
+                        <Button id="cop_addStoneProcessBtn" icon="sap-icon://add" text="{i18n>addNew}" press="addStoneProcessRow" />
+                    </VBox>
+                </HBox>
+                <ScrollContainer width="100%" height="100%" horizontal="true" vertical="true" class="scroll-container-height">
+                    <Table items="{    path: 'copRequestModel_New>/StoneProcess',    sorter: {     path: ''    }   }" class="sapUiSizeCompact myCustomListClass textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="cop_stoneprocess">
+                        <columns>
+                            <Column width="180px">
+                                <Text text="" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Process Cost" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Input Method" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Time" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Wastage Process %" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Process Wastage Cost" />
+                            </Column>
+                            <Column width="60px" />
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text id="cop_StoneProcessName" text="{copRequestModel_New>name}" wrapping="false" />
+                                    <Input id="cop_processCost" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                    <Input id="cop_inputMethod" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+                                    <Input id="cop_Time" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                    <Input id="cop_wastageprocesspercentage" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+                                    <Input id="cop_processwastagecost" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                    <Button icon="sap-icon://delete" press="onDeleteStoneProcess" visible="{copRequestModel_New>isDelete}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+                 <!-- icon="sap-icon://wrench" -->
+            </IconTabFilter>
+            <IconTabFilter text="Metal" key="Metal" id="cop_Metal" >
+            <!-- icon="sap-icon://money-bills" -->
+                <IconTabBar id="cop_idIconTabBarNoIconsMetalNested" class="sapUiResponsiveContentPadding" selectedKey="ActualCostingMetal">
+                    <items>
+                        <IconTabFilter text="Actual Costing" key="ActualCostingMetal"  id="cop_ActualCostingMetal">
+                            <HBox width="100%" class="tab-padding" justifyContent="End">
+
+                                <VBox >
+                                    <Button id="addMetalBtn" icon="sap-icon://add" text="{i18n>addNew}" press="addMetalRow" />
+                                </VBox>
+                            </HBox>
+
+                            <ScrollContainer width="100%" height="100%" horizontal="true" vertical="true" class="scroll-container-height">
+                                <Table items="{    path: 'copRequestModel_New>/MetalActualCosting',    sorter: {     path: ''    }   }" class="sapUiSizeCompact myCustomListClass textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="cop_metal">
+                                    <columns>
+                                        <Column width="140px">
+                                            <Text text="Item Code/Name" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Dimension" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Finish" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Metal %" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Qty" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="UOM" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Purchase Price" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Actual Metal Unit Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Sum of Unit Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Actual Wastage Percentage" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Actual Wastage Amount" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Total Actual Wastage Amount" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Total Actual Cost of Metal" />
+                                        </Column>
+                                        <Column width="60px" />
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem vAlign="Middle">
+                                            <cells>
+                                                <Text id="cop_MetalActualCosting" text="{copRequestModel_New>name}" wrapping="false" />
+                                                <ComboBox id="cop_dimensionMetal" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>MeetingModel}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <ComboBox id="cop_finishMetal" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>MeetingModel}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <ComboBox id="cop_metalPercentage" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>MeetingModel}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <Input id="cop_qtyMetal" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <Input id="cop_uomMetal" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+
+                                                <Input id="cop_purchasePriceMetal" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_actualStoneUnitCostMetal" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_sumOfUnitCostMetal" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_actualWastagePercentageMetal" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_actualWastageAmountMetal" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_totalactualWastageAmountMetal" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+
+                                                <Input id="cop_totalActualCostOfMetal" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Button icon="sap-icon://delete" press="onDeleteMetal" visible="{copRequestModel_New>isDelete}"/>
+
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </ScrollContainer>
+
+
+                        </IconTabFilter>
+                        <!-- icon="sap-icon://money-bills" -->
+                        <IconTabFilter text="Base Metal Cost for OH" key="BaseMetalCostforOH"  id="cop_BaseMetalCostforOH">
+                            <HBox width="100%" class="tab-padding" justifyContent="End">
+
+                                <VBox >
+                                    <Button id="cop_addBaseMetalCostBtn" icon="sap-icon://add" text="{i18n>addNew}" press="addBaseMetalCostRow" />
+                                </VBox>
+                            </HBox>
+
+                            <ScrollContainer width="100%" height="100%" horizontal="true" vertical="true" class="scroll-container-height">
+                                <Table items="{    path: 'copRequestModel_New>/BaseMetalCost',    sorter: {     path: ''    }   }" class="sapUiSizeCompact myCustomListClass textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="cop_baseMetal">
+                                    <columns>
+                                        <Column width="140px">
+                                            <Text text="Item Code/Name" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Metal Price" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Metal Unit Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Sum Of Metal OH Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Wastage Percentage" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Wastage Amount" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Sum Of OH Wastage Amount" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Total Cost Of Base Metal" />
+                                        </Column>
+                                        <Column width="60px" />
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem vAlign="Middle">
+                                            <cells>
+                                                <Text id="cop_baseMetalcostName" text="{copRequestModel_New>name}" wrapping="false" />
+                                                <Input id="cop_OHMetalPrice" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <Input id="cop_OHMetalUnitCost" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+
+                                                <Input id="cop_sumOfMetalOHCost" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <ComboBox id="cop_OHWastagePercentageMetal" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>percentage}" selectionChange=".onColorComboChange" items="{path:'numericalModel>/percentages',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{numericalModel>id}" text="{numericalModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <Input id="cop_OHWastageAmountMetal" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+
+
+                                                <Input id="cop_SumOfOHWastageAmountMetal" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <Input id="cop_TotalCostOfBaseMetal" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+                                                <Button icon="sap-icon://delete" press="onDeleteMetalCost" visible="{copRequestModel_New>isDelete}"/>
+
+
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </ScrollContainer>
+
+
+
+
+
+
+                            <!-- <HBox width="100%" justifyContent="Start" class="header-padd">
+                                <VBox width="180px" class="vboxSpacing">
+                                    <Label id="fieldLbl" labelFor="fieldLbl" text="{i18n>fieldLbl}" class="labelHeight" />
+                                    <Label id="OHMetalPriceLbl" labelFor="OHMetalPriceLbl" text="{i18n>OHMetalPriceLbl}" class="labelHeight" />
+                                    <Label id="OHMetalUnitCostLbl" labelFor="OHMetalUnitCostLbl" text="{i18n>OHMetalUnitCostLbl}" class="labelHeight" />
+                                    <Label id="SumOfMetalOHLbl" labelFor="SumOfMetalOHLbl" text="{i18n>SumOfMetalOHLbl}" class="labelHeight" />
+                                    <Label id="OHWastagePercentageLbl" labelFor="OHWastagePercentageLbl" text="{i18n>OHWastagePercentageLbl}" class="labelHeight" />
+                                    <Label id="OHWastageAmountLbl" labelFor="OHWastageAmountLbl" text="{i18n>OHWastageAmountLbl}" class="labelHeight" />
+                                    <Label id="SumOfOHWastageAmountLbl" labelFor="SumOfOHWastageAmountLbl" text="{i18n>SumOfOHWastageAmountLbl}" class="labelHeight" />
+                                    <Label id="TotalCostOfBaseMetalLbl" labelFor="TotalCostOfBaseMetalLbl" text="{i18n>TotalCostOfBaseMetalLbl}" class="labelHeight" />
+                                </VBox>
+                                <VBox width="180px" class="vboxSpacing">
+                                    <Label id="metal1Lbl" labelFor="metal1Lbl" text="{i18n>metal1Lbl}" class="labelHeight" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingPercentage}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <ComboBox width="180px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/',templateShareable:false}" class="labelHeight">
+                                        <items>
+                                            <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                        </items>
+                                    </ComboBox>
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+
+                                </VBox>
+                                <VBox width="180px" class="vboxSpacing">
+                                    <Label id="metal2Lbl" labelFor="metal2Lbl" text="{i18n>metal2Lbl}" class="labelHeight" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingPercentage}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <ComboBox width="180px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/',templateShareable:false}" class="labelHeight">
+                                        <items>
+                                            <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                        </items>
+                                    </ComboBox>
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                </VBox>
+                                <VBox width="180px" class="vboxSpacing">
+                                    <Label id="metal3Lbl" labelFor="metal3Lbl" text="{i18n>metal3Lbl}" class="labelHeight" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingPercentage}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <ComboBox width="180px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/',templateShareable:false}" class="labelHeight">
+                                        <items>
+                                            <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                        </items>
+                                    </ComboBox>
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                    <Input enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                </VBox>
+                            </HBox> -->
+
+                        </IconTabFilter>
+                        <!-- icon="sap-icon://chain-link" -->
+                        <IconTabFilter text="Local Handling Charges" key="LocalHandlingChargesMetal"  id="cop_LocalHandlingChargesMetal">
+                            <HBox width="100%" justifyContent="Start" class="header-padd">
+                                <VBox width="180px" class="vboxSpacing">
+                                    <Label id="cop_localHandlingPercentageLblMetal" labelFor="localHandlingPercentageLbl" text="{i18n>localHandlingPercentageLbl}" class="labelHeight" />
+                                    <Label id="cop_localHandlingAmountLblMetal" labelFor="localHandlingAmountLbl" text="{i18n>localHandlingAmountLbl}" class="labelHeight" />
+                                </VBox>
+                                <VBox width="180px">
+
+
+                                    <ComboBox id="cop_localHandlingPercentageMetal" width="180px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>localHandlingPercentage}" selectionChange=".onColorComboChange" items="{path:'numericalModel>/percentages',templateShareable:false}" class="labelHeight">
+                                        <items>
+                                            <core:Item key="{numericalModel>id}" text="{numericalModel>name}" />
+                                        </items>
+                                    </ComboBox>
+                                    <Input id="cop_localHandlingAmountMetal" enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                </VBox>
+                            </HBox>
+
+
+
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+
+            </IconTabFilter>
+            <!-- icon="sap-icon://process" -->
+            <IconTabFilter text="Metal Process" key="MetalProcess"  id="cop_MetalProcess">
+                <HBox width="100%" class="tab-padding" justifyContent="End">
+
+                    <VBox >
+                        <Button id="cop_addMetalProcessBtn" icon="sap-icon://add" text="{i18n>addNew}" press="addMetalProcessRow" />
+                    </VBox>
+                </HBox>
+
+                <ScrollContainer width="100%" height="100%" horizontal="true" vertical="true" class="scroll-container-height">
+
+                    <Table items="{    path: 'copRequestModel_New>/MetalProcess',    sorter: {     path: ''    }   }" class="sapUiSizeCompact myCustomListClass textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="cop_metalprocess">
+                        <columns>
+                            <Column width="180px">
+                                <Text text="" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Process Cost" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Input Method" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Time" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Wastage Process %" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Process Wastage Cost" />
+                            </Column>
+                            <Column width="60px"></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text id="cop_metalProcessName" text="{copRequestModel_New>name}" wrapping="false" />
+                                    <Input id="cop_processCostMetal" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                    <Input id="cop_inputMethodMetal" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+                                    <Input id="cop_TimeMetal" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                    <Input id="cop_wastageprocesspercentageMetal" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+                                    <Input id="cop_processwastagecostMetal" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                    <Button icon="sap-icon://delete" press="onDeleteMetalProcess" visible="{copRequestModel_New>isDelete}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+            </IconTabFilter>
+            <!-- icon="sap-icon://tri-state" -->
+            <!-- icon="sap-icon://money-bills" -->
+            <IconTabFilter text="Wood" key="Wood"  id="cop_Wood">
+
+                <IconTabBar id="cop_idIconTabBarNoIconsWoodNested" class="sapUiResponsiveContentPadding" selectedKey="ActualCostingWood">
+                    <items>
+                        <IconTabFilter text="Actual Costing" key="ActualCostingWood"  id="cop_ActualCostingWood">
+                            <HBox width="100%" class="tab-padding" justifyContent="End">
+
+                                <VBox >
+                                    <Button id="cop_addWoodBtn" icon="sap-icon://add" text="{i18n>addNew}" press="addWoodRow" />
+                                </VBox>
+                            </HBox>
+
+                          <ScrollContainer width="100%" height="100%" horizontal="true" vertical="true" class="scroll-container-height">
+
+                          <Table items="{    path: 'copRequestModel_New>/wood',    sorter: {     path: ''    }   }" class="sapUiSizeCompact myCustomListClass textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="cop_wood">
+                                    <columns>
+                                        <Column width="140px">
+                                            <Text text="Item Code/Name" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Dimension" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Finish" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Wood %" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Qty" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="UOM" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Purchase Price" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Actual Wood Unit Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Sum of Unit Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Actual Wastage Percentage" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Actual Wastage Amount" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Total Actual Wastage Amount" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Total Actual Cost of Wood" />
+                                        </Column>
+                                        <Column width="60px"></Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem vAlign="Middle">
+                                            <cells>
+                                                <Text id="cop_woodname" text="{copRequestModel_New>name}" wrapping="false" />
+                                                <ComboBox id="cop_dimensionWood" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>MeetingModel}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <ComboBox id="cop_finishWood" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>MeetingModel}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <ComboBox id="cop_woodPercentage" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>MeetingModel}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <Input id="cop_qtyWood" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <Input id="cop_uomWood" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+
+                                                <Input id="cop_purchasePriceWood" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_actualWoodUnitCost" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_sumOfUnitCostWood" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_actualWastagePercentageWood" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_actualWastageAmountWood" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_totalactualWastageAmountWood" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+                                                <Input id="cop_totalActualCostOfWood" tooltip="{copRequestModel_New>Remarks}" placeholder="" width="120px" fieldWidth="100%" class="labelHeight" value="{copRequestModel_New>Remarks}" />
+
+                                                <Button icon="sap-icon://delete" press="onDeleteWood" visible="{copRequestModel_New>isDelete}" />
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </ScrollContainer>
+
+
+                        </IconTabFilter>
+                        <!-- icon="sap-icon://factory"  -->
+                        <IconTabFilter text="Base Wood Cost for OH" key="BaseWoodCostforOH" id="cop_BaseWoodCostforOH">
+
+                            <HBox width="100%" class="tab-padding" justifyContent="End">
+
+                                <VBox >
+                                    <Button id="cop_addWoodCostBtn" icon="sap-icon://add" text="{i18n>addNew}" press="addWoodCostRow" />
+                                </VBox>
+                            </HBox>
+                           <ScrollContainer width="100%" height="100%" horizontal="true" vertical="true" class="scroll-container-height">
+
+                              <Table items="{    path: 'copRequestModel_New>/basewoodcost',    sorter: {     path: ''    }   }" class="sapUiSizeCompact myCustomListClass textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="basewood">
+                                    <columns>
+                                        <Column width="140px">
+                                            <Text text="" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Wood Price" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Wood Unit Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Sum Of Wood OH Cost" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Wastage Percentage" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="OH Wastage Amount" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Sum Of OH Wastage Amount" />
+                                        </Column>
+                                        <Column width="140px">
+                                            <Text text="Total Cost Of Base Wood" />
+                                        </Column>
+                                        <Column width="60px"></Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem vAlign="Middle">
+                                            <cells>
+                                                <Text id="cop_basewoodcost" text="{copRequestModel_New>name}" wrapping="false" />
+                                                <Input id="cop_OHWoodPrice" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <Input id="cop_OHWoodUnitCost" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+
+                                                <Input id="cop_sumOfWoodOHCost" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <ComboBox id="cop_OHWastagePercentageWood" width="140px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>MeetingModel}" selectionChange=".onColorComboChange" items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}" class="labelHeight">
+                                                    <items>
+                                                        <core:Item key="{MeetingModel>id}" text="{MeetingModel>name}" />
+                                                    </items>
+                                                </ComboBox>
+                                                <Input id="cop_OHWastageAmountWood" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+
+
+                                                <Input id="cop_SumOfOHWastageAmountWood" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                                <Input id="cop_TotalCostOfBaseWood" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+                                                <Button icon="sap-icon://delete" press="onDeleteWoodCost" visible="{copRequestModel_New>isDelete}"/>
+
+
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </ScrollContainer>
+                        </IconTabFilter>
+                        <!-- icon="sap-icon://chain-link" -->
+                        <IconTabFilter text="Local Handling Charges" key="LocalHandlingChargesWood"  id="cop_LocalHandlingChargesWood">
+                            <HBox width="100%" justifyContent="Start" class="header-padd">
+                                <VBox width="180px" class="vboxSpacing">
+                                    <Label id="cop_localHandlingPercentageLblWood" labelFor="localHandlingPercentageLbl" text="{i18n>localHandlingPercentageLbl}" class="labelHeight" />
+                                    <Label id="cop_localHandlingAmountLblWood" labelFor="localHandlingAmountLbl" text="{i18n>localHandlingAmountLbl}" class="labelHeight" />
+                                </VBox>
+                                <VBox width="180px">
+
+                                    <ComboBox id="cop_localHandlingPercentageWood" width="180px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{copRequestModel_New>localHandlingPercentage}" selectionChange=".onColorComboChange" items="{path:'numericalModel>/percentages',templateShareable:false}" class="labelHeight">
+                                        <items>
+                                            <core:Item key="{numericalModel>id}" text="{numericalModel>name}" />
+                                        </items>
+                                    </ComboBox>
+                                    <Input id="cop_localHandlingAmountWood" enabled="true" value="{copRequestModel_New>/localHandlingAmount}" description="" width="180px" fieldWidth="100%" />
+                                </VBox>
+                            </HBox>
+
+
+
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </IconTabFilter>
+             <!-- icon="sap-icon://process" -->
+            <IconTabFilter text="Wood Process" key="WoodProcess" id="cop_WoodProcess">
+
+                <HBox width="100%" class="tab-padding" justifyContent="End">
+
+                    <VBox >
+                        <Button id="cop_addWoodProcessBtn" icon="sap-icon://add" text="{i18n>addNew}" press="addWoodProcessRow" />
+                    </VBox>
+                </HBox>
+                 <ScrollContainer width="100%" height="100%" horizontal="true" vertical="true" class="scroll-container-height">
+
+                                
+                    <Table items="{    path: 'copRequestModel_New>/woodprocess',    sorter: {     path: ''    }   }" class="sapUiSizeCompact myCustomListClass textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="cop_woodprocess">
+                        <columns>
+                            <Column width="180px">
+                                <Text text="" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Process Cost" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Input Method" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Time" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Wastage Process %" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Process Wastage Cost" />
+                            </Column>
+                            <Column width="60px"></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text id="cop_woodprocessname" text="{copRequestModel_New>name}" wrapping="false" />
+                                    <Input id="cop_processCostwood" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                    <Input id="cop_inputMethodwood" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+                                    <Input id="cop_Timewood" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                    <Input id="cop_wastageprocesspercentagewood" width="120px" placeholder="" value="{copRequestModel_New>pddrraUser}" fieldWidth="100%" class="labelHeight"/>
+                                    <Input id="cop_processwastagecostwood" width="120px" placeholder="" value="{copRequestModel_New>departmentName}" fieldWidth="100%" class="labelHeight" />
+                                    <Button icon="sap-icon://delete" press="onDeleteWoodProcess" visible="{copRequestModel_New>isDelete}"/>
+
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</core:FragmentDefinition>

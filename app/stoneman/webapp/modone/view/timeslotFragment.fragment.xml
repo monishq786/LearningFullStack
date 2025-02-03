@@ -1,0 +1,31 @@
+<core:FragmentDefinition controllerName="modonecontroller.timeslotFragment"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+ xmlns:grid="sap.ui.layout.cssgrid"
+  xmlns:f="sap.f">
+  <!-- dialog for seek advice -->
+  <Dialog id="timeSlotDialog" class="sapMText.message boldTitle customDialogHeight" stretch="false">
+    <content>
+      <f:GridList id="gridList" headerText="GridList with mode MultiSelect" mode="MultiSelect" items="{ path: '/modelData' }" class="sapUiResponsiveContentPadding">
+        <f:customLayout>
+          <grid:GridBasicLayout gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))" gridGap="0.5rem" />
+        </f:customLayout>
+
+        <f:GridListItem detailPress="onDetailPress" press="onPress" counter="{Quantity}" highlight="{Status}" type="{type}">
+          <VBox height="100%">
+            <HBox height="100%" class="sapUiSmallMargin" alignItems="Center" visible="true">
+              <VBox>
+                <Title text="{Name}" wrapping="true" />
+                <Label text="{Description}" wrapping="true" />
+              </VBox>
+            </HBox>
+          </VBox>
+        </f:GridListItem>
+      </f:GridList>
+    </content>
+    <buttons>
+      <Button text="Cancel" press="onCloseDialog"/>
+      <Button text="Send" press=".onSendDialog"/>
+    </buttons>
+  </Dialog>
+</core:FragmentDefinition>

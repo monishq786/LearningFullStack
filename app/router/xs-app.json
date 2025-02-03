@@ -1,5 +1,13 @@
 {
+  "welcomeFile": "/stoneman",
   "routes": [
+    {
+      "source": "^/sap/(.*)$",
+      "target": "$1",
+      "destination": "S4HANA_QA",
+      "authenticationType": "none",
+      "csrfProtection": true
+    },
     {
       "source": "^/app/(.*)$",
       "target": "$1",
@@ -15,6 +23,7 @@
       "source": "^/(.*)$",
       "target": "$1",
       "destination": "srv-api",
+      "authenticationType": "none",
       "csrfProtection": true
     }
   ]

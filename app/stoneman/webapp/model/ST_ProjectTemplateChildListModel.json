@@ -1,0 +1,112 @@
+{
+    "__metadata": {
+        "id": null,
+        "uri": null,
+        "type": null,
+        "etag": null
+    },
+    "ProjectUUID": null,
+    "ProjectInternalID": null,
+    "Project": null,
+    "ProjectDescription": null,
+    "EnterpriseProjectType": null,
+    "PriorityCode": null,
+    "ProjectStartDate": null,
+    "ProjectEndDate": null,
+    "ProcessingStatus": null,
+    "ResponsibleCostCenter": null,
+    "ProfitCenter": null,
+    "ProjectManagerUUID": null,
+    "ProjectProfileCode": null,
+    "FunctionalArea": null,
+    "CompanyCode": null,
+    "ControllingArea": null,
+    "Plant": null,
+    "Location": null,
+    "TaxJurisdiction": null,
+    "ProjectCurrency": null,
+    "AvailabilityControlProfile": null,
+    "AvailabilityControlIsActive": null,
+    "FunctionalLocation": null,
+    "IsBillingRelevant": null,
+    "EntProjIsMultiSlsOrdItmsEnbld": null,
+    "LastChangeDateTime": null,
+    "InvestmentProfile": null,
+    "to_EnterpriseProjectElement": {
+        "results": [
+            {
+                "__metadata": {
+                    "id": null,
+                    "uri": null,
+                    "type":null,
+                    "etag":null
+                },
+                "ProjectElementUUID": null,
+                "ProjectElement": null,
+                "WBSElementInternalID": null,
+                "ProjectUUID": null,
+                "ProjectElementDescription": null,
+                "ParentObjectUUID": null,
+                "ProcessingStatus": null,
+                "SortingNumber":null,
+                "PlannedStartDate": null,
+                "PlannedEndDate": null,
+                "ResponsibleCostCenter": null,
+                "CompanyCode": null,
+                "ProfitCenter": null,
+                "FunctionalArea": null,
+                "ControllingArea": null,
+                "Plant": null,
+                "Location": null,
+                "TaxJurisdiction": null,
+                "FunctionalLocation": null,
+                "FactoryCalendar": null,
+                "CostingSheet": null,
+                "InvestmentProfile": null,
+                "WBSIsStatisticalWBSElement": null,
+                "CostCenter": null,
+                "WBSElementIsBillingElement": null,
+                "CreatedByUser": null,
+                "CreationDateTime": null,
+                "LastChangeDateTime": null,
+                "LastChangedByUser": null,
+                "ProjectLastChangedDateTime": null,
+                "to_EnterpriseProject": {
+                    "__deferred": {
+                        "uri": null
+                    }
+                },
+                "to_EntProjectElmntPublicSector": {
+                    "__deferred": {
+                        "uri": null
+                    }
+                },
+                "to_EntProjElmntBlkFunc": {
+                    "__deferred": {
+                        "uri": null
+                    }
+                },
+                "to_ParentProjElement": {
+                    "__deferred": {
+                        "uri": null
+                    }
+                },
+                "to_SubProjElement": {
+                    "__deferred": {
+                        "uri": null
+                    }
+                }
+            }
+        ]
+    },
+    "to_EntProjBlkFunc": {
+        "__deferred": {
+            "uri": null
+        }
+    },
+    "to_EntProjectPublicSector": {
+        "__deferred": {
+            "uri": null
+        }
+    }
+}

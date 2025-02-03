@@ -1,0 +1,67 @@
+<!-- <mvc:View
+    controllerName="stoneman.controller.Login"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+>
+    <Page title="{i18n>LOGINHEADERTITLE}" class="sapUiStdPage">
+        <headerContent>
+        </headerContent>
+        <content>
+            <VBox height="600px">
+                <f:SimpleForm id="SimpleFormChangeLogin" editable="true" layout="ResponsiveGridLayout" 
+                labelSpanXL="3" labelSpanL="3" labelSpanM="3" 
+                labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" 
+                emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                    <f:content>
+                        <Label text="{i18n>LOGINPAGELABELUSERNAME}"/>
+                        <Input id="usernameId" valueLiveUpdate="true" value="{username}" />
+                        <Label text="{i18n>LOGINPAGELABELPASSWORD}"/>
+                        <Input id="passwordId" valueLiveUpdate="true" value="{password}" type="Password" />
+                    </f:content>
+                </f:SimpleForm>
+            </VBox>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button type="Emphasized" icon="sap-icon://action" text="{i18n>LOGINPAGELOGINBUTTON}" press=".onPressLogin" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View> -->
+
+<mvc:View controllerName="stoneman.controller.Login"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m" displayBlock="true">
+    <Page title="{i18n>LOGINHEADERTITLE}" class="sapUiStdPage login-page" showHeader="false">
+        <content>
+            <VBox class="login-container" justifyContent="Center" alignItems="Center">
+                <Image src="../images/stonemenLogo.png" id="imgLogoctrl" class="login-logo"/>
+                <Panel class="login-panel">
+                    <content>
+                        <VBox class="login-form">
+                            <!-- <Label id="loginText" text="{i18n>LOGINPAGELABELUSERNAME}" class="login-text"/> -->
+                            <Label text="{i18n>LOGINPAGELABELUSERNAME}"/>
+                            <Input id="usernameId" type="Email" valueLiveUpdate="true" value="{username}"  liveChange="onEmailChange"/>
+                            <Label text="{i18n>LOGINPAGELABELPASSWORD}"/>
+                            <Input id="passwordId" valueLiveUpdate="true" value="{password}" type="Password" />
+                            <Button type="Emphasized" icon="sap-icon://action" text="Login" press=".onPressLogin" class="login-button loginbtn"/>
+                        </VBox>
+                    </content>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
+
+
+

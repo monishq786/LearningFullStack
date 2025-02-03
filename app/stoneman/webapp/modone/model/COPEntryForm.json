@@ -1,0 +1,119 @@
+{
+    "CostingCategory": null,
+    "CostingATL": null,
+    "CostingHeaderUUID": null,
+    "CADNo": null,
+    "CADUUID": null,
+    "CostingNo": null,
+    "FormStatus": null,
+    "ItemCode": null,
+    "ItemDesc": null,
+    "SciplCode": null,
+    "SciplDesc": null,
+    "CostingVersion": null,
+    "CostingTypeCode": null,
+    "CostingTypeName": null,
+    "SONumberCode": null,
+    "Diameter": null,
+    "Length": null,
+    "Width": null,
+    "Height": null,
+    "Unit": null,
+    "UnitCode": null,
+    "UnitName": null,
+    "Weight": null,
+    "Costing_Executive_UserID": null,
+    "Costing_ATL_UserID": null,
+    "Costing_Head_UserID": null,
+    "CostingDate": null,
+    "BuyerCode": null,
+    "BuyerName": null,
+    "StoneSumUnitcost": null,
+    "StoneSumActWastageAmt": null,
+    "StoneTotalActCost": null,
+    "StoneSumOHCost": null,
+    "StoneSumOHWastageAmount": null,
+    "StoneTotalCostBaseStone": null,
+    "StoneLocalHandlingPer": null,
+    "StoneLocalHandlingAmount": null,
+    "StoneSumProcessCost": null,
+    "StoneTotalTime": null,
+    "StoneSumProcessWastageCost": null,
+    "WoodSumUnitcost": null,
+    "WoodSumActWastageAmt": null,
+    "WoodTotalActCost": null,
+    "WoodSumOHCost": null,
+    "WoodSumOHWastageAmount": null,
+    "WoodTotalCostBaseWood": null,
+    "WoodLocalHandlingPer": null,
+    "WoodLocalHandlingAmount": null,
+    "WoodSumProcessCost": null,
+    "WoodTotalTime": null,
+    "WoodSumProcessWastageCost": null,
+    "MetalSumUnitcost": null,
+    "MetalSumActWastageAmt": null,
+    "MetalTotalActCost": null,
+    "MetalSumOHCost": null,
+    "MetalSumOHWastageAmount": null,
+    "MetalTotalCostBaseMetal": null,
+    "MetalLocalHandlingPer": null,
+    "MetalLocalHandlingAmount": null,
+    "MetalSumProcessCost": null,
+    "MetalTotalTime": null,
+    "MetalSumProcessWastageCost": null,
+    "CostingStoneActualCostDetail": [],
+    "CostingStoneBaseCostDetail": [],
+    "CostingStoneProcessDetail": [],
+    "CostingWoodActualCostDetail": [],
+    "CostingWoodBaseCostDetail": [],
+    "CostingWoodProcessDetail": [],
+    "CostingMetalActualCostDetail": [],
+    "CostingMetalBaseCostDetail": [],
+    "CostingMetalProcessDetail": [],
+    "CostingAccessory": [],
+    "CostingPacking": [],
+    "CostingExtraCharges": [],
+    "CostingApprovalTransaction": [],
+    "CostingSeekAdvice": [],
+    "CostingStageCode_StageCode_StageConstant": null,
+    "CostingStageName": null,
+    "CostingTypeStatic": [
+        {
+            "id": "CAD",
+            "name": "CAD"
+        },
+        {
+            "id": "Sample",
+            "name": "Sample"
+        },
+        {
+            "id": "Buyer",
+            "name": "Buyer"
+        },
+        {
+            "id": "Production Target",
+            "name": "Production Target"
+        }
+    ],
+    "CostingVersionStatic": [
+        {
+            "id": "Version1",
+            "name": "Version 1"
+        },
+        {
+            "id": "Version2",
+            "name": "Version 2"
+        }
+    ],
+    "SoNoStatic": [
+        {
+            "id": "1",
+            "name": "1"
+        },
+        {
+            "id": "2",
+            "name": "2"
+        }
+    ],
+    "ActualCosting": []
+}

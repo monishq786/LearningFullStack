@@ -1,0 +1,46 @@
+ procedure InsertNotification(
+	in FORMTYPE nvarchar(200),
+	in DOCUMENTGUID nvarchar(200), 
+	in DOCUMENTNO integer,
+	in ROLE_ROLECODE_ROLECONSTANT nvarchar(200),
+	in USERGUID_USERID nvarchar(200),
+	in USERNAME nvarchar(200),
+	in STATUS nvarchar(200),
+	in TASK nvarchar(200),
+	in READ boolean 
+	
+)
+as 
+begin
+
+	INSERT INTO "SAP_CAPIRE_STONEMAN_TNOTIFICATION" (
+    "CREATEDAT",
+    "CREATEDBY",
+    "NOTIFICATIONID",
+    "FORMTYPE",
+    "DOCUMENTGUID",
+    "DOCUMENTNO",
+    "ROLE_ROLECODE_ROLECONSTANT",
+    "USERGUID_USERID",
+    "USERNAME",
+    "STATUS",
+    "TASK",
+    "READ"
+) VALUES (
+    CURRENT_DATE,
+    'Afshan',
+    SYSUUID,
+    :FORMTYPE,
+    :DOCUMENTGUID,
+    :DOCUMENTNO,
+    :ROLE_ROLECODE_ROLECONSTANT,
+    :USERGUID_USERID,
+    :USERNAME,
+    :STATUS,
+    :TASK,
+    :READ
+);
+
+	
+
+end 

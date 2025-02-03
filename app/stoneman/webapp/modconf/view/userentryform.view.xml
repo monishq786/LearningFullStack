@@ -1,0 +1,67 @@
+<mvc:XMLView xmlns:mvc="sap.ui.core.mvc"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified" controllerName="modconfcontroller.userentryform" displayBlock="true"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:grid="sap.ui.layout.Grid"
+    xmlns:layout="sap.ui.layout">
+    <m:Page id="useref" title="{i18n>title}" showNavButton="true" navButtonPress="onPressOfEntryFormCancelButton">
+        <!-- <m:headerContent>
+            <m:Label text="{view>/myName}" class="lblText boldTxt" />
+            <m:Button icon="sap-icon://log" press=".onPressLogout" />
+        </m:headerContent> -->
+
+        <ObjectPageLayout upperCaseAnchorBar="false">
+            <sections>
+                <ObjectPageSection titleUppercase="false" title="User">
+                    <ObjectPageSubSection title="User" titleUppercase="false">
+                        <m:VBox id="userSection" class="section">
+                            <core:Fragment fragmentName="modconfigfragment.userConfigfragment.User" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <ObjectPageSection titleUppercase="false" title="Buyer">
+                    <ObjectPageSubSection title="Buyer" titleUppercase="false">
+                        <m:VBox id="buyerSection" class="section">
+                            <core:Fragment fragmentName="modconfigfragment.userConfigfragment.Buyer" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <ObjectPageSection titleUppercase="false" title="Product Category">
+                    <ObjectPageSubSection title="Product Category" titleUppercase="false">
+                        <m:VBox id="productcategorySection" class="section">
+                            <core:Fragment fragmentName="modconfigfragment.userConfigfragment.ProductCategory" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <ObjectPageSection titleUppercase="false" title="Material Category">
+                    <ObjectPageSubSection title="Material Category" titleUppercase="false">
+                        <m:VBox id="materialcategorySection" class="section">
+                            <core:Fragment fragmentName="modconfigfragment.userConfigfragment.MaterialCategory" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+            </sections>
+        </ObjectPageLayout>
+        <m:footer>
+            <m:Toolbar>
+                <m:ToolbarSpacer />
+                    <m:Button type="Emphasized" id="user_btnSubmit" text="{i18n>submit}" press="onSave"/>
+                    <m:Button 
+                    type="Reject"
+                    text="{i18n>cancel}"
+                    press=".onCancel"
+                />
+            </m:Toolbar>
+        </m:footer>
+    </m:Page>
+</mvc:XMLView>

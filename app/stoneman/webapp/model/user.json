@@ -1,0 +1,17 @@
+{
+    "displayname":null,
+    "value":[
+        {
+            "username": "Riya Rai",
+            "password": "1234",
+            "role": "user",
+            "hide": null
+        },
+        {
+            "username": "Rahul Jain",
+            "password": "1234",
+            "role": "admin",
+            "hide": null
+        }
+    ]
+}

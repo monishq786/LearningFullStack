@@ -1,0 +1,13 @@
+{
+    "menuItems": [
+        {
+            "label": "Profile"
+        },
+        {
+            "label": "Settings"
+        },
+        {
+            "label": "Logout"
+        }
+    ]
+}

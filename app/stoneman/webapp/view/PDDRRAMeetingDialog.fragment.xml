@@ -1,0 +1,77 @@
+<core:FragmentDefinition controllerName="stoneman.controller.PDDRRAMeetingDialog"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:f="sap.ui.layout.form">
+  <Dialog id="meetingDialog" title="{i18n>dialogTitle}" class="sapMText.message boldTitle">
+    <content>
+      <FlexBox justifyContent="End">
+        <Button text="Add User" press=".addUser" class="btn-margin-header" enabled="true"></Button>
+      </FlexBox>
+      <Table items="{
+			path: 'cadRequestModel>/tabledata7',
+			sorter: {
+				path: 'Name'
+			}
+		}" class="tab-padding tablemargin" id="myTable7">
+
+        <columns>
+
+          <Column width="40%">
+            <Text text="Department/Role" />
+          </Column>
+          <Column width="40%">
+            <Text text="User" />
+          </Column>
+          <Column width="40%">
+            <Text text="Call Meeting" />
+          </Column>
+          <Column width="40%">
+            <Text text="Meeting Attended" />
+          </Column>
+          <Column width="40%">
+            <Text text="Remarks" />
+          </Column>
+          <Column width="10%">
+
+          </Column>
+        </columns>
+        <items>
+          <ColumnListItem vAlign="Middle">
+            <cells>
+              <ComboBox id="departmentMeetingDialog" width="150px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{cadRequestModel>department}" selectionChange=".onColorComboChange" items="{path:'cadRequestModel>/department'}" class="labelHeight">
+                <items>
+                  <core:Item key="{cadRequestModel>department}" text="{cadRequestModel>name}" />
+
+                </items>
+              </ComboBox>
+
+              <Input value="{cadRequestModel>user}" placeholder="User" width="150px" fieldWidth="100%" class="labelHeight"/>
+
+              <ComboBox id="meeting" width="150px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{cadRequestModel>callmeeting}" selectionChange=".onColorComboChange" items="{path:'cadRequestModel>/values'}" class="labelHeight">
+                <items>
+                  <core:Item key="{cadRequestModel>callmeeting}" text="{cadRequestModel>value}" />
+
+                </items>
+              </ComboBox>
+              <ComboBox id="meetattend" width="150px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{cadRequestModel>meetingattended}" selectionChange=".onColorComboChange" items="{path:'cadRequestModel>/values3'}" class="labelHeight">
+                <items>
+                  <core:Item key="{cadRequestModel>meetingattended}" text="{cadRequestModel>value}" />
+
+                </items>
+              </ComboBox>
+              <Input id="remarksDialog" placeholder="Remarks" width="150px" fieldWidth="100%" class="labelHeight" value="{cadRequestModel>remarks}" />
+              <Button icon="sap-icon://delete" press=".onDeleteRowPress" visible="{cadRequestModel>visible}"/>
+
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+
+    </content>
+    <buttons>
+      <Button text="Save" press=".save"></Button>
+      <Button text="Cancel" press=".onCloseQueryDialog"></Button>
+
+    </buttons>
+  </Dialog>
+</core:FragmentDefinition>

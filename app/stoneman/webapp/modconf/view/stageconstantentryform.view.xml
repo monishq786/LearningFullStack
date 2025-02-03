@@ -1,0 +1,71 @@
+<mvc:XMLView
+    controllerName="modconfcontroller.stageconstantentryform"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    class="d-flex justify-content-center"
+>
+    <Page
+        id="stageconstantf"
+        title="{i18n>masterstageconstanttitle}"
+        showNavButton="true"
+        navButtonPress="onPressOfEntryFormCancelButton"
+    >
+        <VBox>
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+            >
+                <f:content>
+                    <Label
+                        id="stageconlbl"
+                        text="{i18n>stagecon}"
+                        required="true"
+                    />
+                    <Input
+                        id="stagecon"
+                        value="{EntryFormDataSourceModel>/StageConstant}"
+                        required="true"
+                        enabled="true"
+                    />
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        <!-- <footer > -->
+        <Toolbar class="d-flex justify-content-center btn-sav">
+            <ToolbarSpacer />
+            <Button
+                type="Emphasized"
+                text="{i18n>save}"
+                press="onSave"
+            />
+            <Button
+                type="Reject"
+                text="{i18n>cancel}"
+                press="onCancel"
+                class="can-btn"
+            />
+        </Toolbar>
+        <!-- </footer> -->
+
+        <!-- <Toolbar>
+            <ToolbarSpacer />
+            <Button text="{i18n>save}" press=".onSave" />
+            <Button text="{i18n>cancel}" press=".onCancel" />
+        </Toolbar> -->
+    </Page>
+</mvc:XMLView>

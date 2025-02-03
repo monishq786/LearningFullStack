@@ -1,0 +1,16 @@
+{
+    "MenuMaster": [
+        {
+            "id": "-1",
+            "name": "Select"
+        },
+        {
+            "id": "CAD",
+            "name": "CAD"
+        },
+        {
+            "id": "Rendering",
+            "name": "Rendering"
+        }
+    ]
+}

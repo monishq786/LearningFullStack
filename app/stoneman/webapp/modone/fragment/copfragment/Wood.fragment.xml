@@ -1,0 +1,422 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <IconTabBar
+        id="copefWoodIconTabBar"
+        selectedKey="ActualCostingWood"
+    >
+        <items>
+            <IconTabFilter
+                text="Actual Costing"
+                key="ActualCostingWood"
+                id="copefWoodActualCosting"
+            >
+                <HBox
+                    width="100%"
+                    justifyContent="End"
+                >
+                    <VBox>
+                        <Button
+                            id="copefWoodAddWoodBtn"
+                            icon="sap-icon://add"
+                            text="{i18n>addNew}"
+                            press="addWoodRow"
+                        />
+                    </VBox>
+                </HBox>
+
+                <ScrollContainer
+                    width="100%"
+                    height="100%"
+                    horizontal="true"
+                    vertical="true"
+                >
+                    <Table
+                        items="{    path: 'copRequestModel_New>/wood',    sorter: {     path: ''    }   }"
+                        inset="true"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        showSeparators="All"
+                        showNoData="true"
+                        id="copefWoodTable"
+                    >
+                        <columns>
+                            <Column width="140px">
+                                <Text text="Item Code/Name" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Dimension" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Finish" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Wood %" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Qty" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="UOM" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Purchase Price" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Actual Wood Unit Cost" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Sum of Unit Cost" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Actual Wastage Percentage" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Actual Wastage Amount" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Total Actual Wastage Amount" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Total Actual Cost of Wood" />
+                            </Column>
+                            <Column width="60px" />
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text
+                                        id="copefWoodName"
+                                        text="{copRequestModel_New>name}"
+                                        wrapping="false"
+                                    />
+                                    <ComboBox
+                                        id="copefWoodDimension"
+                                        width="140px"
+                                        maxWidth="100%"
+                                        valueState="None"
+                                        visible="true"
+                                        editable="true"
+                                        selectedKey="{copRequestModel_New>MeetingModel}"
+                                        selectionChange=".onColorComboChange"
+                                        items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                key="{MeetingModel>id}"
+                                                text="{MeetingModel>name}"
+                                            />
+                                        </items>
+                                    </ComboBox>
+                                    <ComboBox
+                                        id="copefWoodFinish"
+                                        width="140px"
+                                        maxWidth="100%"
+                                        valueState="None"
+                                        visible="true"
+                                        editable="true"
+                                        selectedKey="{copRequestModel_New>MeetingModel}"
+                                        selectionChange=".onColorComboChange"
+                                        items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                key="{MeetingModel>id}"
+                                                text="{MeetingModel>name}"
+                                            />
+                                        </items>
+                                    </ComboBox>
+                                    <ComboBox
+                                        id="copefWoodPercentage"
+                                        width="140px"
+                                        maxWidth="100%"
+                                        valueState="None"
+                                        visible="true"
+                                        editable="true"
+                                        selectedKey="{copRequestModel_New>MeetingModel}"
+                                        selectionChange=".onColorComboChange"
+                                        items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                key="{MeetingModel>id}"
+                                                text="{MeetingModel>name}"
+                                            />
+                                        </items>
+                                    </ComboBox>
+                                    <Input
+                                        id="copefWoodQuantity"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{copRequestModel_New>departmentName}"
+                                        fieldWidth="100%"
+                                    />
+                                    <Input
+                                        id="copefWoodUOM"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{copRequestModel_New>pddrraUser}"
+                                        fieldWidth="100%"
+                                    />
+
+                                    <Input
+                                        id="copefWoodPurchasePrice"
+                                        tooltip="{copRequestModel_New>Remarks}"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{copRequestModel_New>Remarks}"
+                                    />
+                                    <Input
+                                        id="copefWoodActualWoodUnitCost"
+                                        tooltip="{copRequestModel_New>Remarks}"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{copRequestModel_New>Remarks}"
+                                    />
+                                    <Input
+                                        id="copefWoodSumOfUnitCost"
+                                        tooltip="{copRequestModel_New>Remarks}"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{copRequestModel_New>Remarks}"
+                                    />
+                                    <Input
+                                        id="copefWoodActualWastagePercentage"
+                                        tooltip="{copRequestModel_New>Remarks}"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{copRequestModel_New>Remarks}"
+                                    />
+                                    <Input
+                                        id="copefWoodActualWastageAmount"
+                                        tooltip="{copRequestModel_New>Remarks}"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{copRequestModel_New>Remarks}"
+                                    />
+
+                                    <Input
+                                        id="copefWoodTotalActualCostOfWood"
+                                        tooltip="{copRequestModel_New>Remarks}"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{copRequestModel_New>Remarks}"
+                                    />
+
+                                    <Button
+                                        id="copefWoodDeleteWood"
+                                        icon="sap-icon://delete"
+                                        press="onDeleteWood"
+                                        visible="{copRequestModel_New>isDelete}"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+            </IconTabFilter>
+            <!-- icon="sap-icon://factory"  -->
+            <IconTabFilter
+                text="Base Wood Cost for OH"
+                tooltip="Base Wood Cost for OH"
+                key="BaseWoodCostforOH"
+                id="copefWoodBaseWoodCostForOH"
+            >
+                <HBox
+                    width="100%"
+                    justifyContent="End"
+                >
+                    <VBox>
+                        <Button
+                            id="copefWoodAddWoodCostButton"
+                            icon="sap-icon://add"
+                            text="{i18n>addNew}"
+                            press="addWoodCostRow"
+                        />
+                    </VBox>
+                </HBox>
+                <ScrollContainer
+                    width="100%"
+                    height="100%"
+                    horizontal="true"
+                    vertical="true"
+                >
+                    <Table
+                        items="{    path: 'copRequestModel_New>/basewoodcost',    sorter: {     path: ''    }   }"
+                        inset="true"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        showSeparators="All"
+                        showNoData="true"
+                        id="copefWoodBasewoodCostTable"
+                    >
+                        <columns>
+                            <Column width="140px">
+                                <Text text="" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="OH Wood Price" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="OH Wood Unit Cost" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Sum Of Wood OH Cost" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="OH Wastage Percentage" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="OH Wastage Amount" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Sum Of OH Wastage Amount" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Total Cost Of Base Wood" />
+                            </Column>
+                            <Column width="60px" />
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text
+                                        id="copefWoodBasewoodcost"
+                                        text="{copRequestModel_New>name}"
+                                        wrapping="false"
+                                    />
+                                    <Input
+                                        id="copefWoodOHWoodPrice"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{copRequestModel_New>departmentName}"
+                                        fieldWidth="100%"
+                                    />
+                                    <Input
+                                        id="copefWoodOHWoodUnitCost"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{copRequestModel_New>pddrraUser}"
+                                        fieldWidth="100%"
+                                    />
+
+                                    <Input
+                                        id="copefWoodSumOfWoodOHCost"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{copRequestModel_New>departmentName}"
+                                        fieldWidth="100%"
+                                    />
+                                    <ComboBox
+                                        id="copefWoodOHWastagePercentageWood"
+                                        width="140px"
+                                        maxWidth="100%"
+                                        valueState="None"
+                                        visible="true"
+                                        editable="true"
+                                        selectedKey="{copRequestModel_New>MeetingModel}"
+                                        selectionChange=".onColorComboChange"
+                                        items="{path:'copRequestModel_New>/MeetingModel',templateShareable:false}"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                key="{MeetingModel>id}"
+                                                text="{MeetingModel>name}"
+                                            />
+                                        </items>
+                                    </ComboBox>
+                                    <Input
+                                        id="copefWoodOHWastageAmountWood"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{copRequestModel_New>pddrraUser}"
+                                        fieldWidth="100%"
+                                    />
+
+                                    <Input
+                                        id="copefWoodSumOfOHWastageAmountWood"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{copRequestModel_New>departmentName}"
+                                        fieldWidth="100%"
+                                    />
+                                    <Input
+                                        id="copefWoodTotalCostOfBaseWood"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{copRequestModel_New>pddrraUser}"
+                                        fieldWidth="100%"
+                                    />
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        press="onDeleteWoodCost"
+                                        visible="{copRequestModel_New>isDelete}"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+            </IconTabFilter>
+            <!-- icon="sap-icon://chain-link" -->
+            <IconTabFilter
+                text="Local Handling Charges"
+                key="LocalHandlingChargesWood"
+                id="copefWoodLocalHandlingChargesWood"
+            >
+                <HBox
+                    width="100%"
+                    justifyContent="Start"
+                >
+                    <VBox
+                        width="180px"
+                    >
+                        <Label
+                            id="copefWoodLocalHandlingPercentageLblWood"
+                            labelFor="localHandlingPercentageLbl"
+                            text="{i18n>localHandlingPercentageLbl}"
+                        />
+                        <Label
+                            id="copefWoodLocalHandlingAmountLblWood"
+                            labelFor="localHandlingAmountLbl"
+                            text="{i18n>localHandlingAmountLbl}"
+                        />
+                    </VBox>
+                    <VBox width="180px">
+                        <ComboBox
+                            id="copefWoodLocalHandlingPercentageWood"
+                            width="180px"
+                            maxWidth="100%"
+                            valueState="None"
+                            visible="true"
+                            editable="true"
+                            selectedKey="{copRequestModel_New>localHandlingPercentage}"
+                            selectionChange=".onColorComboChange"
+                            items="{path:'numericalModel>/percentages',templateShareable:false}"
+                        >
+                            <items>
+                                <core:Item
+                                    key="{numericalModel>id}"
+                                    text="{numericalModel>name}"
+                                />
+                            </items>
+                        </ComboBox>
+                        <Input
+                            id="copefWoodLocalHandlingAmountWood"
+                            enabled="true"
+                            value="{copRequestModel_New>/localHandlingAmount}"
+                            description=""
+                            width="180px"
+                            fieldWidth="100%"
+                        />
+                    </VBox>
+                </HBox>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</core:FragmentDefinition>

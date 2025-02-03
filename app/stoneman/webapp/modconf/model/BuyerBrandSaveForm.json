@@ -1,0 +1,17 @@
+{
+  "BuyerGuid": null,
+  "BuyerCode": null,
+  "BuyerName": null,
+  "DelMark": 0,
+  "Remarks": null,
+  "Brand": [
+    {
+      "BrandCode": null,
+      "BrandName": null,
+      "BuyerBrandGuid": null,
+      "DelMark": 0,
+      "Parent_BuyerGuid": null,
+      "Remarks": null
+    }
+  ]
+}

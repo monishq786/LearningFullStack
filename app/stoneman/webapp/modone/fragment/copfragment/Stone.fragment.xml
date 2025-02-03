@@ -1,0 +1,583 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <IconTabBar
+        id="copefStoneContainer"
+        selectedKey="ActualCosting"
+        select="onIconTabBarSelectCADCostNested"
+    >
+        <items>
+            <IconTabFilter
+                text="Actual Costing"
+                tooltip="Actual Costing"
+                key="ActualCosting"
+                id="copefStoneActualCosting"
+            >
+                <HBox
+                    width="100%"
+                    justifyContent="End"
+                >
+                    <VBox>
+                        <Button
+                            id="copefStoneAddNewButton"
+                            icon="sap-icon://add"
+                            text="{i18n>addNew}"
+                            press="addStoneActualCosting"
+                        />
+                    </VBox>
+                </HBox>
+                <ScrollContainer
+                    width="100%"
+                    horizontal="true"
+                    vertical="true"
+                >
+                    <Table
+                        items="{    path: 'EntryFormDataSourceModel>/CostingStoneActualCostDetail',  
+                          sorter: {     path: ''    } 
+                            }"
+                        inset="true"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        showSeparators="All"
+                        showNoData="true"
+                        id="copefStoneTable"
+                        
+                    >
+                        <columns>
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Item Code"
+                                />
+                            </Column>
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Name"
+                                />
+                            </Column>
+
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Dimension"
+                                />
+                            </Column>
+
+                            <Column width="140px">
+                                <Text text="Finish" />
+                            </Column>
+
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Stone %"
+                                    tooltip="Stone %"
+                                />
+                            </Column>
+
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Qty"
+                                />
+                            </Column>
+
+                            <Column width="140px">
+                                <Text text="Density" />
+                            </Column>
+
+                            <Column width="140px">
+                                <Text text="UOM" />
+                            </Column>
+
+                            <Column width="140px">
+                                <Text text="Surface Area" />
+                            </Column>
+
+                            <Column width="140px">
+                                <Text text="Micron" />
+                            </Column>
+
+                            <Column width="140px">
+                                <Text text="DFT" />
+                            </Column>
+
+                            <Column width="140px">
+                                <Text text="Gross Weight" />
+                            </Column>
+
+                            <Column width="140px">
+                                <Text text="Gross Qty" />
+                            </Column>
+
+                            <Column width="140px">
+                                <Label
+                                    text="Gross Qty UOM"
+                                    tooltip="Gross Qty UOM"
+                                />
+                            </Column>
+
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Purchase Price"
+                                    tooltip="Purchase Price"
+                                />
+                            </Column>
+
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Actual Stone Unit Cost"
+                                    tooltip="Actual Stone Unit Cost"
+                                />
+                            </Column>
+
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Sum of Unit Cost"
+                                    tooltip="Sum of Unit Cost"
+                                />
+                            </Column>
+
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Actual Wastage Percentage"
+                                    tooltip="Actual Wastage Percentage"
+                                />
+                            </Column>
+
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Actual Wastage Amount"
+                                    tooltip="Actual Wastage Amount"
+                                />
+                            </Column>
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Total Actual Wastage Amount"
+                                    tooltip="Total Actual Wastage Amount"
+                                />
+                            </Column>
+
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Total Actual Cost of Stone"
+                                    tooltip="Total Actual Cost of Stone"
+                                />
+                            </Column>
+
+                            <Column width="60px" />
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Input
+                                        id="copefStoneItemCode"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>ItemCode}"
+                                        fieldWidth="100%"
+                                        required="true"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                    <Input
+                                        id="copefStoneName"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>Name}"
+                                        fieldWidth="100%"
+                                        required="true"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+
+                                    <Input
+                                        id="copefStoneDimension"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>Dimension}"
+                                        fieldWidth="100%"
+                                        required="true"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                    <Input
+                                        id="copefStoneFinish"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>Finish}"
+                                        fieldWidth="100%"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                    <Input
+                                        id="copefStonePercentage"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>StonePer}"
+                                        fieldWidth="100%"
+                                        required="true"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+
+                                    <Input
+                                        id="copefStoneQty"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>Quantity}"
+                                        fieldWidth="100%"
+                                        type="Number"
+                                        change="onChangeQuantity"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                    <Input
+                                        id="copefDensity"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>Density}"
+                                        fieldWidth="100%"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+
+                                    <Input
+                                        id="copefStoneUom"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{EntryFormDataSourceModel>UOMName}"
+                                        fieldWidth="100%"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                    <Input
+                                        id="copefStoneSurfaceArea"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{EntryFormDataSourceModel>SurfaceArea}"
+                                        fieldWidth="100%"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                    <Input
+                                        id="copefStoneMicron"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>Micron}"
+                                        fieldWidth="100%"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                    <Input
+                                        id="copefStoneDFT"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>DFT}"
+                                        fieldWidth="100%"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+
+                                    <Input
+                                        id="copefStoneGrossWeight"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>GrossWeight}"
+                                        fieldWidth="100%"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                    <Input
+                                        id="copefStoneGrossQty"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>GrossQty}"
+                                        fieldWidth="100%"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                    <Input
+                                        id="copefStoneGrossQtyUOM"
+                                        width="120px"
+                                        value="{EntryFormDataSourceModel>GrossQtyUOM}"
+                                        fieldWidth="100%"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                    />
+
+                                    <Input
+                                        id="copefStonePurchaSePrice"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                        value="{EntryFormDataSourceModel>PurchasePrice}"
+                                        type="Number"
+                                        change="onChangePurchasePrice"
+                                    />
+                                    <Input
+                                        id="copefStoneActualStoneUnitCost"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        enabled="false"
+                                        value="{EntryFormDataSourceModel>ActualStoneUnitCost}"
+                                    />
+                                    <Input
+                                        id="copefStoneSumOfUnitCost"
+                                        placeholder=""
+                                        width="120px"
+                                        enabled="false"
+                                        fieldWidth="100%"
+                                        value="{EntryFormDataSourceModel>SumOfUnitCost}"
+                                    />
+                                    <Input
+                                        id="copefStoneActualWastagePercentage"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        type="Number"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                        change="onChangeActWastePercent"
+                                        value="{EntryFormDataSourceModel>ActWastePercent}"
+                                    />
+                                    <Input
+                                        id="copefStoneActualWastageAmount"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        enabled="false"
+                                        value="{EntryFormDataSourceModel>ActWasteAmount}"
+                                    />
+                                    <Input
+                                        id="copefStoneTotalActualWastageAmount"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        enabled="false"
+                                        value="{EntryFormDataSourceModel>TotalActualWastageAmount}"
+                                    />
+                                    <Input
+                                        id="copefStoneTotalActualCostOfStone"
+                                        placeholder=""
+                                        width="120px"
+                                        enabled="false"
+                                        fieldWidth="100%"
+                                        value="{EntryFormDataSourceModel>TotalActualCostOfStone}"
+                                    />
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        press="onDeleteStone"
+                                        visible="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+            </IconTabFilter>
+            <!-- icon="sap-icon://chalkboard" -->
+            <IconTabFilter
+                text="Base Stone Cost for OH"
+                tooltip="Base Stone Cost for OH"
+                key="BaseStoneCostforOH"
+                id="copefStoneBaseStoneCostforOH"
+            >
+                <HBox
+                    width="100%"
+                    justifyContent="End"
+                >
+                    <VBox>
+                        <Button
+                            id="copefStoneAddBaseStoneCostBtn"
+                            icon="sap-icon://add"
+                            text="{i18n>addNew}"
+                            press="addBaseStoneCostRow"
+                        />
+                    </VBox>
+                </HBox>
+
+                <ScrollContainer
+                    width="100%"
+                    height="100%"
+                    horizontal="true"
+                    vertical="true"
+                >
+                    <Table
+                        items="{    path: 'EntryFormDataSourceModel>/CostingStoneBaseCostDetail',    sorter: {     path: ''    }   }"
+                        inset="true"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        showSeparators="All"
+                        showNoData="true"
+                        id="copefStoneBaseStoneTable"
+                    >
+                        <columns>
+                            <Column width="140px">
+                                <Text text="Item Code/Name" />
+                            </Column>
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="OH Stone Price"
+                                    tooltip="OH Stone Price"
+                                />
+                            </Column>
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="OH Stone Unit Cost"
+                                    tooltip="OH Stone Unit Cost"
+                                />
+                            </Column>
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Sum Of Stone OH Cost"
+                                    tooltip="Sum Of Stone OH Cost"
+                                />
+                            </Column>
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="OH Wastage Percentage"
+                                    tooltip="OH Wastage Percentage"
+                                />
+                            </Column>
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="OH Wastage Amount"
+                                    tooltip="OH Wastage Amount"
+                                />
+                            </Column>
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Sum Of OH Wastage Amount"
+                                    tooltip="Sum Of OH Wastage Amount"
+                                />
+                            </Column>
+                            <Column width="140px">
+                                <Label
+                                    required="true"
+                                    text="Total Cost Of Base Stone"
+                                    tooltip="Total Cost Of Base Stone"
+                                />
+                            </Column>
+                            <Column width="60px" />
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text
+                                        id="copefStoneBCostName"
+                                        text="{EntryFormDataSourceModel>name}"
+                                        wrapping="false"
+                                    />
+                                    <Input
+                                        id="copefStonePrice"
+                                        width="120px"
+                                        required="true"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                        value="{EntryFormDataSourceModel>OHStonePrice}"
+                                        fieldWidth="100%"
+                                        type="Number"
+                                        change="onChangeOHStonePrice"
+                                    />
+                                    <Input
+                                        id="copefStoneUnitCost"
+                                        width="120px"
+                                        required="true"
+                                        enabled="false"
+                                        value="{EntryFormDataSourceModel>OHStoneUnitCost}"
+                                        fieldWidth="100%"
+                                    />
+
+                                    <Input
+                                        id="copefStoneSumOfStoneCost"
+                                        width="120px"
+                                        required="true"
+                                        enabled="false"
+                                        value="{EntryFormDataSourceModel>SumOHStoneUnitCost}"
+                                        fieldWidth="100%"
+                                    />
+                                    <Input
+                                        id="copefStoneWastagePercentage"
+                                        width="120px"
+                                        required="true"
+                                        type="Number"
+                                        enabled="{EntryFormDataSourceModel>isDelete}"
+                                        value="{EntryFormDataSourceModel>OHWastePercent}"
+                                        fieldWidth="100%"
+                                        change="onChangeOHWastePercent"
+                                    />
+
+                                    <Input
+                                        id="copefStoneWastageAmount"
+                                        width="120px"
+                                        required="true"
+                                        enabled="false"
+                                        value="{EntryFormDataSourceModel>OHWasteAmount}"
+                                        fieldWidth="100%"
+                                    />
+
+                                    <Input
+                                        id="copefStoneSumOfWastageAmount"
+                                        width="120px"
+                                        required="true"
+                                        enabled="false"
+                                        value="{EntryFormDataSourceModel>SumOfWastageAmount}"
+                                        fieldWidth="100%"
+                                    />
+                                    <Input
+                                        id="copefStoneTotalCostOfBaseStone"
+                                        width="120px"
+                                        required="true"
+                                        enabled="false"
+                                        value="{EntryFormDataSourceModel>TotalCostOfBaseStone}"
+                                        fieldWidth="100%"
+                                    />
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        press="onDeleteBaseStone"
+                                        visible="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+            </IconTabFilter>
+            <!-- icon="sap-icon://chain-link" -->
+            <IconTabFilter
+                text="Local Handling Charges"
+                tooltip="Local Handling Charges"
+                key="LocalHandlingCharges"
+                id="copefStoneLocalHandlingCharges"
+            >
+                <HBox
+                    width="100%"
+                    justifyContent="Start"
+                >
+                    <VBox
+                        width="180px"
+                    >
+                        <Label
+                            labelFor="copefStoneLocalHandlingPercentage"
+                            text="{i18n>localHandlingPercentageLbl}"
+                            tooltip="{i18n>localHandlingPercentageLbl}"
+                            required="true"
+                        />
+                        <Label
+                            labelFor="copefStoneLocalHandlingAmount"
+                            text="{i18n>localHandlingAmountLbl}"
+                            tooltip="{i18n>localHandlingAmountLbl}"
+                            required="true"
+                        />
+                    </VBox>
+                    <VBox width="180px">
+                        <Input
+                            id="copefStoneLocalHandlingPercentage"
+                            width="180px"
+                            type="Number"
+                            value="{EntryFormDataSourceModel>/StoneLocalHandlingPer}"
+                            fieldWidth="100%"
+                            change="onChangeStoneLocalHandlingPer"
+                        />
+                        <Input
+                            id="copefStoneLocalHandlingAmount"
+                            enabled="false"
+                            value="{EntryFormDataSourceModel>/StoneLocalHandlingAmount}"
+                            width="180px"
+                            fieldWidth="100%"
+                        />
+                    </VBox>
+                </HBox>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</core:FragmentDefinition>

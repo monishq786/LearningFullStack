@@ -1,0 +1,184 @@
+<mvc:XMLView controllerName="stoneman.controller.CADDetailSearchForm"
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:l="sap.ui.layout" displayBlock="true"
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core">
+   <App>
+      <pages>
+         <Page id="CADpage" class="sapUiStdPage marginBoxContent sapUiContentPadding" title="{i18n>CADDetailSearchTitle}" showNavButton="true" navButtonPress=".navBack" enableScrolling="false">
+            <headerContent>
+               <Label text="{view>/myName}" class="lblText boldTxt" />
+               <Button icon="sap-icon://log" press=".onPressLogout" />
+            </headerContent>
+            <content>
+               <FlexBox id="CADmyFlexBox" alignItems="Center" justifyContent="SpaceBetween" direction="Column">
+                  <HBox width="100%" class="lPadding">
+                     <VBox width="15%" class="sapUiTinyMargin">
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text id="buyerLbl" text="{i18n>buyer}" width="100%" class="sapUiSmallMarginEnd myCustomText" />
+                        </HBox>
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text id="merchantLbl" text="{i18n>merchantLbl}" class="sapUiSmallMarginEnd myCustomText" />
+                        </HBox>
+
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text id="techLbl" text="{i18n>tech}" class="sapUiSmallMarginEnd myCustomText" />
+                        </HBox>
+                     </VBox>
+                     <VBox width="15%" height="35px" class="sapUiTinyMargin">
+                        <HBox width="100%">
+                           <Input id="buyer" type="Text" value="" placeholder="Select Buyer" showValueHelp="true" valueHelpRequest="onValueHelpBuyer" width="12rem" class="sapUiSmallMarginBottom"/>
+                        </HBox>
+                        <HBox width="100%">
+                           <Input id="merchant" type="Text" value="" placeholder="Select Merchant" showValueHelp="true" valueHelpRequest="onValueHelpMerchant" width="12rem" class="sapUiSmallMarginBottom"/>
+                           <!-- <Input id="cadNo" type="Text" value="" placeholder="Select CAD No" showValueHelp="true" valueHelpRequest="onValueHelpCADNo" width="12rem" class="sapUiSmallMarginBottom"/> -->
+                        </HBox>
+
+                        <HBox width="100%">
+                           <Input id="tech" type="Text" value="" placeholder="SelectTech" showValueHelp="true" valueHelpRequest="onValueHelpTech" width="12rem" class="sapUiSmallMarginBottom"/>
+                           <!-- <Input id="tech1" type="Text" value="" placeholder="Select CAD No" showValueHelp="true" valueHelpRequest="onValueHelpCADNo" width="12rem" class="sapUiSmallMarginBottom"/> -->
+                        </HBox>
+
+                     </VBox>
+                     <VBox width="15%" class="sapUiTinyMargin">
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text id="pdNoLbl" text="{i18n>pdNo}" class="sapUiTinyMarginEnd myCustomText" />
+                        </HBox>
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text id="cadLbl" text="{i18n>cadDeatilNo}" class="sapUiSmallMarginEnd myCustomText" />
+                        </HBox>
+
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text id="dateLbl" text="{i18n>date}" class="sapUiSmallMarginEnd myCustomText" />
+                        </HBox>
+                     </VBox>
+
+                      <VBox width="15%" height="35px" class="sapUiTinyMargin">
+                        <HBox width="100%">
+                            <ComboBox id="pdNo" width="12rem" class="sapUiSmallMarginBottom" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="" selectionChange="" items="{cadRequestModel>/pdCoordinator}">
+                              <items>
+                                 <core:Item key="{cadRequestModel>id}" text="{cadRequestModel>name}" />
+                              </items>
+                           </ComboBox>
+                        </HBox>
+                        <HBox width="100%">
+                           <Input id="cadNo" type="Text" value="" placeholder="Select CAD No" showValueHelp="true" valueHelpRequest="onValueHelpCADNo" width="12rem" class="sapUiSmallMarginBottom"/>
+                        </HBox>
+
+                        <HBox width="100%">
+                           <DatePicker id="date" class="sapUiSmallMarginBottom" displayFormat="dd-MM-yyyy" change="" width="12rem"/>
+                        </HBox>
+
+                     </VBox>
+
+                    <VBox width="10%" class="sapUiTinyMargin">
+                        <!-- <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text id="dateLbl" text="{i18n>date}" class="sapUiSmallMarginEnd myCustomText" />
+                        </HBox> -->
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Text id="statusLbl" text="{i18n>status}" class="sapUiSmallMarginEnd myCustomText" />
+                        </HBox>
+                     </VBox>
+                     <VBox width="20%" class="sapUiTinyMargin">
+                        <!-- <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <DatePicker id="date" value="{startDateHeader}" displayFormat="dd-MM-yyyy" change="" width="12rem" />
+                        </HBox> -->
+                        <HBox width="100%" height="35px" class="sapUiTinyMarginTop">
+                           <Select id="status" required="true" width="12rem" class="sapUiTinyMarginBegin" maxWidth="100%" valueState="None" editable="true" enabled="true" selectedKey="">
+                              <core:Item key="" text="Select" />
+                              <core:Item key="New" text="New" />
+                              <core:Item key="WIP" text="In Progress" />
+                              <core:Item key="CLS" text="Close" />
+                              <core:Item key="C" text="Cancelled" />
+                           </Select>
+                        </HBox>
+                     </VBox>
+                  </HBox>
+                  <HBox width="100%" height="10px" class="sapUiTinyMarginBegin" />
+                  <HBox width="100%" class="lPadding Btn_Ri">
+                     <HBox width="50%">
+                        <VBox width="22%" alignContent="Center">
+                           <Button id="btnClear" text="{i18n>clearSearch}" type="Emphasized" class="sapUiTinyMarginBegin sapUiTinyMarginEnd" press="clearValue" />
+                        </VBox>
+                        <VBox width="15%" alignContent="Center">
+                           <Button id="btnSearch" text="{i18n>search}" type="Emphasized" class="sapUiTinyMarginBegin" press="onSearch" />
+                        </VBox>
+                     </HBox>
+                     <HBox width="50%">
+                        <HBox width="70%" />
+                        <HBox width="30%" class="mr-26">
+                           <VBox width="20%">
+                              <Button id="addMarchant" text="{i18n>createcaddetail}" type="Emphasized" class="sapUiTinyMarginBegin" press="onRouterClick" icon="sap-icon://add" />
+                           </VBox>
+                        </HBox>
+                     </HBox>
+                  </HBox>
+                  <HBox width="100%" height="20px" />
+               </FlexBox>
+               <VBox>
+                  <ScrollContainer width="100%" horizontal="false" vertical="true" focusable="true" class="scroll-container-height">
+                     <Table id="cadSearchTable" width="auto" growing="true" growingThreshold="10" items="{path:'cadRequestModel>/RETURNDATA'}" class="sapUiSizeCompact myCustomListClass textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true">
+                        <columns>
+                           <Column width="10%">
+                              <Text text="{i18n>caddetailno}" />
+                           </Column>
+                           <Column width="10%">
+                              <Text text="{i18n>cadReqNo}" />
+                           </Column>
+                           <Column width="10%">
+                              <Text text="{i18n>reqType}" />
+                           </Column>
+                           <Column width="10%">
+                              <Text text="{i18n>inputTypeSearch}" />
+                           </Column>
+                           <Column width="10%">
+                              <Text text="{i18n>createdBy}" />
+                           </Column>
+                           <Column width="10%">
+                              <Text text="{i18n>buyerName}" />
+                           </Column>
+                           <Column width="10%">
+                              <Text text="{i18n>status}" />
+                           </Column>
+                           <Column width="5%">
+                              <Text text="{i18n>action}" />
+                           </Column>
+                        </columns>
+                        <items>
+                           <ColumnListItem vAlign="Middle">
+                              <cells>
+                                 <Text text="{cadRequestModel>CADDETAILNO}" wrapping="false" />
+                                 <Text text="{cadRequestModel>CRFREQNO}" wrapping="false" />
+                                 <Text text="{path: 'cadRequestModel>REQTYP', formatter: '.formatReqTyp'}" wrapping="false" />
+                                 <Text text="{cadRequestModel>INPUTTYPE}" wrapping="false" />
+                                 <Text text="{cadRequestModel>USERNAME}" wrapping="false" />
+                                 <Text text="{cadRequestModel>BUYERNAME}" wrapping="false" />
+                                 <Text text="{cadRequestModel>CRFSTATUS}" wrapping="false" />
+                                 <HBox>
+                                    <items>
+                                       <Button id="arrowBtn" icon="sap-icon://navigation-right-arrow" width="25px" class="customIconColor" visible="true" press="onAction" />
+                                    </items>
+                                 </HBox>
+                              </cells>
+                           </ColumnListItem>
+                        </items>
+                     </Table>
+                     <!-- <HBox justifyContent="SpaceBetween" alignItems="Center">
+                        <Button text="Previous" press="onPreviousPage" />
+                        <Text text="{/currentPage}" />
+                        <Button text="Next" press="onPageChange" />
+                     </HBox> -->
+                     <!-- <Toolbar>
+                 <Button text="Previous" press="onPreviousPage" />
+                 <Text text="{currentPage} of {totalPages}" />
+                 <Button text="Next" press="onNextPage" />
+                 </Toolbar> -->
+                  </ScrollContainer>
+               </VBox>
+            </content>
+         </Page>
+      </pages>
+   </App>
+
+
+</mvc:XMLView>

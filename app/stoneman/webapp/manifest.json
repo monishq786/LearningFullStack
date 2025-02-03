@@ -1,0 +1,1059 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "stoneman",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.13.2",
+      "toolsId": "27d0947b-822f-4dd0-b2ce-a0248ebab2d4"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "stoneman-maintain": {
+          "semanticObject": "stoneman",
+          "action": "maintain",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.122.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {},
+        "sap.uxap": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "stoneman.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "stoneman.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RoutePage",
+          "pattern": "RoutePage",
+          "target": [
+            "TargetPage"
+          ]
+        },
+        {
+          "name": "RouteLogin",
+          "pattern": "",
+          "target": [
+            "TargetLogin"
+          ]
+        },
+        {
+          "name": "RouteLanding",
+          "pattern": "RoutePatternLanding",
+          "target": [
+            "TargetLanding"
+          ]
+        },
+        {
+          "name": "RouteTimeAndActionListView",
+          "pattern": "TimeAndAction",
+          "target": [
+            "TargetTimeAndAction"
+          ]
+        },
+        {
+          "name": "RouteTimeAndActionEntryForm",
+          "pattern": "TimeAndActionEntryForm",
+          "target": [
+            "TargetTimeAndActionEntryForm"
+          ]
+        },
+        {
+          "name": "RouteNameLogin",
+          "pattern": "RouteNameLogin",
+          "target": [
+            "LoginViewTarget"
+          ]
+        },
+        {
+          "name": "RouteNameLanding",
+          "pattern": "RoutePatternLanding",
+          "target": [
+            "LandingViewTarget"
+          ]
+        },
+        {
+          "name": "RouteNameSearchTimeAndAction",
+          "pattern": "RoutePatternSearchTimeAndAction",
+          "target": [
+            "SearchTimeAndActionViewTarget"
+          ]
+        },
+        {
+          "name": "RouteTimeAndAction",
+          "pattern": "RoutePatternTimeAndAction",
+          "target": [
+            "TimeAndActionTarget"
+          ]
+        },
+        {
+          "name": "RouteNameAddEditTimeAndAction",
+          "pattern": "RouteAddEditTimeAndAction/{data}",
+          "target": [
+            "AddEditTimeAndActionViewTarget"
+          ]
+        },
+        {
+          "name": "RouterNameCADSearchForm",
+          "pattern": "RoutePatternCADSearchForm",
+          "target": [
+            "TargetCADSearchForm"
+          ]
+        },
+        {
+          "name": "RouterNameCADRequestForm",
+          "pattern": "RoutingCADRequestForm/{data}/{type}",
+          "target": [
+            "TargetCADRequestForm"
+          ]
+        },
+        {
+          "name": "RouterNameCADDetailSearchForm",
+          "pattern": "RoutePatternCADDetailForm",
+          "target": [
+            "TargetCadDetailSearchForm"
+          ]
+        },
+        {
+          "name": "RouterNameCOPSearchForm",
+          "pattern": "RoutePatternCOPSearchForm",
+          "target": [
+            "TargetCOPSearchForm"
+          ]
+        },
+        {
+          "name": "RouterNameCADDetailForm",
+          "pattern": "RoutingCADDetailForm/{data}/{type}",
+          "target": [
+            "TargetCADDetailForm"
+          ]
+        },
+        {
+          "name": "RoutingTryOut",
+          "pattern": "TryOut",
+          "target": [
+            "TargettryOut"
+          ]
+        },
+        {
+          "name": "RouteCOPRequestForm",
+          "pattern": "RoutePatternCOPRequestForm",
+          "target": [
+            "TargetCOPRequestForm"
+          ]
+        },
+        {
+          "name": "RouterNameConfigurationForm",
+          "pattern": "RoutePatternConfigurationForm",
+          "target": [
+            "TargetConfigurationForm"
+          ]
+        },
+        {
+          "name": "RouterNameEMailTemplateForm",
+          "pattern": "RoutePatternEMailTemplateForm",
+          "target": [
+            "TargetEMailTemplateListForm"
+          ]
+        },
+        {
+          "name": "RouterNameEMailTemplateEntryForm",
+          "pattern": "RoutePatternEMailTemplateEntryForm",
+          "target": [
+            "TargetEMailTemplateEntryForm"
+          ]
+        },
+        {
+          "name": "RouterNamePrintForm",
+          "pattern": "RouterPatternPrintForm/{data}/{type}",
+          "target": [
+            "TargetPrintForm"
+          ]
+        },
+        {
+          "name": "RouterNamenewprintForm",
+          "pattern": "RouterPatternnewprintForm",
+          "target": [
+            "TargetnewprintForm"
+          ]
+        },
+        {
+          "name": "RouterNameConfigurationAddViewForm",
+          "pattern": "RouteConfigurationAddViewForm/{data}/{type}",
+          "target": [
+            "TargetConfigurationAddViewForm"
+          ]
+        },
+        {
+          "name": "RouteCadRequestListView",
+          "pattern": "RouteCadRequestListView",
+          "target": [
+            "TargetCadRequestListView"
+          ]
+        },
+        {
+          "name": "RouteCRFListView",
+          "pattern": "RouteCRFListView",
+          "target": [
+            "TargetCRFListView"
+          ]
+        },
+        {
+          "name": "RouteCadRequestEntryForm",
+          "pattern": "RouteCadRequestEntryForm",
+          "target": [
+            "TargetCadRequestEntryForm"
+          ]
+        },
+        {
+          "name": "RouteCRFEntryForm",
+          "pattern": "RouteCRFEntryForm",
+          "target": [
+            "TargetCRFEntryForm"
+          ]
+        },
+        {
+          "name": "RouterNameConfigurationAddViewForm",
+          "pattern": "RouteConfigurationAddViewForm/{data}/{type}",
+          "target": [
+            "TargetConfigurationAddViewForm"
+          ]
+        },
+        {
+          "name": "RouterNameCOPListViewNew",
+          "pattern": "RoutePatternCOPSearchFormNew",
+          "target": [
+            "TargetCOPSearchFormNew"
+          ]
+        },
+        {
+          "name": "RouterNameCOPEntryForm",
+          "pattern": "RouterPatternCOPEntryForm",
+          "target": [
+            "TargetCOPEntryForm"
+          ]
+        },
+        {
+          "name": "RouterNameCADDetailListView_new",
+          "pattern": "RoutePatternCADDetailListView_new",
+          "target": [
+            "TargetCadDetailListView_new"
+          ]
+        },
+        {
+          "name": "RouteCadDetailListView",
+          "pattern": "PatternCadDetailListView",
+          "target": [
+            "TargetCadDetailListView"
+          ]
+        },
+        {
+          "name": "RouterNameCADDetailEntryForm_new",
+          "pattern": "RoutePatternCADDetailEntryForm_new",
+          "target": [
+            "TargetCadDetailEntryForm_new"
+          ]
+        },
+        {
+          "name": "RouterNameUserListView",
+          "pattern": "RouterNameUserListView",
+          "target": [
+            "TargetUserListView"
+          ]
+        },
+        {
+          "name": "RouteUserEntryForm",
+          "pattern": "RoutePatternUserEntryForm",
+          "target": [
+            "TargetUserEntryForm"
+          ]
+        },
+        {
+          "name": "RouteNameMenuConfiguration",
+          "pattern": "RouteNameMenuConfiguration",
+          "target": [
+            "TargetMenuConfiguration"
+          ],
+          "cache": true
+        },
+        {
+          "name": "RouterNamemenumasterentryform",
+          "pattern": "RouterNamemenumasterentryform",
+          "target": [
+            "Targetmenumasterentryform"
+          ]
+        },
+        {
+          "name": "RouteNameStageMasterConfiguration",
+          "pattern": "RouteNameStageMasterConfiguration",
+          "target": [
+            "TargetStageConfiguration"
+          ],
+          "cache": true
+        },
+        {
+          "name": "RouterNamestagemasterentryform",
+          "pattern": "RouterNamestagemasterentryform",
+          "target": [
+            "Targetstagemasterentryform"
+          ]
+        },
+        {
+          "name": "RouteNameStageFlowMasterConfiguration",
+          "pattern": "RouteNameStageFlowMasterConfiguration",
+          "target": [
+            "TargetStageFlowConfiguration"
+          ],
+          "cache": true
+        },
+        {
+          "name": "RouterNamestageflowmasterentryform",
+          "pattern": "RouterNamestageflowmasterentryform",
+          "target": [
+            "Targetstageflowmasterentryform"
+          ]
+        },
+        {
+          "name": "RouteNameStageConstantConfiguration",
+          "pattern": "RouteNameStageConstantConfiguration",
+          "target": [
+            "TargetStageConstantConfiguration"
+          ],
+          "cache": true
+        },
+        {
+          "name": "RouterNamestageconstantentryform",
+          "pattern": "RouterNamestageconstanerentryform",
+          "target": [
+            "Targetstageconstantentryform"
+          ]
+        },
+        {
+          "name": "RouterNameControlEnableDisableentryform",
+          "pattern": "RouterNameControlEnableDisableentryform",
+          "target": [
+            "TargetControlEnableDisableentryform"
+          ]
+        },
+        {
+          "name": "RouterNameControlEnableDisable",
+          "pattern": "RouterNameControlEnableDisable",
+          "target": [
+            "TargetControlEnableDisable"
+          ]
+        },
+        {
+          "name": "RouterNameRoleeentryform",
+          "pattern": "RouterNameRoleeentryform",
+          "target": [
+            "TargetRoleentryform"
+          ]
+        },
+        {
+          "name": "RouterNameRole",
+          "pattern": "RouterNameRole",
+          "target": [
+            "TargetRole"
+          ]
+        },
+        {
+          "name": "RouterNameRoleConstantentryform",
+          "pattern": "RouterNameRoleConstantentryform",
+          "target": [
+            "TargetRoleConstantentryform"
+          ]
+        },
+        {
+          "name": "RouterNameRoleConstantlistview",
+          "pattern": "RouterNameRoleConstantlistview",
+          "target": [
+            "TargetRoleConstantlistview"
+          ]
+        },
+        {
+          "name": "RouteNameMenuRoleConfiguration",
+          "pattern": "RouteNameMenuRoleConfiguration",
+          "target": [
+            "TargetNameMenuRoleConfiguration"
+          ]
+        },
+        {
+          "name": "RouteNameMenuRolerentryform",
+          "pattern": "RouteNameMenuRolerentryform",
+          "target": [
+            "TargetNameMenuRolerentryform"
+          ]
+        },
+        {
+          "name": "RouteNameStageRoleMasterConfiguration",
+          "pattern": "RouteNameStageRoleMasterConfiguration",
+          "target": [
+            "TargetTargetNameMenuRolerentryform"
+          ]
+        },
+        {
+          "name": "RouteNameStageRoleMasterentryform",
+          "pattern": "RouteNameStageRoleMasterentryform",
+          "target": [
+            "TargetNameStageRoleMasterentryform"
+          ]
+        },
+        {
+          "name": "RouteNameBuyerBrandListView",
+          "pattern": "RoutePatternBuyerBrandListView",
+          "target": [
+            "TargetNameBuyerBrandListView"
+          ]
+        },
+        {
+          "name": "RouteNameBuyerBrandEntryForm",
+          "pattern": "RoutePatternBuyerBrandEntryForm",
+          "target": [
+            "TargetNameBuyerBrandEntryForm"
+          ]
+        },
+        {
+          "name": "RouteNameProductCategoryListView",
+          "pattern": "RoutePatternProductCategoryListView",
+          "target": [
+            "TargetNameProductCategoryListView"
+          ]
+        },
+        {
+          "name": "RouteNameProductCategoryEntryForm",
+          "pattern": "RoutePatternProductCategoryEntryForm",
+          "target": [
+            "TargetNameProductCategoryEntryForm"
+          ]
+        },
+        {
+          "name": "RouteNameTemplateConfiguration",
+          "pattern": "RouteNameTemplateConfiguration",
+          "target": [
+            "TargetTemplateConfiguration"
+          ],
+          "cache": true
+        },
+        {
+          "name": "RouterNameenummasterentryform",
+          "pattern": "RouterNameenummasterentryform",
+          "target": [
+            "Targetenummasterentryform"
+          ]
+        },
+        {
+          "name": "RouterNameTemplatemasterentryform",
+          "pattern": "RouterNameTemplatemasterentryform",
+          "target": [
+            "TargetTemplatemasterentryform"
+          ]
+        },
+        {
+          "name": "RouteNameManufacturelistview",
+          "pattern": "RouteNameManufacturelistview",
+          "target": [
+            "TargetNameManufacturelistview"
+          ]
+        },
+        {
+          "name": "RouteNameManufactureentryform",
+          "pattern": "RouteNameManufactureentryform",
+          "target": [
+            "TargetNameManufactureentryform"
+          ]
+        },
+        {
+          "name": "RouteNameEnumConfiguration",
+          "pattern": "RouteNameEnumConfiguration",
+          "target": [
+            "TargetEnumConfiguration"
+          ],
+          "cache": true
+        }
+
+      ],
+      "targets": {
+        "TargetLogin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "login",
+          "viewName": "login",
+          "viewPath": "loginview"
+        },
+        "TargetLanding": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "landing",
+          "viewName": "landing",
+          "viewPath": "landingview"
+        },
+        "TargetPage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Page",
+          "viewName": "Page",
+          "viewPath": "modoneview"
+        },
+        "TargetTimeAndAction": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "timeandactionlistview",
+          "viewName": "timeandactionlistview",
+          "viewPath": "modoneview"
+        },
+        "TargetTimeAndActionEntryForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "timeandactionentryform",
+          "viewName": "timeandactionentryform",
+          "viewPath": "modoneview"
+        },
+        "LoginViewTarget": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Login",
+          "viewName": "Login"
+        },
+        "LandingViewTarget": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Landing",
+          "viewName": "Landing"
+        },
+        "SearchTimeAndActionViewTarget": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SearchTimeAndActionForm",
+          "viewName": "SearchTimeAndActionForm"
+        },
+        "AddEditTimeAndActionViewTarget": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AddEditTimeAndActionForm",
+          "viewName": "AddEditTimeAndActionForm"
+        },
+        "TimeAndActionTarget": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "SearchTimeAndAction",
+          "viewName": "SearchTimeAndAction"
+        },
+        "TargetCADSearchForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CADSearchForm",
+          "viewName": "CADSearchForm"
+        },
+        "TargetCADRequestForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CADRequestForm",
+          "viewName": "CADRequestForm"
+        },
+        "TargetCADDetailForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CADDetailForm",
+          "viewName": "CADDetailForm"
+        },
+        "TargetCadDetailSearchForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "caddetaillistview",
+          "viewName": "caddetaillistview",
+          "viewPath": "modoneview"
+        },
+        "TargetCadDetailListView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "caddetaillistview",
+          "viewName": "caddetaillistview",
+          "viewPath": "modoneview"
+        },
+        "TargetCOPSearchForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "COPSearchForm",
+          "viewName": "COPSearchForm"
+        },
+        "TargettryOut": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "tryOut",
+          "viewName": "tryOut"
+        },
+        "TargetCOPRequestForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "COPRequestForm",
+          "viewName": "COPRequestForm"
+        },
+        "TargetConfigurationForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "userlistview",
+          "viewName": "userlistview",
+          "viewPath": "modconfview"
+        },
+        "TargetEMailTemplateListForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "emailtemplatelistview",
+          "viewName": "emailtemplatelistview",
+          "viewPath": "modconfview"
+        },
+        "TargetEMailTemplateEntryForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "emailtemplateentryform",
+          "viewName": "emailtemplateentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetConfigurationListForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ConfigurationList",
+          "viewName": "ConfigurationList"
+        },
+        "TargetConfigurationAddViewForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ConfigurationAddView",
+          "viewName": "ConfigurationAddView"
+        },
+        "TargetCadRequestListView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "cadrequestlistview",
+          "viewName": "cadrequestlistview",
+          "viewPath": "modoneview"
+        },
+        "TargetCRFListView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "crflistview",
+          "viewName": "crflistview",
+          "viewPath": "modoneview"
+        },
+        "TargetCadRequestEntryForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "cadrequestentryform",
+          "viewName": "cadrequestentryform",
+          "viewPath": "modoneview"
+        },
+        "TargetCRFEntryForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "crfentryform",
+          "viewName": "crfentryform",
+          "viewPath": "modoneview"
+        },
+        "TargetPrintForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Print",
+          "viewName": "Print"
+        },
+        "TargetnewprintForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "newprint",
+          "viewName": "newprint",
+          "viewPath": "modoneview"
+        },
+        "TargetCOPSearchFormNew": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "coplistview",
+          "viewName": "coplistview",
+          "viewPath": "modoneview"
+        },
+        "TargetCOPEntryForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "copentryform",
+          "viewName": "copentryform",
+          "viewPath": "modoneview"
+        },
+        "TargetCadDetailListView_new": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "caddetaillistview",
+          "viewName": "caddetaillistview",
+          "viewPath": "modoneview"
+        },
+        "TargetCadDetailEntryForm_new": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "caddetailentryform",
+          "viewName": "caddetailentryform",
+          "viewPath": "modoneview"
+        },
+        "TargetUserListView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "userlistview",
+          "viewName": "userlistview",
+          "viewPath": "modconfview"
+        },
+        "TargetUserEntryForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "userentryform",
+          "viewName": "userentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetMenuConfiguration": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "menumasterlistview",
+          "viewName": "menumasterlistview",
+          "viewPath": "modconfview"
+        },
+        "Targetmenumasterentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "menumasterentryform",
+          "viewName": "menumasterentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetStageConfiguration": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "stagemasterlistview",
+          "viewName": "stagemasterlistview",
+          "viewPath": "modconfview"
+        },
+        "Targetstagemasterentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "stagemasterentryform",
+          "viewName": "stagemasterentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetStageFlowConfiguration": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "stageflowmasterlistview",
+          "viewName": "stageflowmasterlistview",
+          "viewPath": "modconfview"
+        },
+        "Targetstageflowmasterentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "stageflowmasterentryform",
+          "viewName": "stageflowmasterentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetStageConstantConfiguration": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "stageconstantlistview",
+          "viewName": "stageconstantlistview",
+          "viewPath": "modconfview"
+        },
+        "Targetstageconstantentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "stageconstantentryform",
+          "viewName": "stageconstantentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetControlEnableDisable": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "enableadisablelistview",
+          "viewName": "enableadisablelistview",
+          "viewPath": "modconfview"
+        },
+        "TargetControlEnableDisableentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "enableadisableentryform",
+          "viewName": "enableadisableentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetRole": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "rolelistview",
+          "viewName": "rolelistview",
+          "viewPath": "modconfview"
+        },
+        "TargetRoleentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "roleentryform",
+          "viewName": "roleentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetRoleConstantentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "roleconstantentryform",
+          "viewName": "roleconstantentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetRoleConstantlistview": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "roleconstantlistview",
+          "viewName": "roleconstantlistview",
+          "viewPath": "modconfview"
+        },
+        "TargetNameMenuRoleConfiguration": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "menurolelistview",
+          "viewName": "menurolelistview",
+          "viewPath": "modconfview"
+        },
+        "TargetNameMenuRolerentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "menuroleentryform",
+          "viewName": "menuroleentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetTargetNameMenuRolerentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "stagerolelistview",
+          "viewName": "stagerolelistview",
+          "viewPath": "modconfview"
+        },
+        "TargetNameStageRoleMasterentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "stageroleentryform",
+          "viewName": "stageroleentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetNameBuyerBrandListView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "buyerbrandlistview",
+          "viewName": "buyerbrandlistview",
+          "viewPath": "modconfview"
+        },
+        "TargetNameBuyerBrandEntryForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "buyerbrandentryform",
+          "viewName": "buyerbrandentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetTemplateConfiguration": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "templatemasterlistview",
+          "viewName": "templatemasterlistview",
+          "viewPath": "modconfview"
+        },
+        "TargetTemplatemasterentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "templateentryform",
+          "viewName": "templateentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetNameNumberSeriesListView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "numberseriesmasterlist",
+          "viewName": "numberseriesmasterlist",
+          "viewPath": "modconfview"
+        },
+        "TargetNameNumberSeriesEntryForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "numberseriesmasterentryform",
+          "viewName": "numberseriesmasterentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetNameProductCategoryListView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "productcategorylistview",
+          "viewName": "productcategorylistview",
+          "viewPath": "modconfview"
+        },
+        "TargetNameProductCategoryEntryForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "productcategoryentryform",
+          "viewName": "productcategoryentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetNameManufacturelistview": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "manufacturelistview",
+          "viewName": "manufacturelistview",
+          "viewPath": "modconfview"
+        },
+        "TargetNameManufactureentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "manufactureentryform",
+          "viewName": "manufactureentryform",
+          "viewPath": "modconfview"
+        },
+        "TargetEnumConfiguration": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "enummasterlistview",
+          "viewName": "enummasterlistview",
+          "viewPath": "modconfview"
+        },
+        "Targetenummasterentryform": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "enummasterentryform",
+          "viewName": "enummasterentryform",
+          "viewPath": "modconfview"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "stoneman.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

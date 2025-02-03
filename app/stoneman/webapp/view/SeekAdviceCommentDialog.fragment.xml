@@ -1,0 +1,20 @@
+<core:FragmentDefinition controllerName="stoneman.controller.SeekAdviceCommentDialog"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:f="sap.ui.layout.form">
+  <!-- dialog for seek advice -->
+  <Dialog id="commentDialog" title="{i18n>dialogTitleComment}">
+    <f:SimpleForm id="dialogForm" editable="true" layout="ResponsiveLayout" columnsM="2" columnsL="2" columnsXL="2">
+      <f:content>
+        <Label design="Bold" id="commentLbl" text="{i18n>commentLbl}" width="100px"/>
+        <TextArea id="queryField" value="{dialogData>/Question}" editable="false" placeholder="Enter query" width="280px" rows="2"/>
+        <Label design="Bold" id="replyLbl" text="{i18n>replyLbl}" width="100px"/>
+        <TextArea id="replyDialog" placeholder="Reply" value="{dialogData>/Answer}" width="280px" rows="2" />
+      </f:content>
+    </f:SimpleForm>
+    <buttons>
+      <Button text="Save" press=".onSendDialog"/>
+      <Button text="Close" press=".onCloseDialog"/>
+    </buttons>
+  </Dialog>
+</core:FragmentDefinition>

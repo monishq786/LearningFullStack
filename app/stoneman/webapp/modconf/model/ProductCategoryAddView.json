@@ -1,0 +1,22 @@
+{
+  "DelMark": null,
+  "FirstNum": null,
+  "IncrementBy": null,
+  "LastNum": 0,
+  "Prefix": null,
+  "ProductCategoryCode": null,
+  "ProductCategoryGuid": null,
+  "ProductCategoryName": null,
+  "Remarks": null,
+  "Suffix": null,
+  "IsActive": null,
+  "ProductCategoryCADLevel":[
+    {
+      "CADLevelCode": null,
+      "CADLevelDescription": null,
+      "IncrementBy": null,
+      "RowNumber": 1,
+      "DelMark": 0
+  }
+]
+}

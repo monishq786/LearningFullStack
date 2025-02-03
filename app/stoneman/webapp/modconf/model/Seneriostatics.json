@@ -1,0 +1,16 @@
+{
+    "StageFlow": [
+        {
+            "id": "APPROVED",
+            "name": "APPROVED"
+        },
+        {
+            "id": "NA",
+            "name": "NA"
+        },
+        {
+            "id": "REJECTED",
+            "name": "REJECTED"
+        }
+    ]
+}

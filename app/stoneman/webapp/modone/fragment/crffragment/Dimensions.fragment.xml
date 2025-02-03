@@ -1,0 +1,96 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons">
+    <VBox >
+        <FlexBox justifyContent="End">
+            <Button id="matAddBtn" icon="sap-icon://add" text="{i18n>addDrawing}" press="addMaterialRow" />
+        </FlexBox>
+        <ScrollContainer id="scrollDiamension" width="100%" height="auto" horizontal="true" vertical="true" focusable="true">
+            <Table id="matTable" items="{    path: 'EntryFormDataSourceModel>/Material',    sorter: {     path: 'SrNo'    }   }" class="sapUiSizeCompact" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true">
+                <columns>
+                    <Column width="5rem">
+                        <Text text="{i18n>srNo}" />
+                    </Column>
+                    <Column width="10rem">
+                        <Text text="Materials"/>
+                    </Column>
+                    <Column width="12rem">
+                        <Text text="Material Category" />
+                    </Column>
+                    <Column width="12rem">
+                        <Text text="Material Name" />
+                    </Column>
+                    <Column width="12rem">
+                        <Text text="Finish" />
+                    </Column>
+                    <Column width="12rem">
+                        <Text text="Testing Protocols" />
+                    </Column>
+                    <Column width="5rem"/>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text id="srNum1" width="5rem" text="{EntryFormDataSourceModel>RowNumber}" wrapping="false" />
+                            <Text id="materialId" width="10rem" text="{EntryFormDataSourceModel>MaterialAutoCode}" wrapping="false" />
+                            <Input id="materialCategory" width="10rem" value="{EntryFormDataSourceModel>MaterialCatHanaText}" placeholder="Click to select value" showValueHelp="true" valueHelpRequest="cflForMaterialCategory" />
+                            <Input id="diaMaterialInput" width="10rem" value="{EntryFormDataSourceModel>MaterialCatFreeText}" description="" fieldWidth="100%" />
+                            <Input id="materialRemark" width="10rem" value="{EntryFormDataSourceModel>UserComments}" description="" fieldWidth="100%" />
+                            <Input id="testingPro" width="10rem" value="{EntryFormDataSourceModel>TestProtocol}" description="" fieldWidth="100%" />
+                            <Button id="matDelBtn" width="2rem" icon="sap-icon://delete" visible="true" press="onDeleteMaterial" type="Reject" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+        <HBox>
+            <VBox>
+                <Label text="{i18n>dimensionsTab}" design="Bold" class="sapUiSmallMarginEnd"/>
+
+            </VBox>
+            <VBox>
+                <CheckBox id="diamensionCheckBox" enabled="true" text="{i18n>mandatory}" select=".onCheckDiamension" selected="{EntryFormDataSourceModel>/isDimension}" />
+            </VBox>
+        </HBox>
+
+        <f:SimpleForm id="dimension1" editable="true" layout="ColumnLayout" columnsM="2" columnsL="4" columnsXL="5" labelSpanL="4" labelSpanXL="4" adjustLabelSpan="true">
+            <f:content>
+                <Label id="DlengthLbl" required="{EntryFormDataSourceModel>/isDimension}" labelFor="Dlength" text="{i18n>length}" />
+                <Input id="Dlength" enabled="true" required="{EntryFormDataSourceModel>/isDimension}" type="Number" value="{EntryFormDataSourceModel>/Length}" description="" fieldWidth="100%" />
+
+                <Label id="DToleranceLbl" required="{EntryFormDataSourceModel>/isDimension}" labelFor="DTolerance" text="{i18n>dLTolerance}" />
+                <Input id="DTolerance" enabled="true" required="{EntryFormDataSourceModel>/isDimension}" type="Number" value="{EntryFormDataSourceModel>/TolLength}" description="" fieldWidth="100%" />
+
+
+                <Label id="DWidthLbl" required="{EntryFormDataSourceModel>/isDimension}" labelFor="Dwidth" text="{i18n>width}" />
+                <Input id="Dwidth" enabled="true" required="{EntryFormDataSourceModel>/isDimension}" type="Number" value="{EntryFormDataSourceModel>/Width}" description="" fieldWidth="100%" />
+
+                <Label id="DHeigthLbl" required="{EntryFormDataSourceModel>/isDimension}" labelFor="Dheight" text="{i18n>height}" />
+                <Input id="Dheight" enabled="true" required="{EntryFormDataSourceModel>/isDimension}" type="Number" value="{EntryFormDataSourceModel>/Height}" description="" fieldWidth="100%" />
+
+                <Label id="DHToleranceLbl" required="{EntryFormDataSourceModel>/isDimension}" labelFor="dHTolerance" text="{i18n>dHTolerance}" />
+                <Input id="dHTolerance" enabled="true" required="{EntryFormDataSourceModel>/isDimension}" type="Number" value="{EntryFormDataSourceModel>/TolHeight}" description="" fieldWidth="100%" />
+
+                <Label id="DWToleranceLbl" required="{EntryFormDataSourceModel>/isDimension}" labelFor="dWTolerance" text="{i18n>dWTolerance}" />
+                <Input id="dWTolerance" enabled="true" required="{EntryFormDataSourceModel>/isDimension}" type="Number" value="{EntryFormDataSourceModel>/TolWidth}" description="" fieldWidth="100%" />
+
+                <Label id="diaMeterLbl" required="{EntryFormDataSourceModel>/isDimension}" labelFor="diaMeterTolerance" text="{i18n>diameter}" />
+                <Input id="diaMeter" enabled="true" required="{EntryFormDataSourceModel>/isDimension}" type="Number" value="{EntryFormDataSourceModel>/Diameter}" description="" fieldWidth="100%" />
+
+                <Label id="diaMeterToleranceLbl" required="{EntryFormDataSourceModel>/isDimension}" labelFor="diaMeterTolerance" text="{i18n>diameterTol}" />
+                <Input id="diaMeterTolerance" enabled="true" required="{EntryFormDataSourceModel>/isDimension}" type="Number" value="{EntryFormDataSourceModel>/TolDiameter}" description="" fieldWidth="100%" />
+
+                <Label id="dUnitNameLbl" required="{EntryFormDataSourceModel>/isDimension}" labelFor="dUnitName" text="{i18n>unitName}" />
+                <Input id="dUnit" enabled="true" required="{EntryFormDataSourceModel>/isDimension}" type="Text" value="{EntryFormDataSourceModel>/UnitName}" description="" fieldWidth="100%" showValueHelp="true" valueHelpRequest="cflForUoM"/>
+
+                <Label id="dUnitCodeLbl" required="{EntryFormDataSourceModel>/isDimension}" labelFor="dUnitCode" text="{i18n>unitCode}" />
+                <Input id="dUnitCode" enabled="true" editable="false" required="{EntryFormDataSourceModel>/isDimension}" type="Text" value="{EntryFormDataSourceModel>/UnitCode}" description="" fieldWidth="100%"/>
+
+            </f:content>
+        </f:SimpleForm>
+        <TextArea id="diaComment" width="100%" value="{EntryFormDataSourceModel>/MaterialComments}" height="120px" placeholder="Merchant Remarks"/>
+
+    </VBox>
+</core:FragmentDefinition>

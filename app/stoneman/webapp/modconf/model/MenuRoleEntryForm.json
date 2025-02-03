@@ -1,0 +1,19 @@
+{
+   
+    "RoleCode": null,
+    "Role_RoleGuid": null,
+    "Detail": [
+        {
+            "Role": null,
+            "isDelete": true,
+            "RowNumber": 1,
+            "Add": false,
+            "Update": false,
+            "View": true,
+            "Menu_MenuGuid": null,
+            "Description": null,
+            "DelMark": 0
+        }
+    ],
+    "RoleType": []
+}

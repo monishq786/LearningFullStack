@@ -1,0 +1,60 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons">
+    <VBox >
+        <FlexBox justifyContent="End" visible="{EntryFormDataSourceModel>/isButtonVisible}">
+            <Button id="CRF_addAttachBtnNew" icon="sap-icon://add" text="{i18n>addDrawing}" press="openAttachmentDialog" enabled="true" class="sapUiSmallMarginBegin"/>
+        </FlexBox>
+        <!-- <f:SimpleForm id="AttachmentForm" editable="true" layout="ColumnLayout" columnsM="2" columnsL="4" columnsXL="4" labelSpanL="4" labelSpanXL="4" adjustLabelSpan="true">
+            <f:content>
+                <Label id="prodEngg" labelFor="assignProdEng" text="Assign Prod. Eng" />
+                <Select id="assignProdEng" required="true" width="150px" maxWidth="100%" valueState="None" visible="true" editable="true" change="onSelectAssnProdEng" items="{path: 'AssgnEnggModel>/value'}" selectedKey="{EntryFormDataSourceModel>/UserID}">
+                    <core:Item key="{AssgnEnggModel>UserID}" text="{AssgnEnggModel>Username}" />
+                </Select>
+            </f:content>
+        </f:SimpleForm> -->
+        <ScrollContainer id="scrollAttachment" width="100%" height="auto" horizontal="true" vertical="true" focusable="true">
+            <Table id="cadTable" items="{ path: 'EntryFormDataSourceModel>/InspDraw',    sorter: {     path: 'SrNo'    }   }" class="sapUiSizeCompact" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true">
+                <columns>
+                    <Column width="5rem">
+                        <Label text="Sr No." />
+                    </Column>
+
+                    <Column width="15rem">
+                        <Label text="Role" labelFor="roleAttach" required="true"/>
+                    </Column>
+
+                    <Column width="10rem">
+                        <Label text="User" labelFor="userAttach" required="true"/>
+                    </Column>
+
+                    <Column width="10rem">
+                        <Label text="File" labelFor="attachFile" required="true"/>
+                    </Column>
+
+                    <Column width="10rem">
+                        <Label text="Comment" />
+                    </Column>
+
+                    <Column width="10rem">
+                        <Label text="Approval Status" />
+                    </Column>
+                    <Column width="5rem" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <Text id="srNum_attach" text="{EntryFormDataSourceModel>RowNumber}" />
+                        <Text id="roleAttach" text="{EntryFormDataSourceModel>RoleName}" wrapping="false" />
+                        <Text id="userAttach" text="{EntryFormDataSourceModel>UserName}" wrapping="false" />
+                        <Button id="attachFileViewBtn" icon="sap-icon://show" text="View File" width="120px" visible="true" enabled="true" press="openAttachmentDialog" type="Emphasized" />
+                        <TextArea id="attachComment" width="100%" value="{EntryFormDataSourceModel>AttachmentRemarks}" height="50px" placeholder="Comments" tooltip="{EntryFormDataSourceModel>AttachmentRemarks}"/>
+                        <Text id="approvalAttach" text="{EntryFormDataSourceModel>ApprovalStatus}" wrapping="true" />
+                        <Button id="attachDelBtn" icon="sap-icon://delete" width="35px" visible="{=${EntryFormDataSourceModel>RowStatus} !== 'CLOSED'}" press="onDeleteAttachment" type="Reject" />
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+    </VBox>
+</core:FragmentDefinition>

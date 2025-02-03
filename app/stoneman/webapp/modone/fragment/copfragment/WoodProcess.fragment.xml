@@ -1,0 +1,109 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <VBox>
+        <HBox
+            width="100%"
+            justifyContent="End"
+        >
+            <VBox>
+                <Button
+                    id="copefWoodProcessAddButton"
+                    icon="sap-icon://add"
+                    text="{i18n>addNew}"
+                    press="addWoodProcessRow"
+                />
+            </VBox>
+        </HBox>
+        <ScrollContainer
+            width="100%"
+            height="100%"
+            horizontal="true"
+            vertical="true"
+        >
+            <Table
+                items="{    path: 'copRequestModel_New>/woodprocess',    sorter: {     path: ''    }   }"
+                inset="true"
+                sticky="ColumnHeaders,HeaderToolbar"
+                showSeparators="All"
+                showNoData="true"
+                id="copefWoodProcessTable"
+            >
+                <columns>
+                    <Column width="180px">
+                        <Text text="" />
+                    </Column>
+                    <Column width="140px">
+                        <Text text="Process Cost" />
+                    </Column>
+                    <Column width="140px">
+                        <Text text="Input Method" />
+                    </Column>
+                    <Column width="140px">
+                        <Text text="Time" />
+                    </Column>
+                    <Column width="140px">
+                        <Text text="Wastage Process %" />
+                    </Column>
+                    <Column width="140px">
+                        <Text text="Process Wastage Cost" />
+                    </Column>
+                    <Column width="60px" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text
+                                id="copefWoodProcessName"
+                                text="{copRequestModel_New>name}"
+                                wrapping="false"
+                            />
+                            <Input
+                                id="copefWoodProcessCost"
+                                width="120px"
+                                placeholder=""
+                                value="{copRequestModel_New>departmentName}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefWoodProcessInputMethod"
+                                width="120px"
+                                placeholder=""
+                                value="{copRequestModel_New>pddrraUser}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefWoodProcessTime"
+                                width="120px"
+                                placeholder=""
+                                value="{copRequestModel_New>departmentName}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefWoodProcessWastageProcessPercentage"
+                                width="120px"
+                                placeholder=""
+                                value="{copRequestModel_New>pddrraUser}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefWoodProcessProcessWastageCost"
+                                width="120px"
+                                placeholder=""
+                                value="{copRequestModel_New>departmentName}"
+                                fieldWidth="100%"
+                            />
+                            <Button
+                                id="copefWoodProcessDeleteWoodProcess"
+                                icon="sap-icon://delete"
+                                press="onDeleteWoodProcess"
+                                visible="{copRequestModel_New>isDelete}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,53 @@
+<core:FragmentDefinition controllerName="stoneman.controller.PDAssigneeDialog"
+xmlns="sap.m" 
+xmlns:core="sap.ui.core"
+  xmlns:f="sap.ui.layout.form"
+ >
+     <Dialog id="pdAssigneeDialog" title="{i18n>dialogTitle}" class="sapMText.message boldTitle">
+    
+        <content>
+        <HBox class="tab-padding">
+            <VBox width="150px">
+            <Label id="roleDialogLbl" text="{i18n>roleDialogLbl}"
+          width="100px"   class="labelHeightAssignee"
+        /> 
+         <Label id="userDialogLbl" text="{i18n>userDialogLbl}"
+          width="100px"   class="labelHeightAssignee"
+        /> 
+        <Label id="commentDialogLbl" text="{i18n>commentDialogLbl}"
+          width="100px"   class="labelHeightAssignee"
+        /> 
+        <Label id="attachmentDialogLbl" text="{i18n>attachmentDialogLbl}"
+          width="100px"   class="labelHeightAssignee"
+        /> 
+            </VBox>
+             <VBox>
+          <Input id="roleDialog" placeholder="Role"
+      width="200px" fieldWidth="100%" class="labelHeight topmargin"
+        />
+        
+        <ComboBox id="userDialog" width="200px" maxWidth="100%"
+        valueState="None"  visible="true" editable="true"  selectedKey=""
+        selectionChange=".onColorComboChange"
+        items="{path:'cadRequestModel>/values'}"  class="labelHeight marginmiddle">
+        <items>
+          <core:Item 
+          key="{cadRequestModel>name}"
+          text="{cadRequestModel>value}" />
+         
+        </items>
+        </ComboBox>
+         <TextArea id="commentDialog" value="{Comment}" width="100%" rows="1" class="top-margin"/>
+
+          <Button icon="sap-icon://upload" id="uploadLbl" text="{i18n>uploadLbl}" type="Emphasized" class="btnstyle leftmargin" press="" />
+            </VBox>
+            </HBox>
+        </content>
+        <buttons>
+          <Button text="Assign" press=".onAssignDialog"/>
+            <Button text="Close" press=".onCloseDialog"/>
+        </buttons>
+ 
+        
+    </Dialog>
+</core:FragmentDefinition>

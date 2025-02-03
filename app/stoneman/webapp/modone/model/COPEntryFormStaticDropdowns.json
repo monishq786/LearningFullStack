@@ -1,0 +1,38 @@
+{
+    "ReqTypArray": [
+        {
+            "id": "",
+            "name": "Select"
+        },
+        {
+            "id": "CAD",
+            "name": "CAD"
+        },
+        {
+            "id": "Rendering",
+            "name": "Rendering"
+        }
+    ],
+    "CostingType": [
+        {
+            "id": "",
+            "name": "Select"
+        },
+        {
+            "id": "CAD",
+            "name": "CAD"
+        },
+        {
+            "id": "Sample",
+            "name": "Sample"
+        },
+        {
+            "id": "Buyer",
+            "name": "Buyer"
+        },
+        {
+            "id": "Production Target",
+            "name": "Production Target"
+        }
+    ]
+}

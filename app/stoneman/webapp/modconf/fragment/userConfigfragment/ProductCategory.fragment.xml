@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <VBox>
+        <HBox width="100%" justifyContent="End">
+            <VBox >
+                <Button icon="sap-icon://add" text="{i18n>addNew}" press="addRowProductCategory" />
+            </VBox>
+        </HBox>
+        <ScrollContainer width="100%" height="300px" horizontal="true" vertical="true">
+            <Table items="{ path: 'EntryFormDataSourceModel>/ProductCategory', sorter: { path: '' } }" class="sapUiSizeCompact" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="ProductCategoryTable">
+                <columns>
+                    <Column width="4rem">
+                        <Label text="Sr No"/>
+                    </Column>
+                    <Column width="8rem">
+                        <Label text="Product Category Code" labelFor="product_category_code"/>
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Product Category Name"/>
+                    </Column>
+                    <Column width="2rem" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text id="product_category_SrNo" text="{EntryFormDataSourceModel>RowNumber}" />
+                            <Input id="product_category_code" valueState="None" required="true" editable="{= ${formMode} === 3 }" width="200px" placeholder="Select Product Category" value="{EntryFormDataSourceModel>ProductCategoryCode}" fieldWidth="100%" valueHelpRequest="cflForProductCategory" liveChange="onLiveChange" showValueHelp="true" />
+                            <Input id="product_category_name" width="200px" editable="false" value="{EntryFormDataSourceModel>ProductCategoryName}" fieldWidth="100%" tooltip="{EntryFormDataSourceModel>ProductCategoryName}" />
+                            <Button icon="sap-icon://delete" press="onDeleteProductCategory" type="Reject" width="35px" /> 
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+
+    </VBox>
+</core:FragmentDefinition>

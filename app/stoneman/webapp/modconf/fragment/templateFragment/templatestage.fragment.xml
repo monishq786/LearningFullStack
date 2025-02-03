@@ -1,0 +1,94 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons"
+>
+    <VBox>
+        <FlexBox justifyContent="End">
+            <Button
+                icon="sap-icon://add"
+                id="addStageRow"
+                text="{i18n>addNew}"
+                press="addStageRow"
+            />
+        </FlexBox>
+        <ScrollContainer
+            id="stageRoll"
+            width="100%"
+            height="auto"
+            horizontal="true"
+            vertical="true"
+            focusable="true"
+        >
+            <Table
+                id="stageTable_EntryForm"
+                items="{ path: 'EntryFormDataSourceModel>/TemplateStages'}"
+                sticky="ColumnHeaders,HeaderToolbar"
+                growing="true"
+                growingThreshold="1000"
+                growingScrollToLoad="true"
+            >
+                <columns>
+                    <Column width="5rem">
+                        <header>
+                            <Label text="{i18n>srNo}" />
+                        </header>
+                    </Column>
+                    <Column width="10rem">
+                        <header>
+                            <Label text="{i18n>Stage}" />
+                        </header>
+                    </Column>
+                    <Column width="10rem">
+                        <header>
+                            <Label text="{i18n>stageseq}" />
+                        </header>
+                    </Column>
+
+                    <Column width="5rem" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text
+                                id="s_SrNo"
+                                text="{EntryFormDataSourceModel>RowNumber}"
+                            />
+                            <Input
+                                id="tempstageCcode"
+                                type="Text"
+                                value="{EntryFormDataSourceModel>StageCode}"
+                                placeholder="Stage Code"
+                                showValueHelp="true"
+                                valueHelpRequest="cflForStageRole"
+                                required="true"
+                            />
+
+                            <Input
+                                id="tempstageseq"
+                                type="Text"
+                                editable="false"
+                                value="{EntryFormDataSourceModel>RowNumber}"
+                                placeholder="Stage Seq ..."
+                                required="true"
+                            />
+
+                            <Button
+                                id="stage_delete_EntryForm"
+                                icon="sap-icon://delete"
+                                width="35px"
+                                press="onDeleteStage"
+                                type="Reject"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+        <!-- <FlexBox justifyContent="End">
+            <Button type="Emphasized" id="addmenu" text="{i18n>addSeekAdvice}" press="onUploadSeekAdvice" class="sapUiSmallMarginTop"/>
+        </FlexBox> -->
+    </VBox>
+</core:FragmentDefinition>

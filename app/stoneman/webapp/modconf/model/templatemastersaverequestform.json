@@ -1,0 +1,16 @@
+
+
+{
+   "ActiveEndDate": "2024-12-29T11:26:52Z",
+      "ActiveStartDate": "2024-12-19T11:26:52Z",
+      "DelMark": 0,
+      "Description": "CRF with CAD",
+      "IsActive": "Y",
+      "Remarks": "Entry for testing ",
+      "TemplateGuid": "0f0aec9c-3ec1-436d-a441-d1446d8db07f",
+      "TemplateName": "CRF Template ",
+      "createdAt": "2024-12-19T11:26:52.504Z",
+      "createdBy": "anonymous",
+      "modifiedAt": "2024-12-19T11:26:52.504Z",
+      "modifiedBy": "anonymous"
+ }

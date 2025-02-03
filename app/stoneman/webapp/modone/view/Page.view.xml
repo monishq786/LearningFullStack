@@ -1,0 +1,28 @@
+<mvc:View height="100%" controllerName="modonecontroller.Page"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:upload="sap.m.upload">
+	<Page showHeader="false">
+		<upload:UploadSet id="UploadSet" instantUpload="true" showIcons="true" uploadEnabled="true" terminationEnabled="true" fileTypes="txt,doc,docx,png,jpg,jpeg,pdf,xls,xlsx,ppt,pptx,eml,msg,stl,STL,dxf,stp,IGS,cdr,hpgl,plt,dwg" maxFileNameLength="100" maxFileSize="10240" mediaTypes="text/plain,application/msword,image/png,image/jpeg,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,message/rfc822,application/vnd.ms-outlook,application/sla,application/stl,application/dxf,application/STEP,application/iges,application/coreldraw,application/vnd.hp-ux,application/vnd.hp-ux,application/plt,application/acad" uploadUrl="../../../../upload" items="{path: '/items', templateShareable: false}" multiple="true" mode="MultiSelect" afterItemRemoved="onAfterItemRemoved">
+			<upload:toolbar>
+				<OverflowToolbar>
+				<CheckBox id="selectAllCheckbox" text="Select All" select="onSelectAll"/>
+					<ToolbarSpacer/>
+					<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedButton"/>
+					<Button id="downloadSelectedButton" text="Download" press="onDownloadSelectedButton"/>
+					<upload:UploadSetToolbarPlaceholder />
+				</OverflowToolbar>
+			</upload:toolbar>
+			<upload:items>
+				<upload:UploadSetItem fileName="{fileName}" mediaType="{mediaType}" url="{url}" thumbnailUrl="{thumbnailUrl}" markers="{path: 'markers', templateShareable: false}" statuses="{path: 'statuses', templateShareable: false}" uploadState="{uploadState}">
+					<upload:markers>
+						<ObjectMarker type="{type}" visibility="{visibility}"/>
+					</upload:markers>
+					<upload:statuses>
+						<ObjectStatus title="{title}" text="{text}" state="{state}" icon="{icon}" active="{active}"/>
+					</upload:statuses>
+				</upload:UploadSetItem>
+			</upload:items>
+		</upload:UploadSet>
+	</Page>
+</mvc:View>

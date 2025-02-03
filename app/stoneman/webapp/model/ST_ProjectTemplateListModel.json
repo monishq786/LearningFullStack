@@ -1,0 +1,53 @@
+{
+    "results": [
+        {
+            "__metadata": {
+                "id": null,
+                "uri": null,
+                "etag":null
+            },
+            "ProjectUUID": null,
+            "ProjectInternalID": null,
+            "Project": null,
+            "ProjectDescription": null,
+            "EnterpriseProjectType": null,
+            "PriorityCode": null,
+            "ProjectStartDate": null,
+            "ProjectEndDate": null,
+            "ProcessingStatus":null,
+            "ResponsibleCostCenter": null,
+            "ProfitCenter": null,
+            "ProjectManagerUUID": null,
+            "ProjectProfileCode": null,
+            "FunctionalArea": null,
+            "CompanyCode": null,
+            "ControllingArea": null,
+            "Plant": null,
+            "Location":null,
+            "TaxJurisdiction": null,
+            "ProjectCurrency": null,
+            "AvailabilityControlProfile": null,
+            "AvailabilityControlIsActive": null,
+            "FunctionalLocation": null,
+            "IsBillingRelevant": null,
+            "EntProjIsMultiSlsOrdItmsEnbld": null,
+            "LastChangeDateTime": null,
+            "InvestmentProfile": null,
+            "to_EnterpriseProjectElement": {
+                "__deferred": {
+                    "uri": null
+                }
+            },
+            "to_EntProjBlkFunc": {
+                "__deferred": {
+                    "uri": null
+                }
+            },
+            "to_EntProjectPublicSector": {
+                "__deferred": {
+                    "uri": null
+                }
+            }
+        }
+    ]
+}

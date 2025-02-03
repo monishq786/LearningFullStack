@@ -1,0 +1,712 @@
+<!-- <!DOCTYPE html> -->
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>New Print</title>
+    <!-- <script src="/modone/constants/NewPrint.js"></script> -->
+    <script src="../constants/NewPrint.js"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: Poppins;
+        }
+
+        table.newprint-table {
+            border: 0px solid #ccc;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        table.newprint-table tr th {
+            font-size: 9px;
+            font-weight: 700;
+            color: #607D8B;
+        }
+
+        table.newprint-table tr td {
+            font-size: 9px;
+            font-weight: 500;
+            line-height: 17px;
+        }
+
+        table.newprint-table tr th,
+        table.newprint-table tr td {
+            border: 1px solid #c9b9b9;
+            vertical-align: top;
+            padding: .1em .5em;
+
+        }
+
+        .borderlrule {
+            border-left: 0 !important;
+        }
+
+        .borderrrule {
+            border-right: 0 !important;
+        }
+
+        .textRight {
+            text-align: right;
+        }
+
+        .textLeft {
+            text-align: left;
+        }
+
+        table.newprint-table tr th span {
+            font-size: 11px;
+            font-weight: 700;
+            color: #607D8B;
+        }
+
+        table.newprint-table tr td span {
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 17px;
+        }
+
+        .wdth-txt {
+            width: 86%;
+            text-align: center !important;
+        }
+
+        .nprnt-algn headername {
+            text-align: center;
+        }
+
+        /* Custom Styles for Login Screen */
+        .login-Box {
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .titleText {
+            font-weight: bolder;
+            font-size: 1.5rem;
+            /* Adjust size as needed */
+        }
+
+        .tiles_wrapping {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            /* padding: 20px; */
+            flex-wrap: wrap;
+        }
+
+        table.newprint-table tr:first-child>th {
+            border: 0 !important;
+        }
+
+        @media print {
+
+            /* Hide unnecessary elements */
+            .prnt-btn {
+                display: none;
+            }
+
+            /* Adjust layout for print */
+            .print-layout {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                page-break-before: auto;
+                page-break-after: auto;
+                page-break-inside: avoid;
+                height: 100vh !important;
+            }
+        }
+
+        table.newprint-table tr th span .sapMBtnContent bdi {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+
+        .headername {
+            font-size: 10px !important;
+            line-height: 18px !important;
+            font-weight: 700 !important;
+            color: #000;
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <script>
+        // Get the ID from the URL
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('name');
+
+
+            // Pass the ID to a function in NewPrint.js
+            if (typeof onDocumentLoad === "function") {
+                onDocumentLoad(id);  // This function is defined in NewPrint.js
+            }
+        };
+    </script>
+    <table border="0" class="newprint-table print-layout">
+        <!-- <tr style="border = 0 !important"> -->
+        <tr>
+            <th width="17%" style="border:0 !important;"></th>
+            <th width="10%" style="border:0 !important"></th>
+            <th width="20%" style="border:0 !important"></th>
+            <th width="15%" style="border:0 !important"></th>
+            <th width="8%" style="border:0 !important"></th>
+            <th width="7%" style="border:0 !important"></th>
+            <th width="3%" style="border:0 !important"></th>
+            <th width="7%" style="border:0 !important"></th>
+            <th width="3%" style="border:0 !important"></th>
+            <th width="7%" style="border:0 !important"></th>
+            <th width="3%" style="border:0 !important"></th>
+        </tr>
+        <tr>
+            <th width="10%" class="borderrrule">
+                <img src="../../images/stonemenLogo.png" class="new-stonemen-logo" />
+            </th>
+            <th colspan="4" width="60%" class="borderlrule textRight"> PRE-DEVELOPMENT REVIEW AND RISK MEETING:</th>
+            <!-- <th width="10%"></th>
+            <th width="20%"> </th> -->
+            <!-- <th  width="15%"><Text text="{i18n>stoneProcName}" /></th>
+            <th width="8%">  <Text text="{i18n>filReq}" /></th> -->
+            <th width="20%" class="textLeft" colspan="6"> STONEMEN CRAFTS INDIA PVT. LTD.</th>
+            <!--    <th width="10%" class="textLeft" colspan="2">        <button id="btnPrn" type="Emphasized" press="onPressPrint" icon="sap-icon://print" class="prnt-btn" >Print</button></th>-->
+        </tr>
+
+        <tr>
+            <th colspan="3" width="47%"></th>
+            <!-- <th width="10%"></th>
+            <th width="20%"> </th> -->
+            <th width="15%">Stone Process Name</th>
+            <th width="8%"> File Req.</th>
+            <th width="30%" colspan="6" class="textLeft"> DOCUMENT NO:- <span id="DocNo"></span> </th>
+        </tr>
+
+        <tr>
+            <td colspan="3" rowspan="58"> <Text text="{i18n>}" class="bordertopbottom-rule" /></td>
+            <td>CNC Wire Saw Cutting</td>
+            <td> DXF</td>
+            <td rowspan="6" colspan="6">PROPRIETARY AND CONFIDENTIAL THE INFORMATION CONTAINED IN THIS DRAWING IS THE
+                SOLE PROPERTY OF STONEMEN CRAFTS. ANY REPRODUCTION IN PARTOR AS A WHOLE WITHOUT THE WRITTEN PERMISSION
+                OF STONEMEN CRAFTS IS PROHIBITED.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Cutting & Grinding</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Lathe / Turning</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> CNC Turning</td>
+            <td> DXF</td>
+        </tr>
+
+        <tr>
+            <td> CNC Drilling Vertical / Horizontal</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td>Polish Inlay - Stone + Metal +Etc.</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td>S.B. Engraving</td>
+            <td> DXF</td>
+            <td colspan="6">
+                P.D. Number
+            </td>
+        </tr>
+
+        <tr>
+            <td> Color / Dye </td>
+            <td> <Text text="{i18n>}" /></td>
+            <td rowspan="2" colspan="6">
+
+                P.D. Date: <span id="PDDate"></span>
+            </td>
+        </tr>
+        <tr>
+            <td> Printing Logo / Art Work</td>
+            <td> DXF</td>
+        </tr>
+
+        <tr>
+            <td> Manual Drilling</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2"> C.R.F. Date: <span id="CRFDate"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td> Pasting (sadakari)
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> CNC Carving (5 Axis)</td>
+            <td> Parasolid</td>
+            <td colspan="6" rowspan="2">
+                CAD Date:
+                <span id="CrfDelDate"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td> Fitting (Lamp)</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td>Water Jet Cutting / Hydro Finishing CNC Router</td>
+            <td> DXF Parasolid</td>
+            <td colspan="6"> Design No. - </td>
+        </tr>
+
+        <tr>
+            <td>Boll Polish Lacquer</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6"> Dimension Unit - <span id="UnitName"></span></td>
+        </tr>
+
+        <tr>
+            <td> Pasting ( Artisan )</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6">
+                Product : <span id="ProductCatName"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td> CNC Table Profiling & Cutting</td>
+            <td> <Text text="{i18n>Parasolid}" /></td>
+            <td colspan="6" rowspan="2">
+
+                Designer : <span id="Designer"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="nprnt-algn headername">
+                Wood Process </td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td>Wood Cutting & Pasting</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2"> Drawn by</td>
+        </tr>
+
+        <tr>
+            <td> Manual Router</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> CNC Router</td>
+            <td> DXF</td>
+            <td colspan="6" rowspan="2"> Tech (Stone): <span id="UserName1"></span> </td>
+        </tr>
+
+        <tr>
+            <td> Moulder milling</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Outer / Inner shaper</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2">
+                Tech (Wood): <span id="UserName3"></span>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td> Manual Router
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Drilling / Boring</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6"> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Mortiser & enoner
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2"> Tech (Metal): <span id="UserName2"></span></td>
+        </tr>
+
+        <tr>
+            <td> Manual Lathe / CNC Lathe / Turning</td>
+            <td> DXF</td>
+        </tr>
+
+        <tr>
+            <td>Zig Saw</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2"> Production</td>
+        </tr>
+
+        <tr>
+            <td> Carving</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Etching laser work</td>
+            <td> DXF</td>
+            <td rowspan="2"> Easy
+            </td>
+            <td rowspan="2"> <Text text="{i18n>}" /></td>
+            <td rowspan="2"> Medium
+            </td>
+            <td rowspan="2"> <Text text="{i18n>}" /></td>
+            <td rowspan="2"> Critical</td>
+            <td rowspan="2"> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Assembly & Pasting</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+
+        <tr>
+            <td> Manual / Belt Sanding
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2"> Packaging Category:</td>
+        </tr>
+
+        <tr>
+            <td> Wired Texure</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Polish</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td rowspan="2"> Easy
+            </td>
+            <td rowspan="2"> <Text text="{i18n>}" /></td>
+            <td rowspan="2"> Medium
+            </td>
+            <td rowspan="2"> <Text text="{i18n>}" /></td>
+            <td rowspan="2"> Critical</td>
+            <td rowspan="2"> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Oil Finish</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+
+        <tr>
+            <td> Stain Finish</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="2" rowspan="2"> Packaging</td>
+            <td rowspan="2"> KD</td>
+            <td rowspan="2"> <Text text="{i18n>}" /></td>
+            <td rowspan="2"> Assembled</td>
+            <td rowspan="2"> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Paint Shop</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Lacquer
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="2" rowspan="2"> Patern</td>
+            <td rowspan="2"> Yes</td>
+            <td rowspan="2"> <Text text="{i18n>}" /></td>
+            <td rowspan="2"> No</td>
+            <td rowspan="2"> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Out Source Job</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Other</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6"> Patern No :</td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="nprnt-algn headername">
+                MetProc
+            </td>
+            <td colspan="6" rowspan="3"> Patern Material :</td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="nprnt-algn headername">
+                Machineshop
+            </td>
+        </tr>
+
+        <tr>
+            <td>Laser Cutting</td>
+            <td> DXF</td>
+        </tr>
+
+        <tr>
+            <td>Spinning Bending</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="2"> Assembled in
+            </td>
+            <td colspan="2"> assemldIn</td>
+            <td> Moradabad</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Milling</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6"> To Mension For any Loose Component or Fitment Mock-up Send to MBD.</td>
+        </tr>
+
+        <tr>
+            <td> Pressing</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td rowspan="2"> MDF.</td>
+            <td rowspan="2" colspan="2"> <Text text="{i18n>}" /></td>
+            <td rowspan="2"> MARBLE</td>
+            <td colspan="2" rowspan="2"> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Sheet Forming</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Laser Engraving</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td rowspan="2"> Trims</td>
+            <td colspan="5" rowspan="2"> <Text text="{i18n>}" /></td>
+        </tr>
+
+        <tr>
+            <td> Taping / Threading</td>
+            <td> <Text text="{i18n>}" /></td>
+        </tr>
+        <tr>
+
+            <td> Drilling</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2" class="nprnt-algn headername"> MATERIAL & FINISH</td>
+        </tr>
+        <tr>
+
+            <td> Punching</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+
+        <tr>
+
+            <td> Lathe Turning</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2">
+                Material 1:- <span id="UserMaterialCategoryName"></span>
+            </td>
+        </tr>
+        <tr>
+
+            <td> Embossing</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+
+        <tr>
+
+            <td> Rolling </td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2">
+                Finish: <span id="UserComments"></span>
+            </td>
+        </tr>
+
+        <tr>
+
+            <td> Fabrication</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+        <tr>
+
+            <td> Welding</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+        <tr>
+
+            <td> Grinding</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2"> Finish No: </td>
+        </tr>
+        <tr>
+
+            <td> Hammering</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+
+        <tr>
+            <td> DESIGNER SIGN:</td>
+
+            <td> <Text text="{i18n>}" /></td>
+            <td class="nprnt-algn headername"> P.D. MEETING DATE & TIME AS GIVEN BY PD. CORD.</td>
+
+            <td> Manual Cutting Casting ( Out Source as per Mould )</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2">
+                Material 2:- <span id="UserMaterialCategoryName2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> Forging
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+
+        <tr>
+            <td> MERCHANT SIGN:
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td class="nprnt-algn headername">
+                Finishing
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="2"> Finish: <span id="UserComments2"></span></td>
+        </tr>
+
+
+        <tr>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> Polish</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+        <tr>
+            <td> STONE TECH SIGN:</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td class="nprnt-algn headername"> ACTUAL MEETING START DATE & TIME</td>
+            <td> Plating EPL</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td colspan="6" rowspan="8"> Finish No:</td>
+        </tr>
+        <tr>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> PVD ( Out Source )</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+        <tr>
+            <td> WOOD TECH SIGN:
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> Decale ART ( Out Source )
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+
+        <tr>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> Paintshop Powder Coating</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+        <tr>
+            <td> METAL TECH SIGN:</td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> REMARKS</td>
+            <td> Phosphating</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+        <tr>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> Ectching / Laser Engraving
+            </td>
+            <td> <Text text="{i18n>PLT}" /></td>
+
+        </tr>
+        <tr>
+            <td> PRODUCT ER. SIGN:
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> Enamel</td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+        <tr>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> <Text text="{i18n>}" /></td>
+            <td> Oven Dry
+            </td>
+            <td> <Text text="{i18n>}" /></td>
+
+        </tr>
+
+    </table>
+
+</body>
+
+</html>

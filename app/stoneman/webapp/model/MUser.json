@@ -1,0 +1,39 @@
+{
+    "d": {
+        "results": [
+            {
+                "PersonWorkAgreement": null,
+                "PersonFullName": null,
+                "BusinessPartner": null,
+                "BusinessPartnerCategory": null,
+                "BusinessPartnerUUID": null,
+                "BusinessPartnerName": null,
+                "BusinessPartnerFullName": null,
+                "FirstName": null,
+                "LastName": null,
+                "PersonFullName_2": null,
+                "CostCenter": null,
+                "Job": null,
+                "OrganizationalUnit": null,
+                "PersonWorkAgrmtAuthznGrpg": null,
+                "PersonWorkAgreement_1": null,
+                "StartDate": null,
+                "EndDate": null,
+                "CompanyCode": null,
+                "Person": null,
+                "PersonExternalID": null,
+                "LastName_1": null,
+                "FirstName_1": null,
+                "MiddleName": null,
+                "AdditionalLastName": null,
+                "PersonFullName_1": null,
+                "BusinessPartnerUUID_1": null,
+                "AuthorizationGroup": null,
+                "IsBusinessPurposeCompleted": null,
+                "PersonWorkAgreementExternalID": null,
+                "NaturalPersonEmployerName": null,
+                "BusinessPartnerIDByExtSystem": null
+            }
+        ]
+    }
+}

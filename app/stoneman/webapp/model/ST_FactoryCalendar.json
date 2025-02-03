@@ -1,0 +1,21 @@
+{
+    "__metadata": {
+        "id": null,
+        "uri": null,
+        "type": null
+    },
+    "FactoryCalendar":null,
+    "FactoryCalSpclRulesAreExisting": null,
+    "FactoryCalendarStartDayValue": null,
+    "HolidayIsWorkingDay": null,
+    "SundayIsWorkingDay": null,
+    "SaturdayIsWorkingDay": null,
+    "FridayIsWorkingDay": null,
+    "ThursdayIsWorkingDay": null,
+    "WednesdayIsWorkingDay": null,
+    "TuesdayIsWorkingDay": null,
+    "MondayIsWorkingDay": null,
+    "ValidityEndYear": null,
+    "ValidityStartYear": null,
+    "PublicHolidayCalendar": null
+}

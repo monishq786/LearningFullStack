@@ -1,0 +1,62 @@
+
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+>
+<VBox>
+
+  <FlexBox justifyContent="End">
+                  <Button icon="sap-icon://add" id="cop_raiseQuery" text="{i18n>raiseQuery}" press="onRaiseQueryPress" class="tab-padding raisequery" />
+               </FlexBox>
+               <ScrollContainer width="100%" height="100%" horizontal="true" vertical="true" class="scroll-container-height">
+                              <Table items="{    path: 'copRequestModel_New>/SeekAdvice',    sorter: {     path: 'Name'    }   }" class="sapUiSizeCompact myCustomListClass textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="cop_seekadvice">
+                  <columns>
+                     <Column width="10%">
+                        <Text text="Department" />
+                     </Column>
+                     <Column width="10%">
+                        <Text text="User" />
+                     </Column>
+                     <Column width="10%">
+                        <Text text="Role" />
+                     </Column>
+                     <Column width="10%">
+                        <Text text="Query" />
+                     </Column>
+                     <Column width="10%" visible="{copRequestModel_New>/showName}">
+                        <Text text="Files Name" />
+                     </Column>
+                     <Column width="5%" visible="{copRequestModel_New>/showName}" />
+                     <Column width="10%" visible="{copRequestModel_New>/showFile}">
+                        <Text text="Attachment" />
+                     </Column>
+                     <Column width="4%">
+                        <Text text="Action" />
+                     </Column>
+                     <Column width="4%" />
+                  </columns>
+                  <items>
+                     <ColumnListItem vAlign="Middle">
+                        <cells>
+                           <Input id="cop_dept" width="150px" placeholder="Click to select value" showValueHelp="true" value="{copRequestModel_New>departmentName}" valueHelpRequest="onValueHelpDepartmentSeek" />
+                           <Input id="cop_user" width="150px" placeholder="Click to select value" showValueHelp="true" valueHelpRequest="onValueHelpUserSeek" value="{copRequestModel_New>userName}" />
+                           <Input id="cop_roleInput" width="150px" placeholder="Enter your role" />
+                           <Input id="cop_comment" value="{copRequestModel_New>Question}" width="80%" />
+                           <Text visible="{copRequestModel_New>showName}" text="{copRequestModel_New>SeekAdviceDocAbsId/DisplayName}" wrapping="true" />
+                           <HBox class="align-text" visible="{copRequestModel_New>showName}">
+                              <Button id="cop_seekAttachBtn" icon="sap-icon://show" class="customIconColor" press="onViewFile" />
+                              <Button id="cop_seekDownloadBtn" icon="sap-icon://download" class="customIconColor" press="onDownloadFile" />
+                           </HBox>
+                           <HBox visible="{copRequestModel_New>showFile}">
+                              <u:FileUploader id="cop_fileUploader2" multiple="false" name="myFileUpload" change=".onFileChangeSeekAdvice" uploadComplete=".onUploadComplete" buttonText="Choose File" placeholder="Choose a file to upload" />
+                           </HBox>
+                           <Button id="cop_action" icon="sap-icon://action" type="Emphasized" press="openDialog" />
+                           <Button icon="sap-icon://delete" press="onDeleteSeekAdvice" />
+                        </cells>
+                     </ColumnListItem>
+                  </items>
+               </Table>
+               </ScrollContainer>
+               </VBox>
+</core:FragmentDefinition>

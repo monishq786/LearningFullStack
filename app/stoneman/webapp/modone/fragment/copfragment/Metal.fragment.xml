@@ -1,0 +1,419 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <IconTabBar
+        id="copefMetalidIconTabBarNoIconsMetalNested"
+        selectedKey="ActualCostingMetal"
+    >
+        <items>
+            <IconTabFilter
+                text="Actual Costing"
+                key="ActualCostingMetal"
+                id="copefMetalActualCostingMetal"
+            >
+                <HBox
+                    width="100%"
+                    justifyContent="End"
+                >
+                    <VBox>
+                        <Button
+                            id="copefMetaladdMetalBtn"
+                            icon="sap-icon://add"
+                            text="{i18n>addNew}"
+                            press="addMetalRow"
+                        />
+                    </VBox>
+                </HBox>
+
+                <ScrollContainer
+                    width="100%"
+                    height="100%"
+                    horizontal="true"
+                    vertical="true"
+                >
+                    <Table
+                        items="{    path: 'EntryFormDataSourceModel>/CostingMetalActualCostDetail',    sorter: {     path: ''    }   }"
+                        inset="true"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        showSeparators="All"
+                        showNoData="true"
+                        id="copefMetalmetal"
+                    >
+                        <columns>
+                            <Column width="140px">
+                                <Text text="Item Code/Name" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Dimension" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Finish" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Metal %" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Qty" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="UOM" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Purchase Price" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Actual Metal Unit Cost" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Sum of Unit Cost" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Actual Wastage Percentage" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Actual Wastage Amount" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Total Actual Wastage Amount" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Total Actual Cost of Metal" />
+                            </Column>
+                            <Column width="60px" />
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text
+                                        id="copefMetalMetalActualCosting"
+                                        text="{EntryFormDataSourceModel>ItemCode}"
+                                        wrapping="false"
+                                    />
+                                    <Select
+                                        id="copefMetaldimensionMetal"
+                                        width="140px"
+                                        maxWidth="100%"
+                                        valueState="None"
+                                        visible="true"
+                                        editable="true"
+                                        selectedKey="{EntryFormDataSourceModel>Dimension}"
+                                        selectionChange=".onColorComboChange"
+                                        items="{path:'EntryFormDataSourceModel>/Dimension',templateShareable:false}"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                key="{EntryFormDataSourceModel>id}"
+                                                text="{EntryFormDataSourceModel>name}"
+                                            />
+                                        </items>
+                                    </Select>
+                                    <Select
+                                        id="copefMetalfinishMetal"
+                                        width="140px"
+                                        maxWidth="100%"
+                                        valueState="None"
+                                        visible="true"
+                                        editable="true"
+                                        selectedKey="{EntryFormDataSourceModel>FinishName}"
+                                        selectionChange=".onColorComboChange"
+                                        items="{path:'EntryFormDataSourceModel>/FinishName',templateShareable:false}"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                key="{EntryFormDataSourceModel>id}"
+                                                text="{EntryFormDataSourceModel>name}"
+                                            />
+                                        </items>
+                                    </Select>
+                                    <Select
+                                        id="copefMetalmetalPercentage"
+                                        width="140px"
+                                        maxWidth="100%"
+                                        valueState="None"
+                                        visible="true"
+                                        editable="true"
+                                        selectedKey="{EntryFormDataSourceModel>MetalPer}"
+                                        selectionChange=".onColorComboChange"
+                                        items="{path:'EntryFormDataSourceModel>/MeetingModel',templateShareable:false}"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                key="{MeetingModel>id}"
+                                                text="{MeetingModel>name}"
+                                            />
+                                        </items>
+                                    </Select>
+                                    <Input
+                                        id="copefMetalqtyMetal"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{EntryFormDataSourceModel>Quantity}"
+                                        fieldWidth="100%"
+                                    />
+                                    <Input
+                                        id="copefMetaluomMetal"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{EntryFormDataSourceModel>UOMName}"
+                                        fieldWidth="100%"
+                                    />
+
+                                    <Input
+                                        id="copefMetalpurchasePriceMetal"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{EntryFormDataSourceModel>PurchasePrice}"
+                                    />
+                                    <Input
+                                        id="copefMetalactualStoneUnitCostMetal"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{EntryFormDataSourceModel>ActualMetalUnitCost}"
+                                    />
+                                    <Input
+                                        id="copefMetalsumOfUnitCostMetal"
+                                        enabled="false"
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{EntryFormDataSourceModel>Remarks}"
+                                    />
+                                    <Input
+                                        id="copefMetalactualWastagePercentageMetal"
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{EntryFormDataSourceModel>ActWastePercent}"
+                                    />
+                                    <Input
+                                        id="copefMetalactualWastageAmountMetal"
+                                        placeholder=""
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{EntryFormDataSourceModel>ActWasteAmount}"
+                                    />
+                                    <Input
+                                        id="copefMetaltotalactualWastageAmountMetal"
+                                        width="120px"
+                                        fieldWidth="100%"
+                                        value="{EntryFormDataSourceModel>ActWasteAmount}"
+                                    />
+
+                                    <Input
+                                        id="copefMetaltotalActualCostOfMetal"
+                                        width="120px"
+                                        enabled="false"
+                                        fieldWidth="100%"
+                                        value="{EntryFormDataSourceModel>Remarks}"
+                                    />
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        press="onDeleteMetal"
+                                        visible="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+            </IconTabFilter>
+            <!-- icon="sap-icon://money-bills" -->
+            <IconTabFilter
+                text="Base Metal Cost for OH"
+                key="BaseMetalCostforOH"
+                id="copefMetalBaseMetalCostforOH"
+            >
+                <HBox
+                    width="100%"
+                    justifyContent="End"
+                >
+                    <VBox>
+                        <Button
+                            id="copefMetaladdBaseMetalCostBtn"
+                            icon="sap-icon://add"
+                            text="{i18n>addNew}"
+                            press="addBaseMetalCostRow"
+                        />
+                    </VBox>
+                </HBox>
+
+                <ScrollContainer
+                    width="100%"
+                    height="100%"
+                    horizontal="true"
+                    vertical="true"
+                >
+                    <Table
+                        items="{    path: 'EntryFormDataSourceModel>/CostingMetalBaseCostDetail',    sorter: {     path: ''    }   }"
+                        inset="true"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        showSeparators="All"
+                        showNoData="true"
+                        id="copefMetalbaseMetal"
+                    >
+                        <columns>
+                            <Column width="140px">
+                                <Text text="Item Code/Name" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="OH Metal Price" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="OH Metal Unit Cost" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Sum Of Metal OH Cost" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="OH Wastage Percentage" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="OH Wastage Amount" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Sum Of OH Wastage Amount" />
+                            </Column>
+                            <Column width="140px">
+                                <Text text="Total Cost Of Base Metal" />
+                            </Column>
+                            <Column width="60px" />
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text
+                                        id="copefMetalbaseMetalcostName"
+                                        text="{EntryFormDataSourceModel>name}"
+                                        wrapping="false"
+                                    />
+                                    <Input
+                                        id="copefMetalOHMetalPrice"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{EntryFormDataSourceModel>OHStonePrice}"
+                                        fieldWidth="100%"
+                                    />
+                                    <Input
+                                        id="copefMetalOHMetalUnitCost"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{EntryFormDataSourceModel>OHStoneUnitCost}"
+                                        fieldWidth="100%"
+                                    />
+
+                                    <Input
+                                        id="copefMetalsumOfMetalOHCost"
+                                        width="120px"
+                                        enabled="false"
+                                        value="{EntryFormDataSourceModel>departmentName}"
+                                        fieldWidth="100%"
+                                    />
+                                    <ComboBox
+                                        id="copefMetalOHWastagePercentageMetal"
+                                        width="140px"
+                                        maxWidth="100%"
+                                        valueState="None"
+                                        visible="true"
+                                        editable="true"
+                                        selectedKey="{EntryFormDataSourceModel>OHWastePercent}"
+                                        selectionChange=".onColorComboChange"
+                                        items="{path:'EntryFormDataSourceModel>/OHWastePercent',templateShareable:false}"
+                                    >
+                                        <items>
+                                            <core:Item
+                                                key="{EntryFormDataSourceModel>id}"
+                                                text="{EntryFormDataSourceModel>name}"
+                                            />
+                                        </items>
+                                    </ComboBox>
+                                    <Input
+                                        id="copefMetalOHWastageAmountMetal"
+                                        width="120px"
+                                        placeholder=""
+                                        value="{EntryFormDataSourceModel>OHWasteAmount}"
+                                        fieldWidth="100%"
+                                    />
+
+                                    <Input
+                                        id="copefMetalSumOfOHWastageAmountMetal"
+                                        width="120px"
+                                        enabled="false"
+                                        value="{EntryFormDataSourceModel>departmentName}"
+                                        fieldWidth="100%"
+                                    />
+                                    <Input
+                                        id="copefMetalTotalCostOfBaseMetal"
+                                        width="120px"
+                                        enabled="false"
+                                        value="{EntryFormDataSourceModel>pddrraUser}"
+                                        fieldWidth="100%"
+                                    />
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        press="onDeleteMetalCost"
+                                        visible="{EntryFormDataSourceModel>isDelete}"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </ScrollContainer>
+            </IconTabFilter>
+            <!-- icon="sap-icon://chain-link" -->
+            <IconTabFilter
+                text="Local Handling Charges"
+                key="LocalHandlingChargesMetal"
+                id="copefMetalLocalHandlingChargesMetal"
+            >
+                <HBox
+                    width="100%"
+                    justifyContent="Start"
+                >
+                    <VBox
+                        width="180px"
+                    >
+                        <Label
+                            id="copefMetallocalHandlingPercentageLblMetal"
+                            labelFor="localHandlingPercentageLbl"
+                            text="{i18n>localHandlingPercentageLbl}"
+                        />
+                        <Label
+                            id="copefMetallocalHandlingAmountLblMetal"
+                            labelFor="localHandlingAmountLbl"
+                            text="{i18n>localHandlingAmountLbl}"
+                        />
+                    </VBox>
+                    <VBox width="180px">
+                        <ComboBox
+                            id="copefMetallocalHandlingPercentageMetal"
+                            width="180px"
+                            maxWidth="100%"
+                            valueState="None"
+                            visible="true"
+                            editable="true"
+                            selectedKey="{EntryFormDataSourceModel>localHandlingPercentage}"
+                            selectionChange=".onColorComboChange"
+                            items="{path:'numericalModel>/percentages',templateShareable:false}"
+                        >
+                            <items>
+                                <core:Item
+                                    key="{numericalModel>id}"
+                                    text="{numericalModel>name}"
+                                />
+                            </items>
+                        </ComboBox>
+                        <Input
+                            id="copefMetallocalHandlingAmountMetal"
+                            enabled="true"
+                            value="{EntryFormDataSourceModel>/localHandlingAmount}"
+                            description=""
+                            width="180px"
+                            fieldWidth="100%"
+                        />
+                    </VBox>
+                </HBox>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</core:FragmentDefinition>

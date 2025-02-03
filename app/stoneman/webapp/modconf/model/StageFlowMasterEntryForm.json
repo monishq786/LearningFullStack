@@ -1,0 +1,9 @@
+{
+    "StageFlowID": null,
+    "CurrentStageCode_StageCode_StageConstant": null,
+    "NextStageCode_StageCode_StageConstant": null,
+    "Scenario": "APPROVED",
+    "FormType": null,
+    "EmailTemplateID_EmailTemplateID": null,
+    "EmailTemplateCode": null
+}

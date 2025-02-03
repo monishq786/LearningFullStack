@@ -1,0 +1,56 @@
+<core:FragmentDefinition controllerName="stoneman.controller.CFLDialog"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified">
+    <Dialog id="Dialog" afterClose="onAfterClose">
+        <VBox >
+            <Table id="table" width="auto" class="sapUiResponsiveMargin sapUiSizeCompact" growing="true" items="{
+               path: 'DataModel>/list'
+               }" sticky="ColumnHeaders,HeaderToolbar" itemPress=".handleRowClick" showNoData="true">
+                <headerToolbar>
+                    <Toolbar>
+                        <SearchField id="searchField" width="100%" search=".onFilterPosts" />
+                    </Toolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column width="30%" minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{DataModel>/title1}" />
+                    </Column>
+                    <Column width='30%' minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{DataModel>/title2}" />
+                    </Column>
+                    <Column width="30%" minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{DataModel>/title3}" />
+                    </Column>
+                    <Column width="30%" minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{DataModel>/title4}" />
+                    </Column>
+                    <Column width="30%" demandPopin="true" visible="{= ${_Title} === 'Sales Order Item List' }">
+                        <Text text="{DataModel>/title5}" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem vAlign="Middle" type="Active" visible="true">
+                        <cells>
+                            <Text text="{DataModel>CODE}" />
+                            <Text text="{DataModel>NAME}" />
+                            <Text text="{DataModel>FIELD1}" />
+                            <Text text="{DataModel>FIELD2}" />
+                            <Text text="{DataModel>FIELD3}" />
+                            <Text text="{DataModel>FIELD4}" visible="{= ${_Title} === 'Sales Order Item List' }"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+
+        <endButton>
+            <Button text="Cancel" press=".handleCFLClose" type="Default" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

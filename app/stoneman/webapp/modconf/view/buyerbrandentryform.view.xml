@@ -1,0 +1,169 @@
+<mvc:XMLView
+    xmlns:form="sap.ui.layout.form"
+    controllerName="modconfcontroller.buyerbrandentryform"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons"
+    class="d-flex justify-content-center"
+>
+    <Page
+        id="bbef"
+        title="{i18n>BuyerBrandEntryForm}"
+        showNavButton="true"
+        navButtonPress="onPressOfEntryFormCancelButton"
+    >
+        <form:SimpleForm>
+            <form:content>
+                <VBox
+                    height="100%"
+                    fitContainer="true"
+                >
+                    <VBox
+                        height="100%"
+                        fitContainer="true"
+                    >
+                        <form:SimpleForm
+                            columnsM="3"
+                            columnsL="4"
+                            columnsXL="5"
+                            editable="true"
+                            layout="ColumnLayout"
+                        >
+                            <form:content>
+                                <Label text="{i18n>buyerCode}" />
+                                <Input
+                                    id="bb_buyercode_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/BuyerCode}"
+                                    placeholder=""
+                                    showValueHelp="true"
+                                    valueHelpRequest="cflForBuyerCode"
+                                    required="true"
+                                    liveChange="onLiveChangeBuyerCode"
+                                    
+                                />
+                                <Label text="{i18n>buyerName}" />
+                                <Input
+                                    id="bb_buyername_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/BuyerName}"
+                                    placeholder="Buyer name"
+                                    editable="false"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+                    </VBox>
+                    <HBox
+                        width="100%"
+                        justifyContent="End"
+                    >
+                        <VBox>
+                            <Button
+                                icon="sap-icon://add"
+                                text="{i18n>addNew}"
+                                press="addRow"
+                            />
+                        </VBox>
+                    </HBox>
+                    <form:SimpleForm>
+                        <form:content>
+                            <ScrollContainer
+                                id="scrollContainerBB"
+                                width="100%"
+                                height="auto"
+                                horizontal="true"
+                                vertical="true"
+                                class="sapUiTinyMarginBottom"
+                            >
+                                <Table
+                                    id="bbTable_EntryForm"
+                                    items="{ path: 'EntryFormDataSourceModel>/Brand'}"
+                                    sticky="ColumnHeaders,HeaderToolbar"
+                                    growing="true"
+                                    growingThreshold="1000"
+                                    growingScrollToLoad="true"
+                                >
+                                    <headerToolbar />
+                                    <columns>
+                                        <Column width="10px">
+                                            <header>
+                                                <Label text="{i18n>SRNO}" />
+                                            </header>
+                                        </Column>
+                                        <Column width="30px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>BrandCode}"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="30px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>BrandName}"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="2rem" />
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <cells>
+                                                <Text
+                                                    text="{EntryFormDataSourceModel>RowNumber}"
+                                                />
+                                                <Input
+                                                    id="brandCode_EntryForm"
+                                                    type="Text"
+                                                    value="{EntryFormDataSourceModel>BrandCode}"
+                                                    placeholder=""
+                                                    showValueHelp="true"
+                                                    valueHelpRequest="cflForBrandCode"
+                                                    required="true"
+                                                    liveChange="onLiveChangeBuyerCode"
+                                                />
+                                                <Input
+                                                    id="brandname_EntryForm"
+                                                    type="Text"
+                                                    value="{EntryFormDataSourceModel>BrandName}"
+                                                    placeholder="Brand name"
+                                                    editable="false"
+                                                />
+                                                
+                                                <Button id="bb_delete_EntryForm" icon="sap-icon://delete" width="35px" press="onDelete" type="Reject"/>
+
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </ScrollContainer>
+                        </form:content>
+                    </form:SimpleForm>
+                </VBox>
+            </form:content>
+        </form:SimpleForm>
+        <!-- <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <FlexBox justifyContent="End">
+                    <Button
+                        type="Emphasized"
+                        text="{i18n>Submit}"
+                        press="onSave"
+                    />
+                </FlexBox>
+            </Toolbar>
+        </footer> -->
+        <footer >
+        <Toolbar >
+            <ToolbarSpacer />
+            <Button type="Emphasized" id="BuyerBrand_Button" text="{i18n>save}" press="onSave" />
+            <Button type="Reject" text="{i18n>cancel}" press=".onCancel" class="can-btn" />
+        </Toolbar>
+        </footer>
+    </Page>
+</mvc:XMLView>

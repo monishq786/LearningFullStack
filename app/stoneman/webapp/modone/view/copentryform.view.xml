@@ -1,0 +1,267 @@
+<mvc:XMLView
+    controllerName="modonecontroller.copentryform"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons">
+    <m:Page
+        id="copef"
+        title="{i18n>COPForm}"
+        showNavButton="true"
+        navButtonPress="onPressOfEntryFormCancelButton"
+    >
+        <ObjectPageLayout
+            upperCaseAnchorBar="false"
+            id="copefHeaderLayout"
+        >
+            <sections>
+                <!-- Header Section  -->
+                <ObjectPageSection
+                    titleUppercase="false"
+                    title="{i18n>HeaderLbl}"
+                    id="copefHeaderSection"
+                >
+                    <subSections>
+                        <ObjectPageSubSection
+                            title="{i18n>HeaderLbl}"
+                            titleUppercase="false"
+                        >
+                            <m:VBox
+                                id="headerSection"
+                                
+                            />
+                        </ObjectPageSubSection>
+
+                        <ObjectPageSubSection
+                            title="Dimension"
+                            titleUppercase="false"
+                        >
+                            <m:VBox
+                                id="dimensionsSection"
+                            
+                            />
+                        </ObjectPageSubSection>
+                    </subSections>
+                </ObjectPageSection>
+
+                <!-- Attachment Section  -->
+                <ObjectPageSection
+                    titleUppercase="false"
+                    title="{i18n>AttachmentLbl}"
+                >
+                    <ObjectPageSubSection
+                        title="{i18n>AttachmentLbl}"
+                        titleUppercase="false"
+                    >
+                        <m:VBox
+                            id="attachmentSection"
+                           
+                        />
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <!-- Cadcost Section  -->
+                <ObjectPageSection
+                    titleUppercase="false"
+                    title="{i18n>Cadcostlbl}"
+                >
+                    <subSections>
+                        <ObjectPageSubSection
+                            title="Stone"
+                            titleUppercase="false"
+                        >
+                            <m:VBox
+                                id="stoneSection"
+
+                            />
+                        </ObjectPageSubSection>
+
+                        <ObjectPageSubSection
+                            title="Stone Process"
+                            titleUppercase="false"
+                        >
+                            <m:VBox
+                                id="stoneprocessSection"
+                               
+                            />
+                        </ObjectPageSubSection>
+
+                        <ObjectPageSubSection
+                            title="Metal"
+                            titleUppercase="false"
+                        >
+                            <m:VBox
+                                id="metalSection"
+                            />
+                        </ObjectPageSubSection>
+
+                        <ObjectPageSubSection
+                            title="Metal Process"
+                            titleUppercase="false"
+                        >
+                            <m:VBox
+                                id="metalprocessSection"
+                            />
+                        </ObjectPageSubSection>
+
+                        <ObjectPageSubSection
+                            title="Wood"
+                            titleUppercase="false"
+                        >
+                            <m:VBox
+                                id="woodSection"
+                            />
+                        </ObjectPageSubSection>
+
+                        <ObjectPageSubSection
+                            title="Wood Process"
+                            titleUppercase="false"
+                        >
+                            <m:VBox
+                                id="woodprocessSection"
+                            />
+                        </ObjectPageSubSection>
+                    </subSections>
+                </ObjectPageSection>
+
+                <!-- Accessory Section  -->
+                <ObjectPageSection
+                    titleUppercase="false"
+                    title="{i18n>Accessorylbl}"
+                >
+                    <ObjectPageSubSection
+                        title="{i18n>Accessorylbl}"
+                        titleUppercase="false"
+                    >
+                        <m:VBox
+                            id="accessorySection"
+                        />
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <!-- Packing  Section  -->
+                <ObjectPageSection
+                    titleUppercase="false"
+                    title="{i18n>PackingLbl}"
+                >
+                    <ObjectPageSubSection
+                        title="{i18n>PackingLbl}"
+                        titleUppercase="false"
+                    >
+                        <m:VBox
+                            id="packingSection"
+                        />
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <!-- Extra Charges Section  -->
+                <ObjectPageSection
+                    titleUppercase="false"
+                    title="{i18n>extrachargesLbl}"
+                >
+                    <ObjectPageSubSection
+                        title="{i18n>extrachargesLbl}"
+                        titleUppercase="false"
+                    >
+                        <m:VBox
+                            id="extrachargesSection"
+                        />
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <!-- Process History Section  -->
+                <!-- <ObjectPageSection
+                    titleUppercase="false"
+                    title="{i18n>processhistoryLbl}"
+                >
+                    <ObjectPageSubSection
+                        title="{i18n>processhistoryLbl}"
+                        titleUppercase="false"
+                    >
+                        <m:VBox
+                            id="processhistorySection"
+                        />
+                    </ObjectPageSubSection>
+                </ObjectPageSection> -->
+
+                <!-- Seek Advice Section  -->
+                <ObjectPageSection
+                    titleUppercase="false"
+                    title="{i18n>SeekadviceLbl}"
+                >
+                    <ObjectPageSubSection
+                        title="{i18n>SeekadviceLbl}"
+                        titleUppercase="false"
+                    >
+                        <m:VBox
+                            id="seekadviceSection"
+                        />
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <!-- Approval History Section  -->
+                <ObjectPageSection
+                    titleUppercase="false"
+                    title="{i18n>approvalHistoryLbl}"
+                >
+                    <ObjectPageSubSection
+                        title="{i18n>approvalHistoryLbl}"
+                        titleUppercase="false"
+                    >
+                        <m:VBox
+                            id="approvalhistorySection"
+                        />
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+            </sections>
+        </ObjectPageLayout>
+
+        <m:footer>
+            <m:Toolbar>
+                <m:ToolbarSpacer />
+                <m:Button
+                    type="Accept"
+                    id="copefApprove"
+                    text="{i18n>approve}"
+                    press="onPressAccept"
+                    visible="false"
+                />
+                <m:Button
+                    id="copefReject"
+                    type="Reject"
+                    text="{i18n>reject}"
+                    press="onPressReject"
+                    visible="false"
+                />
+                <m:Button
+                    id="copefSave"
+                    type="Emphasized"
+                    text="{i18n>save}"
+                    press="onPressSave"
+                    visible="false"
+                />
+                <m:Button
+                    id="copefSubmit"
+                    type="Emphasized"
+                    text="{i18n>submit}"
+                    press="onPressSubmit"
+                    visible="false"
+                />
+                <m:Button
+                    id="copefPrint"
+                    type="Emphasized"
+                    text="{i18n>printForm}"
+                />
+                <m:Button
+                    id="copefSendForm"
+                    type="Emphasized"
+                    text="{i18n>sendForm}"
+                />
+            </m:Toolbar>
+        </m:footer>
+    </m:Page>
+</mvc:XMLView>

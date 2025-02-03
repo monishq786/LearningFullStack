@@ -1,0 +1,564 @@
+
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns="sap.m" controllerName="stoneman.controller.Print">
+<HBox width="100%" class="print-align">
+<VBox class="stonemen-logo-algn">
+<Image src="../images/stonemenLogo.png" class="stonemen-logo"/>
+</VBox>
+<VBox class="repothead">
+<Title id="crfp_ReportTitle" text="{i18n>Reporttile}" class="reporttitle"/>
+<Title id="crfp_AddTitle" text="{i18n>Addttile}" class="addtitle"/>
+<Title id="crfp_AddressTitle" text="{i18n>Addresstile}" class="addresstitle"/>
+</VBox>
+<VBox class="subreporthead">
+<Title id="crfp_subReportTitle" text="{i18n>subReportTitle}" class="subreporttitle"/>
+<Title id="crfp_TinPrint" text="{i18n>TinPrint}" class="tinprint"/>
+<Title id="crfp_Upptt" text="{i18n>Upptt}" class="upptt"/>
+<Title id="crfp_UpDate" text="{i18n>UpDate}" class="updatetitle"/>
+</VBox>
+</HBox>
+<Page showHeader="true" title="{i18n>CADReqForm}" class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--content page-header-print">
+<HBox width="100%" class="form-layout-d mt-6 mb-5">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_reqTypeLbl" labelFor="reqType" text="{i18n>reqType}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_ReqTyp" text="{cadRequestModel_New>/ReqTyp}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_carReqLbl" text="{i18n>cadRequestNumber}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_carReqTxt" text="{cadRequestModel_New>/CrfReqNo}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_cadReqDateLbl" text="{i18n>cadReqDate}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_cadReqDate" text="{cadRequestModel_New>/CrfReqDate}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_buyerLbl" text="{i18n>buyer}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_buyerTxt" text="{cadRequestModel_New>/BuyerName}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_itemCodeLbl" text="{i18n>itemCode}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_itemCodeTxt" text="{cadRequestModel_New>/ItemCode}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_itemDescriptionLbl" text="{i18n>itemDescription}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_itemDescriptionTxt" text="{cadRequestModel_New>/ItemDesc}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5 ">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_categoryLbl" text="{i18n>category}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_CategoryTxt" text="{cadRequestModel_New>/Category}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_merchantATLLbl" text="{i18n>merchantATL}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_merchantATLTxt" text="{cadRequestModel_New>/MerchantATL}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_merchantTLLbl" text="{i18n>merchantTL}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="merchantTLTxt" text="{cadRequestModel_New>/MerchantTL}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_merchantTeamHeadLbl" text="{i18n>merchantTeamHead}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_merchantTeamHeadTxt" text="{cadRequestModel_New>/MerchantHead}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_merchantTeamLbl" labelFor="mercTeam" text="{i18n>MerchantTeam}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_merchantTeamTxt" text="{cadRequestModel_New>/MerchantTeam}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_DesignerLbl" labelFor="mercTeam" text="{i18n>designer}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_DesignerTxt" text="{cadRequestModel_New>/Design}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_oldCadReqLbl" text="{i18n>oldCADReq}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_oldCadReqTxt" text="{cadRequestModel_New>/OldCrfReqNo}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_processFlowLbl" text="{i18n>processFLow}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_ProcessFlowTxt" text="{cadRequestModel_New>/Proflow}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_PDLbl" text="{i18n>pdNo}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_PDNoTxt" text="{cadRequestModel_New>/PD_No}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_oldPDLbl" text="{i18n>oldPDNo}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_oldPDNoTxt" text="{cadRequestModel_New>/oldPD_No}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_carNoLbl" text="{i18n>carNo}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_carNoTxt" text="{cadRequestModel_New>/CarNo}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+<!--  <HBox width="100%" class="form-layout-list">
+                  <VBox class="w1">
+                     <Label id="clientRemarkLbl" text="{i18n>clientRemark}" class="labelHeight w-1"/>
+
+                  </VBox>
+                  <VBox class="w2">
+                     <Text id="clientRemarkTxt" text="{cadRequestModel_New>/clientRemark}" wrapping="false" class="w-2" />
+                  </VBox>
+               </HBox>  -->
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_ecnNoLbl" text="{i18n>ecnNo}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_ecnNoTxt" text="{cadRequestModel_New>/ECNNo}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+<!--  <HBox width="100%" class="form-layout-list">
+                  <VBox class="w1">
+                     <Label id="cadDeliveryDateLbl" labelFor="cadDeliveryDate" text="{i18n>cadDeliveryDate}" class="labelHeight w-1"/>
+                  </VBox>
+                  <VBox class="w2">
+                     <Text id="cadDeliveryDateTxt" text="{cadRequestModel_New>/CrfDelDate}" wrapping="false" class="w-2" />
+
+                  </VBox>
+               </HBox>  -->
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_merchantReqDateLbl" text="{i18n>merchantReqDate}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_merchantReqDateTxt" text="{cadRequestModel_New>/MerReqDate}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_merchantRemarkLbl" text="{i18n>merchantRemark}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_merchantRemarkTxt" text="{cadRequestModel_New>/MerRemark}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_cadDeliveryDateLbl" labelFor="cadDeliveryDate" text="{i18n>cadDeliveryDate}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_cadDeliveryDateTxt" text="{cadRequestModel_New>/CrfDelDate}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5 ">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_TechLbl" text="{i18n>tech}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_TechTxt" text="{cadRequestModel_New>/technouser}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_statuslbl" text="Status" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_StatusTxt" text="{cadRequestModel_New>/Status}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_targetCostLbl" text="{i18n>targetCost}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_targetCostTxt" text="{cadRequestModel_New>/TargetCost}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5 ">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_countryLbl" text="{i18n>country}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_countryTxt" text="{cadRequestModel_New>/Country}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<!--  Alka2  -->
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_inputTypeLbl" labelFor="inputType" text="{i18n>inputType}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_InputTypeTxt" text="{cadRequestModel_New>/InputType}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<!--  <HBox width="100%" class="form-layout-list">
+       <VBox class="w1">
+                  <Label id="statuslbl" text="Status" class="labelHeight w-1"/>
+                    
+       </VBox>  
+       <VBox class="w2">
+             <Text id="StatusTxt" text="{printModel>/Status}" wrapping="false" class="w-2" />
+      </VBox>  
+    </HBox>      -->
+</VBox>
+<!--  
+            <VBox class="lev4">  -->
+<!--  <HBox width="100%" class="form-layout-list">
+        <VBox class="w1">
+            <Label id="targetCostLbl" text="{i18n>targetCost}" class="labelHeight w-1"/>
+                          
+        </VBox>  
+       <VBox class="w2">
+               <Text id="targetCostTxt" text="{printModel>/TargetCost}" wrapping="false" class="w-2" />      
+       </VBox>  
+    </HBox>      -->
+<!--  </VBox>  -->
+</HBox>
+<!--  <content>  -->
+<VBox alignItems="Center" class="dim-bg">
+<Title text="Dimensions" level="H1"/>
+</VBox>
+<!--  </content>  -->
+<HBox width="100%" class="form-layout-d mb-5 mt-6">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_lengthLbl" text="{i18n>length}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_lengthTxt" text="{cadRequestModel_New>/Length}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_lToleranceLbl" text="{i18n>lTolerance}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_lToleranceTxt" text="{cadRequestModel_New>/TolLength}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_widthLbl" text="{i18n>width}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_widthTxt" text="{cadRequestModel_New>/Width}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5 ">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_wToleranceLbl" text="{i18n>wTolerance}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_wToleranceTxt" text="{cadRequestModel_New>/TolWidth}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_heigthLbl" text="{i18n>height}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_heigtTxt" text="{cadRequestModel_New>/Height}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_hToleranceLbl" text="{i18n>hTolerance}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_hToleranceTxt" text="{cadRequestModel_New>/TolHeight}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5 ">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_unitLbl" text="{i18n>unit}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_unitTxt" text="{cadRequestModel_New>/UnitCode}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<!--  <HBox width="100%" class="form-layout-list">
+        <VBox class="w1">
+                              <Label id="wToleranceLbl" text="{i18n>wTolerance}" class="labelHeight w-1"/>
+                          
+        </VBox>  
+       <VBox class="w2">
+               <Text id="wToleranceTxt" text="{printModel>/TolWidth}" wrapping="false" class="w-2" />      
+       </VBox>  
+    </HBox>      -->
+</VBox>
+<VBox class="lev3">
+<!--  <HBox width="100%" class="form-layout-list">
+        <VBox class="w1">
+                              <Label id="wToleranceLbl" text="{i18n>wTolerance}" class="labelHeight w-1"/>
+                          
+        </VBox>  
+       <VBox class="w2">
+               <Text id="wToleranceTxt" text="{printModel>/TolWidth}" wrapping="false" class="w-2" />      
+       </VBox>  
+    </HBox>      -->
+</VBox>
+</HBox>
+<!--  
+  <content>  -->
+<VBox alignItems="Center" class="dim-bg">
+<Title text="Diameter" level="H1"/>
+</VBox>
+<!--  </content>  -->
+<HBox width="100%" class="form-layout-d mb-5 mt-6">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_dITopLbl" text="{i18n>dITop}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_diameterTopTxt" text="{cadRequestModel_New>/DiaTop}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_dITToleranceLbl" text="{i18n>dITTolerance}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_dITToleranceTxt" text="{cadRequestModel_New>/TolDiaTop}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_dILeftLbl" text="{i18n>dILeft}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_dILeftTxt" text="{cadRequestModel_New>/DiaLeft}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5 ">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_dLTolaraneLbl" text="{i18n>dLTolarane}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_dLTolaraneTxt" text="{cadRequestModel_New>/TolDiaLeft}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_dIRigthLbl" text="{i18n>dIRight}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_dIRigthTxt" text="{cadRequestModel_New>/DiaRight}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev3">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_dIRToleranceLbl" text="{i18n>dIRTolerance}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_dIRToleranceTxt" text="{cadRequestModel_New>/TolDiaRight}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+</HBox>
+<HBox width="100%" class="form-layout-d mb-5 ">
+<VBox class="lev1">
+<HBox width="100%" class="form-layout-list">
+<VBox class="w1">
+<Label id="crfp_bottomLbl" text="{i18n>bottom}" class="labelHeight w-1"/>
+</VBox>
+<VBox class="w2">
+<Text id="crfp_bottomTxt" text="{cadRequestModel_New>/DiaBottom}" wrapping="false" class="w-2"/>
+</VBox>
+</HBox>
+</VBox>
+<VBox class="lev2">
+<!--  <HBox width="100%" class="form-layout-list">
+        <VBox class="w1">
+          <Label id="dLTolaraneLbl" text="{i18n>dLTolarane}" class="labelHeight w-1"/>
+                  
+                          
+        </VBox>  
+       <VBox class="w2">
+               <Text id="dLTolaraneTxt" text="{printModel>/TolDiaLeft}" wrapping="false" class="w-2" />      
+       </VBox>  
+    </HBox>      -->
+</VBox>
+<VBox class="lev3">
+<!--  <HBox width="100%" class="form-layout-list">
+        <VBox class="w1">
+          <Label id="dLTolaraneLbl" text="{i18n>dLTolarane}" class="labelHeight w-1"/>
+                  
+                          
+        </VBox>  
+       <VBox class="w2">
+               <Text id="dLTolaraneTxt" text="{printModel>/TolDiaLeft}" wrapping="false" class="w-2" />      
+       </VBox>  
+    </HBox>      -->
+</VBox>
+</HBox>
+<!--  <footer>
+           <Toolbar>  -->
+<HBox width="100%" class="footer-fix mt-24">
+<VBox class="foot-l">
+<!--  <Label id="foot-lbl1" text="{i18n>FootDeclar}" class="labelHeight w-1 foot-dec"/>
+                  <Text class="foot-text" text="{i18n>FootDeclarPara}"></Text>  -->
+</VBox>
+<VBox class="foot-r">
+<Label id="crfp_foot-Lbl2" text="{i18n>FootAuthSign}" class="labelHeight w-1 footsign"/>
+</VBox>
+</HBox>
+<!--  
+         </Toolbar>
+      </footer>  -->
+</Page>
+</mvc:View>

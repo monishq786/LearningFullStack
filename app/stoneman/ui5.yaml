@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: stoneman
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /sap
+            destination: S4HANA_QA
+          # - path: /sap
+          #   destination: S4HANA_QA
+          # - path: /sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV
+          #   destination: S4HANA_QA
+          # - path: /sap/opu/odata/sap/API_SALES_ORDER_SRV
+          #   destination: S4HANA_QA
+          # - path: /sap/opu/odata/sap/API_BUSINESS_PARTNER
+          #   destination: S4HANA_QA
+          # - path: /sap/opu/odata/sap/YY1_EXTPRODGRP_CDS
+          #   destination: S4HANA_QA
+          # - path: /sap/opu/odata/sap/API_PRODUCT_SRV #url: https://my409722-api.s4hana.cloud.sap
+          #   destination: S4HANA_QA
+          # - path: /sap/opu/odata4/sap/api_cost_center #url: https://my409722-api.s4hana.cloud.sap
+          #   destination: S4HANA_QA
+          # - path: /sap/opu/odata4/sap/api_salesorder #url: https://my409722-api.s4hana.cloud.sap
+          #   destination: S4HANA_QA
+          # - path: /odata #url: https://001afc09trial-dev-stonemanportal-srv.cfapps.us10-001.hana.ondemand.com
+          #   destination: stoneman
+          # - path: /stoneman-attachment 
+          #   destination: stoneman
+          # - path: /sap/opu/odata4
+          #   destination: S4HANA_QA
+          - path: /odata 
+            destination: stoneman_enhancement
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300ZZ
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: stoneman
+        ui5Theme: sap_fiori_3

@@ -1,0 +1,304 @@
+{
+    "ApprComments": null,
+    "MerchantTL": null,
+    "MerchantATL": null,
+    "MerchantHead": null,
+    "PDCoordinator": null,
+    "TechnoUserId_UserID": null,
+    "QualityTLUserId_UserID": null,
+    "QualityATLUserId_UserID": null,
+    "BuyerCode": null,
+    "technouser": null,
+    "qualityTL": null,
+    "qualityATL": null,
+    "BuyerName": null,
+    "CRFNo": null,
+    "CarNo": null,
+    "Category": null,
+    "CrfDelDate": null,
+    "CrfReqDate": null,
+    "CrfReqNo": null,
+    "CrfReqUUID": null,
+    "ApprStatus": null,
+    "StageCode_StageConstant": null,
+    "CrfStageName": null,
+    "CrfStatus": null,
+    "DiaBottom": 0,
+    "DiaLeft": 0,
+    "DiaRight": 0,
+    "DiaTop": 0,
+    "ECNNo": null,
+    "Height": 0,
+    "InputType": null,
+    "ItemCode": null,
+    "ItemDesc": null,
+    "ItemGroup": null,
+    "ItemGroupName": null,
+    "LblTyp": null,
+    "Length": 0,
+    "MerATL_UserID": null,
+    "MerReqDate": null,
+    "MerTL_UserID": null,
+    "MerTeamHead_UserID": null,
+    "OldCrfReqNo": null,
+    "OldCrfReqNoUUID": null,
+    "PDCAttachmentAbsId_AbsId": null,
+    "PDCAttachmentAbsId": {
+        "DisplayName": null
+    },
+    "PDCUserId_UserID": null,
+    "PDDate": null,
+    "PDNo": null,
+    "PendRoleId_RoleID": null,
+    "Proflow": null,
+    "Reamrks": null,
+    "ReqTyp": null,
+    "TolDiaBottom": 0,
+    "TolDiaLeft": 0,
+    "TolDiaRight": 0,
+    "TolDiaTop": 0,
+    "TolHeight": 0,
+    "TolLength": 0,
+    "TolWidth": 0,
+    "UnitCode": null,
+    "UnitName": null,
+    "Width": 0,
+    "createdAt": null,
+    "createdBy": null,
+    "modifiedAt": null,
+    "modifiedBy": null,
+    "isDiamension": null,
+    "isDiaMeter": null,
+    "isSecondDropdownEnabled": true,
+    "MaterialComments": null,
+   
+    "MerATL": [
+        {
+            "CostCenterCode": null,
+            "CostCenterName": null,
+            "DepartmentID": null,
+            "DepartmentName": null,
+            "EmailId": null,
+            "FirstName": null,
+            "IsActive": null,
+            "LastName": null,
+            "Password": null,
+            "UserID": null,
+            "UserRoleID_RoleID": null,
+            "Usercode": null,
+            "Username": "N/A",
+            "createdAt": null,
+            "createdBy": null,
+            "modifiedAt": null,
+            "modifiedBy": null
+        }
+    ],
+    "MerTL": [
+        {
+            "CostCenterCode": null,
+            "CostCenterName": null,
+            "DepartmentID": null,
+            "DepartmentName": null,
+            "EmailId": null,
+            "FirstName": null,
+            "IsActive": null,
+            "LastName": null,
+            "Password": null,
+            "UserID": null,
+            "UserRoleID_RoleID": null,
+            "Usercode": null,
+            "Username": "N/A",
+            "createdAt": null,
+            "createdBy": null,
+            "modifiedAt": null,
+            "modifiedBy": null
+        }
+    ],
+    "MerTeamHead": [
+        {
+            "CostCenterCode": null,
+            "CostCenterName": null,
+            "DepartmentID": null,
+            "DepartmentName": null,
+            "EmailId": null,
+            "FirstName": null,
+            "IsActive": null,
+            "LastName": null,
+            "Password": null,
+            "UserID": null,
+            "UserRoleID_RoleID": null,
+            "Usercode": null,
+            "Username": "N/A",
+            "createdAt": null,
+            "createdBy": null,
+            "modifiedAt": null,
+            "modifiedBy": null
+        }
+    ],
+    "InspDraw": [
+        {
+            "InspRefDocAbsId_AbsId": null,
+            "InspRefName": null,
+            "InspRefNo": "INSP001",
+            "InspRemarks": null,
+            "srNo": 1,
+            "AssignProd": null,
+            "ProdEngAttach": null,
+            "InspRefDocAbsId": {
+                "AbsId": null,
+                "AttachPath": null,
+                "ActualFileName": null,
+                "DisplayName": null,
+                "FileExtension": null
+            }
+        }
+    ],
+  
+    "SeekAdvice": [
+        {
+            "userName": null,
+            "DepartmentCode": null,
+            "DepartmentName": null,
+            "SeekAdviceDocAbsId_AbsId": null,
+            "UserID_UserID": null,
+            "RoleCode_RoleCode_RoleConstant": null,
+            "roleName": null,
+            "Question": null,
+            "Answer": null,
+            "SeekAdviceDocAbsId": {
+                "AbsId": null,
+                "AttachPath": null,
+                "ActualFileName": null,
+                "DisplayName": null,
+                "FileExtension": null
+            },
+            "CrfReqID_CrfReqUUID": null,
+            "DepartmentID": [
+                {
+                    "DepartmentID": null,
+                    "DepartmentName": null,
+                    "IsActive": null
+                }
+            ],
+            "UserID": 
+                {
+                    "UserID": null,
+                    "Username": null,
+                    "Usercode": null,
+                    "DepartmentID": null,
+                    "DepartmentName": null,
+                    "UserRoleID_RoleID": null,
+                    "Password": null,
+                    "IsActive": null,
+                    "FirstName": null,
+                    "LastName": null,
+                    "EmailId": null,
+                    "CostCenterCode": null,
+                    "CostCenterName": null
+                }
+            
+            
+        }
+    ],
+    "Material": [
+        {
+            "MaterialAutoCode": "Material 1",
+            "MaterialCatHanaText": null,
+            "MaterialCatFreeText": null,
+            "Remarks": null,
+            "srNo": 1
+        }
+    ],
+    "ReqTypArray": [
+        {
+            "id": "N",
+            "name": "New"
+        },
+        {
+            "id": "R",
+            "name": "Repeat"
+        }
+    ],
+    "lblType": [
+        {
+            "id": "decor",
+            "name": "Decor"
+        },
+        {
+            "id": "furnishing",
+            "name": "Furniture"
+        }
+    ],
+    "inputTypeArray": [
+        {
+            "id": "INPUT1",
+            "name": "Internal"
+        },
+        {
+            "id": "INPUT2",
+            "name": "External"
+        }
+    ],
+    "meetingAttanded": [
+        {
+            "id": "Y",
+            "name": "Yes"
+        },
+        {
+            "id": "N",
+            "name": "No"
+        }
+    ],
+    "callMeeting": [
+        {
+            "id": "Y",
+            "name": "Yes"
+        },
+        {
+            "id": "N",
+            "name": "No"
+        }
+    ],
+    "ApprovalTransaction": [
+        {
+            "createdAt": null,
+            "createdBy": null,
+            "modifiedAt": null,
+            "modifiedBy": null,
+            "ApprovalTraID": null,
+            "StageId_StageID": null,
+            "ApprovalStatus": null,
+            "UserId_UserID": null,
+            "UserCode": null,
+            "RowStatus": null,
+            "CrfReqID_CrfReqUUID": null,
+            "UserRoleId_RoleID": null,
+            "RoleName": null,
+            "Comments": null,
+            "StageName": null,
+            "StageCode": null,
+            "FormType": null,
+            "Date": null,
+            "UserId": {
+                "createdAt": null,
+                "createdBy": null,
+                "modifiedAt": null,
+                "modifiedBy": null,
+                "UserID": null,
+                "Username": null,
+                "Usercode": null,
+                "DepartmentID_DepartmentID": null,
+                "DepartmentName": null,
+                "UserRoleID_RoleID": null,
+                "Password": null,
+                "IsActive": null,
+                "RoleCode": null,
+                "FirstName": null,
+                "LastName": null,
+                "EmailId": null,
+                "CostCenterCode": null,
+                "CostCenterName": null
+            }
+        }
+    ]
+}

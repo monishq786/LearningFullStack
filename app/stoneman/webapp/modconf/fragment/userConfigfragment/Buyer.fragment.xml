@@ -1,0 +1,46 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <VBox>
+        <HBox width="100%" justifyContent="End">
+            <VBox >
+                <Button icon="sap-icon://add" text="{i18n>addNew}" press="addRow" />
+            </VBox>
+        </HBox>
+        <ScrollContainer width="100%" height="300px" horizontal="true" vertical="true">
+            <Table items="{ path: 'EntryFormDataSourceModel>/Buyer', sorter: { path: '' } }" class="sapUiSizeCompact" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="buyerTable">
+                <columns>
+                    <Column width="4rem">
+                        <Label text="Sr No"/>
+                    </Column>
+                    <!-- <Column width="10rem">
+                        <Label text="Category Code" labelFor="categoryCode"/>
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Category Name"/>
+                    </Column> -->
+                    <Column width="8rem">
+                        <Label text="Buyer Code" labelFor="buyercode"/>
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Buyer Name"/>
+                    </Column>
+                    <Column width="2rem" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text id="user_SrNo" text="{EntryFormDataSourceModel>RowNumber}"/>
+                            <!-- <Input id="categoryCode" required="true" width="200px" placeholder="Select Category" value="{EntryFormDataSourceModel>MCatCode}" fieldWidth="100%" valueHelpRequest="cflForMaterialCategory" showValueHelp="true"/>
+                            <Input id="categoryName" width="200px" value="{EntryFormDataSourceModel>MCatName}" fieldWidth="100%" editable="false" tooltip="{EntryFormDataSourceModel>MCatName}"/> -->
+                            <Input id="buyercode" required="true" width="200px" placeholder="Select Buyer" value="{EntryFormDataSourceModel>BuyerCode}" fieldWidth="100%" valueHelpRequest="cflForBuyer" showValueHelp="true" liveChange="onLiveChange" />
+                            <Input id="buyername" width="200px" editable="false" value="{EntryFormDataSourceModel>BuyerName}" fieldWidth="100%" tooltip="{EntryFormDataSourceModel>BuyerName}"/>
+                            <Button icon="sap-icon://delete" press="onDeleteBuyer" type="Reject" width="35px" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+
+    </VBox>
+</core:FragmentDefinition>

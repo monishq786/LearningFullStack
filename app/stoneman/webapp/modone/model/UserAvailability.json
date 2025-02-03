@@ -1,0 +1,12 @@
+{
+    "UserAssign": [
+        {
+            "UserID_UserGuid": null,
+            "Parent_CrfReqGuid": null,
+            "MeetingStartDate": null,
+            "MeetingEndDate": null,
+            "CallMeeting": null,
+            "UserAvailable": null
+        }
+    ]
+}

@@ -1,0 +1,90 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+    >
+    <form:SimpleForm>
+            <form:content>
+                <VBox
+                    height="100%"
+                    fitContainer="true"
+                >
+                    <VBox
+                        height="100%"
+                        fitContainer="true"
+                    >
+                        <form:SimpleForm
+                            columnsM="3"
+                            columnsL="4"
+                            columnsXL="5"
+                            editable="true"
+                            layout="ColumnLayout"
+                        >
+                            <form:content> </form:content>
+                        </form:SimpleForm>
+                    </VBox>
+                    <form:SimpleForm>
+                        <form:content>
+                            <layout:Grid
+            defaultSpan="L12 M12 S12"
+            hSpacing="1"
+            vSpacing="1"
+            position="Center">
+            
+            <!-- Product Category Code -->
+            <layout:content>
+                <Label text="Product Category Code" required="true" />
+                <Input id="ProductCategoryCode" placeholder="Enter Product Category Code" width="50%" value="{EntryFormDataSourceModel>/ProductCategoryCode}"/>
+                <Text id="errorMessage" visible="false" />
+            </layout:content>
+
+            <!-- Product Category Name -->
+            <layout:content>
+                <Label text="Product Category Name" required="true" />
+                <Input id="ProductCategoryName" placeholder="Enter Product Category Name" type="Text"  width="50%" value="{EntryFormDataSourceModel>/ProductCategoryName}" liveChange="onDigitValueNotAccepted"/>
+            </layout:content>
+
+            <!-- Number Section -->
+            <layout:content>
+                <Label text="Number" design="Bold" />
+            </layout:content>
+            <layout:content>
+            <HBox width="50%">
+            <VBox width="100%"><Label text="First Number" required="true" /></VBox>
+             <VBox width="100%"><Label text="Increment By" required="true" /></VBox>
+             <VBox width="100%"><Label text="Last Generated Number"/></VBox>
+            </HBox>
+            <HBox width="50%">
+            <VBox width="100%"><Input id="FirstNumber" placeholder="Enter First Number" type="Number" width="90%" value="{EntryFormDataSourceModel>/FirstNum}"/></VBox>
+             <VBox width="100%"><Input id="IncrementValue" placeholder="Enter Increment Value" type="Number" width="90%" value="{EntryFormDataSourceModel>/IncrementBy}"/></VBox>
+             <VBox width="100%"><Input  placeholder="Enter Last Generated Number" type="Number" width="90%" value="{EntryFormDataSourceModel>/LastNum}" editable="false"/></VBox>
+            </HBox>
+            </layout:content>
+            
+            <!-- String Section -->
+            <layout:content>
+                <Label text="String" design="Bold" />
+            </layout:content>
+            <layout:content>
+                <Label text="Prefix" />
+                <Input id="Prefix" placeholder="Enter Prefix" width="50%" value="{EntryFormDataSourceModel>/Prefix}" liveChange="onDigitValueNotAccepted"/>
+            </layout:content>
+            <layout:content>
+                <Label text="Suffix" />
+                <Input id="Suffix" placeholder="Enter Suffix" width="50%" value="{EntryFormDataSourceModel>/Suffix}" liveChange="onDigitValueNotAccepted"/>
+            </layout:content>
+
+            <!-- Is Active -->
+            <layout:content>
+                <CheckBox text="{i18n>isActive}" select="onSelect" selected="{= ${EntryFormDataSourceModel>/IsActive} === 'Y' }" />
+            </layout:content>
+        </layout:Grid>
+                        </form:content>
+                    </form:SimpleForm>
+                </VBox>
+            </form:content>
+    </form:SimpleForm>
+    
+    
+</core:FragmentDefinition>

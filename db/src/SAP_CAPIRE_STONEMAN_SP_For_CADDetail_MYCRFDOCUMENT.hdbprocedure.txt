@@ -1,0 +1,113 @@
+PROCEDURE "SAP_CAPIRE_STONEMAN_SP_For_CADDetail_MYCRFDOCUMENT" ( 
+    IN GUID NVARCHAR(50),
+    IN BUYERCODE NVARCHAR(50),
+    IN CRFREQNO INTEGER,
+    IN CRFSTATUS NVARCHAR(100),
+    IN CRFREQDATE NVARCHAR(15),
+    IN Techno_Guid NVARCHAR(200),
+    IN PDCNo_Guid NVARCHAR(200),
+    OUT ReturnData TABLE(
+        CADDETAILUUID VARCHAR(255),
+        CADDETAILNO INTEGER,
+        CRFREQNO INTEGER,
+        USERNAME NVARCHAR(255),
+        BUYERCODE NVARCHAR(255),
+        INPUTTYPE NVARCHAR(255),
+        CRFSTATUS NVARCHAR(255),
+        REQTYP NVARCHAR(255),
+        TECHNOUSERID NVARCHAR(255),
+        CRFREQDATE DATE,
+        BUYERNAME VARCHAR(200))
+)
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+READS SQL DATA
+AS
+BEGIN
+    DECLARE ActualBuyerCode NVARCHAR(200);
+    DECLARE ActualCRFSTATUS NVARCHAR(200);
+    DECLARE ActualCRFREQDATE NVARCHAR(200);
+    DECLARE ActualTechno_Id NVARCHAR(200);
+    DECLARE ActualPDCNo_Guid NVARCHAR(200);
+    DECLARE CountSeekAdvice NVARCHAR(15);
+    -----handle null value for BuyerCode-------
+    IF BUYERCODE = 'null' THEN
+        ActualBuyerCode := NULL;
+    ELSE
+        ActualBuyerCode := BUYERCODE;
+    END IF;
+    -----handle null value for CrfStatus-------
+    IF CRFSTATUS = 'null' THEN
+        ActualCRFSTATUS := NULL;
+    ELSE
+        ActualCRFSTATUS := CRFSTATUS;
+    END IF;
+  -----handle null value for CrfReqDate-------
+  IF CRFREQDATE = 'null' THEN
+    ActualCRFREQDATE :=null; 
+  ELSE
+    ActualCRFREQDATE := CRFREQDATE;
+  END IF;
+    -----handle null value for Techno_id-------
+    IF Techno_Guid = 'null' THEN
+      ActualTechno_Id := NULL; 
+    ELSE
+      ActualTechno_Id := Techno_Guid;
+    END IF;
+    -----handle null value for Techno_id-------
+    IF PDCNo_Guid = 'null' THEN
+        ActualPDCNo_Guid := NULL; 
+      ELSE
+        ActualPDCNo_Guid := PDCNo_Guid;
+      END IF;
+        
+    A1 =(
+    SELECT DISTINCT 
+    A."CADDETAILUUID",
+    A."CADDETAILNO",
+    A."CRFREQNO",
+    C."USERNAME", 
+    A."BUYERCODE",
+    A."INPUTTYPE",
+    A."CRFSTATUS",
+    A."REQTYP",
+    A."TECHNOUSERID_USERID",
+    CASE WHEN A."CRFREQDATE" IS NULL THEN CURRENT_DATE ELSE A."CRFREQDATE" END AS "CRFREQDATE",
+    A."BUYERNAME"
+    FROM "SAP_CAPIRE_STONEMAN_TCADDETAIL" AS A
+    left JOIN "SAP_CAPIRE_STONEMAN_TCADDETAILSEEKADVICE" AS B  ON A."CADDETAILUUID" = B."CADDETAILID_CADDETAILUUID"--change  
+    left JOIN "SAP_CAPIRE_STONEMAN_MUSER" AS C  ON A."CREATEDBYUSERID_USERID" = C."USERID"
+    left JOIN "SAP_CAPIRE_STONEMAN_TCADDETAILINSPDRAWDETAIL" AS D ON A."CADDETAILUUID" = D."CADDETAILID_CADDETAILUUID"
+    WHERE (A."DTPASSITANT_USERID" = :GUID
+       OR A."DTPHEAD_USERID" = :GUID
+    -- OR A."MERATL_USERID" = :GUID
+    -- OR A."PDCUSERID_USERID" = :GUID
+    -- OR A."TECHNOUSERID_USERID" = :GUID
+    -- OR A."QUALITYTLUSERID_USERID" = :GUID
+    -- OR A."QUALITYATLUSERID_USERID" = :GUID
+    -- OR D."DRAFTUSERID_USERID"= :GUID
+    -- OR B."USERID_USERID"=:GUID
+    )
+    ORDER BY A."CADDETAILNO" DESC);
+    
+    Returndata = Select DISTINCT
+    A."CADDETAILUUID",
+    A."CADDETAILNO",
+    A."CRFREQNO",
+    A."USERNAME", 
+    A."BUYERCODE",
+    A."INPUTTYPE",
+    A."CRFSTATUS",
+    A."REQTYP",
+    A."TECHNOUSERID_USERID" as "TECHNOUSERID",
+    A."CRFREQDATE",
+    A."BUYERNAME"
+    from :A1 AS A
+    where (A."BUYERCODE" = :ActualBuyerCode OR (IFNULL(:ActualBuyerCode, '') = ''))
+    AND (A."CADDETAILNO" = :CRFREQNO OR (IFNULL(:CRFREQNO, 0) = 0))
+    AND (A."CRFSTATUS" = :ActualCRFSTATUS OR (IFNULL(:ActualCRFSTATUS, '') = '')) 
+    AND (A."TECHNOUSERID_USERID" = :ActualTechno_Id OR (IFNULL(:ActualTechno_Id, '') = '')) 
+    AND ((:ActualCRFREQDATE IS NULL AND A."CRFREQDATE" <= CURRENT_DATE)
+    OR (A."CRFREQDATE" = :ActualCRFREQDATE)) 
+    ORDER BY A."CADDETAILNO" DESC;
+END;

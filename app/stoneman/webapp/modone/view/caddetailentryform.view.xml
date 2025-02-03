@@ -1,0 +1,102 @@
+<mvc:XMLView controllerName="modonecontroller.caddetailentryform"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout" displayBlock="true"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:grid="sap.ui.layout.Grid"
+    xmlns:layout="sap.ui.layout">
+    <m:Page id="caddetailef" title="{i18n>CADdetailTitle}" showNavButton="true" navButtonPress=".onNavBack">
+        <!-- <m:headerContent>
+            <m:Label text="{view>/myName}" />
+            <m:Button icon="sap-icon://log" press=".onPressLogout" />
+        </m:headerContent> -->
+        <ObjectPageLayout upperCaseAnchorBar="false" id="CadDetailHeaderObject">
+            <sections>
+                <!-- Header Section  -->
+                <ObjectPageSection titleUppercase="false" title="{i18n>HeaderLbl}" id="CadDetailHeaderSelect">
+                    <ObjectPageSubSection title="{i18n>HeaderLbl}" titleUppercase="false">
+                        <m:VBox id="caddetailheaderSection">
+                            <core:Fragment fragmentName="modone.fragment.caddetailfragment.CADDetailHeader" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+                <ObjectPageSection titleUppercase="false" title="{i18n>DimensionsLbl}">
+                    <ObjectPageSubSection title="{i18n>DimensionsLbl}" titleUppercase="false">
+                        <m:VBox id="caddetaildimensionsSection">
+                            <core:Fragment fragmentName="modone.fragment.caddetailfragment.CADDetailDimensions" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+                <ObjectPageSection titleUppercase="false" title="{i18n>AttachmentLbl}">
+                    <ObjectPageSubSection title="{i18n>AttachmentLbl}" titleUppercase="false">
+                        <m:VBox id="caddetailattachmentSection">
+                            <core:Fragment fragmentName="modone.fragment.caddetailfragment.CADDetailAttachment" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <ObjectPageSection titleUppercase="false" title="{i18n>AssemblyLbl}">
+                    <subSections>
+                        <ObjectPageSubSection title="Main Assembly" titleUppercase="false">
+                            <m:VBox id="caddetailmainassemblySection">
+                                <core:Fragment fragmentName="modone.fragment.caddetailfragment.CADDetailMainAssembly" type="XML">
+                                </core:Fragment>
+                            </m:VBox>
+                        </ObjectPageSubSection>
+
+                        <ObjectPageSubSection title="Sub Assembly" titleUppercase="false">
+                            <m:VBox id="caddetailsubassemblySection">
+                                <core:Fragment fragmentName="modone.fragment.caddetailfragment.CADDetailSubAssembly" type="XML">
+                                </core:Fragment>
+                            </m:VBox>
+                        </ObjectPageSubSection>
+                        <ObjectPageSubSection title="Child Assembly" titleUppercase="false">
+                            <m:VBox id="caddetailchildassemblySection">
+                                <core:Fragment fragmentName="modone.fragment.caddetailfragment.CADDetailChildAssembly" type="XML">
+                                </core:Fragment>
+                            </m:VBox>
+                        </ObjectPageSubSection>
+                    </subSections>
+                </ObjectPageSection>
+                <ObjectPageSection titleUppercase="false" title="{i18n>SeekadviceLbl}">
+                    <ObjectPageSubSection title="{i18n>SeekadviceLbl}" titleUppercase="false">
+                        <m:VBox id="caddetailseekadviceSection">
+                            <core:Fragment fragmentName="modone.fragment.caddetailfragment.CADDetailSeekAdvice" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+
+                <ObjectPageSection titleUppercase="false" title="{i18n>progressLbl}">
+                    <ObjectPageSubSection title="{i18n>progressLbl}" titleUppercase="false">
+                        <m:VBox id="caddetailprogressSection">
+                            <core:Fragment fragmentName="modone.fragment.caddetailfragment.CADDetailProgress" type="XML">
+                            </core:Fragment>
+                        </m:VBox>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+            </sections>
+        </ObjectPageLayout>
+        <m:footer>
+            <m:Toolbar>
+                <m:ToolbarSpacer />
+                <m:FlexBox justifyContent="End" class="sapUiSmallMargin">
+                    <m:Button type="Accept" id="caddetail_CAD_btnApprove" text="{i18n>approve}" press="openDialogApprove"/>
+                    <m:Text width="10px" />
+                    <m:Button id="caddetail_CAD_btnReject" type="Reject" text="{i18n>reject}" press="openDialogReject" />
+                    <m:Text width="10px" />
+                    <m:Button type="Emphasized" id="caddetail_btnSave" text="{i18n>save}" press="onSave" />
+                    <m:Text width="10px" />
+                    <m:Button type="Emphasized" id="caddetail_btnSubmit" text="{i18n>submit}" press="onSave" />
+                    <!-- <Button id="btnPrint" type="Emphasized" text="{i18n>printForm}"></Button> -->
+                </m:FlexBox>
+            </m:Toolbar>
+        </m:footer>
+    </m:Page>
+</mvc:XMLView>

@@ -1,0 +1,64 @@
+<mvc:View controllerName="capwithhanaui.controller.MeetingSchedule"
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:m="sap.m" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:core="sap.ui.core"> 
+    
+    <l:VerticalLayout>
+        <!-- DateTimePicker for start and end time -->
+            <m:HBox class="sapUiMediumMargin">    
+                <DateTimePicker id="startDateTime" placeholder="Start Date and Time" width="200px" class="sapUiSmallMargin"/>
+                <DateTimePicker id="endDateTime" placeholder="End Date and Time" width="200px" class="sapUiSmallMargin"/>
+                <Input id="intervalInput1" placeholder="Enter Interval in Minutes" type="Number" width="150px" class="sapUiSmallMargin"/>
+                <Button text="Generate Time Slots" press="onGenerateTimeSlots" class="sapUiSmallMargin"/>
+            </m:HBox>
+
+        <!-- Button to generate time slots -->
+
+        <!-- ComboBox to select time slot -->
+        <m:HBox class="sapUiMediumMargin">   
+        <ComboBox id="timeSlotComboBox" placeholder="Select Time Slot" items="{/TimeSlots}" change="onTimeSlotChange" class="sapUiSmallMargin">
+            <core:Item key="{SlotID}" text="{SlotDescription}" />
+        </ComboBox>
+        <Button text="Check Availability" press="onCheckAvailability" class="sapUiSmallMargin"/>
+        </m:HBox>
+        <!-- <Text text="{odata>/Employees/1/name}" /> -->
+        <!-- Table to display list of employees with availability -->
+        <Table id="employeeTable1" items="{path: 'odata>/Employees'}">
+    <columns>
+        <Column>
+            <Text text="Name" />
+        </Column>
+        <Column>
+            <Text text="Available From" />
+        </Column>
+        <Column>
+            <Text text="Available To" />
+        </Column>
+        <Column>
+            <Text text="Availability Status" />
+        </Column>
+        <Column>
+            <Text text="Selected Time" />
+        </Column>
+    </columns>
+    <items>
+        <ColumnListItem>
+            <cells>
+                <Text text="{odata>name}" /> <!-- Employee name -->
+                <Text text="{odata>availableFrom}" /> <!-- Employee available from -->
+                <Text text="{odata>availableTo}" /> <!-- Employee available to -->
+                <Text text="{odata>availableText}" /> <!-- Availability status: "Available"/"Not Available" -->
+                <Text text="{/sSelectedSlot}"></Text>
+            </cells>
+        </ColumnListItem>
+    </items>
+</Table>
+
+
+
+        <!-- Button to generate meeting -->
+        <Button text="Generate Meeting" press="onGenerateMeeting" enabled="{/isMeetingEnabled}" />
+    </l:VerticalLayout>
+</mvc:View>

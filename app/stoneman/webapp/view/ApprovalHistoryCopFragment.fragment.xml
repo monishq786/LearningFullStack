@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+
+    <Table items="{    path: 'copRequestModel_New>/ApprovalTransaction',    sorter: {     path: 'Name'    }   }" class="tab-padding" id="myTable9">
+                  <columns>
+                     <Column width="40%">
+                        <Text text="User" />
+                     </Column>
+                     <Column width="40%">
+                        <Text text="Role" />
+                     </Column>
+                     <Column width="40%">
+                        <Text text="Stage" />
+                     </Column>
+                     <Column width="40%">
+                        <Text text="Date" />
+                     </Column>
+
+                     <Column width="40%">
+                        <Text text="Comments" />
+                     </Column>
+                     <Column width="40%">
+                        <Text text="Approval Status" />
+                     </Column>
+                     <Column width="40%">
+                        <Text text="Row Status" />
+                     </Column>
+                  </columns>
+                  <items>
+                     <ColumnListItem vAlign="Middle">
+                        <cells>
+                           <Text text="{copRequestModel_New>UserId/Username}" wrapping="false" />
+                           <Text text="{copRequestModel_New>RoleName}" wrapping="false" />
+                           <Text text="{copRequestModel_New>StageName}" wrapping="true" />
+                           <Text text="{copRequestModel_New>ProcessDate}" wrapping="false" />
+                           <Text text="{copRequestModel_New>Comments}" wrapping="false" />
+                           <Text text="{copRequestModel_New>ApprovalStatus}" wrapping="false" />
+                           <Text text="{copRequestModel_New>RowStatus}" wrapping="false" />
+                        </cells>
+                     </ColumnListItem>
+                  </items>
+               </Table>
+
+    </core:FragmentDefinition>

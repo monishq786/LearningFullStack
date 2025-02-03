@@ -1,0 +1,109 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+
+    <f:SimpleForm id="caddetail_caddetailheader" editable="true" layout="ColumnLayout" columnsM="3" columnsL="4" columnsXL="5">
+        <f:content>
+
+            <Label id="caddetail_ReqLbl" labelFor="caddetail_cadReqNo" text="{i18n>cadRequestNumber}" />
+            <Input id="caddetail_cadReqNo" required="true" editable="true" type="Number" value="{EntryFormDataSourceModel>/CrfReqNo}" description="" fieldWidth="100%" showValueHelp="true" valueHelpRequest="cflforCADNo" />
+            <Label id="caddetail_categoryLbl" text="{i18n>crfCat}" />
+            <Input id="caddetail_categoryInput" value="{EntryFormDataSourceModel>/CrfCategory}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_reqTypeLbl" required="{EntryFormDataSourceModel>/isRequired}" text="{i18n>reqType}" />
+            <ComboBox id="caddetail_reqType" maxWidth="100%" valueState="None" visible="true" editable="false" enabled="true" selectedKey="{EntryFormDataSourceModel>/ReqTyp}" selectionChange="onEnableDisableChange" items="{ReqTypeModel>/ReqTypArray}">
+                <items>
+                    <core:Item key="{ReqTypeModel>id}" text="{ReqTypeModel>name}" />
+                </items>
+            </ComboBox>
+            <Label id="caddetail_oldCadReqLbl" text="{i18n>oldCADReq}" />
+
+            <Input id="caddetail_oldCadReq" editable="false" value="{EntryFormDataSourceModel>/OldCrfReqNo}" description="" fieldWidth="100%" showValueHelp="true" valueHelpRequest="cflforOldcrfReq" />
+            <Label id="caddetail_processFlowLbl" text="{i18n>processFLow}" />
+
+
+            <ComboBox id="caddetail_processFlow" enabled="true" maxWidth="100%" valueState="None" visible="true" editable="false" selectedKey="{EntryFormDataSourceModel>/ProcessFlow}" selectionChange="onChange" items="{path:'EntryFormDataSourceModel>/cadRequest'}" value="{EntryFormDataSourceModel>/cadRequest}">
+                <items>
+                    <core:Item key="{EntryFormDataSourceModel>id}" text="{EntryFormDataSourceModel>name}" />
+                </items>
+            </ComboBox>
+            <Label id="caddetail_inputTypeLbl" text="{i18n>inputType}" />
+            <ComboBox id="caddetail_inputType" maxWidth="100%" valueState="None" visible="true" editable="false" enabled="true" selectedKey="{EntryFormDataSourceModel>/InputType}" selectionChange="" items="{path:'ReqTypeModel>/inputTypeArray'}">
+                <items>
+                    <core:Item key="{ReqTypeModel>id}" text="{ReqTypeModel>name}" />
+                </items>
+            </ComboBox>
+            <Label id="caddetail_seasonLbl" labelFor="caddetail_season" text="{i18n>season}" />
+            <Input id="caddetail_season" required="true" value="{EntryFormDataSourceModel>/SeasonProgram}" placeholder="" />
+            <Label id="caddetail_categoryLbl1" text="{i18n>category}" />
+            <Input id="caddetail_category" editable="false" value="{EntryFormDataSourceModel>/Category}" placeholder="Click to select value" showValueHelp="true" valueHelpRequest="onValueHelpCategory" />
+            <Label id="caddetail_labelTypeLbl" text="{i18n>labelType}" />
+
+            <ComboBox id="caddetail_labelType1" maxWidth="100%" valueState="None" visible="true" editable="false" enabled="true" selectedKey="{EntryFormDataSourceModel>/LblTyp}" selectionChange="" items="{ReqTypeModel>/lblType}">
+                <items>
+                    <core:Item key="{ReqTypeModel>id}" text="{ReqTypeModel>name}" />
+                </items>
+            </ComboBox>
+            <Label id="caddetail_merchantReqDateLbl1" text="{i18n>merchantReqDate}" />
+            <DatePicker id="caddetail_mercReqDate" change="getDateValue" value="{EntryFormDataSourceModel>/MerReqDate}" displayFormat="dd-MM-yyyy" editable="false" />
+            <Label id="caddetail_buyerLbl" text="{i18n>buyer}" />
+            <Input id="caddetail_buyer" value="{EntryFormDataSourceModel>/BuyerName}" placeholder="Click to select value" showValueHelp="true" valueHelpRequest="onValueHelpBuyer" editable="false" />
+            <Label id="caddetail_merchantTeamHeadLbl" text="{i18n>merchantTeamHead}" />
+
+            <Input id="caddetail_mercTeamHead" value="{EntryFormDataSourceModel>/MerTeamHead/Username}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_merchantTLLbl" text="{i18n>merchantTL}" />
+            <Input id="caddetail_merchantTL" value="{EntryFormDataSourceModel>/MerTL/Username}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_merchantATLLbl" text="{i18n>merchantATL}" />
+            <Input id="caddetail_merchantATL" value="{EntryFormDataSourceModel>/MerATL/Username}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_cad_DesginerLbl" text="{i18n>designer}" />
+            <Input id="caddetail_cad_Desginer" value="{EntryFormDataSourceModel>/DesignerUserId/Username}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_technouserLbl" text="{i18n>technouser}" />
+
+            <Input id="caddetail_technoUser" value="{EntryFormDataSourceModel>/TechnoUserId/Username}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_qualityTLLbl" text="{i18n>qualityLbl}" />
+            <Input id="caddetail_qualityTL" value="{EntryFormDataSourceModel>/QualityTLUserId/Username}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_qualityATLLbl" text="{i18n>qualityATL}" />
+            <Input id="caddetail_qualityATL" value="{EntryFormDataSourceModel>/QualityATLUserId/Username}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_pdCoordinatorLbl" text="{i18n>pdCoordinator}" />
+            <Input id="caddetail_pdCoordinator" value="{EntryFormDataSourceModel>/PDCUserId/Username}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_itemGroupLbl" text="{i18n>catGroup}" />
+            <ComboBox id="caddetail_itemGroup" maxWidth="100%" valueState="None" visible="true" editable="false" selectedKey="" selectionChange="onItemGroupChange" items="{path: 'MItemGroupModel>/d/results'}" value="{EntryFormDataSourceModel>/ItemGroup}">
+                <core:Item key="{MItemGroupModel>Product}" text="{MItemGroupModel>ProductGroup}" />
+            </ComboBox>
+            <Label id="caddetail_itemCodeLbl" text="{i18n>catCode}" />
+            <Input id="caddetail_itemCode" placeholder="Select an item group to see the item code" showValueHelp="true" valueHelpRequest="onValueHelpItemCode" value="{EntryFormDataSourceModel>/ItemCode}" editable="false" />
+            <Label id="caddetail_itemDescriptionLbl" text="{i18n>itemDescription}" />
+            <Input id="caddetail_itemDesc" fieldWidth="100%" tooltip="{EntryFormDataSourceModel>/ItemDesc}" value="{EntryFormDataSourceModel>/ItemDesc}" editable="false" />
+            <Label id="caddetail_cadDeliveryDateLbl" text="{i18n>cadDeliveryDate}" />
+            <DatePicker id="caddetail_cadDeliveryDate" value="{EntryFormDataSourceModel>/CrfDelDate}" required="true" displayFormat="dd-MM-yyyy" change="getDateValue" class="sapUiSmallMarginBottom" editable="false" />
+            <Label id="caddetail_remarksLbl" text="{i18n>remarks}" />
+            <Input id="caddetail_remarks" tooltip="{EntryFormDataSourceModel>/Reamrks}" type="Text" value="{EntryFormDataSourceModel>/Reamrks}" maxLength="2000" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_ecnNoLbl" text="{i18n>ecnNo}" />
+            <Input id="caddetail_ecnNo1"  value="{EntryFormDataSourceModel>/ECNNo}" description="" fieldWidth="100%" type="Number" editable="true" />
+            <Label id="caddetail_carNoLbl" text="{i18n>carNo}" />
+            <Input id="caddetail_carNo" type="Number" value="{EntryFormDataSourceModel>/CarNo}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_cad_cadDetailNoLbl" text="{i18n>cadDtlNo}" />
+            <Input id="caddetail_cad_cadDetailNoInp"  value="{EntryFormDataSourceModel>/CadDetailNo}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_crfNoLbl" text="{i18n>crfNo}" />
+            <Input id="caddetail_crfNo"  type="Number" value="{EntryFormDataSourceModel>/CRFNo}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_statusBlb" text="{i18n>status}" />
+            <ComboBox id="caddetail_statusCAD" maxWidth="100%" valueState="None" visible="true" editable="false" value="{EntryFormDataSourceModel>/CrfStatus}" selectedKey="{EntryFormDataSourceModel>/CrfStatus}" selectionChange="onChange" items="{path:'EntryFormDataSourceModel>/CrfStatus'}">
+                <items>
+                    <core:Item key="{EntryFormDataSourceModel>id}" text="{EntryFormDataSourceModel>name}" />
+                </items>
+            </ComboBox>
+            <Label id="caddetail_approvalstatusLbl" text="{i18n>approvalstatusLbl}" />
+            <Input id="caddetail_approvalstatus" value="{EntryFormDataSourceModel>/ApprStatus}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_stagecodeLbl" text="{i18n>stagecodeLbl}" />
+            <Input id="caddetail_stagecode" value="{EntryFormDataSourceModel>/CrfStageCode_StageCode_StageConstant}" tooltip="{EntryFormDataSourceModel>/CrfStageCode_StageCode_StageConstant}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_stagenameLbl" text="{i18n>stagenameLbl}" />
+            <Input id="caddetail_stagename" value="{EntryFormDataSourceModel>/CrfStageName}" tooltip="{EntryFormDataSourceModel>/CrfStageName}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_dtpassistantLbl" text="{i18n>dtpassistantLbl}" />
+            <Input id="caddetail_dtpassistantname" value="{EntryFormDataSourceModel>/DTPAssitantName}" tooltip="{EntryFormDataSourceModel>/DTPAssitantName}" description="" fieldWidth="100%" editable="false" />
+            <Label id="caddetail_dtpheadLbl" labelFor="caddetail_dtpheadname" required="true" text="{i18n>dtpheadLbl}" />
+            <Input id="caddetail_caddetailefdtpheadname" required="true" value="{EntryFormDataSourceModel>/DTPHeadName}" tooltip="{EntryFormDataSourceModel>/DTPHeadName}" fieldWidth="100%" showValueHelp="true" valueHelpRequest="CFLforDTPHead" />
+
+
+        </f:content>
+    </f:SimpleForm>
+
+</core:FragmentDefinition>

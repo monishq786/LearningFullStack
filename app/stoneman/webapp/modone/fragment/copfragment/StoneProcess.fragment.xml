@@ -1,0 +1,189 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <VBox>
+        <HBox
+            width="100%"
+            justifyContent="End"
+        >
+            <VBox>
+                <Button
+                    id="copefStoneProcessAddNewButton"
+                    icon="sap-icon://add"
+                    text="{i18n>addNew}"
+                    press="addStoneProcessRow"
+                />
+            </VBox>
+        </HBox>
+        <ScrollContainer
+            width="100%"
+            height="100%"
+            horizontal="true"
+            vertical="true"
+        >
+            <Table
+                items="{    path: 'EntryFormDataSourceModel>/CostingStoneProcessDetail',    sorter: {     path: ''    }   }"
+                inset="true"
+                sticky="ColumnHeaders,HeaderToolbar"
+                showSeparators="All"
+                showNoData="true"
+                id="copefStoneProcessTable"
+            >
+                <columns>
+                    <Column width="180px">
+                        <Label
+                            text="Process Type"
+                            tooltip="Process Type"
+                            required="true"
+                            labelFor="copefStoneProcessProcessType"
+                        />
+                    </Column>
+                    <Column width="140px">
+                        <Label
+                            text="Process J/W Rate"
+                            tooltip="Process J/W Rate"
+                            required="true"
+                            labelFor="copefStoneProcessProcessJWRate"
+                        />
+                    </Column>
+                    <Column width="140px">
+                        <Label
+                            text="Process Cost"
+                            tooltip="Process Cost"
+                            required="true"
+                            labelFor="copefStoneProcessProcessCost"
+                        />
+                    </Column>
+                    <Column width="140px">
+                        <Label
+                            text="Input Method"
+                            tooltip="Input Method"
+                            labelFor="copefStoneProcessInputMethod"
+                        />
+                    </Column>
+                    <Column width="140px">
+                        <Label
+                            text="Process Time"
+                            tooltip="Process Time"
+                            required="true"
+                            labelFor="copefStoneProcessTime"
+                        />
+                    </Column>
+                    <Column width="140px">
+                        <Label
+                            text="Wastage Process %"
+                            tooltip="Wastage Process %"
+                            required="true"
+                            labelFor="copefStoneProcessWastageProcessPercentage"
+                        />
+                    </Column>
+                    <Column width="140px">
+                        <Label
+                            text="Process Wastage Cost"
+                            tooltip="Process Wastage Cost"
+                            required="true"
+                            labelFor="copefStoneProcessProcessWastageCost"
+                        />
+                    </Column>
+                    <Column width="140px">
+                        <Label
+                            text="Sum of Total Stone Process Cost"
+                            tooltip="Sum of Total Stone Process Cost"
+                            required="true"
+                            labelFor="copefStoneProcessSumTotalStoneProcessCost"
+                        />
+                    </Column>
+                    <Column width="140px">
+                        <Label
+                            text="Total Time"
+                            tooltip="Total Time"
+                            required="true"
+                            labelFor="copefStoneProcessTotalTime"
+                        />
+                    </Column>
+                    <Column width="140px">
+                        <Label
+                            text="Sum of Total Process Wastage Cost"
+                            tooltip="Sum of Total Process Wastage Cost"
+                            required="true"
+                            labelFor="copefStoneProcessTotalProcessWastageCost"
+                        />
+                    </Column>
+                    <Column width="60px" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Label
+                                id="copefStoneProcessProcessType"
+                                width="160px"
+                                text="{EntryFormDataSourceModel>ProcessType}"
+                            />
+                            <Input
+                                id="copefStoneProcessProcessJWRate"
+                                width="120px"
+                                value="{EntryFormDataSourceModel>ProcessJobworkRate}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefStoneProcessProcessCost"
+                                width="120px"
+                                value="{EntryFormDataSourceModel>ProcessCost}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefStoneProcessInputMethod"
+                                width="120px"
+                                value="{EntryFormDataSourceModel>InputMethod}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefStoneProcessTime"
+                                width="120px"
+                                value="{EntryFormDataSourceModel>ProcessTime}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefStoneProcessWastageProcessPercentage"
+                                width="120px"
+                                value="{EntryFormDataSourceModel>WastageProcessPercentage}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefStoneProcessProcessWastageCost"
+                                width="120px"
+                                value="{EntryFormDataSourceModel>ProcessWastageCost}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefStoneProcessSumTotalStoneProcessCost"
+                                width="120px"
+                                value="{EntryFormDataSourceModel>SumTotalStoneProcessCost}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefStoneProcessTotalTime"
+                                width="120px"
+                                value="{EntryFormDataSourceModel>TotalTime}"
+                                fieldWidth="100%"
+                            />
+                            <Input
+                                id="copefStoneProcessTotalProcessWastageCost"
+                                width="120px"
+                                value="{EntryFormDataSourceModel>TotalProcessWastageCost}"
+                                fieldWidth="100%"
+                            />
+                            <Button
+                                id="copefStoneProcessDeleteButton"
+                                icon="sap-icon://delete"
+                                press="onDeleteStoneProcess"
+                                visible="{EntryFormDataSourceModel>isDelete}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+    </VBox>
+</core:FragmentDefinition>

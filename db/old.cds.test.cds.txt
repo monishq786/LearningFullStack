@@ -1,0 +1,1874 @@
+
+// using {managed} from '@sap/cds/common';
+
+// namespace sap.capire.Stoneman;
+
+// type YesNo             : String enum {
+//     Yes        = 'Y';
+//     No         = 'N'
+// };
+
+// type REQUESTTYPE       : String enum {
+//     New        = 'N';
+//     Revision   = 'R';
+//     ToSelect   = '-1'
+// };
+
+// type PROCESSFLOW       : String enum {
+//     Process_A  = 'Process A';
+//     Process_B  = 'Process B';
+//     Process_C  = 'Process C';
+//     Process_D  = 'Process D';
+//     Process_E  = 'Process E';
+//     ToSelect   = '-1'
+// };
+
+// type INPUTTYPE         : String enum {
+//     Internal   = 'I';
+//     External   = 'E';
+//     ToSelect   = '-1'
+// };
+
+// type ROWSTATUS         : String enum {
+//     OPEN;
+//     CLOSED
+// };
+
+// type FORMTYPE          : String enum {
+//     CRF;
+//     CAD
+// };
+
+// /*
+// type STAGECODE _Backup        : String enum {
+//     STG_CRF_FORMFILL;
+//     STG_MEETING_SETUP;
+//     STG_UPLOAD_DESIGNS;
+//     STG_DESIGNS_APPROVAL_PENDING;
+//     STG_CRF_SENDTO_BUYER;
+//     STG_BUYER_APPROVAL_PENDING;
+//     STG_CAD_FORMFILL;
+//     STG_CAD_FORM_APPROVAL;
+// }
+// */
+
+// // this will store th fixed values of stagecode (enum )
+// entity MStageConstant : managed {
+//     key StageConstant : String;
+// }
+
+// type APPROVALSTATUS    : String enum {
+//     NA;
+//     APPROVED;
+//     REJECTED;
+//     PENDING;
+// };
+
+// type STAGEFLOWSCENARIO : String enum {
+//     NA;
+//     APPROVED;
+//     REJECTED
+// };
+
+// type CRFSTATUS         : String enum {
+//     New        = 'N';
+//     InProgress = 'WIP';
+//     Closed     = 'CLS';
+//     Cancelled  = 'C'
+// }
+
+// type LABELTYPE         : String enum {
+//     decor;
+//     furnishing
+// };
+
+// entity PrjStatusMaster {
+//     key prj_id         : UUID;
+//         prjstatus_code : String(100);
+//         prjstatus_name : String(100);
+// }
+
+// entity TaskStatusMaster {
+//     key tsk_id         : UUID;
+//         tskstatus_code : String(100);
+//         tskstatus_name : String(100);
+// }
+
+// entity Tactionheader {
+//     key tah_id              : UUID;
+//         tah_sono            : String(100);
+//         tah_lineno          : String(100);
+//         tah_itemcode        : String(100);
+//         tah_itemdesc        : String(500);
+//         tah_prjtemplno      : String(100);
+//         tah_prjtemplnme     : String(100);
+//         tah_prjtempdesc     : String(500);
+//         tah_startdate       : Date;
+//         tah_prjstatuscode   : String(50);
+//         tah_prjstatusname   : String(100);
+//         tah_isactive        : String(100);
+//         tah_isdeleted       : String(100);
+//         tah_addbyUserCode   : String(100);
+//         tah_addbyUsername   : String(100);
+//         tactiondetail       : Composition of many Tactiondetail
+//                                   on tactiondetail.tactionheader = $self;
+//         tah_sodate          : Date null;
+//         tah_sodeldate       : Date null;
+//         tah_soitemcategory  : String(100);
+//         tah_prjtempcategory : String(100);
+//         tah_prjtempnoofdays : String(100);
+// }
+
+// extend entity Tactionheader with {
+//     tah_no : Int64;
+// }
+
+// entity Tactiondetail {
+//     key tahd_id                : UUID;
+//         tahd_depcode           : String(100);
+//         tahd_depname           : String(100);
+//         tahd_prjtaskid         : String(100);
+//         tahd_prjtaskname       : String(100);
+//         tahd_noofdays          : String(100);
+//         tahd_days              : String(100);
+//         tahd_plnstdate         : Date;
+//         tahd_plneddate         : Date;
+//         tahd_actstdate         : Date;
+//         tahd_acteddate         : Date;
+//         tahd_dldays            : String(100);
+//         tahd_addbyUserCode     : String(100);
+//         tahd_addbyUsername     : String(100);
+//         tahd_tskstatuscode     : String(100);
+//         tahd_tskstatusdesc     : String(100);
+//         tahd_comments          : String(100);
+//         tahd_admincomments     : String(100);
+//         tactionheader          : Association to one Tactionheader;
+//         tactiondetailEmpAssign : Composition of many TactiondetailEmpAssign
+//                                      on tactiondetailEmpAssign.tactiondetail = $self;
+//         tahd_rescostcentercode : String(100);
+//         tahd_rescostcentername : String(100);
+// }
+
+// entity TactiondetailEmpAssign {
+//     key emp_id        : UUID;
+//         emp_code      : String(100);
+//         emp_name      : String(100);
+//         tactiondetail : Association to one Tactiondetail;
+// }
+
+// /*
+// type ROLECODE_BACKUP   : String enum {
+//     PD_COORDINATOR;
+//     TECHNOLOGIST;
+//     MERCHANT_ATL;
+//     MERCHANT_TL;
+//     HEAD;
+//     QUALITY_TL;
+//     QUALITY_ATL;
+//     PRODUCT_ENGG;
+//     DTP_HEAD;
+//     DTP_ASSISTANT;
+// }
+// */
+
+
+// //this will store enum  of ROLES Constants
+// entity MRoleConstant : managed {
+//     key RoleConstant : String;
+// }
+
+
+
+
+// entity MRole : managed {
+//         RoleName : String;
+//     key RoleCode : Association to MRoleConstant; 
+// }
+
+// //User Master
+// entity MUser : managed {
+//     key UserID         : UUID;
+//         Username       : String;
+//         Usercode       : String;
+//         DepartmentCode : String; 
+//         DepartmentName : String; 
+//         UserRoleCode   : Association to MRole; 
+//         Password       : String;
+//         IsActive       : YesNo default 'Y';
+//         FirstName      : String;
+//         LastName       : String;
+//         EmailId        : String;
+//         EmployeeCode   : String; 
+//         Buyer          : Composition of many MBuyer
+//                              on Buyer.UserID = $self;
+// }
+
+// entity MBuyer : managed {
+//     key ID        : UUID;
+//         BuyerCode : String;
+//         BuyerName : String;
+//         UserID    : Association to MUser;
+// }
+
+// //Approval/workflow Stages Master
+// entity MStage : managed {
+//     key StageCode      : Association to MStageConstant; 
+//         StageName      : String;
+//         StageDesc      : String;
+//         OrderBy        : Integer;
+//         IsActive       : YesNo default 'Y';
+//         IsWorkFlow     : YesNo;
+//         IsApproval     : YesNo;
+//         NoOfApprovals  : Int16;
+//         NoOfRejections : Int16;
+//         FormType       : FORMTYPE;
+//         SendEmail      : YesNo default 'N';
+// }
+
+// //Approval/workflow stages flow Master
+// entity MStageFlow : managed {
+//     key StageFlowID       : UUID;
+//         CurrentStageCode  : Association to MStage; 
+//         NextStageCode     : Association to MStage; 
+//         Scenario          : STAGEFLOWSCENARIO;
+//         FormType          : FORMTYPE;
+//         EmailTemplateID   : Association to MEmailTemplate;
+//         EmailTemplateCode : EMAILTEMPLATECODE;
+// }
+
+// type EMAILTEMPLATECODE : String enum {
+//     APPROVAL   = 'ET_APPROVAL';
+//     REJECTION  = 'ET_REJECTION';
+//     SEEKADVICE = 'ET_SEEKADVICE';
+//     WORKFLOW   = 'ET_WORKFLOW';
+//     NA         = 'ET_NA';
+// }
+
+
+// entity MEmailTemplate {
+//     key EmailTemplateID   : UUID;
+//         EmailTemplateCode : EMAILTEMPLATECODE;
+//         EmailTemplateBody : LargeString;
+// }
+
+
+// type VALIDATIONCODE    : String enum {
+//     V1;
+//     V2;
+//     V3;
+//     V4;
+//     V5;
+//     V6;
+//     V7;
+//     V8;
+// }
+
+// //Stage+Role Master
+// entity MStageRole : managed {
+//     key StageRoleID    : UUID;
+//         RoleCode       : Association to MRole; 
+//         StageCode      : Association to MStage;
+//         ValidationCode : VALIDATIONCODE;
+//         IsActive       : YesNo default 'Y';
+// }
+
+// //0708
+// type SAVEORSUBMIT: String enum{
+//     SAVE= 'SAVE';
+//     SUBMIT='SUBMIT'
+// }
+
+// entity TCrfHeader : managed {
+//         SaveOrSubmit        : SAVEORSUBMIT; //*0708
+//         ReqTyp              : REQUESTTYPE;
+//         OldCrfReqNoUUID     : UUID;
+//         OldCrfReqNo         : Integer64;
+//     key CrfReqUUID          : UUID;
+//         CrfReqNo            : Integer64;
+//         Proflow             : PROCESSFLOW;
+//         InputType           : INPUTTYPE;
+//         MerReqDate          : Date;
+//         BuyerCode           : String; 
+//         BuyerName           : String;
+//         Category            : String;
+//         ItemCode            : String;
+//         ItemDesc            : String;
+//         ItemGroup           : String;
+//         ItemGroupName       : String;
+//         CrfDelDate          : Date;
+//         Reamrks             : String;
+//         ECNNo               : String;
+//         CarNo               : String;
+//         CRFNo               : String;
+//         LblTyp              : LABELTYPE;
+//         Length              : Decimal(19, 2);
+//         TolLength           : Decimal(19, 2);
+//         Width               : Decimal(19, 2);
+//         TolWidth            : Decimal(19, 2);
+//         Height              : Decimal(19, 2);
+//         TolHeight           : Decimal(19, 2);
+//         UnitCode            : String;
+//         UnitName            : String;
+//         DiaTop              : Decimal(19, 2);
+//         TolDiaTop           : Decimal(19, 2);
+//         DiaLeft             : Decimal(19, 2);
+//         TolDiaLeft          : Decimal(19, 2);
+//         DiaRight            : Decimal(19, 2);
+//         TolDiaRight         : Decimal(19, 2);
+//         DiaBottom           : Decimal(19, 2);
+//         TolDiaBottom        : Decimal(19, 2);
+//         CrfStatus           : CRFSTATUS;
+//         CrfReqDate          : Date;
+//         PDDate              : Date;
+//         PDNo                : String;
+//         ApprStatus          : APPROVALSTATUS; //saved values
+//         ApprComments        : String; //saved values
+//         newApprovalStatus   : APPROVALSTATUS; //*  inputs by user in current request
+//         newApprovalComment  : String; //      //*  inputs by user in current request
+//         CreatedByUserID     : Association to MUser; //* only firsttime save. to understand who created this form
+//         MerTeamHead         : Association to MUser;
+//         MerTL               : Association to MUser;
+//         MerATL              : Association to MUser;
+//         PDCUserId           : Association to MUser;
+//         TechnoUserId        : Association to MUser; //* assigned to this document
+//         QualityTLUserId     : Association to MUser; //* assigned to this document
+//         QualityATLUserId    : Association to MUser; //* assigned to this document
+//         //CrfStage            : Association to MStage; //*0708
+//         PendRoleCode        : Association to MRole; //Approval pending with which user/role
+//         CrfStageCode        : Association to MStage; 
+//         CrfStageName        : String;
+//         appliDiamter        : YesNo default 'N';
+//         appliDimension      : YesNo default 'N';
+//         PDCAttachmentAbsId  : Association to TCrfAttachmentDetail;
+//         InspDraw            : Composition of many TCrfInspDrawDetail
+//                                   on InspDraw.CrfReqID = $self;
+//         UserAssign          : Composition of many TCrfUserAssignDetail
+//                                   on UserAssign.CrfReqID = $self;
+//         ProcessHistory      : Composition of many TCrfProcessHistoryDetail
+//                                   on ProcessHistory.CadReqID = $self;
+//         ApprovalTransaction : Composition of many TCrfApprovalTransaction
+//                                   on ApprovalTransaction.CrfReqID = $self;
+//         SeekAdvice          : Composition of many TcrfSeekAdvice
+//                                   on SeekAdvice.CrfReqID = $self;
+//         Material            : Composition of many TcrfMaterial
+//                                   on Material.CrfReqID = $self;
+//         MaterialComments    : String;
+//         loginUserID         : Association to MUser; //*0708
+//         TotalApproved      :Integer default 0;//0908
+//         TotalRejected     : Integer default 0;//0908
+
+
+// }
+
+// //0808
+
+
+// entity TcrfSeekAdvice : managed {
+//     key SeekAdviceID       : UUID;
+//         DepartmentCode     : String; 
+//         DepartmentName     : String; 
+//         UserID             : Association to MUser;
+//         RoleCode           : Association to MRole; 
+//         Question           : String;
+//         Answer             : String;
+//         SeekAdviceDocAbsId : Association to TCrfAttachmentDetail;
+//         CrfReqID           : Association to TCrfHeader;
+//         QuestionFrom       : Association to MUser;
+// }
+
+
+
+
+// //Crf form attachment by Merchant  details
+// entity TCrfInspDrawDetail : managed {
+//         InspRefDocAbsId      : Association to TCrfAttachmentDetail;
+//         InspRefName          : String;
+//         InspRefNo            : String;
+//         CrfReqID             : Association to TCrfHeader;
+//     key InspID               : UUID;
+//         InspRemarks          : String;
+//         DraftUserID          : Association to MUser; //*
+//         DraftAttachmentAbsId : Association to TCrfAttachmentDetail; //*
+//         DraftRemarks         : String; //*
+//         ApprovalStatus       : APPROVALSTATUS; //*
+//         GroupId              : Integer; //* to be incremented for every new set of merchant uploaded drawings
+       
+// }
+
+
+// //Crf form generic attachment details table
+// entity TCrfAttachmentDetail : managed {
+//     key AbsId          : UUID;
+//         AttachPath     : String;
+//         ActualFileName : String;
+//         DisplayName    : String;
+//         FileExtension  : String;
+//         UserAssign     : Association to TCrfUserAssignDetail;
+//         InspDraw       : Association to TCrfInspDrawDetail;
+//         SeekAdvice     : Association to TcrfSeekAdvice;
+// }
+        
+// //Crf form generic attachment details table
+
+// //Crf form user assignment for meeting by pdcoordinator details
+// entity TCrfUserAssignDetail : managed { //CadUserAssgId,CadReqID_CrfReqUUID
+//     key CrfUserAssgId          : UUID;
+//         DepartmentCode         : String; 
+//         DepartmentName         : String; 
+//         UserID                 : Association to MUser;
+//         UserCode               : String;
+//         CallMeeting            : YesNo;
+//         Remarks                : String;
+//         CrfUserAttachmentAbsId : Association to TCrfAttachmentDetail;
+//         IsMeetingAttended      : YesNo;
+//         CrfReqID               : Association to TCrfHeader;
+// }
+
+// //Crf form log
+// entity TCrfProcessHistoryDetail : managed {
+//     key ProcessHistoryID : UUID;
+//         UserId           : Association to MUser;
+//         Username         : String;
+//         UserCode         : String;
+//         ApprovalStatus   : APPROVALSTATUS;
+//         ProcessDate      : Timestamp; 
+//         //StageID          : Association to MStage    @mandatory; //*0708
+//         StageName        : String;
+//         StageCode        : Association to MStage; //*0708
+//         Remarks          : String;
+//         CadReqID         : Association to TCrfHeader @mandatory;
+//         FormType         : FORMTYPE; //Crf/CAD
+// }
+
+
+
+// //Crf form approval transction history
+// entity TCrfApprovalTransaction : managed {
+//     key ApprovalTraID  : UUID;
+//         //StageId        : Association to MStage; //*0708
+//         ApprovalStatus : APPROVALSTATUS;
+//         UserId         : Association to MUser;
+//         UserCode       : String;
+//         RowStatus      : ROWSTATUS;
+//         CrfReqID       : Association to TCrfHeader;
+//         UserRoleCode   : Association to MRole; 
+//         RoleName       : String;
+//         Comments       : String;
+//         StageName      : String;
+//         StageCode      : Association to MStage;//*0708
+//         FormType       : FORMTYPE;
+//         ProcessDate    : Timestamp; 
+// }
+
+
+
+// //*
+// entity TcrfMaterial : managed {
+//     key MaterialID          : UUID;
+//         MaterialAutoCode    : String;
+//         MaterialCatHanaText : String;
+//         MaterialCatFreeText : String;
+//         Remarks             : String;
+//         CrfReqID            : Association to TCrfHeader;
+// }
+
+// //Detail Table for Cad Detail Form
+
+// // MaterialAutoCode  Material1
+// // MaterialCatHanaText  S+W
+// // MaterialCatFreeText
+// // Remarks
+
+// /*
+// // Wood, Plastic, Marble
+// entity MMaterial : managed {
+//     key MaterialID   : UUID;
+//         MaterialCode : String;
+//         MaterialDesc : String;
+// }
+// */
+
+// //*
+// entity MCrfControls : managed {
+//     key ControlsID : UUID;
+//         RoleCode   : Association to MRole; 
+//         Detail     : Composition of many MCrfControlDetail
+//                          on Detail.Parent = $self;
+//         StageCode  : Association to MStage;
+//         FormType   : FORMTYPE;
+// }
+
+// entity MCrfControlDetail : managed {
+//     key ControlsDetailID : UUID;
+//         Parent           : Association to MCrfControls;
+//         ControlName      : String;
+//         Enabled          : Boolean default True;
+//         TableName        : String;
+//         ControlId        : String;
+// }
+
+// //================Cad Detail Schema=========================
+// entity TCadDetail : managed {
+//         SaveOrSubmit        : SAVEORSUBMIT; //*0708
+//         ReqTyp              : REQUESTTYPE;
+//         OldCrfReqNoUUID     : UUID;
+//         OldCrfReqNo         : Integer64;
+//         key CadDetailUUID       :UUID;
+//         CadDetailNo         : Integer64;
+//         CrfReqUUID          : Association to TCrfHeader;
+//         CrfReqNo            : Integer64;
+//         Proflow             : PROCESSFLOW;
+//         InputType           : INPUTTYPE;
+//         MerReqDate          : Date;
+//         BuyerCode           : String; 
+//         BuyerName           : String;
+//         Category            : String;
+//         ItemCode            : String;
+//         ItemDesc            : String;
+//         ItemGroup           : String;
+//         ItemGroupName       : String;
+//         CrfDelDate          : Date;
+//         Reamrks             : String;
+//         ECNNo               : String;
+//         CarNo               : String;
+//         CRFNo               : String;
+//         LblTyp              : LABELTYPE;
+//         Length              : Decimal(19, 2);
+//         TolLength           : Decimal(19, 2);
+//         Width               : Decimal(19, 2);
+//         TolWidth            : Decimal(19, 2);
+//         Height              : Decimal(19, 2);
+//         TolHeight           : Decimal(19, 2);
+//         UnitCode            : String;
+//         UnitName            : String;
+//         DiaTop              : Decimal(19, 2);
+//         TolDiaTop           : Decimal(19, 2);
+//         DiaLeft             : Decimal(19, 2);
+//         TolDiaLeft          : Decimal(19, 2);
+//         DiaRight            : Decimal(19, 2);
+//         TolDiaRight         : Decimal(19, 2);
+//         DiaBottom           : Decimal(19, 2);
+//         TolDiaBottom        : Decimal(19, 2);
+//         CrfStatus           : CRFSTATUS;
+//         CrfReqDate          : Date;
+//         PDDate              : Date;
+//         PDNo                : String;
+//         ApprStatus          : APPROVALSTATUS; //saved values
+//         ApprComments        : String; //saved values
+//         newApprovalStatus   : APPROVALSTATUS; //*  inputs by user in current request
+//         newApprovalComment  : String; //      //*  inputs by user in current request
+//         CreatedByUserID     : Association to MUser; //* only firsttime save. to understand who created this form
+//         MerTeamHead         : Association to MUser;
+//         MerTL               : Association to MUser;
+//         MerATL              : Association to MUser;
+//         PDCUserId           : Association to MUser;
+//         TechnoUserId        : Association to MUser; //* assigned to this document
+//         QualityTLUserId     : Association to MUser; //* assigned to this document
+//         QualityATLUserId    : Association to MUser; //* assigned to this document
+//         //CrfStage            : Association to MStage; //*0708
+//         PendRoleCode        : Association to MRole; //Approval pending with which user/role
+//         CrfStageCode        : Association to MStage; 
+//         CrfStageName        : String;
+//         appliDiamter        : YesNo default 'N';
+//         appliDimension      : YesNo default 'N';
+//         PDCAttachmentAbsId  : Association to TCadDetailAttachmentDetail // change by afshan TCrfAttachmentDetail; //ask
+//         InspDraw            : Composition of many TCadDetailInspDrawDetail
+//                                   on InspDraw.CadDetailID = $self;
+//         ProcessHistory      : Composition of many TCadDetailProcessHistoryDetail
+//                                   on ProcessHistory.CadDetailID = $self;
+//         ApprovalTransaction : Composition of many TCadDetailApprovalTransaction
+//                                   on ApprovalTransaction.CadDetailID = $self;
+//         SeekAdvice          : Composition of many TCadDetailSeekAdvice
+//                                   on SeekAdvice.CadDetailID = $self;
+//         Material            : Composition of many TCadDetailMaterial
+//                                   on Material.CadDetailID = $self;
+//         MaterialComments    : String;
+//         loginUserID         : Association to MUser; //*0708
+//         TotalApproved      :Integer default 0; //0908
+//         TotalRejected     : Integer default 0;//0908
+//         //added by afshan
+//         MainAssembly : Composition of many TCadMainAssembly
+//                                   on MainAssembly.TCadDetailID = $self;
+//         SubAssembly : Composition of many TCadSubAssembly
+//                                   on MainAssembly.TCadDetailID = $self;
+//         ChilldAssembly : Composition of many TCadChilldAssembly
+//                                   on MainAssembly.TCadDetailID = $self;
+// }
+// entity TCadDetailSeekAdvice : managed {
+//     key SeekAdviceID       : UUID;
+//         DepartmentCode     : String; 
+//         DepartmentName     : String; 
+//         UserID             : Association to MUser;
+//         RoleCode           : Association to MRole; 
+//         Question           : String;
+//         Answer             : String;
+//         SeekAdviceDocAbsId : Association to TCrfAttachmentDetail;
+//         CrfReqID           : Association to TCrfHeader;
+//         QuestionFrom       : Association to MUser;
+//         CadDetailID :Association to TCadDetail;
+// }
+// entity TCadDetailInspDrawDetail : managed {
+//         InspRefDocAbsId      : Association to TCrfAttachmentDetail;
+//         InspRefName          : String;
+//         InspRefNo            : String;
+//         CrfReqID             : Association to TCrfHeader;
+//     key InspID               : UUID;
+//         InspRemarks          : String;
+//         DraftUserID          : Association to MUser; //*
+//         DraftAttachmentAbsId : Association to TCrfAttachmentDetail; //*
+//         DraftRemarks         : String; //*
+//         ApprovalStatus       : APPROVALSTATUS; //*
+//         GroupId              : Integer; //* to be incremented for every new set of merchant uploaded drawings
+//         CadDetailID :Association to TCadDetail;
+// }
+// entity TCadDetailAttachmentDetail : managed {
+//     key AbsId          : UUID;
+//         AttachPath     : String;
+//         ActualFileName : String;
+//         DisplayName    : String;
+//         FileExtension  : String;
+//         UserAssign     : Association to TCrfUserAssignDetail;
+//         InspDraw       : Association to TCrfInspDrawDetail;
+//         SeekAdvice     : Association to TcrfSeekAdvice;
+//         CadDetailID :Association to TCadDetail;
+// }
+// entity TCadDetailProcessHistoryDetail : managed {
+//     key ProcessHistoryID : UUID;
+//         UserId           : Association to MUser;
+//         Username         : String;
+//         UserCode         : String;
+//         ApprovalStatus   : APPROVALSTATUS;
+//         ProcessDate      : Timestamp; 
+//         StageName        : String;
+//         StageCode        : Association to MStage; 
+//         Remarks          : String;
+//         CadReqID         : Association to TCrfHeader @mandatory;
+//         FormType         : FORMTYPE; //Crf/CAD
+//        CadDetailID :Association to TCadDetail;        
+// }
+// entity TCadDetailApprovalTransaction : managed {
+//     key ApprovalTraID  : UUID;
+//         ApprovalStatus : APPROVALSTATUS;
+//         UserId         : Association to MUser;
+//         UserCode       : String;
+//         RowStatus      : ROWSTATUS;
+//         CrfReqID       : Association to TCrfHeader;
+//         UserRoleCode   : Association to MRole; 
+//         RoleName       : String;
+//         Comments       : String;
+//         StageName      : String;
+//         StageCode      : Association to MStage;//*0708
+//         FormType       : FORMTYPE;
+//         ProcessDate    : Timestamp; 
+//         CadDetailID :Association to TCadDetail;                
+// }
+// entity TCadDetailMaterial : managed {
+//     key MaterialID          : UUID;
+//         MaterialAutoCode    : String;
+//         MaterialCatHanaText : String;
+//         MaterialCatFreeText : String;
+//         Remarks             : String;
+//         CrfReqID            : Association to TCrfHeader;
+//         CadDetailID :Association to TCadDetail;
+// }
+// // added by Afshan 0908
+// entity TCadMainAssembly:managed{
+//     key MainAssembly:           UUID;
+//     AssemblyCadNo:              String;
+//     AssemblyCadName:            String;
+//     AssemblyCadAttachment:      Association to TCadDetailAttachmentDetail;
+//     ProductNo:                  Integer;
+//     ProductName:                String;
+//     ManufacturingProcess:       String;
+//     OperationNameWithSymbols:   String;
+//     Length:                     Decimal(19, 2);//auto fill
+//     Width:                      Decimal(19, 2);//Auto fill
+//     Height:                     Decimal(19, 2);//Auto fill
+//     Diameter_UOM:               Decimal(19, 2);//Auto fill
+//     Weight:                     Decimal(19, 2);//Auto fill
+//     TolplusAndMinus:            Decimal(19, 2);;//Auto fill
+//     TCadDetailID:               Association to TCadDetail
+// }
+// entity TCadSubAssembly:managed{
+//     key SubAssembly: UUID;
+//     AssemblyCadName:            String;
+//     AssemblyCadAttachment:      Association to TCadDetailAttachmentDetail;
+//     ProductNo:                  Integer;
+//     ProductName:                String;
+//     ManufacturingProcess:       String;
+//     OperationNameWithSymbols:   String;
+//     TCadDetailID:               Association to TCadDetail
+// }
+// entity TCadChilldAssembly:managed{
+//     key ChilldAssembly: UUID;
+//     AssemblyCadName:            String;
+//     AssemblyCadAttachment:      Association to TCadDetailAttachmentDetail;
+//     ProductNo:                  Integer;
+//     ProductName:                String;
+//     ManufacturingProcess:       String;
+//     OperationNameWithSymbols:   String;
+//     TCadDetailID:               Association to TCadDetail
+// }
+
+//=====================================================================
+
+// using {managed} from '@sap/cds/common';
+
+// namespace sap.capire.Stoneman;
+
+
+// type YesNo             : String enum {
+//     Yes        = 'Y';
+//     No         = 'N'
+// };
+
+// type REQUESTTYPE       : String enum {
+//     New        = 'N';
+//     Revision   = 'R';
+//     ToSelect   = '-1'
+// };
+
+// type PROCESSFLOW       : String enum {
+//     Process_A  = 'Process A';
+//     Process_B  = 'Process B';
+//     Process_C  = 'Process C';
+//     Process_D  = 'Process D';
+//     Process_E  = 'Process E';
+//     ToSelect   = '-1'
+// };
+
+
+// type INPUTTYPE         : String enum {
+//     Internal   = 'I';
+//     External   = 'E';
+//     ToSelect   = '-1'
+// };
+
+// type ROWSTATUS         : String enum {
+//     OPEN;
+//     CLOSED
+// };
+
+// type FORMTYPE          : String enum {
+//     CRF;
+//     CAD
+// };
+
+// /*
+// type STAGECODE _Backup        : String enum {
+//     STG_CRF_FORMFILL;
+//     STG_MEETING_SETUP;
+//     STG_UPLOAD_DESIGNS;
+//     STG_DESIGNS_APPROVAL_PENDING;
+//     STG_CRF_SENDTO_BUYER;
+//     STG_BUYER_APPROVAL_PENDING;
+//     STG_CAD_FORMFILL;
+//     STG_CAD_FORM_APPROVAL;
+// }
+// */
+
+// // this will store th fixed values of stagecode (enum )
+// entity MStageConstant : managed {
+//     key StageConstant : String;
+// }
+
+// type APPROVALSTATUS    : String enum {
+//     NA;
+//     APPROVED;
+//     REJECTED;
+//     PENDING;
+// };
+
+// type STAGEFLOWSCENARIO : String enum {
+//     NA;
+//     APPROVED;
+//     REJECTED
+// };
+
+// type CRFSTATUS         : String enum {
+//     New        = 'N';
+//     InProgress = 'WIP';
+//     Closed     = 'CLS';
+//     Cancelled  = 'C'
+// }
+
+// type LABELTYPE         : String enum {
+//     decor;
+//     furnishing
+// };
+
+// //uat
+// type CRFCATEGORY       : String enum {
+//     CAD;
+//     Rendering
+// };
+
+// entity PrjStatusMaster {
+//     key prj_id         : UUID;
+//         prjstatus_code : String(100);
+//         prjstatus_name : String(100);
+// }
+
+// entity TaskStatusMaster {
+//     key tsk_id         : UUID;
+//         tskstatus_code : String(100);
+//         tskstatus_name : String(100);
+// }
+
+// entity Tactionheader {
+//     key tah_id              : UUID;
+//         tah_sono            : String(100);
+//         tah_no              : Int64;
+//         tah_lineno          : String(100);
+//         tah_itemcode        : String(100);
+//         tah_itemdesc        : String(500);
+//         tah_prjtemplno      : String(100);
+//         tah_prjtemplnme     : String(100);
+//         tah_prjtempdesc     : String(500);
+//         tah_startdate       : Date;
+//         tah_prjstatuscode   : String(50);
+//         tah_prjstatusname   : String(100);
+//         tah_isactive        : String(100);
+//         tah_isdeleted       : String(100);
+//         tah_addbyEmpid      : UUID;
+//         tah_addbyEmpCode    : String(100);
+//         tah_addbyUsername   : String(100);
+//         tactiondetail       : Composition of many Tactiondetail
+//                                   on tactiondetail.tactionheader = $self;
+//         tah_sodate          : Date null;
+//         tah_sodeldate       : Date null;
+//         tah_soitemcategory  : String(100);
+//         tah_prjtempcategory : String(100);
+//         tah_prjtempnoofdays : String(100);
+// }
+
+
+// entity Tactiondetail {
+//     key tahd_id                : UUID;
+//         tahd_depcode           : String(100);
+//         tahd_depname           : String(100);
+//         tahd_prjtaskid         : String(100);
+//         tahd_prjtaskname       : String(100);
+//         tahd_noofdays          : String(100);
+//         tahd_days              : String(100);
+//         tahd_plnstdate         : Date;
+//         tahd_plneddate         : Date;
+//         tahd_actstdate         : Date;
+//         tahd_acteddate         : Date;
+//         tahd_dldays            : String(100);
+//         tahd_tskstatuscode     : String(100);
+//         tahd_tskstatusdesc     : String(100);
+//         tahd_comments          : String(100);
+//         tahd_admincomments     : String(100);
+//         tactionheader          : Association to one Tactionheader;
+//         emp_id                 : Association to MUser;
+//         emp_code               : String(100);
+//         emp_name               : String(100);
+//         // tactiondetailEmpAssign : Composition of many TactiondetailEmpAssign
+//         //                              on tactiondetailEmpAssign.tactiondetail = $self;
+//         tahd_rescostcentercode : String(100);
+//         tahd_rescostcentername : String(100);
+// }
+
+// // entity TactiondetailEmpAssign {
+// //     key TactiondetailEmpAssignid        : UUID;
+// //         emp_code      : String(100);
+// //         emp_id        : UUID;
+// //         emp_name      : String(100);
+// //         tactiondetail : Association to one Tactiondetail;
+// // }
+// // entity TactiondetailEmpAssign {
+// //     key TactiondetailEmpAssignid        : UUID;
+// //                         emp_id        : UUID;
+// //                         emp_code      : String(100);
+// //                         emp_name      : String(100);
+// //                         tactiondetail : Association to one Tactiondetail;
+// // }
+
+// /*
+// type ROLECODE_BACKUP   : String enum {
+//     PD_COORDINATOR;
+//     TECHNOLOGIST;
+//     MERCHANT_ATL;
+//     MERCHANT_TL;
+//     HEAD;
+//     QUALITY_TL;
+//     QUALITY_ATL;
+//     PRODUCT_ENGG;
+//     DTP_HEAD;
+//     DTP_ASSISTANT;
+// }
+// */
+
+
+// //this will store enum  of ROLES Constants
+// entity MRoleConstant : managed {
+//     key RoleConstant : String;
+// }
+
+
+// entity MRole : managed {
+//         RoleName : String;
+//     key RoleCode : Association to MRoleConstant;
+// }
+
+// //User Master
+// entity MUser : managed {
+//     key UserID         : UUID;
+//         Username       : String;
+//         Usercode       : String;
+//         DepartmentCode : String;
+//         DepartmentName : String;
+//         UserRoleCode   : Association to MRole;
+//         Password       : String;
+//         IsActive       : YesNo default 'Y';
+//         FirstName      : String;
+//         LastName       : String;
+//         EmailId        : String;
+//         EmployeeCode   : String;
+//         Buyer          : Composition of many MBuyer
+//                              on Buyer.UserID = $self;
+// }
+
+// entity MBuyer : managed {
+//     key ID        : UUID;
+//         BuyerCode : String;
+//         BuyerName : String;
+//         UserID    : Association to MUser;
+// }
+
+// //Approval/workflow Stages Master
+// entity MStage : managed {
+//     key StageCode      : Association to MStageConstant;
+//         StageName      : String;
+//         StageDesc      : String;
+//         OrderBy        : Integer;
+//         IsActive       : YesNo default 'Y';
+//         IsWorkFlow     : YesNo;
+//         IsApproval     : YesNo;
+//         NoOfApprovals  : Int16;
+//         NoOfRejections : Int16;
+//         FormType       : FORMTYPE;
+//         SendEmail      : YesNo default 'N';
+// }
+
+// //Approval/workflow stages flow Master
+// entity MStageFlow : managed {
+//     key StageFlowID       : UUID;
+//         CurrentStageCode  : Association to MStage;
+//         NextStageCode     : Association to MStage;
+//         Scenario          : STAGEFLOWSCENARIO;
+//         FormType          : FORMTYPE;
+//         EmailTemplateID   : Association to MEmailTemplate;
+//         EmailTemplateCode : EMAILTEMPLATECODE;
+// }
+
+// type EMAILTEMPLATECODE : String enum {
+//     APPROVAL   = 'ET_APPROVAL';
+//     REJECTION  = 'ET_REJECTION';
+//     SEEKADVICE = 'ET_SEEKADVICE';
+//     WORKFLOW   = 'ET_WORKFLOW';
+//     NA         = 'ET_NA';
+// }
+
+
+// entity MEmailTemplate {
+//     key EmailTemplateID   : UUID;
+//         EmailTemplateCode : EMAILTEMPLATECODE;
+//         EmailTemplateBody : LargeString;
+// }
+
+
+// type VALIDATIONCODE    : String enum {
+//     V1;
+//     V2;
+//     V3;
+//     V4;
+//     V5;
+//     V6;
+//     V7;
+//     V8;
+// }
+
+// //Stage+Role Master
+// entity MStageRole : managed {
+//     key StageRoleID    : UUID;
+//         RoleCode       : Association to MRole;
+//         StageCode      : Association to MStage;
+//         ValidationCode : VALIDATIONCODE;
+//         IsActive       : YesNo default 'Y';
+// }
+
+// //0708
+// type SAVEORSUBMIT      : String enum {
+//     SAVE       = 'SAVE';
+//     SUBMIT     = 'SUBMIT'
+// }
+
+// entity TCrfHeader : managed {
+//         SaveOrSubmit        : SAVEORSUBMIT; //*0708
+//         ReqTyp              : REQUESTTYPE;
+//         OldCrfReqNoUUID     : UUID;
+//         OldCrfReqNo         : Integer64;
+//     key CrfReqUUID          : UUID;
+//         CrfReqNo            : Integer64;
+//         Proflow             : PROCESSFLOW;
+//         InputType           : INPUTTYPE;
+//         MerReqDate          : Date;
+//         BuyerCode           : String;
+//         BuyerName           : String;
+//         Category            : String;
+//         ItemCode            : String;
+//         ItemDesc            : String;
+//         ItemGroup           : String;
+//         ItemGroupName       : String;
+//         CrfDelDate          : Date;
+//         Reamrks             : String;
+//         ECNNo               : String;
+//         CarNo               : String;
+//         CRFNo               : String;
+//         LblTyp              : LABELTYPE;
+//         Length              : Decimal(19, 2);
+//         TolLength           : Decimal(19, 2);
+//         Width               : Decimal(19, 2);
+//         TolWidth            : Decimal(19, 2);
+//         Height              : Decimal(19, 2);
+//         TolHeight           : Decimal(19, 2);
+//         UnitCode            : String;
+//         UnitName            : String;
+//         DiaTop              : Decimal(19, 2);
+//         TolDiaTop           : Decimal(19, 2);
+//         DiaLeft             : Decimal(19, 2);
+//         TolDiaLeft          : Decimal(19, 2);
+//         DiaRight            : Decimal(19, 2);
+//         TolDiaRight         : Decimal(19, 2);
+//         DiaBottom           : Decimal(19, 2);
+//         TolDiaBottom        : Decimal(19, 2);
+//         CrfStatus           : CRFSTATUS;
+//         CrfReqDate          : Date;
+//         PDDate              : Date;
+//         PDNo                : String;
+//         ApprStatus          : APPROVALSTATUS; //saved values
+//         ApprComments        : String; //saved values
+//         newApprovalStatus   : APPROVALSTATUS; //*  inputs by user in current request
+//         newApprovalComment  : String; //      //*  inputs by user in current request
+//         CreatedByUserID     : Association to MUser; //* only firsttime save. to understand who created this form
+//         MerTeamHead         : Association to MUser;
+//         MerTL               : Association to MUser;
+//         MerATL              : Association to MUser;
+//         PDCUserId           : Association to MUser;
+//         TechnoUserId        : Association to MUser; //* assigned to this document
+//         QualityTLUserId     : Association to MUser; //* assigned to this document
+//         QualityATLUserId    : Association to MUser; //* assigned to this document
+//         //CrfStage            : Association to MStage; //*0708
+//         PendRoleCode        : String; //Association to MRole; //Approval pending with which user/role
+//         CrfStageCode        : Association to MStage;
+//         CrfStageName        : String;
+//         appliDiamter        : YesNo default 'N';
+//         appliDimension      : YesNo default 'N';
+//         PDCAttachmentAbsId  : Association to TCrfAttachmentDetail;
+//         InspDraw            : Composition of many TCrfInspDrawDetail
+//                                   on InspDraw.CrfReqID = $self;
+//         UserAssign          : Composition of many TCrfUserAssignDetail
+//                                   on UserAssign.CrfReqID = $self;
+//         ProcessHistory      : Composition of many TCrfProcessHistoryDetail
+//                                   on ProcessHistory.CadReqID = $self;
+//         ApprovalTransaction : Composition of many TCrfApprovalTransaction
+//                                   on ApprovalTransaction.CrfReqID = $self;
+//         SeekAdvice          : Composition of many TcrfSeekAdvice
+//                                   on SeekAdvice.CrfReqID = $self;
+//         Material            : Composition of many TcrfMaterial
+//                                   on Material.CrfReqID = $self;
+//         MaterialComments    : String;
+//         loginUserID         : Association to MUser; //*0708
+//         TotalApproved       : Integer default 0; //0908
+//         TotalRejected       : Integer default 0; //0908
+//         FormType            : FORMTYPE;
+//         CrfCategory         : CRFCATEGORY; //uat
+// }
+
+// //0808
+
+
+// entity TcrfSeekAdvice : managed {
+//     key SeekAdviceID       : UUID;
+//         DepartmentCode     : String;
+//         DepartmentName     : String;
+//         UserID             : Association to MUser;
+//         RoleCode           : Association to MRole;
+//         Question           : String;
+//         Answer             : String;
+//         SeekAdviceDocAbsId : Association to TCrfAttachmentDetail;
+//         CrfReqID           : Association to TCrfHeader;
+//         QuestionFrom       : Association to MUser;
+// }
+
+
+// //Crf form attachment by Merchant  details
+// entity TCrfInspDrawDetail : managed {
+//         InspRefDocAbsId      : Association to TCrfAttachmentDetail;
+//         InspRefName          : String;
+//         InspRefNo            : String;
+//         CrfReqID             : Association to TCrfHeader;
+//     key InspID               : UUID;
+//         InspRemarks          : String;
+//         DraftUserID          : Association to MUser; //*
+//         DraftAttachmentAbsId : Association to TCrfAttachmentDetail; //*
+//         DraftRemarks         : String; //*
+//         ApprovalStatus       : APPROVALSTATUS; //*
+//         GroupId              : Integer; //* to be incremented for every new set of merchant uploaded drawings
+
+// }
+
+
+// //Crf form generic attachment details table
+// entity TCrfAttachmentDetail : managed {
+//     key AbsId          : UUID;
+//         AttachPath     : String;
+//         ActualFileName : String;
+//         DisplayName    : String;
+//         FileExtension  : String;
+// // UserAssign     : Association to TCrfUserAssignDetail;// need to Confirm with trupti mam
+// // InspDraw       : Association to TCrfInspDrawDetail;// need to Confirm with trupti mam
+// // SeekAdvice     : Association to TcrfSeekAdvice;// need to Confirm with trupti mam
+// }
+
+// //Crf form generic attachment details table
+// //Crf form user assignment for meeting by pdcoordinator details
+// entity TCrfUserAssignDetail : managed { //CadUserAssgId,CadReqID_CrfReqUUID
+//     key CrfUserAssgId          : UUID;
+//         DepartmentCode         : String;
+//         DepartmentName         : String;
+//         UserID                 : Association to MUser;
+//         UserCode               : String;
+//         CallMeeting            : YesNo;
+//         Remarks                : String;
+//         CrfUserAttachmentAbsId : Association to TCrfAttachmentDetail;
+//         IsMeetingAttended      : YesNo;
+//         CrfReqID               : Association to TCrfHeader;
+// }
+
+// //Crf form log
+// entity TCrfProcessHistoryDetail : managed {
+//     key ProcessHistoryID : UUID;
+//         UserId           : Association to MUser;
+//         Username         : String;
+//         UserCode         : String;
+//         ApprovalStatus   : APPROVALSTATUS;
+//         ProcessDate      : Timestamp;
+//         //StageID          : Association to MStage    @mandatory; //*0708
+//         StageName        : String;
+//         StageCode        : Association to MStage; //*0708
+//         Remarks          : String;
+//         CadReqID         : Association to TCrfHeader @mandatory;
+//         FormType         : FORMTYPE; //Crf/CAD
+// }
+
+// //Crf form approval transction history
+// entity TCrfApprovalTransaction : managed {
+//     key ApprovalTraID  : UUID;
+//         //StageId        : Association to MStage; //*0708
+//         ApprovalStatus : APPROVALSTATUS;
+//         UserId         : Association to MUser;
+//         UserCode       : String;
+//         RowStatus      : ROWSTATUS;
+//         CrfReqID       : Association to TCrfHeader;
+//         UserRoleCode   : Association to MRole;
+//         RoleName       : String;
+//         Comments       : String;
+//         StageName      : String;
+//         StageCode      : Association to MStage; //*0708
+//         FormType       : FORMTYPE;
+//         ProcessDate    : Timestamp;
+
+// 	// To be added
+// 	//StartDate	:Timestamp;//new
+// 	//EndDate	:Timestamp; // new
+// 	//Type : workflow/ approval // new
+// 	//end
+// }
+
+// //stage names - Fill form, meeting, create design, approve design, buyer design approval
+
+
+// entity TcrfMaterial : managed {
+//     key MaterialID          : UUID;
+//         MaterialAutoCode    : String;
+//         MaterialCatHanaText : String;
+//         MaterialCatFreeText : String;
+//         Remarks             : String;
+//         CrfReqID            : Association to TCrfHeader;
+// }
+
+// //Detail Table for Cad Detail Form
+
+// // MaterialAutoCode  Material1
+// // MaterialCatHanaText  S+W
+// // MaterialCatFreeText
+// // Remarks
+
+// /*
+// // Wood, Plastic, Marble
+// entity MMaterial : managed {
+//     key MaterialID   : UUID;
+//         MaterialCode : String;
+//         MaterialDesc : String;
+// }
+// */
+
+// //*
+// entity MCrfControls : managed {
+//     key ControlsID : UUID;
+//         RoleCode   : Association to MRole;
+//         Detail     : Composition of many MCrfControlDetail
+//                          on Detail.Parent = $self;
+//         StageCode  : Association to MStage;
+//         FormType   : FORMTYPE;
+// }
+
+// entity MCrfControlDetail : managed {
+//     key ControlsDetailID : UUID;
+//         Parent           : Association to MCrfControls;
+//         ControlName      : String;
+//         Enabled          : Boolean default True;
+//         TableName        : String;
+//         ControlId        : String;
+// }
+
+// /*================Cad Detail Schema=========================*/
+// entity TCadDetail : managed {
+//         SaveOrSubmit        : SAVEORSUBMIT;
+//         ReqTyp              : REQUESTTYPE;
+//         OldCadDetailNoUUID  : UUID;
+//         OldCadDetailNo      : Integer64;
+//     key CadDetailUUID       : UUID;
+//         CadDetailNo         : Integer64;
+//         CrfReqUUID          : Association to TCrfHeader;
+//         CrfReqNo            : Integer64;
+//         Proflow             : PROCESSFLOW;
+//         InputType           : INPUTTYPE;
+//         MerReqDate          : Date;
+//         BuyerCode           : String;
+//         BuyerName           : String;
+//         Category            : String;
+//         ItemCode            : String;
+//         ItemDesc            : String;
+//         ItemGroup           : String;
+//         ItemGroupName       : String;
+//         CrfDelDate          : Date;
+//         Reamrks             : String;
+//         ECNNo               : String;
+//         CarNo               : String;
+//         CRFNo               : String;
+//         LblTyp              : LABELTYPE;
+//         Length              : Decimal(19, 2);
+//         TolLength           : Decimal(19, 2);
+//         Width               : Decimal(19, 2);
+//         TolWidth            : Decimal(19, 2);
+//         Height              : Decimal(19, 2);
+//         TolHeight           : Decimal(19, 2);
+//         UnitCode            : String;
+//         UnitName            : String;
+//         DiaTop              : Decimal(19, 2);
+//         TolDiaTop           : Decimal(19, 2);
+//         DiaLeft             : Decimal(19, 2);
+//         TolDiaLeft          : Decimal(19, 2);
+//         DiaRight            : Decimal(19, 2);
+//         TolDiaRight         : Decimal(19, 2);
+//         DiaBottom           : Decimal(19, 2);
+//         TolDiaBottom        : Decimal(19, 2);
+//         CrfStatus           : CRFSTATUS;
+//         CrfReqDate          : Date;
+//         PDDate              : Date;
+//         PDNo                : String;
+//         ApprStatus          : APPROVALSTATUS;
+//         ApprComments        : String;
+//         newApprovalStatus   : APPROVALSTATUS;
+//         newApprovalComment  : String;
+//         CreatedByUserID     : Association to MUser;
+//         MerTeamHead         : Association to MUser;
+//         MerTL               : Association to MUser;
+//         MerATL              : Association to MUser;
+//         PDCUserId           : Association to MUser;
+//         TechnoUserId        : Association to MUser;
+//         QualityTLUserId     : Association to MUser;
+//         QualityATLUserId    : Association to MUser;
+//         PendRoleCode        : String; //Association to MRole;
+//         CrfStageCode        : Association to MStage;
+//         CrfStageName        : String;
+//         appliDiamter        : YesNo default 'N';
+//         appliDimension      : YesNo default 'N';
+//         // PDCAttachmentAbsId  : Association to TCadDetailAttachmentDetail; // change by afshan TCrfAttachmentDetail;
+//         InspDraw            : Composition of many TCadDetailInspDrawDetail
+//                                   on InspDraw.CadDetailID = $self;
+//         ProcessHistory      : Composition of many TCadDetailProcessHistoryDetail
+//                                   on ProcessHistory.CadDetailID = $self;
+//         ApprovalTransaction : Composition of many TCadDetailApprovalTransaction
+//                                   on ApprovalTransaction.CadDetailID = $self;
+//         SeekAdvice          : Composition of many TCadDetailSeekAdvice
+//                                   on SeekAdvice.CadDetailID = $self;
+//         Material            : Composition of many TCadDetailMaterial
+//                                   on Material.CadDetailID = $self;
+//         MaterialComments    : String;
+//         loginUserID         : Association to MUser;
+//         TotalApproved       : Integer default 0;
+//         TotalRejected       : Integer default 0;
+//         FormType            : FORMTYPE; //added by afshan
+//         MainAssembly        : Composition of many TCadMainAssembly
+//                                   on MainAssembly.TCadDetailID = $self;
+//         SubAssembly         : Composition of many TCadSubAssembly
+//                                   on SubAssembly.TCadDetailID = $self;
+//         ChildAssembly       : Composition of many TCadChildAssembly
+//                                   on ChildAssembly.TCadDetailID = $self;
+//         DTPAssitant         : Association to MUser;
+//         DTPHead             : Association to MUser;
+//         DTPAssitantName     : String;
+//         DTPHeadName         : String;
+//         CrfCategory         : String;
+// }
+
+// entity TCadDetailSeekAdvice : managed {
+//     key SeekAdviceID       : UUID;
+//         DepartmentCode     : String;
+//         DepartmentName     : String;
+//         UserID             : Association to MUser;
+//         RoleCode           : Association to MRole;
+//         Question           : String;
+//         Answer             : String;
+//         SeekAdviceDocAbsId : Association to TCrfAttachmentDetail;
+//         QuestionFrom       : Association to MUser;
+//         CadDetailID        : Association to TCadDetail;
+// } //provalStatus
+
+// entity TCadDetailInspDrawDetail : managed {
+//         CadDetailID          : Association to TCadDetail;
+//         InspRefDocAbsId      : Association to TCrfAttachmentDetail;
+//         InspRefName          : String;
+//         InspRefNo            : String;
+//     key InspID               : UUID;
+//         InspRemarks          : String;
+//         DraftUserID          : Association to MUser; //*
+//         DraftAttachmentAbsId : Association to TCrfAttachmentDetail; //*
+//         DraftRemarks         : String; //*
+//         ApprovalStatus       : APPROVALSTATUS; //*
+//         GroupId              : Integer; //* to be incremented for every new set of merchant uploaded drawings
+
+// }
+
+// entity TCadDetailProcessHistoryDetail : managed {
+//     key ProcessHistoryID : UUID;
+//         CadDetailID      : Association to TCadDetail;
+//         UserId           : Association to MUser;
+//         Username         : String;
+//         UserCode         : String;
+//         ApprovalStatus   : APPROVALSTATUS;
+//         ProcessDate      : Timestamp;
+//         StageName        : String;
+//         StageCode        : Association to MStage;
+//         Remarks          : String;
+//         FormType         : FORMTYPE; //Crf/CAD
+
+// }
+
+// entity TCadDetailApprovalTransaction : managed {
+//     key ApprovalTraID  : UUID;
+//         ApprovalStatus : APPROVALSTATUS;
+//         UserId         : Association to MUser;
+//         UserCode       : String;
+//         RowStatus      : ROWSTATUS;
+//         UserRoleCode   : Association to MRole;
+//         RoleName       : String;
+//         Comments       : String;
+//         StageName      : String;
+//         StageCode      : Association to MStage;
+//         FormType       : FORMTYPE;
+//         ProcessDate    : Timestamp;
+//         CadDetailID    : Association to TCadDetail;
+// }
+
+// entity TCadDetailMaterial : managed {
+//     key MaterialID          : UUID;
+//         MaterialAutoCode    : String;
+//         MaterialCatHanaText : String;
+//         MaterialCatFreeText : String;
+//         Remarks             : String;
+//         CadDetailID         : Association to TCadDetail;
+// }
+
+// // added by Afshan 0908
+// entity TCadMainAssembly : managed {
+//     key MainAssembly               : UUID;
+//         AssemblyCadNo              : String;
+//         AssemblyCadName            : String;
+//         AssemblyCadAttachment      : Association to TCrfAttachmentDetail;
+//         ProductNo                  : String;
+//         ProductName                : String;
+//         //trupti
+//         //ManufacturingProcess:       Association to MManufacturing;// need to Confirm with trupti mam
+//         //OperationNameWithSymbols:   Association to MOperationProcess;
+//         ManufacturingProcessID     : UUID;
+//         ManufacturingCode          : String;
+//         ManufacturingName          : String;
+//         OperationNameWithSymbolsID : UUID;
+//         OperationProcessCode       : String;
+//         OperationProcessName       : String;
+//         //
+//         LengthUOM                  : Decimal(19, 2);
+//         TolLengthUom               : Decimal(19, 2);
+//         WidthUOM                   : Decimal(19, 2);
+//         TolWidthUom                : Decimal(19, 2);
+//         HeightUOM                  : Decimal(19, 2);
+//         TolHeightUom               : Decimal(19, 2);
+//         DiameterUOM                : Decimal(19, 2);
+//         TolDiameterUom             : Decimal(19, 2);
+//         WeightUom                  : Decimal(19, 2);
+//         TolWeightUom               : Decimal(19, 2);
+//         SpecificationDRGSize       : Decimal(19, 2);
+//         TolSpecificationDRGSize    : Decimal(19, 2);
+//         Finish                     : String;
+//         TCadDetailID               : Association to TCadDetail;
+//         Remarks                    : String;
+
+// }
+
+// entity TCadSubAssembly : managed {
+//     key SubAssembly                : UUID;
+//         AssemblyCADNo              : String;
+//         AssemblyCadName            : String;
+//         SubAssemblyName            : String;
+//         AssemblyCadAttachment      : Association to TCrfAttachmentDetail;
+//         ProductNo                  : String;
+//         ProductName                : String;
+//         //Trupti
+//         //ManufacturingProcess:       Association to MManufacturing;// need to Confirm with trupti mam
+//         //OperationNameWithSymbols:   Association to MOperationProcess;
+//         ManufacturingProcessID     : UUID;
+//         ManufacturingCode          : String;
+//         ManufacturingName          : String;
+//         OperationNameWithSymbolsID : UUID;
+//         OperationProcessCode       : String;
+//         OperationProcessName       : String;
+//         //
+//         LengthUOM                  : Decimal(19, 2);
+//         TolLengthUom               : Decimal(19, 2);
+//         WidthUOM                   : Decimal(19, 2);
+//         TolWidthUom                : Decimal(19, 2);
+//         HeightUOM                  : Decimal(19, 2);
+//         TolHeightUom               : Decimal(19, 2);
+//         DiameterUOM                : Decimal(19, 2);
+//         TolDiameterUom             : Decimal(19, 2);
+//         WeightUom                  : Decimal(19, 2);
+//         TolWeightUom               : Decimal(19, 2);
+//         SpecificationDRGSize       : Decimal(19, 2);
+//         TolSpecificationDRGSize    : Decimal(19, 2);
+//         Finish                     : String;
+//         TCadDetailID               : Association to TCadDetail;
+//         Remarks                    : String;
+
+// }
+
+// entity TCadChildAssembly : managed {
+//     key ChildAssembly              : UUID;
+//         AssemblyCadNo              : String;
+//         AssemblyCadName            : String;
+//         ChildAssemblyName          : String;
+//         AssemblyCadAttachment      : Association to TCrfAttachmentDetail;
+//         ProductNo                  : String;
+//         ProductName                : String;
+//         //Trupti
+//         //ManufacturingProcess:       Association to MManufacturing;// need to Confirm with trupti mam
+//         //OperationNameWithSymbols:   Association to MOperationProcess;
+//         ManufacturingProcessID     : UUID;
+//         ManufacturingCode          : String;
+//         ManufacturingName          : String;
+//         OperationNameWithSymbolsID : UUID;
+//         OperationProcessCode       : String;
+//         OperationProcessName       : String;
+//         //
+//         LengthUOM                  : Decimal(19, 2);
+//         TolLengthUom               : Decimal(19, 2);
+//         WidthUOM                   : Decimal(19, 2);
+//         TolWidthUom                : Decimal(19, 2);
+//         HeightUOM                  : Decimal(19, 2);
+//         TolHeightUom               : Decimal(19, 2);
+//         DiameterUOM                : Decimal(19, 2);
+//         TolDiameterUom             : Decimal(19, 2);
+//         WeightUom                  : Decimal(19, 2);
+//         TolWeightUom               : Decimal(19, 2);
+//         SpecificationDRGSize       : Decimal(19, 2);
+//         TolSpecificationDRGSize    : Decimal(19, 2);
+//         Finish                     : String;
+//         TCadDetailID               : Association to TCadDetail;
+//         Remarks                    : String;
+// }
+
+// entity MManufacturing : managed {
+//     key ID                : UUID;
+//         ManufacturingCode : String;
+//         ManufacturingName : String;
+//         Operation         : Composition of many MOperationProcess
+//                                 on Operation.ManufacturingCode = $self;
+// }
+
+// entity MOperationProcess : managed {
+//     key id                   : UUID;
+//         OperationProcessName : String;
+//         OperationProcessCode : String;
+//         ManufacturingCode    : Association to MManufacturing;
+
+// }
+
+// entity TErrorLog : managed {
+//     key ErrorLogId      : UUID;
+//         ErrorLogMessage : String;
+//         ErrorLogCode    : String;
+//         ErrorLogDate    : Date;
+// }
+
+// /*================Costing One pager Schema=========================*/
+
+// entity TCostingHeader : managed {
+//     key CostingHeaderUUID   : UUID;
+//         CADNo               : Int64;
+//         CADUUID             : UUID; // rename
+//         CostingHeaderId     : Integer64;
+//         // CADName             : String; //not required
+//         ItemCode            : String;
+//         ItemDesc            : String;
+//         SciplCode           : String;
+//         SciplDesc           : String;
+//         CostingVersion      : Integer;//
+//         // CadDetailUUID       : UUID; //shofted above
+//         CostingTypeCode     : String;
+//         // CostingTypeDesc     : String; // not required
+//         SONumberCode        : String;
+//         Diameter            : Decimal(19, 2);
+//         Length              : Decimal(19, 2);
+//         Width               : Decimal(19, 2);
+//         Height              : Decimal(19, 2);
+//         Unit                : String; /* Need to get more clarity */
+//         UnitCode            : String; /* Need to get more clarity */
+//         UnitName            : String; /* Need to get more clarity */
+//         Weight              : Decimal(19, 2);
+
+//         //packing  - Uday
+// 	//*********************************************************************************
+//         PackingCost         : Decimal(19, 2); /* Need to get more clarity */
+//         BrandPackingCost    : Decimal(19, 2); /* Need to get more clarity */
+//         InnerBoxL           : Decimal(19, 2);
+//         InnerBoxW           : Decimal(19, 2);
+//         InnerBoxH           : Decimal(19, 2);
+//         InnerBoxUOM         : Decimal(19, 2);
+//         MasterCartoonL      : Decimal(19, 2);
+//         MasterCartoonW      : Decimal(19, 2);
+//         MasterCartoonH      : Decimal(19, 2);
+//         MasterCartoonUOM    : Decimal(19, 2);
+//         CasePack            : String; /* Need to get more clarity */
+//         CBM                 : Decimal(19, 2);
+//         CostPerCBM          : Decimal(19, 2);
+//         Overhead            : Decimal(19, 2);
+// 	//*********************************************************************************
+
+//         //Extra charge
+// 	     Curreny		    : String; //newly added
+//         TotalCost           : Decimal(19, 2);
+//         ExchangeRate        : Decimal(19, 2);
+//         //PriceInUSDollar     : Decimal(19, 2);
+// 	    DerivedInterPrice     : Decimal(19, 2);  //changed name
+// 	    PriceCurrency	    : String;// newly added
+//         ShippingCost        : Decimal(19, 2);
+//         TestingCharge       : Decimal(19, 2);
+//         LabellingCharge     : Decimal(19, 2);
+//         TrimmingCost        : Decimal(19, 2);
+//         PriceIncAlCharges   : Decimal(19, 2);
+//         Profit              : Decimal(19, 2);
+//         ExtraWEIGHT         : Decimal(19, 2);
+// 	    ExtraWEIGHTUoM	    : String; //newly added
+//         ExtraRemarks             : String; // renamed
+
+//         /******STONE*********** */
+//         CPStoneActualCostDetail          : Composition of many TCPCostStoneActualCostDetail //
+//                                            on CPStoneActualCostDetail.CostingHeaderID = $self;
+//         CPStoneBaseCostDetail           : Composition of many TCPCostStoneBaseCostDetail //
+//                                            on CPStoneBaseCostDetail.CostingHeaderID = $self;
+//         CPStoneLocalHandlingChargeDetail : Composition of many TCADCostStoneLocalHandlingChargeDetail //
+//                                            on CPStoneLocalHandlingChargeDetail.CostingHeaderID = $self;
+//         CPStoneProcessDetail      : Composition of many TCADCostStoneProcessDetail //
+//                                            on CPStoneProcessDetail.CostingHeaderID = $self;
+
+// 	StoneSumUnitcost
+// 	StoneSumActWastageAmt
+// 	StoneTotalActCost
+// 	StoneSumOHCost
+// 	StoneSumOHWastageAmount
+// 	StoneTotalCostBaseStone
+// 	StoneLocalHandlingPer**
+// 	StoneLocalHandlingAmount**
+
+//         /********WOOD****** */
+//         CPWoodActualCostDetail          : Composition of many TCostingWoodActualCostDetail //
+//                                            on CPWoodActualCostDetail.CostingHeaderID = $self;
+//         CPWoodBaseCostDetail           : Composition of many TCostingWoodBaseCostDetail //
+//                                            on CPWoodBaseCostDetail.CostingHeaderID = $self;
+//         CPWoodLocalHandlingChargeDetail : Composition of many TCostingWoodLocalHandlingChargeDetail //
+//                                            on CPWoodLocalHandlingChargeDetail.CostingHeaderID = $self;
+//         CPWoodProcessDetail      : Composition of many TCADCostWoodProcessDetail //
+//                                            on CPWoodProcessDetail.CostingHeaderID = $self;
+
+//           /**********METAL************/
+//         CPMetalActualCostDetail          : Composition of many TCostingMetalActualCostDetail //
+//                                            on CPMetalActualCostDetail.CostingHeaderID = $self;
+//         CPMetalBaseCostDetail           : Composition of many TCADCostMetalBaseCostDetail //
+//                                            on CPMetalBaseCostDetail.CostingHeaderID = $self;
+//         CPMetalLocalHandlingChargeDetail : Composition of many TCADCostWoodLocalHandlingChargeDetail //
+//                                            on CPMetalLocalHandlingChargeDetail.CostingHeaderID = $self;
+//         CPMetalProcessDetail      : Composition of many TCADCostMetalProcessDetail //
+//                                            on CPMetalProcessDetail.CostingHeaderID = $self;
+
+//         CPCostingAccessory : Composition of many TCostingAccessory //
+//                                   on CPCostingAccessory.CostingHeaderID = $self;
+// //        ProcessHistory      : Composition of many TCostingProcessHistoryDetail  //not to use
+// //                                  on ProcessHistory.CostingReqID = $self;
+//         CPSeekAdvice          : Composition of many TCostingSeekAdvice
+//                                   on CPSeekAdvice.CostingReqID = $self;
+
+// 	CPApprovalHistory   : Composition of many TCostingApprovalHistory    //
+//                                   on CPApprovalHistory.CostingHeaderID = $self;	
+
+
+
+// }
+
+// /*===============STONE=================******/
+
+// /******stone* Actual Costing **************/
+// entity TCostingStoneActualCostDetail : managed {
+//     key CADCostStoneActCostDetailUUID        : UUID;
+//         CostingHeaderID             : Association to TCostingHeader;
+//         ItemCode                    : String;
+//         ItemDesc                    : String;
+//         Dimension                   : Decimal(19, 2);
+//         FinishCode                  : String;
+//         FinishName                  : String;
+//         CategoryCode                : String;
+//         CategoryName                : String;
+//         Quantity                    : Int64;
+//         UnitOfMeasurement           : Int64;
+//         PurchasePrice               : Decimal(19, 2);
+//         ActualCategoryStoneUnitCost : Decimal(19, 2);
+//         SumUnitCost                 : Decimal(19, 2);
+//         ActWastPercentCode          : Decimal(19, 2);
+//         ActWastPercentDesc          : Decimal(19, 2);
+//         ActWastAmount               : Decimal(19, 2);
+//         TotalActWastAmount          : Decimal(19, 2);
+//         TotalActCostCategory        : Decimal(19, 2);
+// }
+
+//  /*************stone*Base Stone Cost for OH********************* **/
+// entity TCostingStoneBaseCostDetail : managed {
+//     key CADCostStoneBaseCostDetailUUID : UUID;
+//         CostingHeaderID       : Association to TCostingHeader;
+//         CategoryPrice         : Decimal(19, 2);
+//         CategoryUntCost       : Decimal(19, 2);
+//         CategoryOHCost        : Decimal(19, 2);
+//         WastagePercentCode    : String;
+//         WastagePercentName    : String;
+//         WastageAmount         : Decimal(19, 2);
+//         SumWastageAmount      : Decimal(19, 2);
+//         TotalCostBaseCategory : Decimal(19, 2);
+// }
+
+// /*********stone*Local handling charges ***********/
+// entity TCostingStoneLocalHandlingChargeDetail : managed {
+//     key CADCostStoneLocalHandlingChargeDetailUUID : UUID;
+//         CostingHeaderID                  : Association to TCostingHeader;
+//         LocalHandlingPercentage          : Decimal(19, 2); //need to clarity
+//         LocalHandlingAmount              : Decimal(19, 2);
+
+// }
+
+// /**********stone**Process Tab **************/
+// entity TCostingStoneProcessDetail : managed {
+//     key CADCostStoneProcessDetailUUID : UUID;
+//         CostingHeaderID          : Association to TCostingHeader;
+//         ProcessType              : String;
+//         ProcessCost              : Decimal(19, 2);
+//         InputMethod              : String; //need to clarity
+//         Time                     : Time;
+//         WastageProcess           : Decimal(19, 2);
+//         ProcessWastageCost       : Decimal(19, 2);
+//         TotalProcessCost         : Decimal(19, 2);
+//         TotalTime                : Time;
+//         TotalProcessWastageCost  : Decimal(19, 2);
+
+// }
+
+// /*=======================WOOD===================*/
+// /****** *wood- Actual Costing **************/
+// entity TCostingWoodActualCostDetail : managed {
+//     key CADCostWoodActCostDetailUUID        : UUID;
+//         CostingHeaderID             : Association to TCostingHeader;
+//         ItemCode                    : String;
+//         ItemDesc                    : String;
+//         Dimension                   : Decimal(19, 2);
+//         FinishCode                  : String;
+//         FinishName                  : String;
+//         CategoryCode                : String;
+//         CategoryName                : String;
+//         Quantity                    : Int64;
+//         UnitOfMeasurement           : Int64;
+//         PurchasePrice               : Decimal(19, 2);
+//         ActualCategoryStoneUnitCost : Decimal(19, 2);
+//         SumUnitCost                 : Decimal(19, 2);
+//         ActWastPercentCode          : Decimal(19, 2);
+//         ActWastPercentDesc          : Decimal(19, 2);
+//         ActWastAmount               : Decimal(19, 2);
+//         TotalActWastAmount          : Decimal(19, 2);
+//         TotalActCostCategory        : Decimal(19, 2);
+// }
+
+//  /**************wood---Base Stone Cost for OH********************* **/
+// entity TCostingWoodBaseCostDetail : managed {
+//     key CADCostWoodBaseCostDetailUUID : UUID;
+//         CostingHeaderID       : Association to TCostingHeader;
+//         CategoryPrice         : Decimal(19, 2);
+//         CategoryUntCost       : Decimal(19, 2);
+//         CategoryOHCost        : Decimal(19, 2);
+//         WastagePercentCode    : String;
+//         WastagePercentName    : String;
+//         WastageAmount         : Decimal(19, 2);
+//         SumWastageAmount      : Decimal(19, 2);
+//         TotalCostBaseCategory : Decimal(19, 2);
+// }
+
+// /**********wood--Local handling charges ***********/
+// entity TCostingWoodLocalHandlingChargeDetail : managed {
+//     key CADCostWoodLocalHandlingChargeDetailUUID : UUID;
+//         CostingHeaderID                  : Association to TCostingHeader;
+//         LocalHandlingPercentage          : Decimal(19, 2); //need to clarity
+//         LocalHandlingAmount              : Decimal(19, 2);
+
+// }
+
+// /***********wood--*Process Tab **************/
+// entity TCostingCostWoodProcessDetail : managed {
+//     key CADCostWoodProcessDetailUUID : UUID;
+//         CostingHeaderID          : Association to TCostingHeader;
+//         ProcessType              : String;
+//         ProcessCost              : Decimal(19, 2);
+//         InputMethod              : String; //need to clarity
+//         Time                     : Time;
+//         WastageProcess           : Decimal(19, 2);
+//         ProcessWastageCost       : Decimal(19, 2);
+//         TotalProcessCost         : Decimal(19, 2);
+//         TotalTime                : Time;
+//         TotalProcessWastageCost  : Decimal(19, 2);
+
+// }
+// /*===================METAL=================*/
+// /****** *metal- Actual Costing **************/
+// entity TCostingMetalActualCostDetail : managed {
+//     key CostingMetalActCostDetailUUID        : UUID;
+//         CostingHeaderID             : Association to TCostingHeader;
+//         ItemCode                    : String;
+//         ItemDesc                    : String;
+//         Dimension                   : Decimal(19, 2);
+//         FinishCode                  : String;
+//         FinishName                  : String;
+//         CategoryCode                : String;
+//         CategoryName                : String;
+//         Quantity                    : Int64;
+//         UnitOfMeasurement           : Int64;
+//         PurchasePrice               : Decimal(19, 2);
+//         ActualCategoryStoneUnitCost : Decimal(19, 2);
+//         SumUnitCost                 : Decimal(19, 2);
+//         ActWastPercentCode          : Decimal(19, 2);
+//         ActWastPercentDesc          : Decimal(19, 2);
+//         ActWastAmount               : Decimal(19, 2);
+//         TotalActWastAmount          : Decimal(19, 2);
+//         TotalActCostCategory        : Decimal(19, 2);
+// }
+
+
+//  /**************Metal---Base Stone Cost for OH********************* **/
+// entity TCostingMetalBaseCostDetail : managed {
+//     key CostingMetalBaseCostDetailUUID : UUID;
+//         CostingHeaderID       : Association to TCostingHeader;
+//         CategoryPrice         : Decimal(19, 2);
+//         CategoryUntCost       : Decimal(19, 2);
+//         CategoryOHCost        : Decimal(19, 2);
+//         WastagePercentCode    : String;
+//         WastagePercentName    : String;
+//         WastageAmount         : Decimal(19, 2);
+//         SumWastageAmount      : Decimal(19, 2);
+//         TotalCostBaseCategory : Decimal(19, 2);
+// }
+
+// //OK
+// /**********Metal--Local handling charges ***********/
+// entity TCostingMetalLocalHandlingChargeDetail : managed {
+//     key CostingMetalLocalHandlingChargeDetailUUID : UUID;
+//         CostingHeaderID                  : Association to TCostingHeader;
+//         LocalHandlingPercentage          : Decimal(19, 2); //need to clarity
+//         LocalHandlingAmount              : Decimal(19, 2);
+
+// }
+
+// //Ok
+// /***********Metal--*Process Tab **************/
+// entity TCostingMetalProcessDetail : managed {
+//     key CostngMetalProcessDetailUUID : UUID; 
+//         CostingHeaderID          : Association to TCostingHeader;
+//         ProcessType              : String;
+//         ProcessCost              : Decimal(19, 2);
+//         InputMethod              : String;
+//         Time                     : Time;
+//         WastageProcessPercent           : Decimal(19, 2);
+//         ProcessWastageCost       : Decimal(19, 2);
+//         TotalProcessCost         : Decimal(19, 2);
+//         TotalTime                : Time;
+//         TotalProcessWastageCost  : Decimal(19, 2);
+// }
+
+// //ok
+// /* *******Accessory / MDF / Glass / Other Child Parts /Others Accessory Raw Material / Outsource TAB*****/
+// entity TCostingAccessory : managed {
+//     key CostingAccessoryDetailUUID     : UUID;
+//         CostingHeaderID            : Association to TCostingHeader;
+//         ItemCode                   : String;
+//         ItemName                   : String;
+//         Dimension                  : String; //
+//         Qty                        : Decimal(19, 2); 
+//         UOMCode                    : String; //
+// 	UOMName	                   : String; //
+//         UnitPrice                  : Decimal(19, 2);
+//         UnitCost                   : Decimal(19, 2);
+//         ProductPercentage          : Decimal(19, 2);
+//         JobWorkChargeFirst         : Decimal(19, 2);
+//         JobWorkChargeSecond        : Decimal(19, 2);
+//         JobWorkChargeThird         : Decimal(19, 2);
+//         AssemblyFittingCharges     : Decimal(19, 2);
+//         TotalCharges               : Decimal(19, 2);
+//         OverHeadPercentage         : Decimal(19, 2);
+//         OHAmount                   : Decimal(19, 2); 
+//         WastagePercentage          : Decimal(19, 2);
+//         WastageCost                : Decimal(19, 2);
+//         TotalCostIncludeAllProcess : Decimal(19, 2);
+// }
+
+
+// //Review pending
+// entity TCostingSeekAdvice : managed {
+//     key SeekAdviceID       : UUID;
+//         DepartmentCode     : String;
+//         DepartmentName     : String;
+//        // UserID             : Association to MUser;
+//        // RoleCode           : Association to MRole;
+//         Question           : String;
+//         Answer             : String;
+//         CostingReqID       : Association to TCostingHeader;
+//         QuestionFrom       : Association to MUser;
+// }
+
+////Review pending
+// Approval History table required

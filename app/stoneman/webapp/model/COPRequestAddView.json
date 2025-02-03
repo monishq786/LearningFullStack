@@ -1,0 +1,119 @@
+{
+  "itemCode": null,
+  "itemDescription": null,
+  "sciplCode": null,
+  "cadNo": null,
+  "cadName": null,
+  "diameter": null,
+  "length": null,
+  "width": null,
+  "height": null,
+  "unit": null,
+  "weight": null,
+  "ActualCosting": [],
+  "BaseStoneCost": [],
+  "StoneProcess": [],
+  "MetalActualCosting": [],
+  "BaseMetalCost": [],
+  "MetalProcess": [],
+  "wood": [],
+  "basewoodcost": [],
+  "woodprocess": [],
+  "SeekAdvice": [],
+  "Accessory": [
+    {
+      "Field": "MDFBackPhotoFrame",
+      "Dimension": null,
+      "Quantity": null,
+      "UnitPrice": null,
+      "UnitCost": null,
+      "Productivity": null,
+      "JobWorkChange-1": null,
+      "JobWorkChange-2": null,
+      "JobWorkChange-3": null,
+      "Assembly/FittingCharge": null,
+      "Total": null,
+      "Over": null,
+      "OHAmount": null,
+      "WastagePercentage": null,
+      "WastageCost": null,
+      "TotalCostOfItem": null
+    },
+    {
+      "Field": "Glass",
+      "Dimension": null,
+      "Quantity": null,
+      "UnitPrice": null,
+      "UnitCost": null,
+      "Productivity": null,
+      "JobWorkChange-1": null,
+      "JobWorkChange-2": null,
+      "JobWorkChange-3": null,
+      "Assembly/FittingCharge": null,
+      "Total": null,
+      "Over": null,
+      "OHAmount": null,
+      "WastagePercentage": null,
+      "WastageCost": null,
+      "TotalCostOfItem": null
+    },
+    {
+      "Field": "Lighting",
+      "Dimension": null,
+      "Quantity": null,
+      "UnitPrice": null,
+      "UnitCost": null,
+      "Productivity": null,
+      "JobWorkChange-1": null,
+      "JobWorkChange-2": null,
+      "JobWorkChange-3": null,
+      "Assembly/FittingCharge": null,
+      "Total": null,
+      "Over": null,
+      "OHAmount": null,
+      "WastagePercentage": null,
+      "WastageCost": null,
+      "TotalCostOfItem": null
+    }
+  ],
+  "costingType": [
+    {
+      "id": "Type1",
+      "name": "Type 1"
+    },
+    {
+      "id": "Type2",
+      "name": "Type 2"
+    }
+  ],
+  "costingVersion": [
+    {
+      "id": "Version1",
+      "name": "Version 1"
+    },
+    {
+      "id": "Version2",
+      "name": "Version 2"
+    }
+  ],
+  "soNo": [
+    {
+      "id": "1",
+      "name": "1"
+    },
+    {
+      "id": "2",
+      "name": "2"
+    }
+  ],
+  "uom": [
+    {
+      "id": "cm",
+      "name": "cm"
+    },
+    {
+      "id": "dm",
+      "name": "dm"
+    }
+  ]
+}

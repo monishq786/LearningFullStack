@@ -1,0 +1,109 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons">
+    <VBox >
+        <FlexBox justifyContent="End">
+            <Button id="clearTimeBtn" icon="sap-icon://synchronize" text="{i18n>reschedule}" press="onClearTimePress" class="sapUiSmallMarginBegin"/>
+            <Button id="availableBtn" icon="sap-icon://check-availability" text="{i18n>checkAvailability}" press="getAvailableUsers" class="sapUiSmallMarginBegin"/>
+            <Button id="pddrraBtn" icon="sap-icon://add" text="{i18n>addDrawing}" press="addMeeting" class="sapUiSmallMarginBegin"/>
+        </FlexBox>
+        <f:SimpleForm id="PDDRAForm" editable="true" layout="ColumnLayout" columnsM="2" columnsL="4" columnsXL="4" labelSpanL="4" labelSpanXL="4" adjustLabelSpan="true">
+            <f:content>
+                <Label id="timeSlotLbl" text="Select Time Slot" />
+                <Select id="timeSlotCombo" forceSelection="false" items="{TimeSlotModel>/TimeSlots}" change="getSelectedTime">
+                    <items>
+                        <core:Item key="{TimeSlotModel>SlotID}" text="{TimeSlotModel>SlotDescription}" />
+                    </items>
+                </Select>
+                <Label id="meetingDteLbl" text="Meeting Date" />
+                <DatePicker id="meetingDte" value="{EntryFormDataSourceModel>/MeetingDate}" class="sapUiSmallMarginBottom" change="getMeetingDate"/>
+                <Label id="startTimeLbl" text="Start Time" />
+                <TimePicker id="startTime" placeholder="Enter Time" class="sapUiSmallMarginBottom" displayFormat="hh:mm a" valueFormat="HH:mm" value="" change="getMeetingDate"/>
+                <Label id="endTimeLbl" text="End Time" />
+                <TimePicker id="endTime" placeholder="Enter Time" displayFormat="hh:mm a" valueFormat="HH:mm" value="" change="getMeetingDate"/>
+
+            </f:content>
+        </f:SimpleForm>
+
+        <ScrollContainer id="scrollPDDRA" width="100%" height="auto" horizontal="true" vertical="true" focusable="true">
+            <Table items="{    path: 'EntryFormDataSourceModel>/UserAssign',    sorter: {     path: 'Name'    }   }" id="pddrraTable" class="sapUiSizeCompact" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true">
+                <columns>
+                    <Column width="5rem">
+                        <Label text="Sr. No" />
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Department" labelFor="departmentMeetingDialog"/>
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="User" labelFor="pddrraUserName"/>
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Call Meeting" labelFor="callMeeting"/>
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Meeting Attended" labelFor="meetingAttended"/>
+                    </Column>
+                    <Column width="13rem">
+                        <Label text="Start Date Time" labelFor="startDteTime"/>
+                    </Column>
+                    <Column width="13rem">
+                        <Label text="End Date Time" labelFor="endDteTime"/>
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Availability" labelFor="userAvailable"/>
+                    </Column>
+                    <Column width="10rem">
+                        <Label text="Remarks" />
+                    </Column>
+                    <Column width="5rem" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text id="srNum_pddra" text="{EntryFormDataSourceModel>RowNumber}" />
+                            <Input id="departmentMeeting" required="true" editable="{= ${EntryFormDataSourceModel>isEditable} ? true : false}" width="150px" placeholder="Click to select value" showValueHelp="true" valueHelpRequest="cflForDeptPddra" value="{EntryFormDataSourceModel>DepartmentName}" />
+                            <Input id="pddrraUserName" required="true" editable="{= ${EntryFormDataSourceModel>isEditable} ? true : false}" width="150px" placeholder="Click to select value" showValueHelp="true" valueHelpRequest="cflForUserPddra" value="{EntryFormDataSourceModel>UserName}" />
+                            <Select id="callMeeting" required="true" enabled="true" width="150px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{EntryFormDataSourceModel>CallMeeting}" change="checkCallMettingActivity" items="{path:'ReqTypeModel>/callMeeting',templateShareable:false}">
+                                <items>
+                                    <core:Item key="{ReqTypeModel>id}" text="{ReqTypeModel>name}" />
+                                </items>
+                            </Select>
+                            <Select id="meetingAttended" required="true" width="150px" maxWidth="100%" valueState="None" visible="true" editable="true" selectedKey="{EntryFormDataSourceModel>IsMeetingAttended}" change="onColorComboChange" items="{path:'ReqTypeModel>/meetingAttanded',templateShareable:false}">
+                                <items>
+                                    <core:Item key="{ReqTypeModel>id}" text="{ReqTypeModel>name}" />
+                                </items>
+                            </Select>
+                            <Input id="startDteTime" required="true" editable="false" width="200px" fieldWidth="100%" value="{EntryFormDataSourceModel>MeetingStartDate}" />
+                            <Input id="endDteTime" required="true" editable="false" width="200px" fieldWidth="100%" value="{EntryFormDataSourceModel>MeetingEndDate}" />
+                            <Input id="userAvailable" required="true" editable="false" width="150px" fieldWidth="100%" value="{EntryFormDataSourceModel>UserAvailable}" />
+                            <Input id="pddrraRemarks" tooltip="{EntryFormDataSourceModel>Remarks}" placeholder="Remarks" width="150px" fieldWidth="100%" value="{EntryFormDataSourceModel>Remarks}" />
+                            <Button id="pddrraDelBtn" visible="{= ${EntryFormDataSourceModel>isEditable} ? true : false}" icon="sap-icon://delete" press="onDeleteMeeting" type="Reject" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+
+        <HBox width="100%" class="sapUiSmallMarginTop">
+            <Label text="{i18n>uploadMeetingNotes}" design="Bold"/>
+        </HBox>
+        <HBox justifyContent="Start" id="pddrraId">
+            <VBox class="sapUiSmallMarginTop">
+                <Label id="upload" text="{i18n>upload}" />
+            </VBox>
+            <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTop">
+                <u:FileUploader id="fileUploader1" name="myFileUpload" icon="sap-icon://upload" tooltip="Upload your file" change=".onFileChangePDDRAMeeting" uploadComplete="handleUploadComplete" enabled="true" />
+            </VBox>
+            <VBox class="sapUiSmallMarginTop">
+                <Input id="pddraAttachInput" enabled="false" type="Text" value="{EntryFormDataSourceModel>/PDDRADisplayName}" editable="false" width="150px" fieldWidth="100%" tooltip="{EntryFormDataSourceModel>/PDDRADisplayName}" class="sapUiSmallMarginBegin"/>
+            </VBox>
+            <HBox id="hBoxPDDRAView">
+                <Button id="pddrrView" icon="sap-icon://show" press="onViewFile" class="sapUiSmallMarginBegin sapUiSmallMarginTop"/>
+                <Button id="pddrDownlod" icon="sap-icon://download" press="onDownloadFile" class="sapUiSmallMarginBegin sapUiSmallMarginTop"/>
+            </HBox>
+        </HBox>
+
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,435 @@
+<mvc:XMLView
+    xmlns:form="sap.ui.layout.form"
+    controllerName="modonecontroller.timeandactionentryform"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons"
+    class="d-flex justify-content-center">
+    <Page
+        id="taef"
+        title="{i18n>TITLETIMEANDACTION}"
+        showNavButton="true"
+        navButtonPress="onPressOfEntryFormCancelButton"
+    >
+        <form:SimpleForm>
+            <form:content>
+                <VBox height="100%" fitContainer="true">
+                    <VBox height="100%" fitContainer="true">
+                        <form:SimpleForm
+                            columnsM="3"
+                            columnsL="4"
+                            columnsXL="5"
+                            editable="true"
+                            layout="ColumnLayout"
+                        >
+                            <form:content>
+                                <Label text="{i18n>TANO}" />
+                                <Input
+                                    id="TA_NO_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/tah_no}"
+                                    placeholder="SO DELIVERY DATE ..."
+                                    editable="false"
+                                />
+
+                                <Label text="{i18n>PROJECTTEMPLATE}" />
+                                <Input
+                                    id="PROJECT_TEMPLATE_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/tah_prjtemplnme}"
+                                    placeholder="Select Project Template ..."
+                                    showValueHelp="true"
+                                    valueHelpRequest="cflForProjectTemplate"
+                                    required="true"
+                                    liveChange="onLiveChange"
+                                />
+                                <Label text="{i18n>THSONO}" />
+                                <Input
+                                    id="SO_NO_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/tah_sono}"
+                                    placeholder="Select SO NO ..."
+                                    showValueHelp="true"
+                                    valueHelpRequest="cflForSoNo"
+                                    required="true"
+                                    liveChange="onLiveChange"
+                                />
+                                <Label text="{i18n>STARTDATE}" />
+                                <DatePicker
+                                    id="START_DATE_EntryForm"
+                                    value="{EntryFormDataSourceModel>/tah_startdate}"
+                                    displayFormat="dd-MM-yyyy"
+                                    valueFormat="dd-MM-yyyy"
+                                    change="handleStartDateChange"
+                                    required="true"
+                                />
+                                <Label text="{i18n>SOLINEITEMNO}" />
+                                <Input
+                                    id="SO_LINEITEM_NO_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/tah_itemdesc}"
+                                    placeholder="Select SO Line Item No ..."
+                                    showValueHelp="true"
+                                    valueHelpRequest="cflForSoLineNo"
+                                    required="true"
+                                    liveChange="onLiveChange"
+                                />
+                                <Label text="{i18n>PROJECTSTATUS}" />
+                                <Select
+                                    id="PROJECT_STATUS_EntryForm"
+                                    forceSelection="false"
+                                    selectedKey="{EntryFormDataSourceModel>/tah_prjstatuscode}"
+                                    change="handleProjectStatusSelectionChange"
+                                    items="{
+                                        path: 'taefSelectProjStatusModel>value'
+                                    }"
+                                    required="true"
+                                >
+                                    <core:Item
+                                        key="{taefSelectProjStatusModel>prjstatus_code}"
+                                        text="{taefSelectProjStatusModel>prjstatus_name}"
+                                    />
+                                </Select>
+                                <Label text="{i18n>SOSTARTDATE}" />
+                                <DatePicker
+                                    id="SO_Order_Date_EntryForm"
+                                    value="{EntryFormDataSourceModel>/tah_sodate}"
+                                    valueFormat="dd-MM-yyyy"
+                                    displayFormat="dd-MM-yyyy"
+                                    editable="false"
+                                />
+
+                                <Label text="{i18n>DATEDIFF}" />
+                                <Input
+                                    id="SO_DATE_DIFF_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/sodatediff}"
+                                    placeholder="SO DATE DIFFERENCE"
+                                    editable="false"
+                                />
+
+                                <Label text="{i18n>SODELIVERYDATE}" />
+                                <DatePicker
+                                    id="SO_DELIVERY_DATE_EntryForm"
+                                    value="{EntryFormDataSourceModel>/tah_sodeldate}"
+                                    valueFormat="dd-MM-yyyy"
+                                    displayFormat="dd-MM-yyyy"
+                                    editable="false"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+                    </VBox>
+
+                    <form:SimpleForm>
+                        <form:content>
+                            <ScrollContainer
+                                id="scrollContainerTnA"
+                                width="100%"
+                                height="auto"
+                                horizontal="true"
+                                vertical="true"
+                                class="sapUiTinyMarginBottom"
+                            >
+                                <Table
+                                    id="TATable_EntryForm"
+                                    items="{ path: 'EntryFormDataSourceModel>/tactiondetail'}"
+                                    sticky="ColumnHeaders,HeaderToolbar"
+                                    growing="true"
+                                    growingThreshold="1000"
+                                    growingScrollToLoad="true"
+                                >
+                                    <headerToolbar />
+                                    <columns>
+                                        <Column width="80px">
+                                            <header>
+                                                <Label text="{i18n>SRNO}" />
+                                            </header>
+                                        </Column>
+                                        <Column width="100px">
+                                            <header>
+                                                <Label text="{i18n>DEPTNAME}" />
+                                            </header>
+                                        </Column>
+                                        <!-- <Column width="100px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>COSTCENTER}"
+                                                />
+                                            </header>
+                                        </Column> -->
+                                        <Column width="100px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>PROJTASKNAME}"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="80px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>NOOFDAYS}"
+                                                    wrapping="true"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <!-- <Column width="100px">
+                                            <header>
+                                                <Label text="{i18n>DAYS}" />
+                                            </header>
+                                        </Column> -->
+                                        <Column width="140px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>PLANNEDSTARTDATE}"
+                                                    wrapping="true"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="140px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>PLANNEDENDDATE}"
+                                                    wrapping="true"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="140px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>ACTUALSTARTDATE}"
+                                                    wrapping="true"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="140px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>ACTUALENDDATE}"
+                                                    wrapping="true"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="60px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>DELAYDAYS}"
+                                                    wrapping="true"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="140px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>EMPLOYEERESPONSIBLE}"
+                                                    wrapping="true"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="140px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>TASKTYPE}"
+                                                    wrapping="true"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="130px">
+                                            <header>
+                                                <Text
+                                                    text="{i18n>TASKSTATUS}"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="140px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>DOCUMENTTYPE}"
+                                                    wrapping="true"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="150px">
+                                            <header>
+                                                <Text
+                                                    text="{i18n>USERREMAKRS}"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="150px">
+                                            <header>
+                                                <Text
+                                                    text="{i18n>ADMINREMARKS}"
+                                                />
+                                            </header>
+                                        </Column>
+                                        <Column width="140px">
+                                            <header>
+                                                <Label
+                                                    text="{i18n>APICODE}"
+                                                    wrapping="true"
+                                                />
+                                            </header>
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <cells>
+                                            <ObjectIdentifier
+						title="{EntryFormDataSourceModel>srno}"
+						text="{EntryFormDataSourceModel>tahd_rescostcentername}"/>
+                                                <!-- <Text
+                                                    text="{EntryFormDataSourceModel>srno}"
+                                                /> -->
+                                                <Text
+                                                    text="{EntryFormDataSourceModel>tahd_depname}"
+                                                    wrapping="true"
+                                                />
+                                                <!-- <Text
+                                                    text="{EntryFormDataSourceModel>tahd_rescostcentername}"
+                                                    wrapping="true"
+                                                /> -->
+                                                <Text
+                                                    text="{EntryFormDataSourceModel>tahd_prjtaskname}"
+                                                    wrapping="true"
+                                                />
+                                                <ObjectIdentifier
+						title="{EntryFormDataSourceModel>tahd_noofdays}"
+						text="{EntryFormDataSourceModel>tahd_days}"/>
+                                                <!-- <Text
+                                                    text="{EntryFormDataSourceModel>tahd_noofdays}"
+                                                    textAlign="Right"
+                                                />
+                                                <Text
+                                                    text="{EntryFormDataSourceModel>tahd_days}"
+                                                /> -->
+                                                <DatePicker
+                                                    id="PLN_ST_DATE_EntryForm"
+                                                    value="{EntryFormDataSourceModel>tahd_plnstdate}"
+                                                    valueFormat="dd-MM-yyyy"
+                                                    displayFormat="dd-MM-yyyy"
+                                                    editable="false"
+                                                />
+                                                <DatePicker
+                                                    id="PLN_END_DATE_EntryForm"
+                                                    value="{EntryFormDataSourceModel>tahd_plneddate}"
+                                                    valueFormat="dd-MM-yyyy"
+                                                    displayFormat="dd-MM-yyyy"
+                                                    editable="false"
+                                                />
+                                                <DatePicker
+                                                    id="ACT_START_DATE_EntryForm"
+                                                    value="{EntryFormDataSourceModel>tahd_actstdate}"
+                                                    valueFormat="dd-MM-yyyy"
+                                                    displayFormat="dd-MM-yyyy"
+                                                    change="handleActualStartDateChange"
+                                                    editable="{EntryFormDataSourceModel>isEnableActStartDate}"
+                                                />
+                                                <DatePicker
+                                                    id="ACT_END_DATE_EntryForm"
+                                                    value="{EntryFormDataSourceModel>tahd_acteddate}"
+                                                    valueFormat="dd-MM-yyyy"
+                                                    displayFormat="dd-MM-yyyy"
+                                                    change="handleActualEndDateChange"
+                                                    editable="{EntryFormDataSourceModel>isEnableActEndDate}"
+                                                />
+                                                <Text
+                                                    text="{EntryFormDataSourceModel>tahd_dldays}"
+                                                />
+                                                <!-- <Select
+                                                    id="EmprResp_EntryForm"
+                                                    valueState="None"
+                                                    editable="{EntryFormDataSourceModel>isEnableEmpRes}"
+                                                    visible="true"
+                                                    change=".handleEmployeeSelectionChange"
+                                                    selectedKey="{EntryFormDataSourceModel>emp_code}"
+                                                    items="{path: 'EntryFormDataSourceModel>tactiondetailEmpAssign',templateShareable:false}"
+                                                    required="true"
+                                                >
+                                                    <items>
+                                                        <core:Item
+                                                            key="{EntryFormDataSourceModel>emp_code}"
+                                                            text="{EntryFormDataSourceModel>emp_name}"
+                                                        />
+                                                    </items>
+                                                </Select> -->
+
+                                                <Input
+                                                    id="EmprResp_EntryForm"
+                                                    type="Text"
+                                                    value="{EntryFormDataSourceModel>emp_name}"
+                                                    placeholder=""
+                                                    showValueHelp="true"
+                                                    valueHelpRequest="cflForEmpResponsible"
+                                                    required="true"
+                                                    liveChange="onLiveChange"
+                                                />
+                                                <Text
+                                                    text="{EntryFormDataSourceModel>TaskType}"
+                                                    wrapping="true"
+                                                />
+                                                <Select
+                                                    id="TaskStatus_EntryForm"
+                                                    valueState="None"
+                                                    selectedKey="{EntryFormDataSourceModel>tahd_tskstatuscode}"
+                                                    editable="{EntryFormDataSourceModel>isEnableTaskStatus}"
+                                                    visible="true"
+                                                    change="onTaskStatusChangefunction"
+                                                    items="{path: 'taefTaskStatusModel>value',templateShareable:true}"
+                                                >
+                                                    <items>
+                                                        <core:Item
+                                                            key="{EntryFormDataSourceModel>tskstatus_code}"
+                                                            text="{EntryFormDataSourceModel>tskstatus_name}"
+                                                        />
+                                                    </items>
+                                                </Select>
+                                                <Text
+                                                    text="{EntryFormDataSourceModel>DocumentType}"
+                                                    wrapping="true"
+                                                />
+                                                <Input
+                                                    id="UserComment"
+                                                    value="{EntryFormDataSourceModel>tahd_comments}"
+                                                    placeholder="User Remark"
+                                                    ariaDescribedBy="descriptionNodeId"
+                                                    description=""
+                                                    tooltip="{EntryFormDataSourceModel>tahd_comments}"
+                                                    editable="{EntryFormDataSourceModel>isEnableUserRemark}"
+                                                />
+                                                <Input
+                                                    id="AdminComment"
+                                                    value="{EntryFormDataSourceModel>tahd_admincomments}"
+                                                    placeholder="Admin Remark"
+                                                    ariaDescribedBy="descriptionNodeId"
+                                                    description=""
+                                                    tooltip="{EntryFormDataSourceModel>tahd_admincomments}"
+                                                    editable="{EntryFormDataSourceModel>isEnableAdminRemark}"
+                                                />
+                                                <Text
+                                                    text="{EntryFormDataSourceModel>APICode}"
+                                                    wrapping="true"
+                                                />
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </ScrollContainer>
+                        </form:content>
+                    </form:SimpleForm>
+                </VBox>
+            </form:content>
+        </form:SimpleForm>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <FlexBox justifyContent="End">
+                    <Button type="Emphasized" text="{i18n>SAVE}" press="onSave" />
+                </FlexBox>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:XMLView>

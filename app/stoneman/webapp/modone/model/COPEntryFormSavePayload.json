@@ -1,0 +1,270 @@
+{
+  "CostingCategory": null,
+  "CADNo": null,
+  "CADUUID": null,
+  "FormStatus": null,
+  "ItemCode": null,
+  "ItemDesc": null,
+  "SciplCode": null,
+  "SciplDesc": null,
+  "CostingTypeCode": null,
+  "CostingTypeName": null,
+  "SONumberCode": null,
+  "Diameter": null,
+  "Length": null,
+  "Width": null,
+  "Height": null,
+  "UnitCode": null,
+  "UnitName": null,
+  "Weight": null,
+  "Costing_Executive_UserID": null,
+  "Costing_ATL_UserID": null,
+  "Costing_Head_UserID": null,
+  "CostingDate": null,
+  "BuyerCode": null,
+  "BuyerName": null,
+  "StoneSumUnitcost": null,
+  "StoneSumActWastageAmt": null,
+  "StoneTotalActCost": null,
+  "StoneSumOHCost": null,
+  "StoneSumOHWastageAmount": null,
+  "StoneTotalCostBaseStone": null,
+  "StoneLocalHandlingPer": null,
+  "StoneLocalHandlingAmount": null,
+  "StoneSumProcessCost": null,
+  "StoneTotalTime": null,
+  "StoneSumProcessWastageCost": null,
+  "WoodSumUnitcost": null,
+  "WoodSumActWastageAmt": null,
+  "WoodTotalActCost": null,
+  "WoodSumOHCost": null,
+  "WoodSumOHWastageAmount": null,
+  "WoodTotalCostBaseWood": null,
+  "WoodLocalHandlingPer": null,
+  "WoodLocalHandlingAmount": null,
+  "WoodSumProcessCost": null,
+  "WoodTotalTime": null,
+  "WoodSumProcessWastageCost": null,
+  "MetalSumUnitcost": null,
+  "MetalSumActWastageAmt": null,
+  "MetalTotalActCost": null,
+  "MetalSumOHCost": null,
+  "MetalSumOHWastageAmount": null,
+  "MetalTotalCostBaseMetal": null,
+  "MetalLocalHandlingPer": null,
+  "MetalLocalHandlingAmount": null,
+  "MetalSumProcessCost": null,
+  "MetalTotalTime": null,
+  "MetalSumProcessWastageCost": null,
+  "ApprStatus": null,
+  "SaveOrSubmit": null,
+  "newApprovalStatus": null,
+  "newApprovalComment": null,
+  "CreatedByUserID_UserID": null,
+  "PendRoleCode": null,
+  "CostingStageCode_StageCode_StageConstant": null,
+  "CostingStageName": null,
+  "loginUserID_UserID": null,
+  "TotalApproved": 0,
+  "TotalRejected": 0,
+  "FormType": null,
+  "OldCostingGUID": null,
+  "OldCostingNo": null,
+  "ReqTyp": null,
+  "CostingVersion": null,
+  "CostingApprovalTransaction": [
+    {
+      "CostingApprovalTraID": null,
+      "RowNumber": null,
+      "CostingHeaderID_CostingHeaderUUID": null,
+      "ApprovalStatus": null,
+      "UserId_UserID": null,
+      "UserCode": null,
+      "RowStatus": null,
+      "UserRoleId_RoleCode_RoleConstant": null,
+      "RoleName": null,
+      "Comments": null,
+      "StageName": null,
+      "StageCode_StageCode_StageConstant": null,
+      "FormType": null,
+      "StartDate": null,
+      "EndDate": null,
+      "Type": null
+    }
+  ],
+  "CostingStoneActualCostDetail": [
+    {
+      "ItemCode": null,
+      "ItemDesc": null,
+      "Dimension": null,
+      "FinishCode": null,
+      "FinishName": null,
+      "StonePer": null,
+      "Quantity": null,
+      "UOMCode": null,
+      "UOMName": null,
+      "PurchasePrice": null,
+      "ActualStoneUnitCost": null,
+      "ActWastePercent": null,
+      "ActWasteAmount": null
+    }
+  ],
+  "CostingStoneBaseCostDetail": [
+    {
+      "OHStonePrice": null,
+      "OHStoneUnitCost": null,
+      "OHWastePercent": null,
+      "OHWasteAmount": null
+    }
+  ],
+  "CostingStoneProcessDetail": [
+    {
+      "ProcessType": null,
+      "ProcessCost": null,
+      "InputMethod": null,
+      "Time": null,
+      "WastageProcessPercent": null,
+      "ProcessWastageCost": null,
+      "createdAt": null
+    }
+  ],
+  "CostingWoodActualCostDetail": [
+    {
+      "ItemCode": null,
+      "ItemDesc": null,
+      "Dimension": null,
+      "FinishCode": null,
+      "FinishName": null,
+      "WoodPer": null,
+      "Quantity": null,
+      "UOMCode": null,
+      "UOMName": null,
+      "PurchasePrice": null,
+      "ActualWoodUnitCost": null,
+      "ActWastePercent": null,
+      "ActWasteAmount": null
+    }
+  ],
+  "CostingWoodBaseCostDetail": [
+    {
+      "OHWoodPrice": null,
+      "OHWoodUnitCost": null,
+      "OHWastePercent": null,
+      "OHWasteAmount": null
+    }
+  ],
+  "CostingWoodProcessDetail": [
+    {
+      "ProcessType": null,
+      "ProcessCost": null,
+      "InputMethod": null,
+      "Time": null,
+      "WastageProcessPercent": null,
+      "ProcessWastageCost": null
+    }
+  ],
+  "CostingMetalActualCostDetail": [
+    {
+      "ItemCode": null,
+      "ItemDesc": null,
+      "Dimension": null,
+      "FinishCode": null,
+      "FinishName": null,
+      "MetalPer": null,
+      "Quantity": null,
+      "UOMCode": null,
+      "UOMName": null,
+      "PurchasePrice": null,
+      "ActualMetalUnitCost": null,
+      "ActWastePercent": null,
+      "ActWasteAmount": null
+    }
+  ],
+  "CostingMetalBaseCostDetail": [
+    {
+      "OHMetalPrice": null,
+      "OHMetalUnitCost": null,
+      "OHWastePercent": null,
+      "OHWasteAmount": null
+    }
+  ],
+  "CostingMetalProcessDetail": [
+    {
+      "ProcessType": null,
+      "ProcessCost": null,
+      "InputMethod": null,
+      "Time": null,
+      "WastageProcessPercent": null,
+      "ProcessWastageCost": null
+    }
+  ],
+  "CostingAccessory": [
+    {
+      "ItemCode": null,
+      "ItemName": null,
+      "Dimension": null,
+      "Qty": null,
+      "UOMCode": null,
+      "UOMName": null,
+      "UnitPrice": null,
+      "UnitCost": null,
+      "ProductPercent": null,
+      "JobWorkChargeFirst": null,
+      "JobWorkChargeSecond": null,
+      "JobWorkChargeThird": null,
+      "AssemblyFittingCharges": null,
+      "TotalCharges": null,
+      "OverHeadPercent": null,
+      "OHAmount": null,
+      "WastagePercent": null,
+      "WastageCost": null,
+      "TotalCostIncludeAllProcess": null
+    }
+  ],
+  "CostingPacking": [
+    {
+      "PackingCost": null,
+      "BrandPackingCost": null,
+      "InnerBoxL": null,
+      "InnerBoxW": null,
+      "InnerBoxH": null,
+      "InnerBoxUOM": null,
+      "MasterCartoonL": null,
+      "MasterCartoonW": null,
+      "MasterCartoonH": null,
+      "MasterCartoonUOM": null,
+      "CasePack": null,
+      "CBM": null,
+      "CostPerCBM": null,
+      "Overhead": null
+    }
+  ],
+  "CostingExtraCharges": [
+    {
+      "Curreny": null,
+      "TotalCost": null,
+      "ExchangeRate": null,
+      "DerivedInterPrice": null,
+      "PriceCurrency": null,
+      "ShippingCost": null,
+      "TestingCharge": null,
+      "LabellingCharge": null,
+      "TrimmingCost": null,
+      "PriceIncAlCharges": null,
+      "Profit": null,
+      "ExtraWEIGHT": null,
+      "ExtraWEIGHTUoM": null,
+      "ExtraRemarks": null
+    }
+  ],
+  "CostingSeekAdvice": [
+    {
+      "DepartmentCode": null,
+      "DepartmentName": null,
+      "UserID_UserID": null,
+      "RoleID_RoleCode_RoleConstant": null,
+      "Question": null,
+      "Answer": null
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mvc:XMLView
+    xmlns:form="sap.ui.layout.form"
+    controllerName="modconfcontroller.manufactureentryform"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons"
+    class="d-flex justify-content-center">
+    <Page
+        id="owfef"
+        title="{i18n>MANUFACTUREENTRYFORM}"
+        showNavButton="true"
+        navButtonPress="onPressOfEntryFormCancelButton"
+    >
+        <form:SimpleForm>
+            <form:content>
+                <VBox height="100%" fitContainer="true">
+                    <VBox height="100%" fitContainer="true">
+                        <form:SimpleForm
+                            columnsM="3"
+                            columnsL="4"
+                            columnsXL="5"
+                            editable="true"
+                            layout="ColumnLayout"
+                            >
+                            <form:content>
+                                <!-- Header Data -->
+                                <Label text="{i18n>MANUFACTURE CODE}" />
+                                <Input
+                                    id="manufacturecode_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/ManufacturingCode}"
+                                    placeholder="Manufacturing Code ..."
+                                    showValueHelp="true"
+                                    valueHelpRequest="cflForManufactureCode"
+                                    required="true"
+                                    liveChange="onLiveChange"
+                                />
+                                <Label text="{i18n>MANUFACTURENAME}" />
+                                <Input
+                                    id="manufacturename_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/ManufacturingName}"
+                                    placeholder="Manufacturing Name ..."
+                                    showValueHelp="true"
+                                    valueHelpRequest="cflForManufactureName"
+                                    required="true"
+                                    liveChange="onLiveChange"
+                                    editable="false"
+                                />
+                                
+                            </form:content>
+                        </form:SimpleForm>
+                        <HBox
+                            width="100%"
+                            justifyContent="End"
+                        >
+                            <VBox>
+                                <Button
+                                    icon="sap-icon://add"
+                                    text="{i18n>ADDNEW}"
+                                    press="addRow"
+                                />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <form:SimpleForm>
+                        <form:content>
+                            <!-- Line level data -->
+                            <ScrollContainer
+                                id="manufactureentryform_scrollcontainerChild"
+                                width="100%"
+                                height="auto"
+                                horizontal="true"
+                                vertical="true"
+                                focusable="true"
+                                class="sapUiTinyMarginBottom"
+                            >
+                                <Table
+                                    items="{
+                                    path: 'EntryFormDataSourceModel>/data'
+                                    }"
+                                    id="objectmappingtbl"
+                                >
+                                    <columns>
+                                        <Column
+                                            width="1rem"
+                                            minScreenWidth="Tablet"
+                                            demandPopin="true"
+                                        >
+                                            <Label
+                                                text="Sr No."
+                                            />
+                                        </Column>
+                                        <Column
+                                            width="10rem"
+                                            minScreenWidth="Tablet"
+                                            demandPopin="true"
+                                        >
+                                            <Label
+                                                text="Operation Code"
+                                                labelFor=""
+                                            />
+                                        </Column>
+                                        <Column
+                                            width="10rem"
+                                            minScreenWidth="Tablet"
+                                            demandPopin="true"
+                                        >
+                                            <Label
+                                                text="Opoeration Name"
+                                                labelFor=""
+                                            />
+                                        </Column>
+                                        <Column width="5rem"/>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem vAlign="Middle">
+                                            <cells>
+                                                <Input
+                                                    id="manufacture_srno"
+                                                    type="Text"
+                                                    value="{EntryFormDataSourceModel>/SrNo}"
+                                                    placeholder="SNo."
+                                                    editable="true"
+                                                />
+                                                <Input
+                                                    id="manufacture_oprcode"
+                                                    type="Text"
+                                                    value="{EntryFormDataSourceModel>/OperationProcessCode}"
+                                                    placeholder="Operation Code"
+                                                    showValueHelp="true"
+                                                    valueHelpRequest="cflForOperationCode"
+                                                    required="true"
+                                                    liveChange="onLiveChange"
+                                                />
+                                                <Input
+                                                    id="manufacture_oprname"
+                                                    type="Text"
+                                                    value="{EntryFormDataSourceModel>/OperationProcessName}"
+                                                    placeholder="Operation Name"
+                                                    showValueHelp="true"
+                                                    required="true"
+                                                    liveChange="onLiveChange"
+                                                    editable="false"
+                                                />
+                                                <Button id="matDelBtn1" width="2rem" icon="sap-icon://delete" visible="true" press="onDeleteField" type="Reject" />
+
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </ScrollContainer>
+                        </form:content>
+                    </form:SimpleForm>
+                </VBox>
+            </form:content>
+        </form:SimpleForm>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <FlexBox justifyContent="End">
+                    <Button type="Emphasized" text="{i18n>SAVE}" press="onSave" />
+                </FlexBox>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:XMLView>

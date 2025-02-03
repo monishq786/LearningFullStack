@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons"
+    class="d-flex justify-content-center"
+    height="94%"
+    controllerName="modconfcontroller.enableadisableentryform"
+>
+    <Page
+        id="enableadisableef"
+        title="{i18n&gt;title}"
+        showNavButton="true"
+        navButtonPress="onPressOfEntryFormCancelButton"
+    >
+        <form:SimpleForm>
+            <form:content>
+                <VBox>
+                    <VBox>
+                        <form:SimpleForm
+                            columnsM="3"
+                            columnsL="4"
+                            columnsXL="5"
+                            editable="true"
+                            layout="ColumnLayout"
+                        >
+                            <form:content>
+                                <Label text="{i18n>FormType}" />
+                                <Select
+                                    id="Form_Type_EntryForm"
+                                    enabled="true"
+                                    editable="true"
+                                    forceSelection="false"
+                                    change=".onFormTypeChange"
+                                    selectedKey="{EntryFormDataSourceModel>/Menu_MenuGuid}"
+                                    items="{        path: 'formTypeModel>/value'       }"
+                                >
+                                    <core:Item
+                                        key="{formTypeModel>MenuGuid}"
+                                        text="{formTypeModel>MenuCode}"
+                                    />
+                                </Select>
+                                <!-- <Input id="Form_Type_EntryForm" type="Text" value="{EntryFormDataSourceModel>/FormType}" placeholder="Form Type ..." editable="true" showValueHelp="true" valueHelpRequest="cflForFormType"/> -->
+                                <Label text="{i18n>RoleCode}" />
+                                <Input
+                                    id="Role_Code_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/RoleCodeName}"
+                                    placeholder="Role Code ..."
+                                    editable="true"
+                                    showValueHelp="true"
+                                    valueHelpRequest="cflForRoleCode"
+                                    enabled="false"
+                                />
+                                <Label text="{i18n>StageCode}" />
+                                <Input
+                                    id="Stage_Code_EntryForm"
+                                    type="Text"
+                                    value="{EntryFormDataSourceModel>/StageCodeName}"
+                                    placeholder="Stage Code ..."
+                                    editable="true"
+                                    showValueHelp="true"
+                                    valueHelpRequest="cflForStageCode"
+                                    enabled="false"
+                                />
+                                <Label text="{i18n>IsActive}" />
+                                <CheckBox
+                                    selected="{= ${EntryFormDataSourceModel>/IsActive} === 'true' }"
+                                    select="onSelect" 
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+                    </VBox>
+                    <HBox
+                        width="100%"
+                        class="tab-padding"
+                        justifyContent="End"
+                    >
+                        <VBox>
+                            <Button
+                                icon="sap-icon://add"
+                                text="{i18n>addNew}"
+                                press="addRow"
+                            />
+                        </VBox>
+                    </HBox>
+
+                    <ScrollContainer
+                        width="100%"
+                        height="450px"
+                        horizontal="true"
+                        vertical="true"
+                        class="sapUiTinyMarginBottom"
+                    >
+                        <Table
+                            items="{    path: 'EntryFormDataSourceModel>/Detail',    sorter: {     path: ''    }   }"
+                            class="sapUiSizeCompact  textAlignCenter"
+                            inset="true"
+                            sticky="ColumnHeaders,HeaderToolbar"
+                            showSeparators="All"
+                            showNoData="true"
+                            id="DetailTable"
+                        >
+                            <columns>
+                                <Column width="10rem">
+                                    <Label
+                                        text="Control Name"
+                                        labelFor="ControlName"
+                                    />
+                                </Column>
+                                <Column width="10rem">
+                                    <Label
+                                        text="Control Id"
+                                        labelFor="ControlId"
+                                    />
+                                </Column>
+                                <Column width="4rem">
+                                    <Label text="Enabled Status" />
+                                </Column>
+                                <Column width="4rem">
+                                    <Label text="Active Status" />
+                                </Column>
+                                <Column width="4rem">
+                                    <Label text="Visible" />
+                                </Column>
+                                <Column width="4rem">
+                                    <Label text="Action" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <Input
+                                            id="ControlName"
+                                            required="true"
+                                            width="250px"
+                                            placeholder="Control Name"
+                                            value="{EntryFormDataSourceModel>ControlName}"
+                                            fieldWidth="10%"
+                                            class="labelHeight"
+                                        />
+                                        <Input
+                                            id="ControlId"
+                                            required="true"
+                                            width="250px"
+                                            placeholder="Control Id"
+                                            value="{EntryFormDataSourceModel>ControlId}"
+                                            fieldWidth="100%"
+                                            class="labelHeight"
+                                        />
+                                        <CheckBox
+                                            id="sEnabled"
+                                            selected="{EntryFormDataSourceModel>Enabled}"
+                                            enabled="true"
+                                            select="onSelectEnable"
+                                        />
+                                        <CheckBox
+                                            id="sActive"
+                                            selected="{= ${EntryFormDataSourceModel>IsActive} === 'Y' }"
+                                            enabled="true"
+                                            select="onSelectActive"
+                                        />
+                                        <CheckBox
+                                            id="sVisible"
+                                            selected="{EntryFormDataSourceModel>Visible}"
+                                            enabled="true"
+                                            select="onSelectVisible"
+                                        />
+
+                                        <Button
+                                            icon="sap-icon://delete"
+                                            press="onDeleteControlDetail"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </ScrollContainer>
+                </VBox>
+            </form:content>
+        </form:SimpleForm>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <FlexBox justifyContent="End">
+                    <Button
+                        type="Emphasized"
+                        id="Enable_Button"
+                        text="{i18n>SAVE}"
+                        press="onSave"
+                    />
+                </FlexBox>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

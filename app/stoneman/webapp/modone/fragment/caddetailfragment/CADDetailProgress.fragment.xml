@@ -1,0 +1,62 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <ScrollContainer id="caddetail_scrollcontainer-seek" width="100%" height="auto" horizontal="true" vertical="true" focusable="true">
+        <Table items="{
+			path: 'EntryFormDataSourceModel>/ApprovalTransaction',
+			sorter: {
+				path: 'Name'
+			}
+		}" id="caddetail_myTable9" class="sapUiSizeCompact sapUiTinyMarginTop" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true">
+            <columns>
+                <Column width="5rem">
+                    <Text text="SNo." />
+                </Column>
+                <Column width="10rem">
+                    <Text text="User" />
+                </Column>
+                <Column width="10rem">
+                    <Text text="Role" />
+                </Column>
+                <Column width="15rem">
+                    <Text text="Stage" />
+                </Column>
+                <Column width="10rem">
+                    <Text text="Start Date" />
+                </Column>
+                <Column width="10rem">
+                    <Text text="End Date" />
+                </Column>
+                <Column width="10rem">
+                    <Text text="Task Status" />
+                </Column>
+                <Column width="10rem">
+                    <Text text="Completion Status" />
+                </Column>
+                <Column width="10rem">
+                    <Text text="Comments" />
+                </Column>
+                <Column width="5rem">
+                    <Text text="Nature" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <Text text="{EntryFormDataSourceModel>RowNumber}" wrapping="false" />
+                        <Text text="{EntryFormDataSourceModel>UserId/Username}" wrapping="false" />
+                        <Text text="{EntryFormDataSourceModel>UserRoleCode_RoleCode_RoleConstant}" wrapping="false" />
+                        <Text text="{EntryFormDataSourceModel>StageCode_StageCode_StageConstant}" wrapping="false" />
+                        <Text text="{EntryFormDataSourceModel>StartDte}" wrapping="false" />
+                        <Text text="{EntryFormDataSourceModel>EndDte}" wrapping="false" />
+                        <Text text="{EntryFormDataSourceModel>ApprovalStatus}" wrapping="false" />
+                        <Text text="{EntryFormDataSourceModel>RowStatus}" wrapping="false" />
+                        <Text text="{EntryFormDataSourceModel>Comments}" wrapping="false" />
+                        <Text text="{EntryFormDataSourceModel>Type}" wrapping="false" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </ScrollContainer>
+
+</core:FragmentDefinition>

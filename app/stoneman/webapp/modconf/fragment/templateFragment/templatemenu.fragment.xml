@@ -1,0 +1,97 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+    xmlns:commons="sap.suite.ui.commons"
+>
+    <VBox>
+        <FlexBox justifyContent="End">
+            <Button
+                icon="sap-icon://add"
+                id="addMenuRow"
+                text="{i18n>addNew}"
+                press="addMenuRow"
+            />
+        </FlexBox>
+        <ScrollContainer
+            id="menuRoll"
+            width="100%"
+            height="auto"
+            horizontal="true"
+            vertical="true"
+            focusable="true"
+        >
+            <Table
+                id="menuTable_EntryForm"
+                items="{ path:'EntryFormDataSourceModel>/TemplateMenus'}"
+                sticky="ColumnHeaders,HeaderToolbar"
+                growing="true"
+                growingThreshold="1000"
+                growingScrollToLoad="true"
+            >
+                <columns>
+                    <Column width="5rem">
+                        <header>
+                            <Label text="{i18n>srNo}" />
+                        </header>
+                    </Column>
+                    <Column width="10rem">
+                        <header>
+                            <Label text="{i18n>menuCode}" />
+                        </header>
+                    </Column>
+                    <Column width="10rem">
+                        <header>
+                            <Label text="{i18n>menusub}" />
+                        </header>
+                    </Column>
+                    
+                    <Column width="5rem" />
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                        <Text
+                      
+                          text="{EntryFormDataSourceModel>RowNumber}"
+                         />
+                            <Input
+                                id="tempmenu"
+                                type="Text"
+                                value="{EntryFormDataSourceModel>MenuCode}"
+                                placeholder="Menu Code ..."
+                                showValueHelp="true"
+                                valueHelpRequest="cflForStageMenu"
+                                required="true"
+                            />
+
+                            <Input
+                                id="submenu"
+                                type="Text"
+                                value="{EntryFormDataSourceModel>MenuSubType}"
+                                showValueHelp="true"
+                                valueHelpRequest="cflForSubMenu"
+                                placeholder="Sub Menu ..."
+                                required="true"
+                            />
+
+                             <Button
+                                id="menu_delete_EntryForm"
+                                icon="sap-icon://delete"
+                                width="35px"
+                                press="onDelete"
+                                type="Reject"
+                            /> 
+
+                            
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </ScrollContainer>
+        <!-- <FlexBox justifyContent="End">
+            <Button type="Emphasized" id="addmenu" text="{i18n>addSeekAdvice}" press="onUploadSeekAdvice" class="sapUiSmallMarginTop"/>
+        </FlexBox> -->
+    </VBox>
+</core:FragmentDefinition>

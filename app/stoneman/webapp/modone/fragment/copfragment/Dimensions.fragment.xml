@@ -1,0 +1,77 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+    <f:SimpleForm
+        id="copefDimensionContainer"
+        editable="true"
+        layout="ColumnLayout"
+        columnsM="3"
+        columnsL="4"
+        columnsXL="5"
+    >
+        <f:content>
+            <Label
+                labelFor="copefDimensionDiameter"
+                text="{i18n>DiameterLbl}"
+            />
+            <Input
+                id="copefDimensionDiameter"
+                value="{EntryFormDataSourceModel>/Diameter}"
+                required="true"
+            />
+            <Label
+                labelFor="copefDimensionLength"
+                text="{i18n>LengthLbl}"
+            />
+            <Input
+                id="copefDimensionLength"
+                value="{EntryFormDataSourceModel>/Length}"
+                required="true"
+            />
+
+            <Label
+                labelFor="copefDimensionWidth"
+                text="{i18n>widthLbl}"
+            />
+
+            <Input
+                id="copefDimensionWidth"
+                value="{EntryFormDataSourceModel>/Width}"
+                required="true"
+            />
+
+            <Label
+                labelFor="copefDimensionHeight"
+                text="{i18n>heightLbl}"
+            />
+            <Input
+                id="copefDimensionHeight"
+                value="{EntryFormDataSourceModel>/Height}"
+                required="true"
+            />
+
+            <Label
+                labelFor="copefDimensionUnit"
+                text="{i18n>unitLbl}"
+            />
+
+            <Input
+                id="copefDimensionUnit"
+                value="{EntryFormDataSourceModel>/UnitCode}"
+                required="true"
+            />
+
+            <Label
+                labelFor="copefDimensionWeigth"
+                text="{i18n>weightLbl}"
+            />
+            <Input
+                id="copefDimensionWeigth"
+                value="{EntryFormDataSourceModel>/Weight}"
+                required="true"
+            />
+        </f:content>
+    </f:SimpleForm>
+</core:FragmentDefinition>

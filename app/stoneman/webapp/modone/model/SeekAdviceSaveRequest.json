@@ -1,0 +1,25 @@
+{
+    "CrfReqGuid": null,
+    "CrfReqNo": null,
+    "SaveOrSubmit": null,
+    "SeekAdvice": [
+        {
+            "Answer": null,
+            "CrfSeekAdviceGuid": null,
+            "DelMark": 0,
+            "DepartmentCode": null,
+            "DepartmentName": null,
+            "NewAlert": null,
+            "Parent_CrfReqGuid": null,
+            "Question": null,
+            "QuestionFromUserName": null,
+            "QuestionFromUser_UserGuid": null,
+            "QuestionToUserName": null,
+            "QuestionToUser_UserGuid": null,
+            "Role_RoleGuid": null,
+            "RowNumber": "1",
+            "SendEmailQuestion": null,
+            "SendEmailAnswer": null
+        }
+    ]
+}
