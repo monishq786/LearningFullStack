@@ -263,6 +263,7 @@ sap.ui.define(
       setCflMultiSelect: function (value) {
         this.pCflConfig = value;
       },
+      
 
       getListViewFilterColumnList: function () {
         return this.pFilterColumnList;
@@ -756,7 +757,11 @@ sap.ui.define(
 
       getApiResponseObject: function () {
         return this.pApiResponseObject;
-      }
+      },
+
+      getCflMultiSelect: function () {
+        return this.pCflConfig;
+      },
       /*
       setEntryFormResponseDataSourceModelName: function (value) {
           this.pEntryFormResponseDataSourceModelName = value;

@@ -250,6 +250,7 @@ sap.ui.define([
                     title: this.getCflTitle(),
                     columns: oDisplayColumnList,
                     growing: false,
+                    multiSelect: this.getCflMultiSelect(),
                     items: {
                         path: sModelName + ">/" + sPath,
                         template:

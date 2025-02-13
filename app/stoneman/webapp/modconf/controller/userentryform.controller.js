@@ -142,11 +142,14 @@ sap.ui.define(
         this.setCflDataColumns(['BusinessPartner', 'BusinessPartnerFullName', 'BusinessPartnerUUID']);
         this.setCflValueAndDisplay('/UserName', 'BusinessPartnerName', '', '');
         this.setCflSearchProperty('BusinessPartnerName');
+        this.setCflMultiSelect(true);
         this.showCfl('user', this.getCflListViewDataSourceModelName(), 'd/results', this.onClosecflForUser.bind(this));
       },
 
       onClosecflForUser: async function () {
         const oUserRes = this.getCflObject();
+        const oList = this.getCflObjectList();
+        console.log(oList);
         await this.createNewModelUsingAPI(
           'GET',
           `/sap/opu/odata4/sap/api_cost_center/srvd_a2x/sap/costcenter/0001/A_CostCenterText_2?$filter=CostCenter eq '${oUserRes.CostCenter}'`,
